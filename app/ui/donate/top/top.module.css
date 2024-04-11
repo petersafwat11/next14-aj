@@ -1,0 +1,28 @@
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4.07rem;
+  border-top-right-radius: 0.85rem;
+  border-top-left-radius: 0.85rem;
+  background: #19252d !important;
+}
+.title {
+  color: #fff;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: normal;
+}
+@media (max-widh: 56.25rem) {
+  .top {
+    height: 3.06rem;
+    border-top-right-radius: 0.625rem;
+    border-top-left-radius: 0.625rem;
+  }
+  .title {
+    font-size: 1.125rem;
+  }
+}

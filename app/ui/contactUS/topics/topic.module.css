@@ -1,0 +1,33 @@
+.topic-option:hover {
+  background-color: rgba(255, 255, 255, 0.171);
+}
+.topic-option {
+  font-family: "Poppins";
+  height: 2.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.42rem 0.9375rem;
+  line-height: 0%;
+  /* border: 1px solid rgba(255, 255, 255, 0.12); */
+  border-radius: 4.68rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+@media (max-width: 56.25rem) {
+  .topic-option {
+    padding: 0.55rem 1.25rem;
+    height: 2.5rem;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    /* border: 1px solid rgba(255, 255, 255, 0.16); */
+    border-radius: 6.25rem;
+  }
+}
+@media (max-width: 500px) {
+}

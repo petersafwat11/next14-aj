@@ -1,0 +1,120 @@
+.make-comment {
+  display: flex;
+  width: 100%;
+  padding: 0.94rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  border-radius: 0.375rem;
+  background: #1d242a;
+  box-shadow: 0px 4px 8px 0px rgba(10, 58, 100, 0.15);
+  margin-bottom: 0.85rem;
+  border: 1px solid #1d242a;
+  transition: all 0.3s ease-in-out;
+}
+.make-comment:focus-within {
+  border: 1px solid #03a1cd;
+}
+.make-comment-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.para-Styles {
+  display: flex;
+  align-items: center;
+  gap: 0.56rem;
+}
+.para-Styles * {
+  cursor: pointer;
+}
+.comment-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: #03a1cd;
+  width: 5.76rem;
+  height: 2rem;
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3rem; /* 175% */
+  cursor: pointer;
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+.user {
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.para,
+.input,
+.input-bold,
+.input-italic {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Poppins";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.32rem; /* 175% */
+}
+.input-italic {
+  font-style: italic;
+}
+.input-bold {
+  font-weight: 700;
+}
+
+.input::-webkit-scrollbar,
+.input-italic::-webkit-scrollbar,
+.input-bold::-webkit-scrollbar {
+  width: 4.5px;
+}
+
+/* Track */
+.input::-webkit-scrollbar-track,
+.input-bold::-webkit-scrollbar-track,
+.input-italic::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+/* Handle */
+.input::-webkit-scrollbar-thumb,
+.input-bold::-webkit-scrollbar-thumb,
+.input-italic::-webkit-scrollbar-thumb {
+  background: rgba(217, 217, 217, 0.6);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+.input::-webkit-scrollbar-thumb:hover,
+.input-bold::-webkit-scrollbar-thumb:hover,
+.input-italic::-webkit-scrollbar-thumb:hover {
+  background: #515151;
+}
+
+.input,
+.input-bold,
+.input-italic {
+  width: 100%;
+  background-color: inherit;
+  resize: none;
+  border: none;
+}
+.input:focus-visible,
+.input-bold:focus-visible,
+.input-italic:focus-visible {
+  outline: none;
+}

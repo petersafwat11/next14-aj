@@ -1,0 +1,25 @@
+.news-article {
+  max-width: min(85%, 45rem);
+  margin: 0 auto;
+  padding-bottom: 7rem;
+}
+.seperator {
+  display: block;
+  width: 90%;
+  height: 1px;
+  background: #616161;
+  margin: 2.625rem auto;
+}
+@media (max-width: 56.25rem) {
+  .news-article {
+    max-width: min(90%, 36rem);
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+}
+@media (max-width: 600px) {
+  .news-article {
+    max-width: 100%;
+    margin: 0 3px;
+  }
+}

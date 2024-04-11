@@ -1,0 +1,186 @@
+.DMCA {
+  max-width: min(85%, 45rem);
+  margin: 0 auto;
+  padding-bottom: 7rem;
+}
+
+.container {
+  margin-top: 1.15rem;
+  background-color: #0d1317;
+  border-radius: 1.125rem;
+  padding-bottom: 2.625rem;
+  overflow: hidden;
+}
+.disclaimer {
+  padding: 2.4rem 4.125rem 2.9rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.disclaimer-heading {
+  align-self: center;
+  font-weight: 700;
+  font-family: "Poppins";
+  font-size: 1.687rem;
+  line-height: normal;
+}
+.disclaimer-para {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2.76rem;
+}
+.disclaimer-para p {
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1.22rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "Poppins", sans-serif;
+}
+.second-part {
+  background: #131d23;
+  width: 88%;
+  margin: auto;
+  padding: 2.86rem 3.5rem 3.2rem;
+  border-radius: 0.85rem;
+}
+
+.companies-logoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 5.8rem;
+  /* margin-bottom: 3.6rem; */
+}
+.companies-logoes-mobile {
+  display: none;
+}
+.netflix-icon,
+.google-icon {
+  justify-self: start;
+}
+.dailymotion-icon,
+.youtube-icon {
+  justify-self: end;
+}
+
+@media (max-width: 56.25rem) {
+  .DMCA {
+    max-width: min(85%, 32rem);
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .disclaimer {
+    padding: 2.4rem 4.125rem 2.9rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .disclaimer-heading {
+    align-self: center;
+    font-weight: 700;
+    font-family: "Poppins";
+    font-size: 1.687rem;
+    line-height: normal;
+  }
+  .disclaimer-para {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2.76rem;
+  }
+  .disclaimer-para p {
+    font-weight: 600;
+    font-size: 0.94rem;
+    line-height: 1.22rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .second-part {
+    background: inherit;
+    width: 86.7%;
+    margin: auto;
+    padding: 0;
+    border-radius: none;
+  }
+
+  .companies-logoes-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+  .companies-logoes {
+    display: none;
+  }
+  .companies-logoes-mobile > :nth-child(odd) {
+    background-color: #131d23;
+    border: 1px solid #131d23;
+    border-radius: 0.5rem;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    width: 100%;
+    height: 7.687rem;
+  }
+
+  .netflix-icon {
+    width: 128px;
+    height: 40px;
+  }
+  .vimeo-icon {
+    width: 127px;
+    height: 35px;
+  }
+  .dailymotion-icon {
+    width: 217px;
+    height: 39px;
+  }
+  .google-icon {
+    width: 147px;
+    height: 47px;
+  }
+  .twitch-icon {
+    width: 123.4px;
+    height: 41px;
+  }
+  .youtube-icon {
+    width: 168px;
+    height: 37px;
+  }
+}
+
+@media (max-width: 500px) {
+  .disclaimer {
+    padding: 2.375rem 2.75rem 3.75rem;
+    gap: 1.2rem;
+  }
+  .disclaimer-heading {
+    font-size: 1.3rem;
+  }
+  .disclaimer-para {
+    gap: 2.2rem;
+  }
+  .disclaimer-para p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 136.5%;
+    font-family: "Poppins", sans-serif;
+  }
+}
+@media (max-width: 500px) {
+  .DMCA {
+    max-width: 100%;
+    margin: 0 3px;
+    padding-bottom: 3rem;
+  }
+}

@@ -1,0 +1,57 @@
+/* .xx {
+  background: #181e21;
+} */
+.marque-container {
+  /* // height: 5vh; */
+  padding: 0.225rem;
+  padding-top: 7px;
+  width: 20%;
+  margin: 0 auto;
+}
+.marque-container-tag {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.marque-container-tag > span {
+  color: #00c4fb;
+  font-family: "Poppins";
+  margin-left: 1.125rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+.marque-container-tag > p {
+  font-weight: 300;
+  font-size: 1rem;
+  font-family: "Poppins";
+  color: white;
+  margin-left: 1.125rem;
+}
+
+.marque-container {
+  width: 280px;
+  padding-left: 0.5rem;
+}
+
+/* @include respond(tab-port) {
+  height: 0vh;
+  width: 60%;
+  margin-top: 0.5rem;
+  padding-bottom: 1rem;
+} */
+@media (max-width: 56.25rem) {
+  .marque-container {
+    height: 0vh;
+    width: 60%;
+    padding-top: 0.16rem;
+    padding-bottom: 1.125rem;
+  }
+  .marque-container span {
+    font-size: 0.8rem;
+  }
+  .marque-container-tag > p {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+}

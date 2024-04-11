@@ -1,0 +1,27 @@
+.remaining-time {
+  color: #eb5757;
+  font-size: 1.21rem;
+  font-family: "Poppins";
+  font-weight: 700;
+  letter-spacing: 0.26px;
+}
+@media (max-width: 75rem) {
+  .remaining-time {
+    font-size: 0.99122rem;
+    letter-spacing: 0.2132px;
+  }
+}
+@media (max-width: 50rem) {
+  .remaining-time {
+    font-size: 0.8224186rem;
+    letter-spacing: 0.1765396px;
+  }
+}
+
+@media (max-width: 38.75rem) {
+  .remaining-time {
+    text-align: center;
+    font-size: 1.06rem;
+    letter-spacing: 0.17px;
+  }
+}

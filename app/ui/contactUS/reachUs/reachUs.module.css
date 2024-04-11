@@ -1,0 +1,90 @@
+.contact-us-methods {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.9rem;
+  margin-top: 2.7rem;
+}
+.contact-us-first,
+.contact-us-second {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+.contact-us-second {
+  justify-content: center;
+}
+.contact-us-item,
+.contact-us-item-second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.contact-us-item-second {
+  align-items: flex-start;
+}
+.contact-us-item > p {
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.36rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.contact-us-second p {
+  max-width: 8rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.36rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+@media (max-width: 56.25rem) {
+  .contact-us-methods {
+    gap: 1.5rem;
+    margin-top: 1.9rem;
+  }
+  .contact-us-first,
+  .contact-us-second {
+    width: max(65%, 18rem);
+  }
+  .contact-us-item,
+  .contact-us-item-second {
+    gap: 1rem;
+  }
+  .contact-us-item > p {
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+  }
+  .contact-us-second p {
+    max-width: 6.5rem;
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+  }
+  .email-icon {
+    width: 26px;
+    height: 24px;
+  }
+  .phone-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .location-icon {
+    width: 26px;
+    height: 34px;
+  }
+}
+@media (max-width: 500px) {
+  .contact-us-methods {
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    overflow: hidden;
+  }
+  .contact-us-first,
+  .contact-us-second {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 2.375rem;
+  }
+}

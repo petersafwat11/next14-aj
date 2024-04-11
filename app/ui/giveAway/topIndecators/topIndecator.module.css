@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 0.47rem;
+}
+.indicator,
+.cur-state-indicator {
+  height: 100%;
+  width: 2.9rem;
+  background-color: #c7d3eb;
+  cursor: pointer;
+  border-radius: 0.375rem;
+}
+.cur-state-indicator {
+  background-color: #47b2ff;
+}

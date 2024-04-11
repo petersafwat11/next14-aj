@@ -1,0 +1,41 @@
+.header-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.3rem;
+  margin: 4.9rem auto 0;
+}
+.header-social > * {
+  cursor: pointer;
+}
+@media (max-width: 75rem) {
+  .header-social {
+    gap: 1.9rem;
+    margin: 4rem auto 0;
+  }
+}
+@media (max-width: 75rem) {
+  .header-social {
+    gap: 1.7rem;
+    margin: 2.5rem auto 0;
+  }
+}
+@media (max-width: 38.75rem) {
+  .header-social {
+    gap: 1.9rem;
+  }
+  .twitter {
+    width: 17.5px;
+    height: 14.5px;
+  }
+  .facebook,
+  .insta,
+  .ticktok {
+    width: 17.5px;
+    height: 17.4px;
+  }
+  .telegram {
+    width: 17.5px;
+    height: 17.7px;
+  }
+}

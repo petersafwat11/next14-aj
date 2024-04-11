@@ -1,0 +1,55 @@
+.container {
+  padding: 1.5rem 0.4rem 0;
+}
+.success {
+  background-color: #10adff;
+  width: 7.78rem;
+  height: 7.7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.03rem;
+}
+.body {
+  text-align: center;
+}
+.success-id,
+.success-id span {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 0.93rem;
+  line-height: 1.69rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+.success-id span {
+  color: #01bcf1;
+}
+.success-message {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 138%;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.35rem;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    padding: 1.35rem 1.4rem 1.5rem 1.875rem;
+  }
+  .success {
+    width: 7rem;
+    height: 7rem;
+    margin: 1px auto 0.45rem;
+  }
+  .success-icon {
+    width: 56px;
+    height: 55px;
+  }
+  .success-message {
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    margin-top: 0.3rem;
+  }
+}

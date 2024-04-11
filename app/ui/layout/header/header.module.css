@@ -1,0 +1,15 @@
+.header-mobile {
+  display: none;
+}
+
+@media (max-width: 56.25rem) {
+  .header {
+    display: none;
+  }
+  .header-mobile {
+    display: block;
+    height: 74px;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 0
+      env(safe-area-inset-left);
+  }
+}

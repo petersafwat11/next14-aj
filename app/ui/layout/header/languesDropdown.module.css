@@ -1,0 +1,21 @@
+.dropdown-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.365rem;
+  justify-content: center;
+  width: 5.8125rem;
+  height: 1.875rem;
+  color: rgba(255, 255, 255, 0.4);
+  border-radius: 0.33rem;
+  background: #161e25;
+  text-align: center;
+  font-size: 0.796rem;
+  font-family: RobotoRegular;
+  font-weight: 500;
+  cursor: pointer;
+}
+.lang-options {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+}

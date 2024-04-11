@@ -1,0 +1,27 @@
+.beta {
+  width: 3.82rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  background: #1d2e39;
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins";
+  /* "BankGothic Md BT"; */
+  font-size: 0.93rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* @media (min-width: 56.25rem) {
+  .beta {
+    width: 3rem;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    font-size: 19px;
+  }
+} */

@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.68rem;
+  position: relative;
+  width: 29rem;
+  height: 20.34rem;
+  border-radius: 2.25rem;
+  background: #0d1317;
+  padding: 2.67rem 3rem 1.8rem;
+}
+.exit {
+  position: absolute;
+  top: 29px;
+  right: 28px;
+}
+.checked-div {
+  width: 6.75rem;
+  height: 6.75rem;
+  border-radius: 50%;
+  background-color: #01bcf1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checked-icon {
+  font-size: 3.8rem;
+}
+.messages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.64rem;
+}
+.thankyou-message {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 1.22rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 127.5%;
+}
+.auto-close-message {
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 0.65rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%;
+}
