@@ -5,7 +5,7 @@ const Marque = ({ domains }) => {
   // const [domains, setDomains] = useState([]);
   // const fetchNewData = useCallback(async (query) => {
   //   try {
-  //     const domains = await getData("links", query);
+  //     const domains = await axios.get("links", query);
   //     setDomains(response?.data?.data[0]?.domains?.split(" "));
   //   } catch (err) {
   //     console.log(err);

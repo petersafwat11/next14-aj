@@ -1,0 +1,70 @@
+.contianer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 29.4rem;
+  height: 2.9rem;
+  border-radius: 0.45rem;
+  background: rgba(13, 19, 23, 0.99);
+  padding: 0 2.4rem;
+}
+.team-first,
+.team-sec {
+  display: flex;
+  align-items: center;
+  gap: 0.656rem;
+}
+.team-first-name,
+.team-last-name {
+  color: #727272;
+  text-align: center;
+  font-family: RobotoBold;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.team-first span,
+.team-sec span {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+}
+.team-first span {
+  background-color: #47b2ff;
+}
+.team-sec span {
+  background-color: #ffe923;
+}
+.middle {
+  color: #727272;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .contianer {
+    width: 100%;
+    height: 2.45rem;
+    border-radius: 6px;
+    padding: 0 1.44rem;
+  }
+  .team-first,
+  .team-last {
+    gap: 0.75rem;
+  }
+  .team-first-name,
+  .team-last-name {
+    font-size: 0.75rem;
+  }
+  .team-first span,
+  .team-last span {
+    width: 0.45rem;
+    height: 0.45rem;
+  }
+  .middle {
+    font-size: 0.94rem;
+  }
+}

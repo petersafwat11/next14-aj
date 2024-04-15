@@ -1,0 +1,170 @@
+.stadium {
+  height: 38.5rem;
+  width: 22.83rem;
+  background: url("/svg/watch/rugby/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+.stadium > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.one {
+  top: 13%;
+  left: 11.5%;
+}
+.two {
+  top: 13%;
+  left: 26%;
+}
+
+.three {
+  top: 13%;
+  left: 39%;
+}
+.four {
+  top: 15%;
+  left: 53%;
+}
+.five {
+  top: 13%;
+  left: 69%;
+}
+.six {
+  top: 13%;
+  left: 83%;
+}
+.seven {
+  top: 22%;
+  left: 62%;
+}
+.eight {
+  top: 28%;
+  left: 65%;
+}
+.nine {
+  top: 34%;
+  left: 52%;
+}
+.ten {
+  top: 34%;
+  left: 78%;
+}
+.eleven {
+  top: 40%;
+  left: 42%;
+}
+.twelve {
+  top: 40%;
+  left: 65%;
+}
+.thirteen {
+  top: 40%;
+  left: 87%;
+}
+.fourteen {
+  bottom: 13%;
+  left: 11.5%;
+}
+.fivteen {
+  bottom: 13%;
+  left: 26%;
+}
+
+.sixteen {
+  bottom: 13%;
+  left: 39%;
+}
+.seventeen {
+  bottom: 15%;
+  left: 53%;
+}
+.eighteen {
+  bottom: 13%;
+  left: 69%;
+}
+.ninteen {
+  bottom: 13%;
+  left: 83%;
+}
+.twenty {
+  bottom: 22%;
+  left: 62%;
+}
+.twenty-one {
+  bottom: 28%;
+  left: 65%;
+}
+.twenty-two {
+  bottom: 34%;
+  left: 52%;
+}
+.twenty-three {
+  bottom: 34%;
+  left: 78%;
+}
+.twenty-four {
+  bottom: 40%;
+  left: 42%;
+}
+.twenty-five {
+  bottom: 40%;
+  left: 65%;
+}
+.twenty-six {
+  bottom: 40%;
+  left: 87%;
+}
+.player-name {
+  color: #274122;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (max-width: 56.25rem) {
+  .stadium {
+    height: 28.81rem;
+    width: 17.06rem;
+    background: url("/svg/watch/rugby/pitch-424.svg");
+  }
+  .player-icon {
+    width: 15px;
+    height: 15px;
+  }
+}
+@media (max-width: 25rem) {
+  /* .stadium {
+    height: 28.81rem;
+    width: 17.06rem;
+  } */
+  .player-icon {
+    width: 14.5px;
+    height: 14.5px;
+  }
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  /* .stadium {
+    height: 28.81rem;
+    width: 17.06rem;
+  } */
+  .player-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,67 @@
+.container {
+  width: 47.2rem;
+  padding: 2.8rem 4rem 3.8rem;
+  border-radius: 0.9rem;
+  background: #0d1317;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.title {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 127.5%; /* 53.55px */
+  margin: 1.22rem auto 2.5rem;
+}
+.thanks-message {
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 0.93rem;
+  font-weight: 500;
+  line-height: 180%;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    width: 37rem;
+    padding: 2.4rem 1.5rem 3.3rem;
+    border-radius: 0.8rem;
+  }
+  .clock-img {
+    width: 170px;
+    height: 170px;
+  }
+  .title {
+    font-size: 1.7rem;
+    line-height: 127.5%;
+    margin: 1.15rem auto 1.35rem;
+  }
+  .thanks-message {
+    font-size: 0.85rem;
+    line-height: 180%;
+  }
+}
+@media (max-width: 31.25rem) {
+  .container {
+    max-width: 100%;
+    padding: 2.2rem 1.3rem 3rem;
+    border-radius: 0.8rem;
+  }
+  .clock-img {
+    width: 145px;
+    height: 145px;
+  }
+  .title {
+    font-size: 1.35rem;
+    line-height: 127.5%;
+    margin: 0.9rem auto 1.2rem;
+  }
+  .thanks-message {
+    font-size: 0.8rem;
+    line-height: 180%;
+  }
+}

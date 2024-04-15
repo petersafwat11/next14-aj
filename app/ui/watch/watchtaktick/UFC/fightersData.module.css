@@ -1,0 +1,163 @@
+.fighters {
+  width: 26.8rem;
+}
+.logo {
+  margin: 0 auto 4.5px;
+  display: flex;
+}
+.fighters .title,
+.title-2 {
+  color: #656565;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  padding-bottom: 0.28rem;
+}
+.devider {
+  display: block;
+  width: 95%;
+  height: 1px;
+  background: #2f2f2f;
+  margin: auto;
+}
+.title-2 {
+  margin-top: 2.38rem;
+}
+.players-stats-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.23rem;
+  margin-top: 0.515rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 3.42rem;
+  border-radius: 9.75px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 0 0.8rem;
+}
+.item:hover {
+  background: #1a2023;
+}
+
+.player-item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+.player-item:nth-child(2) {
+  align-items: flex-end;
+}
+.player-item h4 {
+  color: #bababa;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+}
+.player-item p {
+  color: #989898;
+  text-align: center;
+  font-size: 1.03rem;
+  font-family: "Roboto";
+}
+@media (max-width: 56.25rem) {
+  .fighters {
+    width: 22.06rem;
+  }
+  .logo {
+    margin: 0 auto 3px;
+    width: 76px;
+    height: 32px;
+  }
+  .fighters .title,
+  .title-2 {
+    font-size: 13px;
+    padding-bottom: 0.25rem;
+  }
+  .devider {
+    width: 96%;
+  }
+  .title-2 {
+    margin-top: 2.875rem;
+  }
+  .players-stats-container {
+    width: 100%;
+    gap: 0.2rem;
+    margin-top: 0.45rem;
+  }
+  .item {
+    height: 2.75rem;
+    border-radius: 6px;
+    padding: 0 0.75rem;
+  }
+  .player-item {
+    gap: 0.2rem;
+  }
+  .player-item h4,
+  .player-item p {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .fighters {
+    width: 20.375rem;
+  }
+  .logo {
+    width: 69px;
+    height: 29px;
+  }
+  .fighters .title,
+  .title-2 {
+    font-size: 12.5px;
+    padding-bottom: 0.25rem;
+  }
+  .title-2 {
+    margin-top: 2.75rem;
+  }
+  .players-stats-container {
+    gap: 0.17rem;
+    margin-top: 0.4rem;
+  }
+  .item {
+    height: 2.5rem;
+    border-radius: 6px;
+    padding: 0 0.65rem;
+  }
+  .player-item {
+    gap: 0.17rem;
+  }
+  .player-item h4,
+  .player-item p {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .fighters {
+    width: 19.375rem;
+  }
+
+  .logo {
+    width: 65px;
+    height: 27px;
+  }
+  .title-2 {
+    margin-top: 2.7rem;
+  }
+  .players-stats-container {
+    margin-top: 0.4rem;
+  }
+  .item {
+    height: 2.375rem;
+    border-radius: 6px;
+    padding: 0 0.65rem;
+  }
+}

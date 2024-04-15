@@ -8,8 +8,10 @@ const Page = async ({ searchParams }) => {
   const page = Number(searchParams?.page) || 1;
 
   const response = await axios.get(`${process.env.BACKEND_SERVER}/news`, {
-    page: page,
-    limit: 10,
+    params: {
+      page: page,
+      limit: 10,
+    },
   });
   const newsItems = response?.data?.data?.data;
   console.log("page", page);

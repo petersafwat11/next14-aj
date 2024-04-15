@@ -1,0 +1,51 @@
+.main-event {
+  width: 23.5rem;
+}
+.main-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.6rem;
+}
+.player-name {
+  color: #8c8c8c;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+}
+.main-event-stats {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.9rem;
+  width: 100%;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 0 1.9rem;
+}
+.stat-item:hover {
+  background: rgba(29, 34, 36, 0.7);
+}
+.stat-item p {
+  color: #afafaf;
+  text-align: center;
+  font-size: 1.03rem;
+  font-family: "Roboto";
+  font-weight: 500;
+}
+.stat-item-middle {
+  text-transform: uppercase;
+}
+.stat-item p:nth-child(2) {
+  color: white;
+  font-weight: 700;
+}

@@ -1,0 +1,160 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.stadium {
+  width: 19.4rem;
+  height: 31.9rem;
+  background: url("/svg/watch/darts/pitch-2.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+}
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 6.47rem;
+}
+.players-container-1,
+.players-container-2,
+.players-container-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.players-container-1 {
+  gap: 5.6rem;
+  margin-top: 0.26rem;
+}
+.players-container-2 {
+  gap: 11.2rem;
+}
+.players-container-3 {
+  gap: 17.36rem;
+}
+.player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.player-name {
+  color: #bababa;
+  font-size: 1.22rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+}
+.player-nationality {
+  color: #989898;
+  text-align: center;
+  font-size: 1.03rem;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .logo {
+    width: 142px;
+    height: 143px;
+  }
+  .stadium {
+    width: 12rem;
+    height: 16.875rem;
+    background: url("/svg/watch/darts/pitch-2-424.svg");
+    margin-top: 1rem;
+  }
+  .players {
+    gap: 2.75rem;
+    padding-top: 3.125rem;
+  }
+  .players-container-1 {
+    gap: 4.5rem;
+    margin-top: 0.26rem;
+  }
+  .players-container-2 {
+    gap: 8.25rem;
+  }
+  .players-container-3 {
+    gap: 11.625rem;
+  }
+  .player {
+    gap: 0.25rem;
+  }
+  .player-name {
+    font-size: 0.875rem;
+  }
+  .player-nationality {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .logo {
+    width: 131px;
+    height: 132px;
+  }
+  .stadium {
+    width: 11.06rem;
+    height: 15.5rem;
+    background: url("/svg/watch/darts/pitch-2-400.svg");
+  }
+  .players {
+    gap: 2.5rem;
+    padding-top: 2.875rem;
+  }
+  .players-container-1 {
+    gap: 4rem;
+    margin-top: 0.26rem;
+  }
+  .players-container-2 {
+    gap: 7.75rem;
+  }
+  .players-container-3 {
+    gap: 11.125rem;
+  }
+  .player {
+    gap: 0.2rem;
+  }
+  .player-name {
+    font-size: 0.825rem;
+  }
+  .player-nationality {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .logo {
+    width: 123px;
+    height: 124px;
+  }
+  .stadium {
+    width: 10.43rem;
+    height: 14.56rem;
+    background: url("/svg/watch/darts/pitch-2-380.svg");
+  }
+  .players {
+    gap: 2.35rem;
+    padding-top: 2.75rem;
+  }
+  .players-container-1 {
+    gap: 3.5rem;
+    margin-top: 0.26rem;
+  }
+  .players-container-2 {
+    gap: 7.25rem;
+  }
+  .players-container-3 {
+    gap: 10.625rem;
+  }
+  .player {
+    gap: 0.17rem;
+  }
+  .player-name {
+    font-size: 0.8rem;
+  }
+  .player-nationality {
+    font-size: 0.675rem;
+  }
+}

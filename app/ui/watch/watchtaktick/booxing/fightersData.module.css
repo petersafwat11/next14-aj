@@ -1,0 +1,52 @@
+.fighters {
+  width: 26.8rem;
+}
+.fighters .title,
+.title-2 {
+  color: #656565;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  padding-bottom: 0.28rem;
+  border-bottom: 1px solid #2f2f2f;
+}
+.title-2 {
+  margin-top: 2.38rem;
+}
+.players-stats-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.23rem;
+  margin-top: 0.515rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.player-item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+.player-item:nth-child(2) {
+  align-items: flex-end;
+}
+.player-item h4 {
+  color: #bababa;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 600;
+}
+.player-item p {
+  color: #989898;
+  text-align: center;
+  font-size: 1.03rem;
+  font-family: "Roboto";
+}

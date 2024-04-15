@@ -1,0 +1,61 @@
+.wrapper {
+  flex-grow: 1;
+  width: 31.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  max-width: 31.4rem;
+  min-width: 9.375rem;
+  height: 3.1rem;
+  border-radius: 2.3rem;
+  background: rgba(13, 19, 23, 0.99);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.66rem;
+}
+
+.lang,
+.lang-selected {
+  width: 7.125rem !important;
+  height: 2.25rem;
+  border-radius: 1.4rem;
+  background: #171c20;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lang-selected {
+  background: #fe4747;
+}
+.lang-text,
+.text-selected,
+.arabic-lang,
+.arabic-selected {
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-family: RobotoSemiBold;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: normal;
+}
+.text-selected,
+.arabic-selected {
+  color: #fff;
+}
+.arabic-lang {
+  font-family: "Noto Sans Arabic", sans-serif;
+}

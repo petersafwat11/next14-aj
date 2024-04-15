@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.temp {
+  margin-top: 2.53rem;
+  margin-bottom: 1.97rem;
+}
+@media (max-width: 56.25rem) {
+  .temp {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 25rem) {
+  .temp {
+    margin-top: 1.8rem;
+    margin-bottom: 1.35rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .temp {
+    margin-top: 1.7rem;
+    margin-bottom: 1.25rem;
+  }
+}

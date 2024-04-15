@@ -1,0 +1,109 @@
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.ten,
+.eleven.two {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.one {
+  top: 1%;
+  left: 45%;
+}
+
+.two {
+  top: 12%;
+  left: 20%;
+}
+.three {
+  top: 12%;
+  left: 45%;
+}
+
+.four {
+  top: 12%;
+  left: 70%;
+}
+.five {
+  top: 24%;
+  left: 7%;
+}
+.six {
+  top: 23%;
+  left: 31%;
+}
+.seven {
+  top: 23%;
+  left: 58%;
+}
+.eight {
+  top: 24%;
+  left: 85%;
+}
+.nine {
+  top: 29%;
+  left: 45%;
+}
+
+.ten {
+  top: 37%;
+  left: 35%;
+}
+
+.eleven {
+  top: 37%;
+  left: 56%;
+}
+
+.player-name {
+  color: #274122;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+.team-shirt {
+  width: 41px;
+  height: 30px;
+  color: #a60e08;
+}
+
+@media (max-width: 56.25rem) {
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven,
+  .eight,
+  .nine,
+  .ten,
+  .eleven.two {
+    gap: 0.17rem;
+  }
+  .team-shirt {
+    width: 31px;
+    height: 21px;
+  }
+
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .team-shirt {
+    width: 23px;
+    height: 27.5px;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+}

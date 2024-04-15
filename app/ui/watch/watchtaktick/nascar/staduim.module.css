@@ -1,0 +1,30 @@
+.stadium {
+  width: 30.8rem;
+  height: 18.9rem;
+  background: url("/svg/watch/nascar/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    width: 21.56rem;
+    height: 13.18rem;
+    background: url("/svg/watch/nascar/pitch-424.svg");
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    width: 20.43rem;
+    height: 12.5rem;
+    background: url("/svg/watch/nascar/pitch-400.svg");
+  }
+}
+@media (max-width: 23.125rem) {
+  .stadium {
+    width: 18.625rem;
+    height: 11.43rem;
+    background: url("/svg/watch/nascar/pitch-380.svg");
+  }
+}

@@ -1,0 +1,29 @@
+.container {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 64.4rem;
+    background: #1b262e;
+  }
+  .border-curved {
+    height: 3px;
+    width: 100%;
+    display: block;
+    background-color: #00c2f8;
+    border-bottom-left-radius: 4.5rem;
+    border-bottom-right-radius: 4.5rem;
+  }
+}
+@media (max-width: 37.5rem) {
+  .container {
+    height: 42.375rem;
+    max-width: 26.25rem;
+    margin: auto;
+  }
+}

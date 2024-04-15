@@ -1,0 +1,60 @@
+.container,
+.servers,
+.server,
+.selected-server {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  gap: 3.14rem;
+  flex-direction: column;
+}
+.servers {
+  gap: 1.45rem;
+  flex-direction: column;
+}
+.server,
+.selected-server {
+  width: 15.8rem;
+  height: 3.75rem;
+  border-radius: 2.9rem;
+  text-align: center;
+  font-family: RobotoSemiBold;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+.server {
+  background: #171c20;
+  color: #505050;
+}
+.selected-server {
+  background: #fe4747;
+  color: #fff;
+}
+.close {
+  cursor: pointer;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    gap: 2.625rem;
+  }
+  .servers {
+    gap: 1.56rem;
+  }
+  .server,
+  .selected-server {
+    width: 14.5rem;
+    height: 3.375rem;
+    border-radius: 4.3rem;
+    font-size: 1.125rem;
+  }
+  .close {
+    cursor: pointer;
+    width: 37px;
+    height: 37px;
+  }
+}

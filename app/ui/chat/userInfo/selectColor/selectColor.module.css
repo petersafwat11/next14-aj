@@ -1,0 +1,87 @@
+.container {
+  width: 26rem;
+  height: 33.75rem;
+  border-radius: 0.7rem;
+  background: #0d1317;
+  padding: 1.5rem 3rem 1.64rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.55rem;
+}
+.username-text {
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 1.03rem;
+  font-weight: 600;
+  line-height: normal;
+}
+.colors-selectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  margin-top: 0.8rem;
+}
+.color-selector {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+}
+
+.user-info-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.26rem;
+  margin-top: 1.5rem;
+}
+.confirm-button {
+  width: 4.2rem;
+  height: 1.83rem;
+  background: #01bcf1;
+  color: white;
+  border-radius: 0.18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: RobotoRegular;
+  font-weight: 500;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.confirm-button:hover {
+  background: rgba(1, 189, 241, 0.5);
+}
+.cancel-button {
+  cursor: pointer;
+  font-family: RobotoRegular;
+  font-weight: 500;
+  font-size: 0.65rem;
+  line-height: 0.75rem;
+  color: #acacac;
+  background-color: inherit;
+}
+.cancel-button:hover {
+  color: #666464;
+}
+@media (max-width: 56.25rem) {
+  .user-info-actions {
+    gap: 1.375rem;
+    margin-top: 1.42rem;
+  }
+  .confirm-button {
+    width: 3.375rem;
+    height: 1.625rem;
+    border-radius: 0.25rem;
+    font-size: 0.5rem;
+    line-height: 0.55rem;
+  }
+  .cancel-button {
+    font-size: 0.45rem;
+    line-height: 0.5rem;
+  }
+}

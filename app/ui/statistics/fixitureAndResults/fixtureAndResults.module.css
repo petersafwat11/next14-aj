@@ -1,0 +1,22 @@
+.fixure {
+  width: 100%;
+}
+.dates {
+  border-radius: 1.12rem;
+  background: #0d1317;
+  width: 100%;
+  overflow: hidden;
+}
+.devider {
+  display: block;
+  margin: 0 auto;
+  width: 2.3rem;
+  height: 1.125rem;
+  background: #03a1cd;
+}
+
+@media (max-width: 56.25rem) {
+  .dates {
+    border-radius: 0.515rem;
+  }
+}

@@ -1,0 +1,85 @@
+.stadium {
+  height: 36.9rem;
+  width: 21.65rem;
+  background: url("/svg/watch/table-tennis/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+.palyer-1,
+.palyer-2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.palyer-1 {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+}
+.palyer-2 {
+  position: absolute;
+  bottom: 10%;
+  left: 40%;
+}
+.player-name {
+  color: #394122;
+  font-size: 0.75rem;
+  font-family: "Roboto";
+  font-weight: 600;
+  font-family: RobotoSemiBold;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    height: 28.3125rem;
+    width: 16.625rem;
+    background: url("/svg/watch/table-tennis/pitch-400.svg");
+    background-size: 101%;
+  }
+  .palyer-1,
+  .palyer-2 {
+    gap: 0.4rem;
+  }
+  .player-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    height: 27.18rem;
+    width: 15.93rem;
+    background: url("/svg/watch/table-tennis/pitch-400.svg");
+    background-size: 100%;
+  }
+  .palyer-1,
+  .palyer-2 {
+    gap: 0.25rem;
+  }
+  .player-icon {
+    width: 46px;
+    height: 46px;
+  }
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .stadium {
+    height: 25.56rem;
+    width: 15rem;
+    background: url("/svg/watch/table-tennis/pitch-380.svg");
+  }
+  .player-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+}

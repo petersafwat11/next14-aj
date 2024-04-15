@@ -1,0 +1,137 @@
+.stadium {
+  height: 35.4rem;
+  width: 24.09rem;
+  background: url("/svg/watch/vollayball/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.one {
+  position: absolute;
+  top: 12%;
+  left: 28%;
+}
+.two {
+  position: absolute;
+  top: 12%;
+  left: 61%;
+}
+
+.three {
+  position: absolute;
+  top: 29%;
+  left: 28%;
+}
+.four {
+  position: absolute;
+  top: 29%;
+  left: 61%;
+}
+.five {
+  position: absolute;
+  bottom: 12%;
+  left: 28%;
+}
+.six {
+  position: absolute;
+  bottom: 12%;
+  left: 61%;
+}
+.seven {
+  position: absolute;
+  bottom: 29%;
+  left: 28%;
+}
+.eight {
+  position: absolute;
+  bottom: 29%;
+  left: 61%;
+}
+.player-name {
+  color: #274122;
+  text-align: center;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    height: 25.75rem;
+    width: 15.875rem;
+    background: url("/svg/watch/vollayball/pitch-424.svg");
+  }
+  .one,
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven,
+  .eight {
+    gap: 3px;
+  }
+  .player-icon {
+    width: 22px;
+    height: 35px;
+  }
+
+  .player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    height: 25.3125rem;
+    width: 15.625rem;
+    background: url("/svg/watch/vollayball/pitch-400.svg");
+  }
+  .one,
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven,
+  .eight {
+    gap: 2px;
+  }
+  .player-icon {
+    width: 21px;
+    height: 34px;
+  }
+
+  .player-name {
+    font-size: 0.72rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .stadium {
+    height: 24.375rem;
+    width: 15.06rem;
+    background: url("/svg/watch/vollayball/pitch-380.svg");
+  }
+  .player-icon {
+    width: 20px;
+    height: 32px;
+  }
+
+  .player-name {
+    font-size: 0.687rem;
+  }
+}

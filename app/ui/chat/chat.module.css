@@ -1,0 +1,57 @@
+.chat-info,
+.change-avatar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat::before {
+  margin-top: 2rem;
+}
+.chat {
+  margin: auto;
+  width: 27rem;
+  height: 32rem;
+  background: #0d1318;
+  border-radius: 0.475rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.space {
+  width: 100%;
+  height: 1.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: inherit;
+}
+
+@media (max-width: 56.25rem) {
+  .chat {
+    margin: 0 13px 0 auto;
+    width: 25rem;
+    height: 30.6rem;
+    border-radius: 0.475rem;
+    /* width: 18.8rem;
+    height: 24.5rem; */
+  }
+}
+@media (max-width: 27rem) {
+  .chat {
+    margin: 0;
+    width: 100%;
+    height: 29.5rem;
+    border-radius: 0.475rem;
+  }
+}

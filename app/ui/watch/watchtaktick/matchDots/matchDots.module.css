@@ -1,0 +1,72 @@
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vertical-dots {
+  flex-direction: column;
+}
+.small-dot,
+.meduim-dot,
+.dot,
+.small-dot-selected,
+.meduim-dot-selected,
+.dot-selected {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-dot,
+.small-dot-selected {
+  width: 7.5px;
+  height: 7.5px;
+  background-color: white;
+}
+.small-dot-selected {
+  background-color: #00c4fb;
+}
+.meduim-dot,
+.meduim-dot-selected {
+  width: 15px;
+  height: 15px;
+}
+.meduim-dot-selected {
+  border: 3px solid #00c4fb;
+}
+.dot,
+.dot-selected {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.dot-selected {
+  background-color: rgba(80, 139, 164, 0.12);
+}
+@media (max-width: 56.25rem) {
+  .dots,
+  .vertical-dots {
+    gap: 0.15rem;
+  }
+
+  .small-dot,
+  .small-dot-selected {
+    width: 5px;
+    height: 5px;
+  }
+  .meduim-dot,
+  .meduim-dot-selected {
+    width: 11px;
+    height: 11px;
+  }
+  .meduim-dot-selected {
+    border: 2px solid #00c4fb;
+  }
+
+  .dot,
+  .dot-selected {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}

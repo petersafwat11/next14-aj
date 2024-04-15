@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.group-wrapper {
+  width: 100%;
+}
+.devider {
+  display: block;
+  width: 30px;
+  height: 23px;
+  background: #03a1cd;
+  margin: auto;
+}
+.switch-dots {
+  margin: 2.53rem auto 0;
+}

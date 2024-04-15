@@ -1,0 +1,64 @@
+.live-btn {
+  color: white;
+  background-color: var(--btn-background);
+  padding: 0.375rem 0.925rem;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-family: RobotoRegular;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+.live-btn:hover {
+  background-color: #ff4747a8;
+}
+
+.live-btn-rounded {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  animation: live 0.8s ease-in-out infinite;
+}
+
+@keyframes live {
+  0% {
+    transform: scale(0.2);
+  }
+  20% {
+    transform: scale(0.4);
+  }
+  40% {
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 56.25rem) {
+  .live-btn {
+    padding: 0.27rem 0.75rem ;
+    font-size: 0.7rem;
+    border-radius: 7px;
+  }
+  .live-btn-rounded {
+    /* display: none; */
+    height: 0.55rem;
+    width: 0.55rem;
+    margin-right: 0.25rem;
+  }
+}

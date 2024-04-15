@@ -1,0 +1,195 @@
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  display: flex;
+  align-items: flex-end;
+}
+.top {
+  display: none;
+}
+.body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.video,
+.video-chat-active {
+  width: 74%;
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+  background-color: rgb(51, 51, 51);
+}
+.chat,
+.chat-active {
+  width: max(23rem, 26%);
+  height: 100%;
+}
+.close-menu,
+.open-menu {
+  position: absolute;
+  left: 5.15rem;
+  top: 3.7rem;
+  z-index: 1;
+}
+.servers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: absolute;
+  top: 6.33rem;
+  left: 2.2rem;
+  z-index: 1;
+}
+.server {
+  width: 6.7rem;
+  height: 2.1rem;
+  border-radius: 1.4rem;
+  background: #171c20;
+  color: #505050;
+  text-align: center;
+  font-family: RobotoRegular;
+  font-size: 0.94rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active-server {
+  background: #1f6b81;
+  color: #fff;
+}
+@media screen and (max-height: 1400px) and (min-height: 1100px) and (max-width: 1100px) and (min-width: 800px) {
+  .container {
+    align-items: center;
+    flex-direction: column;
+  }
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 4.125rem;
+    background: #0d1317;
+    padding: 0.8rem;
+    position: relative;
+  }
+  .logo {
+    width: 57px;
+    height: 45px;
+  }
+  .extend-exit {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+    width: 32px;
+    height: 33px;
+  }
+  .body {
+    height: calc(100% - 4.125rem);
+    flex-direction: column;
+  }
+  .video,
+  .video-chat-active {
+    width: 100%;
+    flex-grow: 1;
+    height: 42%;
+    position: relative;
+    background-color: rgb(51, 51, 51);
+  }
+  .chat,
+  .chat-active {
+    width: 100%;
+    height: 58%;
+  }
+  .close-menu,
+  .open-menu {
+    display: none;
+  }
+  .servers,
+  .server {
+    display: none;
+  }
+}
+@media screen and (max-width: 950px) and (max-height: 500px) {
+  .top {
+    display: none;
+  }
+  .body {
+    flex-direction: row;
+    height: 100%;
+  }
+  .video,
+  .video-chat-active {
+    width: 61.3%;
+    flex-grow: 1;
+    height: 100%;
+  }
+  .chat,
+  .chat-active {
+    width: 38.7%;
+    height: 100%;
+  }
+  .close-menu,
+  .open-menu,
+  .servers {
+    display: none;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .body {
+    height: calc(100% - 2.94rem);
+    flex-direction: column;
+  }
+
+  .top {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2.94rem;
+    background: #0d1317;
+    padding: 0.8rem;
+    position: relative;
+  }
+  .extend-exit {
+    position: absolute;
+    top: 1.1rem;
+    right: 0.8rem;
+  }
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video,
+  .video-chat-active {
+    /* width: 76%; */
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+    min-height: 31.1%;
+    max-height: 45%;
+  }
+  .chat,
+  .chat-active {
+    width: 100%;
+    /* min-height: 55%; */
+    max-height: 68.9%;
+  }
+
+  .close-menu,
+  .open-menu,
+  .servers {
+    display: none;
+  }
+}

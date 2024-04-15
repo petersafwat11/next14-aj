@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.94rem;
+  padding-top: 1.2rem;
+  margin-left: 1.5rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.52rem;
+}
+.EuropaLeague-span,
+.Knockouts-span {
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 50%;
+}
+.EuropaLeague-span {
+  background-color: #b77e2a;
+}
+.Knockouts-span {
+  background-color: #396eb2;
+}
+.para {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: normal;
+}

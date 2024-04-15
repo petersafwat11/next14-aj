@@ -1,0 +1,53 @@
+.container {
+  width: 32.7rem;
+  height: 3.23rem;
+  border-radius: 0.45rem;
+  background: #0d1317;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.63rem;
+}
+.team-first,
+.team-sec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.54rem;
+  height: 2.1rem;
+  border-radius: 0.2rem;
+  background: #11171b;
+  color: #727272;
+  font-family: "Roboto Condensed";
+  font-size: 0.87rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.middle {
+  color: #8a8a8a;
+  font-family: "Poppins";
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@media (max-width: 56.25rem) {
+  .container {
+    width: 22.68rem;
+    height: 2.75rem;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+  }
+  .team-first,
+  .team-sec {
+    width: 3.94rem;
+    height: 1.94rem;
+    border-radius: 0.25rem;
+    font-size: 0.625rem;
+  }
+
+  .middle {
+    font-size: 0.94rem;
+  }
+}

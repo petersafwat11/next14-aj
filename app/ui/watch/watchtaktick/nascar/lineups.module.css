@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.temp {
+  margin-top: 2.1rem;
+  margin-bottom: 1.96rem;
+}
+.racing-cars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1.25rem;
+  grid-row-gap: 1.6rem;
+  margin: 2.95rem auto 1.55rem;
+}
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.player-name {
+  color: #9b9b9b;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (max-width: 56.25rem) {
+  .car-icon {
+    width: 45px;
+    height: 14px;
+  }
+  .temp {
+    margin-top: 1.875rem;
+    margin-bottom: .875rem;
+  }
+  .racing-cars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 0.875rem;
+    grid-row-gap: 1.06rem;
+    margin: 2.125rem auto 1.5rem;
+  }
+  .player {
+    gap: 0.2rem;
+  }
+  .player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .car-icon {
+    width: 43px;
+    height: 13.5px;
+  }
+  .temp {
+    margin-top: 1.5rem;
+    margin-bottom: .8rem;
+  }
+  .racing-cars {
+    grid-column-gap: 0.825rem;
+    grid-row-gap: 1rem;
+    margin: 2rem auto 1rem;
+  }
+  .player {
+    gap: 0.15rem;
+  }
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .car-icon {
+    width: 45px;
+    height: 14px;
+  }
+  .temp {
+    margin-top: 1.4rem;
+    margin-bottom: .75rem;
+  }
+  .racing-cars {
+    grid-column-gap: 0.8rem;
+    grid-row-gap: .95rem;
+    margin: 1.85rem auto .9rem;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+}

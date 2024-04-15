@@ -1,0 +1,60 @@
+.standings-footer {
+  margin-left: 1.96rem;
+  margin-bottom: 1.73rem;
+}
+.leagues {
+  display: flex;
+  align-items: center;
+  gap: 1.22rem;
+}
+.league {
+  display: flex;
+  align-items: center;
+  gap: 0.515rem;
+}
+.league-name {
+  color: #fff;
+  font-size: 0.75rem;
+  font-family: "Roboto";
+  font-weight: 500;
+}
+.league span {
+  width: 0.515rem;
+  height: 0.515rem;
+  border-radius: 50%;
+}
+.conference-league {
+  background: #26b812;
+}
+.relegation {
+  background: #b81212;
+}
+.premier-league {
+  background: #808385;
+}
+.europa-league {
+  background: #b77e2a;
+}
+.champions-league {
+  background: #396eb2;
+}
+@media (max-width: 56.25rem) {
+  .standings-footer {
+    margin-left: 1.625rem;
+    margin-bottom: 1.06rem;
+  }
+  .leagues {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .league {
+    gap: 0.375rem;
+  }
+  .league-name {
+    font-size: 0.75rem;
+  }
+  .league span {
+    width: 9px;
+    height: 9px;
+  }
+}

@@ -1,0 +1,28 @@
+.statistics-types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1.4rem;
+  padding-bottom: 0;
+  margin: auto;
+}
+.statistics-type {
+  font-size: 1.125rem;
+  line-height: 1.9125rem;
+  font-family: RobotoRegular;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+@media (max-width: 56.25rem) {
+  .statistics-types {
+    gap: 1.625rem;
+    max-width: auto;
+    margin-top: 0.65rem;
+    padding-bottom: 0rem;
+  }
+  .statistics-type {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+  }
+}

@@ -1,0 +1,170 @@
+.live-button {
+  border: 0.9px solid #32b126;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.6rem;
+  width: 3.75rem;
+  border-radius: 3.75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  /* box-shadow: 0rem 0.3rem 0.5rem #41f3315b; */
+}
+.dot-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.dot-wrapper > span {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #41f331;
+  border-radius: 50%;
+  /* margin-right: 0.2rem; */
+  /* box-shadow: 0rem 0.3rem 0.5rem #41f3315b; */
+  animation: live 0.8s ease-in-out infinite;
+}
+@keyframes live {
+  0% {
+    transform: scale(0.2);
+  }
+  20% {
+    transform: scale(0.4);
+  }
+  40% {
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.live-button > p {
+  color: #41f331;
+  font-family: RobotoSemibold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+.not-live {
+  padding: 0.28rem 1.12rem;
+  border: 0.9px solid #7b7b7b;
+  border-radius: 0.23rem;
+  font-family: RobotoSemibold;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+  color: #929292;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 56.25rem) {
+  .live-button,
+  .not-live {
+    padding: 0.25rem 0.4rem;
+    width: 3.25rem;
+    height: 1.51rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+  }
+  .dot-wrapper {
+    padding-top: 0.6px;
+  }
+  .dot-wrapper > span {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  .live-button > p,
+  .not-live {
+    font-size: 0.675rem;
+    font-family: RobotoRegular;
+    font-weight: 500;
+  }
+}
+@media (max-width: 25rem) {
+  .live-button,
+  .not-live {
+    padding: 0.25rem 0.4rem 0.15rem;
+    width: 3rem;
+    height: 1.25rem;
+    margin-top: 0;
+  }
+  .dot-wrapper > span {
+    width: 9.8px;
+    height: 9.8px;
+  }
+
+  .live-button > p,
+  .not-live {
+    font-size: 10px;
+    font-family: RobotoSemiBold;
+  }
+}
+@media (max-width: 390px) {
+  .live-button,
+  .not-live {
+    padding: 0.25rem 0.4rem 0.15rem;
+    width: 47px;
+    height: 19px;
+    margin-top: 0;
+  }
+  .dot-wrapper > span {
+    width: 9.55px;
+    height: 9.55px;
+  }
+
+  .live-button > p,
+  .not-live {
+    font-size: 9.5px;
+    font-family: RobotoSemiBold;
+  }
+}
+@media (max-width: 370px) {
+  .live-button,
+  .not-live {
+    padding: 0.25rem 0.4rem 0.15rem;
+    width: 44.8px;
+    height: 18.2px;
+    margin-top: 0;
+  }
+  .dot-wrapper > span {
+    width: 9.09px;
+    height: 9.09px;
+  }
+
+  .live-button > p,
+  .not-live {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 340px) {
+  .live-button,
+  .not-live {
+    padding: 0.25rem 0.3rem 0.15rem;
+    width: 40.94px;
+    height: 16.6px;
+    margin-top: 0;
+  }
+  .dot-wrapper > span {
+    width: 8.3px;
+    height: 8.3px;
+  }
+
+  .live-button > p,
+  .not-live {
+    font-size: 8.5px;
+  }
+}

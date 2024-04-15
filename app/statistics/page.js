@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
+import Wrapper from "../ui/statistics/wrapper/Wrapper";
+const Statistics = async () => {
+  return <Wrapper />;
+};
 
-const page = () => {
-  return (
-    <div>statistics</div>
-  )
-}
-
-export default page
+export default Statistics;

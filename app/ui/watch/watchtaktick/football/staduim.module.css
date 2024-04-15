@@ -1,0 +1,203 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.53rem;
+}
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.875rem;
+}
+.alternative-players {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.alternative-player {
+  display: flex;
+  align-items: center;
+  gap: 0.56rem;
+}
+.team-shirt{
+  width: 26px;
+  height: 33px;
+}
+.stadium-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 1.3rem 1.7rem;
+  border-radius: 0.47rem;
+  background: rgba(27, 38, 46, 0.8);
+}
+.stadium {
+  width: 25.4rem;
+  height: 29.5rem;
+  background: url("/svg/watch/football/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.stadium > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.one {
+  top: 10%;
+  left: 10%;
+}
+.two {
+  top: 13%;
+  left: 32%;
+}
+
+.three {
+  top: 13%;
+  left: 62%;
+}
+.four {
+  top: 10%;
+  left: 85%;
+}
+.five {
+  top: 25%;
+  left: 10%;
+}
+.six {
+  top: 24%;
+  left: 32%;
+}
+.seven {
+  top: 24%;
+  left: 60%;
+}
+.eight {
+  top: 25%;
+  left: 85%;
+}
+.nine {
+  top: 30%;
+  left: 45%;
+}
+
+.ten {
+  top: 40%;
+  left: 45%;
+}
+.eleven {
+  top: 5%;
+  left: 45%;
+}
+.twelve {
+  bottom: 10%;
+  left: 10%;
+}
+.thirteen {
+  bottom: 13%;
+  left: 34%;
+}
+.fourteen {
+  bottom: 13%;
+  left: 62%;
+}
+.fivteen {
+  bottom: 10%;
+  left: 85%;
+}
+.sixteen {
+  bottom: 27%;
+  left: 10%;
+}
+.seventeen {
+  bottom: 23%;
+  left: 34%;
+}
+.eighteen {
+  bottom: 23%;
+  left: 62%;
+}
+.nineteen {
+  bottom: 27%;
+  left: 85%;
+}
+.twenty {
+  bottom: 30%;
+  left: 45%;
+}
+.twenty-one {
+  bottom: 40%;
+  left: 45%;
+}
+.twenty-two {
+  bottom: 5%;
+  left: 45%;
+}
+.player-name {
+  color: #274122;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.alternative-player-name {
+  color: #fff;
+  font-family: RobotoRegular;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    gap: 0;
+  }
+  .stadium-wrapper {
+    padding: 1.55rem 1.68rem;
+  }
+
+  .stadium > * {
+    gap: 0.17rem;
+  }
+  .stadium {
+    width: 17.43rem;
+    height: 26.125rem;
+    background: url("/svg/watch/football/pitch-400.svg");
+  }
+
+  .alternative-players {
+    display: none;
+  }
+  .left,
+  .right {
+    display: none;
+  }
+  .team-shirt {
+    width: 31px;
+    height: 21px;
+  }
+
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .team-shirt {
+    width: 23px;
+    height: 27.5px;
+  }
+  .stadium {
+    width: 16.875rem;
+    height: 25.3125rem;
+    background: url("/svg/watch/football/pitch-380.svg");
+  }
+  .player-name,
+  .alternative-player-name {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,100 @@
+.fighters {
+  width: 27.4rem;
+}
+.logo {
+  display: flex;
+  margin: auto;
+}
+.title {
+  margin-top: 0.85rem;
+  color: #656565;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  padding-bottom: 0.28rem;
+  border-bottom: 1px solid #2f2f2f;
+}
+.players-stats-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.89rem;
+  margin-top: 0.61rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.player-item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+.player-item:nth-child(2) {
+  align-items: flex-end;
+}
+.player-item h4 {
+  color: #bababa;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+}
+.player-item p {
+  color: #989898;
+  text-align: center;
+  font-size: 1.03rem;
+}
+@media (max-width: 56.25rem) {
+  .fighters {
+    width: min(20rem, 95%);
+  }
+
+  .logo {
+    width: 37px;
+    height: 36px;
+  }
+  .title {
+    margin-top: 0.625rem;
+    font-size: 0.75rem;
+    padding-bottom: 0.19rem;
+  }
+  .players-stats-container {
+    gap: 4px;
+    margin-top: 0.44rem;
+  }
+  .player-item {
+    gap: 2px;
+  }
+  .player-item h4 {
+    font-size: 0.75rem;
+  }
+  .player-item p {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .fighters {
+    width: min(19.5rem, 95%);
+  }
+
+  .logo {
+    width: 36px;
+    height: 35px;
+  }
+  .title {
+    font-size: 11.5px;
+    padding-bottom: 0.15rem;
+  }
+  .player-item h4 {
+    font-size: 11.5px;
+  }
+  .player-item p {
+    font-size: 11.5px;
+  }
+}

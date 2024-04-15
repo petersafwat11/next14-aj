@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.events {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-direction: column;
+}
+.event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.875rem;
+}
+.event-time {
+  color: #acacac;
+  font-family: RobotoRegular;
+  font-size: 0.71rem;
+  font-weight: 500;
+  line-height: normal;
+}
+.event-description {
+  color: #fff;
+  font-family: RobotoSemiBold;
+  font-size: 1.03rem;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  max-width: 19.2rem;
+}

@@ -1,0 +1,103 @@
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.ten,
+.eleven {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+}
+.one {
+  bottom: 1%;
+  left: 45%;
+}
+
+.two {
+  bottom: 16%;
+  left: 85%;
+}
+.three {
+  bottom: 13%;
+  left: 62%;
+}
+
+.four {
+  bottom: 13%;
+  left: 32%;
+}
+.five {
+  bottom: 16%;
+  left: 10%;
+}
+.six {
+  bottom: 33%;
+  left: 80%;
+}
+.seven {
+  bottom: 24%;
+  left: 60%;
+}
+.eight {
+  bottom: 27%;
+  left: 45%;
+}
+
+.nine {
+  bottom: 24%;
+  left: 32%;
+}
+.ten {
+  bottom: 33%;
+  left: 14%;
+}
+.eleven {
+  bottom: 40%;
+  left: 45%;
+}
+
+.player-name {
+  color: #274122;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .one,
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven,
+  .eight,
+  .nine,
+  .ten,
+  .eleven {
+    gap: 0.17rem;
+  }
+  .team-shirt {
+    width: 31px;
+    height: 21px;
+  }
+
+  .player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .team-shirt {
+    width: 23px;
+    height: 27.5px;
+  }
+  .player-name {
+    font-size: 11px;
+  }
+}

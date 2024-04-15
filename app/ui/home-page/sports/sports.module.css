@@ -1,0 +1,164 @@
+.sports {
+  margin-top: 1.42rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.875rem;
+  justify-content: center;
+}
+.sports > div,
+.selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid transparent;
+  font-size: 1.07rem;
+}
+/* .sports .selected {
+  border-bottom: 4px solid #03a1cd;
+} */
+.customized-border {
+  width: 100%;
+  height: 4px;
+  background-color: #03a1cd;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.sports p {
+  font-family: RobotoRegular;
+}
+/* .sports > div:hover {
+  border-bottom: 4px solid #03a1cd;
+} */
+@media (max-width: 56.25rem) {
+  .sports {
+    margin-top: 0;
+    padding-top: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.75rem;
+    justify-content: flex-start;
+    cursor: grabbing;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+  .sports > div,
+  .selected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding-bottom: 0.6rem;
+    border-bottom: 2.5px solid transparent;
+  }
+  .sports .selected {
+    border-bottom: 2.5px solid #03a1cd;
+  }
+  /* .sports > div:hover {
+    border-bottom: 2.5px solid #03a1cd;
+  } */
+  .football {
+    order: 1;
+  }
+  .boxing {
+    order: 2;
+  }
+  .basketball {
+    order: 3;
+  }
+  .nfl {
+    order: 4;
+  }
+  .other {
+    order: 5;
+  }
+
+  .sports p {
+    font-family: "Roboto Condensed";
+    font-weight: 400;
+    font-size: 1.07rem;
+  }
+
+  .sport-image {
+    width: 46px;
+    height: 46px;
+  }
+  /* .sport-element:hover {
+    border-bottom: 2px solid #03a1cd;
+  } */
+}
+@media (max-width: 400px) {
+  .sports {
+    margin-top: 0;
+    padding-top: 12.15px;
+    gap: 25.5px;
+  }
+  .sports > div,
+  .selected {
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2.5px solid transparent;
+  }
+
+  .sports > div:hover {
+    border-bottom: 2.5px solid #03a1cd;
+  }
+  .sports .sports {
+    border-bottom: 2.5px solid #03a1cd;
+  }
+  .sports p {
+    font-weight: 400;
+    font-size: 1.07rem;
+  }
+
+  .sport-image {
+    width: 45.5px;
+    height: 45.5px;
+  }
+}
+
+@media (max-width: 390) {
+  .sports {
+    padding-top: 11.5px;
+    gap: 23.5px;
+  }
+}
+
+@media (max-width: 370px) {
+  @media (max-width: 56.25rem) {
+    .sports {
+      margin-top: 0;
+      padding-top: 11px;
+      gap: 1.4rem;
+    }
+    .sports > div {
+      gap: 8.5px;
+      padding-bottom: 0.75rem;
+    }
+    .sports p {
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    .sport-image {
+      width: 43px;
+      height: 43px;
+    }
+  }
+}
+@media (max-width: 340px) {
+  .sports {
+    padding-top: 10.15px;
+    gap: 19.8px;
+  }
+  .sports > div {
+    padding-bottom: 11.6px;
+  }
+  .sport-image {
+    width: 38.7px;
+    height: 38.7px;
+  }
+}

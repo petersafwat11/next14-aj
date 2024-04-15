@@ -1,0 +1,135 @@
+.racing {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.73rem;
+}
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.64rem;
+}
+.left {
+  margin-top: 1.4rem;
+}
+.right {
+  margin-top: 5rem;
+}
+.center {
+  width: 5.25rem;
+  height: 27.8rem;
+  background: url("/svg/watch/f1/pitch-2.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+}
+.player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.player-name {
+  font-size: 0.85rem;
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: normal;
+}
+.order {
+  color: #737373;
+  font-size: 0.85rem;
+  font-family: "Roboto";
+  font-weight: 400;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .racing {
+    gap: 1.25rem;
+    margin-bottom: 6.94rem;
+  }
+  .left,
+  .right {
+    gap: 1.75rem;
+  }
+  .left {
+    margin-top: 0.5rem;
+  }
+  .right {
+    margin-top: 3.4375rem;
+  }
+  .center {
+    width: 5.3125rem;
+    height: 28.375rem;
+    background: url("/svg/watch/f1/pitch-2-424.svg");
+  }
+  .player {
+    gap: 0.25rem;
+  }
+  .player-name {
+    font-size: 13px;
+  }
+  .order {
+    font-size: 14px;
+  }
+}
+@media (max-width: 25rem) {
+  .racing {
+    gap: 1.625rem;
+    margin-bottom: 6.5rem;
+  }
+  .left,
+  .right {
+    gap: 1.6rem;
+  }
+  .left {
+    margin-top: 0.25rem;
+  }
+  .right {
+    margin-top: 4.125rem;
+  }
+  .center {
+    width: 4.1875rem;
+    height: 26.4375rem;
+    background: url("/svg/watch/f1/pitch-2-400.svg");
+  }
+  .player {
+    gap: 0.2rem;
+  }
+  .player-name {
+    font-size: 12.5px;
+  }
+  .order {
+    font-size: 12.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .racing {
+    gap: 1.55rem;
+    margin-bottom: 6rem;
+  }
+  .left,
+  .right {
+    gap: 1.55rem;
+  }
+  .left {
+    margin-top: 0.5rem;
+  }
+  .right {
+    margin-top: 3.56rem;
+  }
+  .center {
+    width: 3.75rem;
+    height: 25.1875rem;
+    background: url("/svg/watch/f1/pitch-2-380.svg");
+  }
+  .player {
+    gap: 0.17rem;
+  }
+  .player-name,
+  .order {
+    font-size: 12px;
+  }
+}

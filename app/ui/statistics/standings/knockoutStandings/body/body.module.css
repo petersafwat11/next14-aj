@@ -1,0 +1,145 @@
+.container {
+  width: 76.74rem;
+  height: 67.7rem;
+  border-radius: 1.125rem;
+  background: #17232c;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: relative;
+}
+.round,
+.round-2,
+.round-3,
+.round-4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.round-2 {
+  justify-content: space-between;
+  margin: 7.4rem 0;
+}
+.round-3 {
+  justify-content: space-between;
+  height: 54%;
+  align-items: center;
+  margin: auto;
+}
+.round,
+.round-3 {
+  background: #1e2b37;
+}
+.container > img {
+  position: absolute;
+  object-fit: contain;
+}
+.connection-round8-1 {
+  top: 9%;
+  left: 23.3%;
+}
+.connection-round8-2 {
+  top: 32.2%;
+  left: 23.3%;
+}
+.connection-round8-3 {
+  top: 56.2%;
+  left: 23.3%;
+}
+.connection-round8-4 {
+  top: 80%;
+  left: 23.3%;
+}
+.connection-round4-1 {
+  top: 10%;
+  left: 48.3%;
+}
+.connection-round4-2 {
+  top: 57%;
+  left: 48.3%;
+}
+.connection-round2 {
+  top: 27%;
+  left: 73.3%;
+}
+@media (max-width: 85rem) {
+  .container {
+    width: 61.4rem;
+    height: 54.16rem;
+  }
+  .round-2 {
+    margin: 5.5rem 0;
+  }
+  .round-3 {
+    justify-content: space-between;
+    height: 55.5%;
+  }
+  .connection-round8-1,
+  .connection-round8-2,
+  .connection-round8-3,
+  .connection-round8-4 {
+    height: 106px;
+  }
+  .connection-round4-1,
+  .connection-round4-2 {
+    height: 210px;
+  }
+  .connection-round8-1 {
+    top: 9%;
+  }
+  .connection-round8-2 {
+    top: 32.2%;
+  }
+  .connection-round8-3 {
+    top: 56.2%;
+  }
+  .connection-round8-4 {
+    top: 80%;
+  }
+  .connection-round4-1 {
+    top: 14%;
+  }
+  .connection-round4-2 {
+    top: 57%;
+  }
+  .connection-round2 {
+    height: 400px;
+  }
+}
+@media (max-width: 65.6rem) {
+  .container {
+    width: 52.19rem;
+    height: 46.084rem;
+  }
+  .round-2 {
+    margin: 4.5rem 0 3.8rem;
+  }
+  .round-3 {
+    justify-content: space-between;
+    height: 54%;
+  }
+  .connection-round8-1,
+  .connection-round8-2,
+  .connection-round8-3,
+  .connection-round8-4 {
+    height: 97px;
+  }
+  .connection-round4-1,
+  .connection-round4-2 {
+    height: 174px;
+    left: 47.3%;
+  }
+  .connection-round8-1 {
+    top: 7.5%;
+  }
+  .connection-round4-1 {
+    top: 16%;
+  }
+  .connection-round4-2 {
+    top: 61%;
+  }
+  .connection-round2 {
+    height: 335px;
+    left: 72.3%;
+  }
+}

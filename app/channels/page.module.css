@@ -1,0 +1,103 @@
+.container {
+  max-width: 95%;
+  margin: auto;
+  padding-bottom: 7rem;
+}
+.top-heading {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3.94rem;
+}
+.heading-span {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.9375rem;
+  line-height: 1.2rem;
+  font-family: RobotoSemiBold;
+}
+.heading-title {
+  font-family: RobotoSemiBold;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  margin-bottom: 1rem;
+  margin-top: 0.35rem;
+}
+
+.watch-video-top {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  margin: 1rem auto 5px;
+}
+
+.sort-search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 87.6%;
+  margin: 2.2rem auto 1.6rem;
+  height: 4.07rem;
+  background-color: rgba(13, 19, 23, 0.96);
+  padding: 0 1.03rem;
+  border-radius: 0.3rem;
+}
+
+.watch-video-options > * {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vpn {
+  margin: auto;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    padding-bottom: 3.5rem;
+  }
+  .container {
+    max-width: 95%;
+  }
+  .heading-span {
+    font-size: 0.925rem;
+    line-height: 2rem;
+  }
+  .heading-title {
+    font-size: 1.5rem;
+    line-height: 1.375rem;
+    margin-bottom: 0.95rem;
+    margin-top: 0.57rem;
+  }
+  .live-btn {
+    margin-bottom: 0.875rem;
+    margin-top: 0.75rem;
+  }
+
+  .social-desktop {
+    display: none;
+  }
+  .sort-search-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin-top: 1.68rem;
+    gap: 0.56rem;
+    height: auto;
+  }
+
+  .vpn {
+    margin: 0.875rem auto 0;
+    margin-top: 0.68rem;
+  }
+}
+@media (max-width: 600px) {
+  .watch-video {
+    height: 14.5rem;
+  }
+  .container {
+    max-width: 100%;
+    margin: 0 3px;
+    padding-bottom: 3rem;
+  }
+}

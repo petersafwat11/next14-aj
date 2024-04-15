@@ -1,0 +1,168 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.23rem;
+}
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.68rem;
+}
+.alternative-players {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.alternative-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stadium {
+  width: 22.3rem;
+  height: 37.9rem;
+  background: url("/svg/watch/basketball/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.ten {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #274122;
+}
+
+.one {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
+.two {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+}
+.three {
+  position: absolute;
+  top: 15%;
+  left: 80%;
+}
+.four {
+  position: absolute;
+  top: 38%;
+  left: 20%;
+}
+.five {
+  position: absolute;
+  top: 38%;
+  left: 73%;
+}
+.six {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+}
+.seven {
+  position: absolute;
+  bottom: 20%;
+  left: 45%;
+}
+.eight {
+  position: absolute;
+  bottom: 15%;
+  left: 80%;
+}
+.nine {
+  position: absolute;
+  bottom: 38%;
+  left: 20%;
+}
+.ten {
+  position: absolute;
+  bottom: 38%;
+  left: 73%;
+}
+.player-name,
+.alternative-player-name {
+  color: #4d616f;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    gap: 0;
+  }
+  .team-shirt {
+    width: 24.5px;
+    height: 29px;
+  }
+  .left,
+  .right {
+    display: none;
+  }
+
+  .stadium {
+    width: 18.2rem;
+    height: 30.8rem;
+    background: url("/svg/watch/basketball/pitch-424.svg");
+  }
+  .stadium > * {
+    gap: 0.2rem;
+  }
+
+  .player-name,
+  .alternative-player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 56.25rem) {
+  .team-shirt {
+    width: 23.8px;
+    height: 28.4px;
+  }
+  .stadium > * {
+    gap: 0.17rem;
+  }
+  .stadium {
+    width: 17.7rem;
+    height: 29.94rem;
+    background: url("/svg/watch/basketball/pitch-400.svg");
+  }
+
+  .player-name,
+  .alternative-player-name {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .team-shirt {
+    width: 23px;
+    height: 27.5px;
+  }
+  .stadium {
+    width: 17.125rem;
+    height: 29rem;
+    background: url("/svg/watch/basketball/pitch-380.svg");
+  }
+  .player-name,
+  .alternative-player-name {
+    font-size: 11px;
+  }
+}

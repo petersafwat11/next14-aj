@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.temp {
+  margin-top: 1.6rem;
+  margin-bottom: 1.17rem;
+}
+.details-options {
+  margin-bottom: 0.98rem;
+}
+@media (max-width: 56.25rem) {
+  .temp {
+    margin-top: 1.4rem;
+    margin-bottom: 1.05rem;
+  }
+  .details-options {
+    margin-bottom: 0.8rem;
+  }
+}

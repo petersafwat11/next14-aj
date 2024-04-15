@@ -1,0 +1,173 @@
+.standing-items {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  padding-bottom: 1.3125rem;
+}
+.standings-item {
+  display: grid;
+  grid-template-columns: 36% 1fr;
+  grid-column-gap: 9rem;
+}
+.standings-item-second {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding-right: 1rem;
+}
+.standings-item-second-mobile {
+  display: none;
+}
+.standings-item-first {
+  display: grid;
+  grid-template-columns: 1fr 75%;
+  justify-items: center;
+}
+.standings-item-para {
+  color: #fff;
+  font-size: 1.125rem;
+  font-family: RobotoRegular;
+  font-weight: 500;
+}
+.standings-item-first > .standings-item-para:first-of-type {
+  color: #747474;
+  font-size: 0.937rem;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+.standings-item {
+  padding: 0.515rem 0;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+}
+.standings-item:hover {
+  background: #1c2125;
+}
+.standings-header-first .standings-header-para:nth-child(2) {
+  justify-self: start;
+}
+
+.first-team {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  white-space: nowrap;
+  width: 100%;
+  align-items: center;
+}
+.Last-5 {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.Last-5 * {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+}
+.conference-league {
+  background: #26b812;
+}
+.relegation {
+  background: #b81212;
+}
+.premier-league {
+  background: #808385;
+}
+.europa-league {
+  background: #b77e2a;
+}
+.champions-league {
+  background: #396eb2;
+}
+@media (max-width: 56.25rem) {
+  .standings-item {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    grid-column-gap: 2rem;
+  }
+  .standings-item-second {
+    display: none;
+  }
+  .standings-item-second-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    padding-right: 0.75rem;
+  }
+  .standings-item-para {
+    font-size: 1.1rem;
+  }
+  .standings-item-first > .standings-item-para:first-of-type {
+    font-size: 1.09rem;
+  }
+  .standing-items {
+    gap: 0.25rem;
+  }
+  .standings-item {
+    padding: 0.45rem 0;
+  }
+  .first-team {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+  .first-team .standings-item-para {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 31.25rem) {
+  .standings-item {
+    grid-template-columns: 48% 1fr;
+  }
+}
+@media (max-width: 25rem) {
+  .standings-item {
+    grid-column-gap: 1.5rem;
+    grid-template-columns: 51% 1fr;
+  }
+  .standings-item-second-mobile {
+    padding-right: 0.7rem;
+  }
+  .standings-item-para {
+    font-size: 1rem;
+  }
+  .standing-items {
+    gap: 0.2rem;
+  }
+  .standings-item {
+    padding: 0.4rem 0;
+  }
+  .first-team .standings-item-para {
+    font-size: 1.125rem;
+  }
+}
+@media (max-width: 21rem) {
+  .standings-item {
+    grid-column-gap: 1.5rem;
+    grid-template-columns: 51% 1fr;
+  }
+  .standings-item-second-mobile {
+    padding-right: 0.7rem;
+  }
+  .standing-items {
+    gap: 0.2rem;
+  }
+  .standings-item {
+    padding: 0.4rem 0;
+  }
+  .first-team {
+    gap: 0.375rem;
+    overflow: hidden;
+  }
+  .standings-header-first {
+    display: flex;
+    padding-left: 1rem;
+    gap: 0.375rem;
+  }
+  .first-team .standings-item-para {
+    overflow: hidden;
+  }
+}

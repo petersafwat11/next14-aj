@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.64rem;
+}
+.alternative-players,
+.mobile-dots {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+  }
+  .alternative-players {
+    display: block;
+    margin: 2.75rem auto 0.875rem;
+  }
+  .mobile-dots {
+    display: block;
+  }
+}
+@media (max-width: 25rem) {
+  .alternative-players {
+    margin: 2.65rem auto 0.8rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .alternative-players {
+    margin: 2.5rem auto 0.75rem;
+  }
+}

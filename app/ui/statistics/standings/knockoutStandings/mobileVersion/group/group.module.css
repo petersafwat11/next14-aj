@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0.75rem;
+  background-color: #0d1317;
+  width: 7.22rem;
+  height: 7.22rem;
+  border-radius: 0.7rem;
+}
+
+.result *,
+.team-name {
+  color: #fff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.result * {
+  font-size: 0.94rem;
+}
+.team-name {
+  font-size: 0.75rem;
+}
+.teams-logoes,
+.teams-names,
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.teams-names {
+  width: 78%;
+}
+.result {
+  width: 60%;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    padding: 0.5rem;
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 0.5rem;
+  }
+  .teams-logoes,
+  .teams-names,
+  .result {
+    width: 100%;
+  }
+
+  .result {
+    justify-content: space-around;
+  }
+  .first-team-image {
+    width: 25px;
+    height: auto;
+  }
+  .sec-team-image {
+    height: auto;
+    width: 17px;
+  }
+}

@@ -1,0 +1,59 @@
+.avatar,
+.clicked-avatar {
+  position: relative;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clicked-avatar {
+  background: url("/svg/chat/background.svg");
+  background-size: 93%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.checked-icon {
+  position: absolute;
+  top: 6%;
+  right: 5%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 56.25rem) {
+  .avatar,
+  .clicked-avatar {
+    height: 4.3rem;
+  }
+  .avatar img,
+  .clicked-avatar img {
+    height: 2.875rem;
+    width: auto;
+  }
+  .clicked-avatar .checked-icon {
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    right: 8px;
+  }
+}

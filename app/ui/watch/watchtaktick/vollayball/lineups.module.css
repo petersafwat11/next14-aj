@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3.984rem;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    gap: 2.3125rem;
+  }
+}
+@media (max-width: 25rem) {
+  .container {
+    gap: 2.1rem;
+  }
+}
+@media (max-width: 56.25rem) {
+  .container {
+    gap: 2rem;
+  }
+}

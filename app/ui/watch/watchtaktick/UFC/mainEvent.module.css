@@ -1,0 +1,137 @@
+.main-event {
+  width: 23.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.title {
+  color: #656565;
+  font-size: 0.85rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  line-height: normal;
+}
+.main-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.6rem;
+}
+.player-name {
+  color: #8c8c8c;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  /* padding: 0 0.55rem; */
+}
+.main-event-stats {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+
+  gap: 0.25rem;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 2.9rem;
+  width: 100%;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 0 1.9rem;
+}
+.stat-item:hover {
+  background: rgba(29, 34, 36, 0.7);
+}
+.stat-item p {
+  color: #afafaf;
+  text-align: center;
+  font-size: 1.03rem;
+  font-family: RobotoRegular;
+  font-weight: 500;
+}
+.stat-item-middle {
+  text-transform: uppercase;
+}
+.stat-item p:nth-child(2) {
+  color: white;
+  font-weight: 700;
+  font-family: RobotoBold;
+}
+@media (max-width: 56.25rem) {
+  .main-event {
+    width: auto;
+  }
+  .title {
+    font-size: 0.75rem;
+    margin: 0.2rem auto;
+  }
+  .logo {
+    width: 81px;
+    height: 29px;
+  }
+  .main-event-header {
+    margin-bottom: 1.75rem;
+    gap: 7.375rem;
+  }
+  .player-name {
+    font-size: 0.8125rem;
+  }
+  .main-event-stats {
+    gap: 0.2rem;
+    width: 90%;
+    margin: auto;
+  }
+  .stat-item {
+    height: 2.625rem;
+    border-radius: 6px;
+    padding: 0 0.75rem;
+  }
+  .stat-item p {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .title {
+    font-size: 11.5px;
+  }
+  .logo {
+    width: 77px;
+    height: 28px;
+  }
+  .main-event-header {
+    margin-bottom: 1.55rem;
+    gap: 7rem;
+  }
+  .player-name {
+    font-size: 0.718rem;
+  }
+  .main-event-stats {
+    gap: 0.17rem;
+  }
+  .stat-item {
+    height: 2.56rem;
+    padding: 0 0.7rem;
+  }
+  .stat-item p {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .logo {
+    width: 76px;
+    height: 27px;
+  }
+
+  .main-event-header {
+    margin-bottom: 1.5rem;
+    gap: 6.875rem;
+  }
+}

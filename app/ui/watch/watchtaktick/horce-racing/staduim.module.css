@@ -1,0 +1,78 @@
+.stadium {
+  width: 38.6rem;
+  height: 15.4rem;
+  background: url("/svg/watch/horse-racing/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+  margin-bottom: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.players {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.45rem;
+  margin-top: 2.2rem;
+}
+.player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.03rem;
+}
+.player-name {
+  color: #394122;
+  font-size: 0.8rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    width: 11.6875rem;
+    height: 31.375rem;
+    background: url("/svg/watch/horse-racing/pitch-424.svg");
+    margin-bottom: 2.3125rem;
+  }
+  .players {
+    flex-direction: column;
+    gap: 0.36rem;
+    margin-top: -0.25rem;
+  }
+  .player {
+    gap: 0.25rem;
+  }
+  .hourse-icon {
+    width: 30px;
+    height: 32px;
+  }
+  .player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    width: 11.3rem;
+    height: 30.375rem;
+    background: url("/svg/watch/horse-racing/pitch-400.svg");
+    margin-bottom: 2.25rem;
+  }
+  .players {
+    flex-direction: column;
+    gap: 0.36rem;
+    margin-top: -0.5rem;
+  }
+  .player {
+    gap: 0.2rem;
+  }
+  .hourse-icon {
+    width: 29px;
+    height: 31px;
+  }
+  .player-name {
+    font-size: 11.5px;
+  }
+}

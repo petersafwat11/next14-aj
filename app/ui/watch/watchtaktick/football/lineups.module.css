@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.stad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.devider {
+  display: block;
+  width: 2.3rem;
+  height: 1.26rem;
+  background-color: #03a1cd;
+}
+
+.match-details-option-controller {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .alternative-players {
+    margin-top: 2.187rem;
+    margin-bottom: 1.3rem;
+  }
+  .devider {
+    width: 27px;
+    height: 15px;
+  }
+
+  .match-details-option-controller {
+    display: flex;
+  }
+}
+@media (max-width: 25rem) {
+  .alternative-players {
+    margin-top: 1.9rem;
+    margin-bottom: 1.25rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .alternative-players {
+    margin-top: 1.75rem;
+    margin-bottom: 1.2rem;
+  }
+}

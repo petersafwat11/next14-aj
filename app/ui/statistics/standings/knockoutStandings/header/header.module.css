@@ -1,0 +1,36 @@
+.container {
+  width: 79.5rem;
+  height: 2.79rem;
+  background-color: #0d1317;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.round {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 0.94rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+@media (max-width: 85rem) {
+  .container {
+    width: 63.6rem;
+    height: 2.5rem;
+  }
+  .round {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 65.6rem) {
+  .container {
+    width: 54.06rem; /* 63.6 * 0.85 */
+    height: 2.125rem; /* 2.5 * 0.85 */
+  }
+
+  .round {
+    font-size: 0.765rem; /* 0.9 * 0.85 */
+  }
+}

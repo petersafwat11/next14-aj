@@ -1,0 +1,27 @@
+.chat-icon {
+  position: fixed;
+  bottom: 5vh;
+  right: 10vw;
+  z-index: 10;
+  cursor: pointer;
+}
+.chat {
+  position: fixed;
+  bottom: 10vh;
+  right: 1vw;
+  z-index: 100;
+}
+@media (max-width: 56.25rem) {
+  .chat-icon {
+    bottom: 3vh;
+    right: 8%;
+    width: 73px;
+    height: 73px;
+  }
+  .chat {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+  }
+}

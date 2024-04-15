@@ -1,0 +1,136 @@
+.stadium {
+  width: 37.2rem;
+  height: 31.26rem;
+  background: url("/svg/watch/baseball/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.player-name {
+  color: #405b3b;
+  font-size: 0.75rem;
+  font-family: RobotoSemiBold;
+  font-weight: 600;
+  line-height: normal;
+}
+.one {
+  position: absolute;
+  top: 6%;
+  left: 46%;
+}
+.two {
+  position: absolute;
+  top: 29%;
+  left: 13%;
+}
+
+.three {
+  position: absolute;
+  top: 29%;
+  left: 81%;
+}
+.four {
+  position: absolute;
+  top: 34%;
+  left: 35%;
+}
+.five {
+  position: absolute;
+  top: 34%;
+  left: 57%;
+}
+.six {
+  position: absolute;
+  bottom: 30%;
+  left: 28%;
+}
+.seven {
+  position: absolute;
+  bottom: 30%;
+  left: 46%;
+}
+.eight {
+  position: absolute;
+  bottom: 30%;
+  left: 65%;
+}
+.nine {
+  position: absolute;
+  top: 80%;
+  left: 46%;
+}
+
+@media (max-width: 56.25rem) {
+  .stadium {
+    width: 24.43rem;
+    height: 20.625rem;
+  }
+  .player-icon {
+    width: 24px;
+    height: 26px;
+  }
+  .one,
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven {
+    gap: 0.187rem;
+  }
+  .player-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    width: 22rem;
+    height: 18.625rem;
+  }
+  .player-icon {
+    width: 22px;
+    height: 26px;
+  }
+
+  .one,
+  .two,
+  .three,
+  .four,
+  .five,
+  .six,
+  .seven {
+    gap: 0.312rem;
+  }
+  .player-name {
+    font-size: 0.72rem;
+  }
+}
+@media (max-width: 23.75rem) {
+  .stadium {
+    width: 21.125rem;
+    height: 18rem;
+  }
+  .player-icon {
+    width: 21px;
+    height: 24px;
+  }
+
+  .player-name {
+    font-size: 0.687rem;
+  }
+}

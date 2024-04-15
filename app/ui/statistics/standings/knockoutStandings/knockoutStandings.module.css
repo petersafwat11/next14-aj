@@ -1,0 +1,11 @@
+.contaianer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@media (max-width: 56.25rem) {
+  .contaianer {
+    display: none;
+  }
+}

@@ -1,0 +1,118 @@
+.container,
+.container-reverse {
+  display: flex;
+  align-items: center;
+  gap: 1.31rem;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+}
+.container {
+  margin-right: 4rem;
+}
+.container-reverse {
+  flex-direction: row-reverse;
+  margin-left: 3.8rem;
+  /* justify-content: flex-end; */
+}
+.event,
+.event-reverse {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  width: 50%;
+}
+
+.event-reverse {
+  justify-content: flex-start;
+}
+.time,
+.time-reverse {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.time-reverse {
+  justify-content: flex-end;
+}
+.min {
+  width: 2.625rem;
+  height: 1.5rem;
+  border-radius: 1.07rem;
+  background: #00799a;
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.08px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.player-name,
+.player-in {
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.4px;
+}
+.substitute {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.player-out {
+  color: #bababa;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .container,
+  .container-reverse {
+    gap: 1.31rem;
+    /* justify-content: flex-start; */
+  }
+  .container {
+    margin-right: 4rem;
+  }
+  .container-reverse {
+    margin-left: 3.8rem;
+    /* justify-content: flex-end; */
+  }
+  .event,
+  .event-reverse {
+    gap: 0.8rem;
+    width: 50%;
+  }
+
+  .time,
+  .time-reverse {
+    width: 50%;
+  }
+  .min {
+    width: 2.625rem;
+    height: 1.5rem;
+    border-radius: 1.07rem;
+    font-size: 0.85rem;
+    letter-spacing: 1.08px;
+  }
+  .player-name,
+  .player-in {
+    font-size: 0.94rem;
+    letter-spacing: 0.4px;
+  }
+  .substitute {
+    gap: 0.125rem;
+  }
+  .player-out {
+    font-size: 0.75rem;
+  }
+}

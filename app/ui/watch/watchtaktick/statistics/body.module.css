@@ -1,0 +1,112 @@
+.stats {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+}
+.stats-item
+/* .stats-item-zero-state */ {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 0.375rem;
+  height: 4.03rem;
+  border-radius: 0.35rem;
+  width: 100%;
+  padding: 0 1.4rem;
+  transition: all 0.3s ease-in-out;
+}
+.stats-item:hover
+/* .stats-item-zero-state:hover */ {
+  background: rgba(146, 146, 146, 0.05);
+}
+.item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.item-top .first,
+.item-top .last {
+  font-family: RobotoRegular;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.item-top .first {
+  color: #01bcf1;
+  font-family: "Roboto";
+}
+.item-top .middle {
+  font-family: RobotoBold;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.03;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.item-top .last {
+  color: #ffe923;
+  font-family: "Roboto";
+}
+.progress-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.25rem;
+}
+.progress-bar-first,
+.progress-bar-last {
+  width: 50%;
+  position: relative;
+  border-radius: 1.36rem;
+  background: rgba(13, 19, 23, 0.95);
+  height: 0.61rem;
+}
+.progress-bar-first span,
+.progress-bar-last span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #47b2ff;
+  border-radius: 1.36rem;
+}
+
+.progress-bar-last span {
+  left: 0;
+  background-color: #ffe923;
+}
+@media (max-width: 56.25rem) {
+  .stats-item {
+    gap: 0.25rem;
+    height: 3.5rem;
+    padding: 0 0.94rem;
+  }
+  .item-top .first,
+  .item-top .last {
+    font-size: 0.8rem;
+  }
+  .item-top .middle {
+    font-size: 0.94;
+  }
+  .progress-bar {
+    gap: 0.22rem;
+  }
+  .progress-bar-first,
+  .progress-bar-last {
+    border-radius: 0.65rem;
+    height: 0.375rem;
+  }
+  .progress-bar-first span,
+  .progress-bar-last span {
+    border-radius: 0.6s5rem;
+  }
+}

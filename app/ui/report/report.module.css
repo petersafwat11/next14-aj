@@ -1,0 +1,185 @@
+.report {
+  /* height: 20.9rem; */
+  width: min(96%, 27.98rem);
+  border-radius: 0.89rem;
+  background: #0d1317;
+  padding: 1.83rem 0.98rem 1.26rem;
+  position: relative;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 1.31rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 71.429% */
+}
+.exit {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 1.45rem;
+  right: 1.35rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  color: rgba(221, 221, 221, 0.5);
+}
+.exit:hover {
+  rotate: -90deg;
+  color: white;
+  transform: scale(130%);
+}
+
+.causes {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+  margin: 1.36rem auto 1.07rem;
+  width: 26rem;
+  height: 10.3rem;
+  padding: 1.59rem 0 0;
+  border-radius: 0.89rem;
+  background: #151d22;
+  justify-content: center;
+}
+.cause,
+.selected-cause {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.94rem;
+  width: 76px;
+  cursor: pointer;
+}
+.selected-cause .icon-wrapper {
+  background-color: rgba(95, 94, 94, 0.4);
+}
+.icon-wrapper {
+  border-radius: 50%;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 19, 23, 1);
+}
+.cause:hover p {
+  color: rgba(35, 160, 220, 1);
+}
+.cause:hover path {
+  stroke: rgba(35, 160, 220, 1);
+}
+
+.cause > p,
+.selected-cause > p {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 0.65rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 0.84rem; /* 128.571% */
+  color: white;
+}
+.bottom {
+  margin-top: 1.125rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+.try-again-para {
+  color: #fff;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.send-button {
+  width: 6.04rem;
+  height: 2.02rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00b1ff;
+  border-radius: 0.34rem;
+  color: white;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: normal;
+  font-family: "Roboto";
+  transition: all 0.3s ease-in-out;
+}
+.send-button:hover {
+  background: rgba(0, 179, 255, 0.5);
+}
+.send-button,
+.cause {
+  cursor: pointer;
+}
+@media (max-width: 56.25rem) {
+  .report {
+    width: min(95%, 25.93rem);
+    border-radius: 0.5rem;
+    padding: 1.5rem .75rem;
+  }
+  .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.25rem; /* 71.429% */
+  }
+  .exit {
+    top: 25px;
+    right: 18px;
+    height: 1rem;
+    width: 1rem;
+  }
+  .causes {
+    gap: 1.4rem;
+    margin: 1.625rem auto .85rem;
+    width: 100%;
+    height: 10.7rem;
+    padding: 1.625rem 0 0;
+    border-radius: 0.7rem;
+  }
+  .cause,
+  .selected-cause {
+    gap: 0.875rem;
+    width: 76px;
+  }
+  .icon-wrapper {
+    border-radius: 50%;
+    width: 74px;
+    height: 74px;
+  }
+
+  .cause > p,
+  .selected-cause > p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 0.875rem; /* 128.571% */
+  }
+  .bottom {
+    margin-top: 0;
+    gap: 0.94rem;
+  }
+  .try-again-para {
+    font-size: 0.75rem;
+    font-weight: 300;
+  }
+
+  .send-button {
+    width: 6.43rem;
+    height: 2.25rem;
+    border-radius: 0.3rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+}

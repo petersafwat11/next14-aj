@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.15rem;
+  height: 2.44rem;
+  gap: 1rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+  font-family: RobotoBold;
+  font-weight: 700;
+  background: #5f6a73;
+  border-radius: 0.5rem;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    width: 3.81rem;
+    height: 1.81rem;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    border-radius: 0.45rem;
+  }
+  .temp-icon {
+    width: 14.5px;
+    height: 13.5px;
+  }
+}
+@media (max-width: 25rem) {
+  .container {
+    width: 3.75rem;
+    height: 1.75rem;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+    border-radius: 0.4rem;
+  }
+  .temp-icon {
+    width: 14px;
+    height: 13px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .container {
+    font-size: 0.8rem;
+  }
+  .temp-icon {
+    width: 13.5px;
+    height: 12.5px;
+  }
+}

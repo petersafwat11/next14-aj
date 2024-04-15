@@ -1,0 +1,30 @@
+.navigate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  /* margin-bottom: 3.3rem; */
+  /* margin-top: 1rem; */
+}
+.navigate > * {
+  color: rgba(158, 158, 158, 0.3);
+  font-size: 0.937rem;
+  line-height: 1.07rem;
+  font-family: "Poppins";
+}
+.active-page {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 56.25rem) {
+  .navigate {
+    gap: 0.3rem;
+    margin-left: 0.5rem;
+    /* margin-bottom: 1.5rem;
+    margin-top: 0.75rem; */
+  }
+  .navigate > * {
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+  }
+}

@@ -1,0 +1,87 @@
+.change-avatars-second {
+  background: #182228;
+  width: 14.8rem;
+  height: 100%;
+  padding: 1.5rem 1.45rem 5.2rem 1.35rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  position: relative;
+}
+.exit {
+  cursor: pointer;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.45rem;
+}
+.selected-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.new-selected-image {
+  background: url("/svg/chat/background-avatar.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 11.718rem;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selected-avatar > p {
+  font-family: RobotoRegular;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 0.89rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+@media (max-width: 56.25rem) {
+  .change-avatars-second {
+    background: #182228;
+    width: 100%;
+    height: 11.6rem;
+    padding: 0.16rem 1rem 0.15rem;
+    border-radius: 0;
+    position: relative;
+  }
+  .exit {
+    cursor: pointer;
+    position: absolute;
+    top: 16rem;
+    right: 1.125rem;
+  }
+  .selected-avatar {
+    gap: 0.25rem;
+  }
+  .new-selected-image {
+    width: 7.575rem;
+    height: 8.4rem;
+  }
+  .selected-avatar-icon {
+    width: 4.375rem;
+  }
+  .selected-avatar > p {
+    font-size: 0.725rem;
+    line-height: 0.75rem;
+    margin-top: 6px;
+  }
+  .avatar-category {
+    gap: 0.35rem;
+    font-weight: 400;
+    font-size: 0.45rem;
+    line-height: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  color: #9a9a9a;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1.26rem;
+}
+.temp {
+  margin-top: 0.562rem;
+  margin-bottom: 1.54rem;
+}
+@media (max-width: 56.25rem) {
+  .title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .temp {
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .title {
+    font-size: 0.97rem;
+    margin-bottom: 0.7rem;
+  }
+  .temp {
+    margin-top: 0.35rem;
+    margin-bottom: 0.65rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .title {
+    font-size: 0.937rem;
+    margin-bottom: 0.65rem;
+  }
+  .temp {
+    margin-top: 0.3rem;
+    margin-bottom: 0.6rem;
+  }
+}

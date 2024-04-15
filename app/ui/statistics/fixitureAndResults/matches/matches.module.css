@@ -1,0 +1,223 @@
+.matches {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  /* gap: 5px; */
+  width: 100%;
+  padding: 0.8rem 0 2.015rem;
+  gap: 1.25rem;
+}
+
+.match {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 17.5% auto 20% 1fr;
+  padding: 0.8rem 0 0.85rem;
+  justify-items: center;
+  cursor: pointer;
+}
+.match:hover {
+  border-radius: 3.75px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: #11171b;
+}
+.match:nth-child(1) {
+  border-left: 3px solid #396eb2;
+}
+
+.match:nth-child(2) {
+  border-left: 3px solid #b23939;
+}
+.match:nth-child(3) {
+  border-left: 3px solid #b239a6;
+}
+.match-date {
+  font-size: 0.656rem;
+  font-family: "Roboto Condensed";
+  font-weight: 300;
+  align-self: center;
+}
+.match-date-mobile,
+.match-date-small-mobile {
+  display: none;
+}
+
+.first-team,
+.second-team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 11.3rem;
+}
+.second-team {
+  justify-self: start;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.staduim {
+  color: #fff;
+  font-size: 0.56rem;
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+}
+.result,
+.vs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1.1rem;
+  font-size: 0.985rem;
+  font-family: RobotoBold;
+  font-weight: 700;
+}
+.vs {
+  font-size: 0.65rem;
+}
+.first-team-name,
+.second-team-name {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 1.22rem;
+  line-height: normal;
+}
+.team-image {
+  width: 34px;
+  height: auto;
+}
+@media (max-width: 56.25rem) {
+  .matches {
+    padding: 0.64rem 0 1.612rem;
+    gap: 1.52rem;
+  }
+
+  .match {
+    padding: 0.64rem 0 0.68rem;
+  }
+
+  .match:hover {
+    border-radius: 3px;
+  }
+
+  .match-date {
+    font-size: 0.656rem;
+  }
+
+  .first-team,
+  .second-team {
+    width: 9.04rem;
+  }
+
+  .center {
+    gap: 0.56rem;
+  }
+
+  .staduim {
+    font-size: 0.625rem;
+  }
+
+  .result,
+  .vs {
+    gap: 0.32rem;
+    line-height: 0.88rem;
+    font-size: 0.788rem;
+  }
+
+  .vs {
+    font-size: 0.52rem;
+  }
+
+  .first-team-name,
+  .second-team-name {
+    font-size: 0.968rem;
+    line-height: 1.056rem;
+  }
+}
+@media (max-width: 43.75rem) {
+  .matches {
+    padding: 1.05rem 0 2rem;
+    gap: 1.5rem;
+  }
+
+  .match {
+    grid-template-columns: 15% 25% 20% 25%;
+    padding: 0.66rem;
+  }
+
+  .match-date,
+  .match-date-small-mobile {
+    display: none;
+  }
+  .match-date-mobile {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .first-team,
+  .second-team {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .team-image {
+    width: 25px;
+  }
+
+  .center {
+    gap: 0.3rem;
+  }
+
+  .staduim {
+    font-size: 0.625rem;
+  }
+
+  .result {
+    gap: 2px;
+    line-height: 0.7rem;
+    font-size: 0.75rem;
+  }
+  .vs {
+    line-height: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .vs {
+    font-size: 0.55rem;
+  }
+
+  .first-team-name,
+  .second-team-name {
+    font-size: 1.125rem;
+    line-height: 1.3rem;
+  }
+}
+@media (max-width: 28rem) {
+  .match-date-mobile {
+    display: none;
+  }
+  .match-date-small-mobile {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .match {
+    grid-template-columns: 38% 24% 38%;
+  }
+  .first-team,
+  .second-team {
+    gap: 1rem;
+    justify-content: center;
+  }
+}

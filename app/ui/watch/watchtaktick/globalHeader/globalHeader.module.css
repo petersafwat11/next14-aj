@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 2rem;
+}
+.header-item {
+  font-weight: 600;
+  font-family: RobotoBold;
+  font-size: 1.125rem;
+  line-height: 1.31rem;
+  cursor: pointer;
+  padding: 1rem 0.92rem;
+  margin-bottom: 0.32rem;
+  border-bottom: 2px solid transparent;
+  border-radius: 0.3rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  transition: all 0.3s ease-out;
+}
+
+@media (max-width: 56.25rem) {
+  .header {
+    gap: 0.87rem;
+    margin-top: 0.4rem;
+  }
+  .header-item {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    padding: 1rem 0.92rem;
+    margin-bottom: 0;
+    border-bottom: 1.5px solid transparent;
+  }
+}

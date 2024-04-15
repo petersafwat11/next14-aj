@@ -1,0 +1,18 @@
+.container {
+  max-width: min(55.5rem, 95%);
+  margin: auto;
+  padding-bottom: 7rem;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    max-width: min(85%, 40rem);
+    margin: 0 auto;
+    padding-bottom: 3.5rem;
+  }
+}
+@media (max-width: 700px) {
+  .container {
+    max-width: 100%;
+    margin: 0 3px;
+  }
+}

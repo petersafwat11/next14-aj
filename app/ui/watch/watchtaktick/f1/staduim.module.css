@@ -1,0 +1,30 @@
+.stadium {
+  width: 34.3rem;
+  height: 21.5rem;
+  background: url("/svg/watch/f1/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    width: 24rem;
+    height: 15.0625rem;
+    background: url("/svg/watch/f1/pitch-424.svg");
+  }
+}
+@media (max-width: 25rem) {
+  .stadium {
+    width: 22.3125rem;
+    height: 14rem;
+    background: url("/svg/watch/f1/pitch-400.svg");
+  }
+}
+@media (max-width: 23.125rem) {
+  .stadium {
+    width: 21.3rem;
+    height: 13.375rem;
+    background: url("/svg/watch/f1/pitch-380.svg");
+  }
+}

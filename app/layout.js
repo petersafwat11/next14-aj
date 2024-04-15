@@ -22,7 +22,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authConfig);
   const domains = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
-    fields: "domains",
+    params: {
+      fields: "domains",
+    },
   });
 
   return (

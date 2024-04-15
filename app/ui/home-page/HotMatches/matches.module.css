@@ -1,0 +1,12 @@
+.matches {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  /* gap: 1.22rem; */
+}
+@media (max-width: 56.25rem) {
+  .matches {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,94 @@
+.watch-video-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 97.5%;
+  margin: 1.26rem auto 1.74rem;
+}
+.server-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin-right: 114.6px;
+}
+.server-name-btn {
+  background: #fe4747;
+  border-radius: 1.26rem;
+  padding: 0.55rem 2.04rem;
+  color: white;
+  font-family: RobotoRegular;
+  font-size: 1.03rem;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.server-name-btn:hover {
+  background: rgba(254, 71, 71, 0.8);
+}
+.modes-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.56rem;
+}
+.icon-div {
+  width: 2.34rem;
+  height: 2.34rem;
+  border-radius: 50%;
+  background-color: rgba(7, 17, 23, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media (max-width: 56.25rem) {
+  .watch-video-options {
+    padding-left: 0.875rem;
+    padding-right: 0.19rem;
+    margin-top: 0.75rem;
+    justify-content: center;
+    width: 14.96rem;
+    height: 3.525rem;
+    border-radius: 3.17rem;
+    background: #0d1317;
+    gap: 1.25rem;
+  }
+
+  .server-btn-wrapper {
+    flex-grow: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .server-name-btn {
+    width: 7.375rem;
+    height: 2.54rem;
+    border-radius: 1.875rem;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0;
+  }
+  .modes-icons {
+    gap: 0.5rem;
+    width: 5.25rem;
+    height: 2.75rem;
+    border-radius: 1.875rem;
+    background: rgba(12, 27, 37, 0.7);
+  }
+  .icon-div {
+    width: 2.03rem;
+    height: 2.03rem;
+    border-radius: 50%;
+    background-color: rgba(7, 17, 23, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .social-desktop {
+    display: none;
+  }
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-// import { getData } from "../../../utils/dashboardTablePagesFunctions";
+// import axios from "axios";
 import StepOne from "../stepOne/StepOne";
 import StepThree from "../stepThree/StepThree";
 import StepTwo from "../stepTwo/StepTwo";
@@ -68,7 +68,7 @@ const StepsWrapper = ({ followUs, dispatchAction }) => {
   // useEffect(() => {
   //   const fetchNewData = async (query) => {
   //     try {
-  //       const response = await getData("links", query);
+  //       const response = await axios.get("links", query);
   //       const Allsocial = response.data?.data[0]?.social;
   //       delete Allsocial.facebook;
   //       delete Allsocial.tiktok;

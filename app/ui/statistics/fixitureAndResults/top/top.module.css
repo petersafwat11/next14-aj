@@ -1,0 +1,54 @@
+.container {
+  padding: 1.55rem 0 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border-bottom: 1px solid #6b6b6b;
+  width: 95%;
+}
+.place {
+  color: rgba(244, 244, 244, 0.7);
+  text-align: center;
+  font-size: 0.75rem;
+  font-family: "Roboto";
+  font-weight: 300;
+  letter-spacing: 6.4px;
+}
+.date {
+  color: #e9e9e9;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Poppins";
+  font-weight: 700;
+  letter-spacing: 0.64px;
+}
+@media (max-width: 56.25rem) {
+  .container {
+    padding: 1.12rem 0 0.68rem;
+  }
+
+  .place {
+    font-size: 0.6rem;
+  }
+
+  .date {
+    font-size: 1.2rem;
+    letter-spacing: 0.512px;
+  }
+}
+@media (max-width: 43.75) {
+  .container {
+    padding: 1.1255rem 0 0.687rem;
+  }
+
+  .place {
+    font-size: 0.687rem;
+    letter-spacing: 5.72px;
+  }
+
+  .date {
+    font-size: 1.375rem;
+    letter-spacing: 0.44px;
+  }
+}

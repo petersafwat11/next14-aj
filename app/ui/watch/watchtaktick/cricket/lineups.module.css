@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.temp {
+  margin-top: 2.81rem;
+  margin-bottom: 1.17rem;
+}
+.details-options {
+  margin-bottom: 0.98rem;
+}
+@media (max-width: 56.25rem) {
+  .temp {
+    margin-top: 2.44rem;
+    margin-bottom: 1.43rem;
+  }
+  .details-options {
+    margin-bottom: 1.25rem;
+  }
+}
+@media (max-width: 25rem) {
+  .temp {
+    margin-top: 2.15rem;
+    margin-bottom: 1.2rem;
+  }
+  .details-options {
+    margin-bottom: 1.1rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .temp {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .details-options {
+    margin-bottom: 1rem;
+  }
+}

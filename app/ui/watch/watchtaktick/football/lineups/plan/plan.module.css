@@ -1,0 +1,39 @@
+.container-bottom,
+.container-top {
+  width: 29.4rem;
+  height: 2.9rem;
+  border-radius: 0.47rem;
+  background: #0d1317;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-top {
+  border-bottom: 5px solid #03a1cd;
+}
+.container-bottom {
+  border-top: 5px solid #03a1cd;
+}
+.text {
+  color: #9e9e9e;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (max-width: 56.25rem) {
+  .container-bottom,
+  .container-top {
+    width: 21.3rem;
+    height: 2.2rem;
+    border-radius: 10px;
+    background: #0d1317;
+  }
+  .container-top {
+    border-bottom: 3px solid #03a1cd;
+  }
+  .container-bottom {
+    border-top: 3px solid #03a1cd;
+  }
+}

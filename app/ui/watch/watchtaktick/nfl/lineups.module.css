@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.match-details-option-controller {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .alternative-players {
+    margin: 2.375rem auto 1.55rem;
+  }
+}
+@media (max-width: 25rem) {
+  .alternative-players {
+    margin: 2.1rem auto 1.4rem;
+  }
+}
+@media (max-width: 23.125rem) {
+  .alternative-players {
+    margin: 1.95rem auto 1.3rem;
+  }
+}

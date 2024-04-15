@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.26rem;
+}
+.stadium {
+  height: 17.09rem;
+  width: 18.42rem;
+  background: url("/svg/watch/wwe/pitch.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  position: relative;
+}
+@media (max-width: 56.25rem) {
+  .stadium {
+    height: 12.25rem;
+    width: 11.875rem;
+    background: url("/svg/watch/wwe/pitch-424.svg");
+  }
+
+  .container {
+    gap: 0.875rem;
+  }
+  .logo {
+    width: 28px;
+    height: 26px;
+  }
+}
