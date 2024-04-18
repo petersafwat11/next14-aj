@@ -50,10 +50,11 @@
 }
 
 @media (max-width: 56.25rem) {
-  .video-play {
+  .video-play,
+  .video-pause {
     border-radius: 0;
   }
-  .video-pause {
+  /* .video-pause {
     border-radius: 0.625rem;
-  }
+  } */
 }

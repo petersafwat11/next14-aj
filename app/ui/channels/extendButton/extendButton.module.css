@@ -1,0 +1,48 @@
+.extend {
+  width: 7.45rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+  border-radius: 4.4rem;
+  background: #0d1317;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.svg {
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+.extend-text {
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  font-family: "Roboto Condensed";
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.15px;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+.extend:hover {
+  background: #0a0f12;
+}
+.extend:hover .extend-text,
+.extend:hover .svg {
+  opacity: 0.9;
+}
+@media (max-width: 56.25rem) {
+  .extend {
+    width: 146px;
+    height: 41px;
+    border-radius: 94px;
+    gap: 0.72rem;
+  }
+  .extend-text {
+    font-size: .8rem;
+    letter-spacing: 0.15px;
+  }
+}

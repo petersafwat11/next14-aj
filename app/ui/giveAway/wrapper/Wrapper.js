@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useReducer, useState } from "react";
-import { getDateDifference } from "../../../utils/convertDateFormat";
-import PageTitle from "../../pageTitle/PageTitle";
-import Popup from "../../popupWrapper/Popup";
+// import { getDateDifference } from "../../../utils/convertDateFormat";
 import FollowUS from "../followUS/FollowUS";
 import StepsWrapper from "../stepsWrapper/StepsWrapper";
 import classes from "./wrapper.module.css";
+import { getDateDifference } from "@/app/lib/datesFunctions";
+import Popup from "../../popupWrapper/Popup";
+import PageTitle from "../../pageTitle/PageTitle";
 
 const followUsReducer = (state, action) => {
   console.log("state", state);
@@ -29,7 +30,7 @@ const followUsReducer = (state, action) => {
   }
 };
 
-const Wrapper = ({ entries, eventData }) => {
+const Wrapper = ({ entries, eventData , allSocial}) => {
   console.log(entries);
   const [followUs, dispatchAction] = useReducer(followUsReducer, {
     display: false,
@@ -47,7 +48,7 @@ const Wrapper = ({ entries, eventData }) => {
     <main className={classes["give-away"]}>
       {followUs.display && (
         <Popup>
-          <StepsWrapper dispatchAction={dispatchAction} followUs={followUs} />
+          <StepsWrapper dispatchAction={dispatchAction} followUs={followUs} allSocial={allSocial} />
         </Popup>
       )}
 

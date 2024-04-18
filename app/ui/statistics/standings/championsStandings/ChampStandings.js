@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import MatchDots from "../../../watchtaktick/matchDots/MatchDots";
 import classes from "./champStandings.module.css";
 import StandingsGroup from "./standingsGroup/StandingsGroup";
+import MatchDots from "@/app/ui/watch/watchtaktick/matchDots/MatchDots";
 const ChampStandings = ({ data }) => {
   const [option, setOption] = useState(1);
   const changeCategory = (option) => {

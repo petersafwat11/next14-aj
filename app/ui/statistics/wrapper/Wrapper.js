@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import { groupEventsByDate } from "../../../utils/groupEventsByDate";
+// import { groupEventsByDate } from "../../../utils/groupEventsByDate";
 import ShowMore from "../../showMore/ShowMore";
 import { leaguesData } from "../data";
 import Header from "../header/Header";
 import LeagueMenu from "../leage/League";
 import classes from "./wrapper.module.css";
-const Wrapper = () => {
+import { groupEventsByDate } from "@/app/lib/datesFunctions";
+const Wrapper = ({ standings, fixtures, results }) => {
   const [leagueActive, setLeagueActive] = useState("Premier League");
   const [statisticsType, setStatisticsType] = useState("fixtures");
   const [standingsType, setStandingsType] = useState("Leagues");

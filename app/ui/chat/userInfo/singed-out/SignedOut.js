@@ -59,9 +59,11 @@ const SignedOut = ({
           }}
           style={{
             border:
-              notValid && startTyping
-                ? "2px solid rgba(255, 0, 0, 0.7)"
-                : "2px solid transparent",
+              loodinguserNameAvailability && startTyping
+                ? "1.5px solid white"
+                : notValid && startTyping
+                ? "1.5px solid #D00"
+                : "1.5px solid ##12A533",
           }}
           className={classes["user-data-input"]}
           type="text"

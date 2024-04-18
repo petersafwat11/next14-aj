@@ -1,20 +1,17 @@
-import { useRouter } from "next/navigation";
 import React from "react";
 import classes from "./watchBtn.module.css";
+import Link from "next/link";
 
 const WatchBtn = ({ name }) => {
-  const router = useRouter();
-
   return (
     <div className={classes["action-button"]}>
-      <button
-        onClick={() => {
-          router.push(`/watch/${name}`, { scroll: false });
-        }}
+      <Link
+        href={`/watch/${name}`}
+        scroll={false}
         className={classes["watch-button"]}
       >
         WATCH
-      </button>
+      </Link>
     </div>
   );
 };

@@ -1,0 +1,40 @@
+.report-btn {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .report-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 147px;
+    height: 41px;
+    border-radius: 94px;
+    background: #0d1317;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .svg {
+    opacity: 0.4;
+    transition: all 0.3s ease-in-out;
+  }
+  .text {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Roboto Condensed";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.13px;
+    opacity: 0.4;
+    transition: all 0.3s ease-in-out;
+  }
+  .report-btn:hover {
+    background: #050709;
+  }
+  .report-btn:hover .text,
+  .report-btn:hover .svg {
+    opacity: 0.6;
+  }
+}

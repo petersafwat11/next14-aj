@@ -12,7 +12,7 @@ const Popup = ({ hidePopup }) => {
         <Image
           onClick={hidePopup}
           className={classes["exit"]}
-          src="/svg/chat/exit-chat.svg"
+          src="/svg/exit.svg"
           alt="exit"
           width="15"
           height="15"

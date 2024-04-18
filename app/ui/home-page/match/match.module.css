@@ -38,6 +38,7 @@
   gap: 0.25rem;
   font-size: 0.75rem;
   line-height: 0.9rem;
+  width: 89px;
 }
 .leage {
   font-family: RobotoRegular;
@@ -122,7 +123,7 @@
   .match-first .date {
     font-weight: 500;
     font-family: RobotoRegular;
-    font-size: 0.82rem;
+    font-size: 0.75rem;
     line-height: 0.937rem;
 
     color: white;

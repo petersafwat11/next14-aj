@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { SessionProvider } from "next-auth/react";
 import Image from "next/image";
-import styles from './clientProvider.module.css'
+import styles from "./clientProvider.module.css";
+import SessionLayout from "./SessionLayout";
 export default function Provider({ children, session }) {
   const [showScrollTopIcon, setShowScrollTopIcon] = useState(false);
   const updateDimensions = () => {
@@ -24,7 +25,7 @@ export default function Provider({ children, session }) {
   };
 
   return (
-    <SessionProvider session={session}>
+    <>
       {showScrollTopIcon && (
         <Image
           onClick={scrollToTopPage}
@@ -36,7 +37,7 @@ export default function Provider({ children, session }) {
         />
       )}
 
-      {children}
-    </SessionProvider>
+      <SessionLayout>{children}</SessionLayout>
+    </>
   );
 }

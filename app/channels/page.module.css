@@ -29,6 +29,10 @@
   width: 98%;
   margin: 1rem auto 5px;
 }
+.after-video {
+  max-width: min(73vw, 63.3vw);
+  margin: auto;
+}
 
 .sort-search-wrapper {
   display: flex;
@@ -41,7 +45,6 @@
   padding: 0 1.03rem;
   border-radius: 0.3rem;
 }
-
 .watch-video-options > * {
   color: white;
   display: flex;
@@ -52,11 +55,15 @@
 .vpn {
   margin: auto;
 }
+@media (max-width: 75rem) {
+  .after-video {
+    max-width: 51rem;
+  }
+}
+
 @media (max-width: 56.25rem) {
   .container {
     padding-bottom: 3.5rem;
-  }
-  .container {
     max-width: 95%;
   }
   .heading-span {
@@ -73,14 +80,24 @@
     margin-bottom: 0.875rem;
     margin-top: 0.75rem;
   }
+  .watch-video-top {
+    justify-content: center;
+    margin: 15px auto 13px;
+  }
 
   .social-desktop {
     display: none;
   }
+  .navigation {
+    display: none;
+  }
+
   .sort-search-wrapper {
     display: flex;
     flex-direction: column-reverse;
+    align-items: flex-end;
     width: 100%;
+    padding: 0.75rem;
     margin-top: 1.68rem;
     gap: 0.56rem;
     height: auto;

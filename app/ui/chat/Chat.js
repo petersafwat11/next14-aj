@@ -221,23 +221,24 @@ const Chat = ({
   };
   const handleClick = async () => {
     try {
-
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
         console.log("still remaining time ");
         return;
       }
+      const messageDestructure = { ...message };
+      setMessage({
+        ...message,
+        message: "",
+      });
+
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
-        message: message,
+        message: messageDestructure,
       });
       console.log(response);
       socket.emit(`chat message ${chatRoomSelection}`, message);
       setMessages((prevState) => {
-        return [...prevState, message];
-      });
-      setMessage({
-        ...message,
-        message: "",
+        return [...prevState, messageDestructure];
       });
       setIsSending(true);
       setTimeout(() => {

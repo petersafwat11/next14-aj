@@ -80,7 +80,7 @@ const CropImage = ({
           setOpenCrop(false);
         }}
         className={classes["close-icon"]}
-        src="/svg/chat/exit-chat.svg"
+        src="/svg/exit.svg"
         alt="exit"
         width="15"
         height="15"

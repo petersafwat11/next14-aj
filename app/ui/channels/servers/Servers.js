@@ -10,7 +10,6 @@ const Servers = ({
   filterValue,
   searchValue,
 }) => {
-  console.log("channelsServers", channelsServers);
   const router = useRouter();
   const [servers, setServers] = useState(channelsServers?.channels);
   useEffect(() => {

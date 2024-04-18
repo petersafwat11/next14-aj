@@ -66,6 +66,7 @@ const WhoWillWin = ({ makeVote }) => {
         </div>
       ) : (
         <div className={classes["unSelected-options"]}>
+          <p className={classes['text']}>Who will win?</p>
           {["first", "second", "draw"].map((item, index) => (
             <div
               key={index}

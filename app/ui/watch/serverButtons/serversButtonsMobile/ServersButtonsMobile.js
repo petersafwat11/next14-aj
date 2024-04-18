@@ -1,12 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./serversButtonsMobile.module.css";
+import Popup from "@/app/ui/popupWrapper/Popup";
+import StreamNotAvailable from "../../streamNotAvailable/StreamNotAvailable";
+import ChangeServer from "../../changeServer/ChangeServer";
 const ServersButtonsMobile = ({
-  playingServerLang,
   servers,
-  handleServerClicks,
+  notLive,
+  playingServer,
+  setPlayingServer,
+  eventDate,
 }) => {
+  const [showChangeServer, setShowChangeServer] = useState(false);
+
+  const [langOtherServersAvailable, setlangOtherServersAvailable] = useState(
+    []
+  );
+  const [streamNotAvailable, setStreamNotAvailable] = useState(false);
+  const toggleServers = () => {
+    setShowChangeServer(!showChangeServer);
+  };
+  const handleServerClicks = (val, lang) => {
+    console.log(val);
+    if (notLive) {
+      setStreamNotAvailable(!streamNotAvailable);
+      return;
+    }
+    toggleServers();
+    setlangOtherServersAvailable({ servers: val[Object.keys(val)[0]], lang });
+    console.log(val[Object.keys(val)[0]]);
+  };
+  const handleChangeServers = (val, lang) => {
+    toggleServers();
+    console.log("val", val, lang);
+    setPlayingServer({ server: val, lang });
+  };
+  useEffect(() => {
+    if (streamNotAvailable) {
+      setTimeout(() => {
+        setStreamNotAvailable(false);
+      }, [50000]);
+    }
+  }, [streamNotAvailable]);
+
   return (
     <div className={classes["container"]}>
+      {streamNotAvailable && (
+        <Popup>
+          {" "}
+          <StreamNotAvailable eventDate={eventDate} />
+        </Popup>
+      )}
+      {showChangeServer && (
+        <Popup>
+          <ChangeServer
+            playingServer={playingServer}
+            langOtherServersAvailable={langOtherServersAvailable?.servers}
+            lang={langOtherServersAvailable?.lang}
+            handleChangeServers={handleChangeServers}
+            toggleServers={toggleServers}
+          />
+        </Popup>
+      )}
+
       {servers?.map((item, index) => (
         <div
           onClick={() => {
@@ -14,7 +69,7 @@ const ServersButtonsMobile = ({
           }}
           key={`${index}-${item}`}
           className={
-            playingServerLang === Object.keys(item)[0]
+            playingServer?.lang === Object.keys(item)[0]
               ? classes["lang-selected"]
               : classes["lang"]
           }
@@ -22,11 +77,11 @@ const ServersButtonsMobile = ({
           <p
             className={
               Object.keys(item)[0] == "arabic" &&
-              playingServerLang === Object.keys(item)[0]
+              playingServer?.lang === Object.keys(item)[0]
                 ? classes["arabic-selected"]
                 : Object.keys(item)[0] === "arabic"
                 ? classes["arabic-lang"]
-                : playingServerLang === Object.keys(item)[0]
+                : playingServer?.lang === Object.keys(item)[0]
                 ? classes["text-selected"]
                 : classes["lang-text"]
             }

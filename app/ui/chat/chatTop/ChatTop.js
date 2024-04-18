@@ -42,7 +42,7 @@ const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
       <Image
         onClick={toggleChat}
         className={classes["chat-top-exit"]}
-        src="/svg/chat/exit-chat.svg"
+        src="/svg/exit.svg"
         alt="exit"
         width="15"
         height="15"

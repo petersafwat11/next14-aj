@@ -7,9 +7,8 @@ import StepThree from "../stepThree/StepThree";
 import StepTwo from "../stepTwo/StepTwo";
 import TopIndecator from "../topIndecators/TopIndecator";
 import classes from "./stepsWrapper.module.css";
-const StepsWrapper = ({ followUs, dispatchAction }) => {
+const StepsWrapper = ({ followUs, dispatchAction, allSocial }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [allSocial, setSocial] = useState(null);
 
   const [errMessage, setErrMessage] = useState("");
   const validateEmail = (email) => {
@@ -65,30 +64,6 @@ const StepsWrapper = ({ followUs, dispatchAction }) => {
       );
     }
   };
-  // useEffect(() => {
-  //   const fetchNewData = async (query) => {
-  //     try {
-  //       const response = await axios.get("links", query);
-  //       const Allsocial = response.data?.data[0]?.social;
-  //       delete Allsocial.facebook;
-  //       delete Allsocial.tiktok;
-  //       delete Allsocial.discord;
-  //       setSocial(Allsocial);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-
-  //   fetchNewData({ fields: "social" });
-  // }, []);
-  // const { indicatorsNum } = followUs;
-  // useEffect(() => {
-  //   if (currentStep === 3 || (currentStep === 2 && indicatorsNum === 2)) {
-  //     setTimeout(() => {
-  //       dispatchAction({ type: "STEPS" });
-  //     }, [5000]);
-  //   }
-  // }, [currentStep, indicatorsNum, dispatchAction]);
 
   return (
     <div className={classes["container"]}>
@@ -106,7 +81,7 @@ const StepsWrapper = ({ followUs, dispatchAction }) => {
             dispatchAction({ type: "DISPLAY", value: false });
           }}
           className={classes["exit"]}
-          src="/svg/chat/exit-chat.svg"
+          src="/svg/exit.svg"
           alt="exit"
           width="18"
           height="18"

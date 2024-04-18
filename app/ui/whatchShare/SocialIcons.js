@@ -20,7 +20,7 @@ import Report from "../report/Report";
 import { handleMakingReport } from "@/app/lib/reportFunction";
 import ThanksMessage from "../thanksMessage/ThanksMessage";
 import { usePathname } from "next/navigation";
-const SocialIcons = ({playingServerName}) => {
+const SocialIcons = ({ reportData }) => {
   const pathname = usePathname();
   const shareUrl = `${process.env.FRONTEND_SERVER}${pathname}`;
   const quote = "Check out this awesome content!";
@@ -40,14 +40,13 @@ const SocialIcons = ({playingServerName}) => {
   };
 
   const sendReport = async (val) => {
-    const reportData = {
-      event: playingServerName,
-      server: "Server 1",
+    const data = {
+      ...reportData,
       reason: val,
       eventLink: shareUrl,
     };
 
-    await handleMakingReport(reportData, toggleReport, toggleThanksMessage);
+    await handleMakingReport(data, toggleReport, toggleThanksMessage);
   };
   useEffect(() => {
     if (showThanksMessage) {
@@ -58,78 +57,84 @@ const SocialIcons = ({playingServerName}) => {
   }, [showThanksMessage]);
 
   return (
-    <div className={classes["watch-video-share"]}>
-      {showThanksMessage && (
-        <Popup>
-          <ThanksMessage />
-        </Popup>
-      )}
+    <div className={classes["container"]}>
+      <p className={classes["share-text"]}>Share this event </p>
 
-      {showReport && (
-        <Popup>
-          <Report handleMakingReport={sendReport} toggleReport={toggleReport} />
-        </Popup>
-      )}
+      <div className={classes["watch-video-share"]}>
+        {showThanksMessage && (
+          <Popup>
+            <ThanksMessage />
+          </Popup>
+        )}
 
-      {showShareLinks && (
-        <Popup>
-          <ShareLinks
-            shareUrl={shareUrl}
-            quote={quote}
-            toggleShareLinks={toggleShareLinks}
+        {showReport && (
+          <Popup>
+            <Report
+              handleMakingReport={sendReport}
+              toggleReport={toggleReport}
+            />
+          </Popup>
+        )}
+
+        {showShareLinks && (
+          <Popup>
+            <ShareLinks
+              shareUrl={shareUrl}
+              quote={quote}
+              toggleShareLinks={toggleShareLinks}
+            />
+          </Popup>
+        )}
+        <div className={classes["wrapper"]}>
+          <TwitterShareButton url={shareUrl} title={quote}>
+            <BsTwitter className={classes["twitter-icon"]} />
+          </TwitterShareButton>
+
+          <span className={classes["tooltip"]}>Share on Twitter</span>
+        </div>
+        <div className={classes["wrapper"]}>
+          <FacebookShareButton url={shareUrl} quote={quote} title={quote}>
+            <MdFacebook className={classes["facebook-icon"]} />
+          </FacebookShareButton>
+
+          <span className={classes["tooltip"]}>Share on Facebook</span>
+        </div>
+        <div className={classes["wrapper"]}>
+          <WhatsappShareButton url={shareUrl} title={quote}>
+            <IoLogoWhatsapp className={classes["whatsapp-icon"]} />
+          </WhatsappShareButton>
+
+          <span className={classes["tooltip"]}>Share on Whatsapp</span>
+        </div>
+        <div className={classes["reddit"]}>
+          <RedditShareButton url={shareUrl} title={quote}>
+            <GrReddit className={classes["reddit-icon"]} />
+          </RedditShareButton>
+
+          <span className={classes["tooltip"]}>Share on Reddit</span>
+        </div>
+        <div className={classes["wrapper"]}>
+          <TelegramShareButton url={shareUrl} title={quote}>
+            <FaTelegramPlane className={classes["telegram-icon"]} />
+          </TelegramShareButton>
+
+          <span className={classes["tooltip"]}>Share on Telegram</span>
+        </div>
+        <div className={classes["wrapper"]}>
+          <FaShareAlt
+            onClick={toggleShareLinks}
+            className={classes["share-icon"]}
           />
-        </Popup>
-      )}
+          <span className={classes["tooltip"]}>Other Websites</span>
+        </div>
 
-      <div className={classes["wrapper"]}>
-        <TwitterShareButton url={shareUrl} title={quote}>
-          <BsTwitter className={classes["twitter-icon"]} />
-        </TwitterShareButton>
-
-        <span className={classes["tooltip"]}>Share on Twitter</span>
+        <span
+          onClick={toggleReport}
+          className={classes["watch-video-share-text"]}
+        >
+          Report Link
+        </span>
       </div>
-      <div className={classes["wrapper"]}>
-        <FacebookShareButton url={shareUrl} quote={quote} title={quote}>
-          <MdFacebook className={classes["facebook-icon"]} />
-        </FacebookShareButton>
-
-        <span className={classes["tooltip"]}>Share on Facebook</span>
-      </div>
-      <div className={classes["wrapper"]}>
-        <WhatsappShareButton url={shareUrl} title={quote}>
-          <IoLogoWhatsapp className={classes["whatsapp-icon"]} />
-        </WhatsappShareButton>
-
-        <span className={classes["tooltip"]}>Share on Whatsapp</span>
-      </div>
-      <div className={classes["reddit"]}>
-        <RedditShareButton url={shareUrl} title={quote}>
-          <GrReddit className={classes["reddit-icon"]} />
-        </RedditShareButton>
-
-        <span className={classes["tooltip"]}>Share on Reddit</span>
-      </div>
-      <div className={classes["wrapper"]}>
-        <TelegramShareButton url={shareUrl} title={quote}>
-          <FaTelegramPlane className={classes["telegram-icon"]} />
-        </TelegramShareButton>
-
-        <span className={classes["tooltip"]}>Share on Telegram</span>
-      </div>
-      <div className={classes["wrapper"]}>
-        <FaShareAlt
-          onClick={toggleShareLinks}
-          className={classes["share-icon"]}
-        />
-        <span className={classes["tooltip"]}>Other Websites</span>
-      </div>
-
-      <span
-        onClick={toggleReport}
-        className={classes["watch-video-share-text"]}
-      >
-        Report Link
-      </span>
     </div>
   );
 };

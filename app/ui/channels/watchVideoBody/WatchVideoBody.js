@@ -5,15 +5,19 @@ import Image from "next/image";
 // import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
 import BottomSocial from "../../bottomSocial/BottomSocial";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
+import ExtendButton from "../extendButton/ExtendButton";
+import ReportBtn from "../../reportBtn/ReportBtn";
 const WatchVideoBody = ({
   chatMessages,
   chatRules,
   chatFilteredWords,
   playingServer,
-  social,
 }) => {
   const [extendMode, setExtendMode] = useState(false);
-
+  const activeExtendMode = () => {
+    setExtendMode(!extendMode);
+    document.body.style.overflow = "hidden";
+  };
   return (
     <>
       <div className="watch-video">
@@ -31,37 +35,15 @@ const WatchVideoBody = ({
         )} */}
 
         <div className={classes["social-desktop"]}>
-          <BottomSocial social={social} />
+          <BottomSocial />
         </div>
         <div className={classes["server-btn-wrapper"]}>
           <button className={classes["server-name-btn"]}>Full HD</button>
         </div>
 
         <div className={classes["modes-icons"]}>
-          <div className={classes["icon-div"]}>
-            <Image
-              className={classes["threat-mode-icon"]}
-              src="/svg/watch/threat-mode.svg"
-              alt="threat-mode"
-              height={18}
-              width={18}
-            />
-          </div>
-          <div
-            onClick={() => {
-              setExtendMode(!extendMode);
-              document.body.style.overflow = "hidden";
-            }}
-            className={classes["icon-div"]}
-          >
-            <Image
-              className={classes["threat-mode-icon"]}
-              src="/svg/watch/extend.svg"
-              alt="extend-mode"
-              height={15}
-              width={15}
-            />
-          </div>
+          <ExtendButton activeExtendMode={activeExtendMode} />
+          <ReportBtn />
         </div>
       </div>
     </>

@@ -11,16 +11,30 @@ export const MenuMobile = () => {
   return (
     <div>
       <div className={classes["menu-mobile"]}>
-        <Image
-          onClick={() => {
-            setShowMenu(!showMenu);
-          }}
-          className={classes["menu-mobile-icon"]}
-          src="/svg/layout/header/menu-icon.svg"
-          alt="menu"
-          width="28"
-          height="15"
-        />
+        {!showMenu ? (
+          <Image
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+            className={classes["menu-mobile-icon"]}
+            src="/svg/layout/header/menu-icon.svg"
+            alt="menu"
+            width="28"
+            height="15"
+          />
+        ) : (
+          <Image
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+            className={classes["exit"]}
+            src="/svg/layout/mobile-menu/exit.svg"
+            alt="donate"
+            width="17"
+            height="17"
+          />
+        )}
+
         <Image
           className={classes["menu-mobile-logo"]}
           src="/svg/layout/header/logo-mobile.svg"
@@ -32,13 +46,13 @@ export const MenuMobile = () => {
       </div>
       {showMenu && (
         <div className={classes["side-menu"]}>
-          <div className={classes["nav-top"]}>
+          {/* <div className={classes["nav-top"]}>
             <Image
               onClick={() => {
                 setShowMenu(!showMenu);
               }}
               className={classes["exit"]}
-              src="/svg/mobile-menu/exit.svg"
+              src="/svg/layout/mobile-menu/exit.svg"
               alt="donate"
               width="17"
               height="17"
@@ -52,7 +66,7 @@ export const MenuMobile = () => {
                 height="59"
               />
             </div>
-          </div>
+          </div> */}
           <div className={classes["user-details"]}>
             <Image
               className={classes["user-icon"]}
@@ -155,7 +169,7 @@ export const MenuMobile = () => {
               >
                 <Image
                   className={classes["donate-icon"]}
-                  src="/svg/mobile-menu/donate.svg"
+                  src="/svg/layout/mobile-menu/donate.svg"
                   alt="donate"
                   width="22"
                   height="22"
@@ -173,7 +187,7 @@ export const MenuMobile = () => {
               >
                 <Image
                   className={classes["giveaway-icon"]}
-                  src="/svg/mobile-menu/giveaway.svg"
+                  src="/svg/layout/mobile-menu/giveaway.svg"
                   alt="giveaway"
                   width="19"
                   height="19"
@@ -187,7 +201,7 @@ export const MenuMobile = () => {
           <div className={classes["social"]}>
             <div className={classes["social-element"]}>
               <Image
-                src="/svg/social-icons/twitter.svg"
+                src="/svg/layout/social-icons/twitter.svg"
                 alt="twitter-icon"
                 width="19"
                 height="16"
@@ -195,7 +209,7 @@ export const MenuMobile = () => {
             </div>
             <div className={classes["social-element"]}>
               <Image
-                src="/svg/social-icons/facebook.svg"
+                src="/svg/layout/social-icons/facebook.svg"
                 alt="facebook-icon"
                 width="19"
                 height="19"
@@ -203,7 +217,7 @@ export const MenuMobile = () => {
             </div>
             <div className={classes["social-element"]}>
               <Image
-                src="/svg/social-icons/social.svg"
+                src="/svg/layout/social-icons/social.svg"
                 alt="social-icon"
                 width="19"
                 height="19"
@@ -211,7 +225,7 @@ export const MenuMobile = () => {
             </div>
             <div className={classes["social-element"]}>
               <Image
-                src="/svg/social-icons/insta.svg"
+                src="/svg/layout/social-icons/insta.svg"
                 alt="insta-icon"
                 width="20"
                 height="19"
@@ -219,7 +233,7 @@ export const MenuMobile = () => {
             </div>
             <div className={classes["social-element"]}>
               <Image
-                src="/svg/social-icons/ticktok.svg"
+                src="/svg/layout/social-icons/ticktok.svg"
                 alt="tiktok-icon"
                 width="20"
                 height="20"
@@ -238,7 +252,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/1.svg"
+                src="/svg/layout/mobile-menu/1.svg"
                 alt="leageu"
                 width="32"
                 height="36"
@@ -248,7 +262,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/2.svg"
+                src="/svg/layout/mobile-menu/2.svg"
                 alt="leageu"
                 width="32"
                 height="34"
@@ -258,7 +272,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/3.svg"
+                src="/svg/layout/mobile-menu/3.svg"
                 alt="leageu"
                 width="32"
                 height="33"
@@ -268,7 +282,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/4.svg"
+                src="/svg/layout/mobile-menu/4.svg"
                 alt="leageu"
                 width="32"
                 height="32"
@@ -278,7 +292,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/5.svg"
+                src="/svg/layout/mobile-menu/5.svg"
                 alt="leageu"
                 width="32"
                 height="34"
@@ -288,7 +302,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/6.svg"
+                src="/svg/layout/mobile-menu/6.svg"
                 alt="leageu"
                 width="32"
                 height="33"
@@ -298,7 +312,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/7.svg"
+                src="/svg/layout/mobile-menu/7.svg"
                 alt="leageu"
                 width="32"
                 height="31"
@@ -308,7 +322,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/8.svg"
+                src="/svg/layout/mobile-menu/8.svg"
                 alt="leageu"
                 width="35"
                 height="35"
@@ -318,7 +332,7 @@ export const MenuMobile = () => {
             <div className={classes["league"]}>
               <Image
                 className={classes["league-image"]}
-                src="/svg/mobile-menu/9.svg"
+                src="/svg/layout/mobile-menu/9.svg"
                 alt="leageu"
                 width="32"
                 height="35"

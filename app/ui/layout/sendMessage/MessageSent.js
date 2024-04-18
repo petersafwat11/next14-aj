@@ -8,7 +8,7 @@ const MessageSent = ({ toggleMessageSentComponent }) => {
       <Image
         onClick={toggleMessageSentComponent}
         className={classes["exit"]}
-        src="/svg/chat/exit-chat.svg"
+        src="/svg/exit.svg"
         alt="exit"
         width="15"
         height="15"

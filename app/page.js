@@ -10,6 +10,7 @@ import axios from "axios";
 import classes from "./page.module.css";
 import OtherMatches from "./ui/home-page/otherMatches/OtherMatches";
 import HotMatches from "./ui/home-page/HotMatches/HotMatches";
+import NoMatches from "./ui/home-page/noMatches/NoMatches";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -63,13 +64,20 @@ const Page = async ({ searchParams }) => {
           <div className={classes["hot-mathes-top"]}>
             <h2 className={classes["title"]}>HOT MATCHES</h2>
             <Image
+              className={classes["hot-matches-icon"]}
               src="/svg/home/hot-matches-icon.svg"
               alt="live"
               width="31"
               height="44"
             />
           </div>
-          <HotMatches data={hotMatches} />
+          {hotMatches && hotMatches.length > 0 ? (
+            <HotMatches data={hotMatches} />
+          ) : (
+            <div className={classes["center"]}>
+              <NoMatches />
+            </div>
+          )}
           {/* <Matches data={hotMatches} /> */}
         </section>
         <section className={classes["other-matches"]}>

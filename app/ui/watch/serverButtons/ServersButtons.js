@@ -1,35 +1,46 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "./Arrows";
 import classes from "./serverButtons.module.css";
 import ChangeServer from "../changeServer/ChangeServer";
 import Popup from "../../popupWrapper/Popup";
-const ServersButtons = ({ playingServerLang, servers, notLive }) => {
+import StreamNotAvailable from "../streamNotAvailable/StreamNotAvailable";
+const ServersButtons = ({
+  servers,
+  notLive,
+  playingServer,
+  setPlayingServer,
+  eventDate,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showChangeServer, setShowChangeServer] = useState(false);
   const [langOtherServersAvailable, setlangOtherServersAvailable] = useState(
     []
   );
-
+  const [streamNotAvailable, setStreamNotAvailable] = useState(false);
   const toggleServers = () => {
     setShowChangeServer(!showChangeServer);
   };
   const handleServerClicks = (val, lang) => {
     console.log(val);
+    if (notLive) {
+      setStreamNotAvailable(!streamNotAvailable);
+      return;
+    }
     toggleServers();
     setlangOtherServersAvailable({ servers: val[Object.keys(val)[0]], lang });
     console.log(val[Object.keys(val)[0]]);
   };
   const handleChangeServers = (val, lang) => {
     toggleServers();
-    // setPlayingServerLang(lang);
+    console.log("val", val, lang);
     setPlayingServer({ server: val, lang });
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: servers?.length > 4 ? 4 : servers?.length,
@@ -44,9 +55,22 @@ const ServersButtons = ({ playingServerLang, servers, notLive }) => {
       setCurrentSlide(current);
     },
   };
+  useEffect(() => {
+    if (streamNotAvailable) {
+      setTimeout(() => {
+        setStreamNotAvailable(false);
+      }, [50000]);
+    }
+  }, [streamNotAvailable]);
 
   return (
     <>
+      {streamNotAvailable && (
+        <Popup>
+          {" "}
+          <StreamNotAvailable eventDate={eventDate} />
+        </Popup>
+      )}
       {showChangeServer && (
         <Popup>
           <ChangeServer
@@ -71,7 +95,7 @@ const ServersButtons = ({ playingServerLang, servers, notLive }) => {
                   className={
                     notLive
                       ? classes["lang"]
-                      : playingServerLang === Object.keys(item)[0]
+                      : playingServer?.lang === Object.keys(item)[0]
                       ? classes["lang-selected"]
                       : classes["lang"]
                   }
@@ -83,11 +107,11 @@ const ServersButtons = ({ playingServerLang, servers, notLive }) => {
                         : notLive
                         ? classes["lang-text"]
                         : Object.keys(item)[0] === "arabic" &&
-                          playingServerLang === Object.keys(item)[0]
+                          playingServer?.lang === Object.keys(item)[0]
                         ? classes["arabic-selected"]
                         : Object.keys(item)[0] === "arabic"
                         ? classes["arabic-lang"]
-                        : playingServerLang === Object.keys(item)[0]
+                        : playingServer?.lang === Object.keys(item)[0]
                         ? classes["text-selected"]
                         : classes["lang-text"]
                     }

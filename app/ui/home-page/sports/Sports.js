@@ -32,8 +32,10 @@ const Sports = () => {
           height="60"
         />
         <p>NFL</p>
-        {searchParams.get("category") === "nfl" && (
+        {searchParams.get("category") === "nfl" ? (
           <span className={classes["customized-border"]}></span>
+        ) : (
+          <span className={classes["customized-hover"]}></span>
         )}
       </div>
       <div
@@ -50,8 +52,10 @@ const Sports = () => {
           height="60"
         />
         <p>Basketball</p>
-        {searchParams.get("category") === "basketball" && (
+        {searchParams.get("category") === "basketball" ? (
           <span className={classes["customized-border"]}></span>
+        ) : (
+          <span className={classes["customized-hover"]}></span>
         )}
       </div>
       <div
@@ -68,9 +72,11 @@ const Sports = () => {
           height="60"
         />
         <p>Football</p>
-        {(searchParams.get("category") === "football" ||
-          searchParams.get("category") === null) && (
+        {searchParams.get("category") === "football" ||
+        searchParams.get("category") === null ? (
           <span className={classes["customized-border"]}></span>
+        ) : (
+          <span className={classes["customized-hover"]}></span>
         )}
       </div>
       <div
@@ -87,8 +93,10 @@ const Sports = () => {
           height="60"
         />
         <p>Fights</p>
-        {searchParams.get("category") === "fights" && (
+        {searchParams.get("category") === "fights" ? (
           <span className={classes["customized-border"]}></span>
+        ) : (
+          <span className={classes["customized-hover"]}></span>
         )}
       </div>
       <div
@@ -106,12 +114,14 @@ const Sports = () => {
         />
         <p>Others</p>
         {searchParams.get("category") !== "football" &&
-          searchParams.get("category") !== "basketball" &&
-          searchParams.get("category") !== "nfl" &&
-          searchParams.get("category") !== "fights" &&
-          searchParams.get("category") !== null && (
-            <span className={classes["customized-border"]}></span>
-          )}
+        searchParams.get("category") !== "basketball" &&
+        searchParams.get("category") !== "nfl" &&
+        searchParams.get("category") !== "fights" &&
+        searchParams.get("category") !== null ? (
+          <span className={classes["customized-border"]}></span>
+        ) : (
+          <span className={classes["customized-hover"]}></span>
+        )}
       </div>
     </section>
   );

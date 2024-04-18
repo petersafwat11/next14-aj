@@ -4,6 +4,9 @@
   justify-content: right;
   gap: 0.5rem;
 }
+.share-text {
+  display: none;
+}
 .wrapper {
   height: 1.25rem;
 }
@@ -97,36 +100,71 @@
   margin-bottom: -1px;
 }
 @media (max-width: 56.25rem) {
-  .watch-video-share {
+  .container {
     gap: 0.5rem;
+    width: 25.25rem;
+    height: 4.62rem;
+    border-radius: 5.87rem;
+    background: #0d1317;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .share-text {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 0.812rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    display: block;
+  }
+  .container:hover {
+    background: #0d1317;
+  }
+  .container:hover .share-text {
+    color: rgba(255, 255, 255, 0.6);
   }
   .watch-video-share {
-    align-items: flex-end;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    /* width: 25.25rem;
+    height: 4.62rem;
+    border-radius: 5.87rem;
+    background: #0d1317;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; */
   }
   .instagram,
   .reddit,
   .wrapper > * {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
   .instagram,
   .reddit,
   .wrapper {
-    height: 1rem;
-    width: 1rem;
+    height: 1.25rem;
+    width: 1.25rem;
   }
   .reddit {
     margin-bottom: -0.1rem;
   }
   .reddit-icon {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
   .share-icon {
     width: 19.19px;
     height: 19.19px;
   }
   .watch-video-share-text {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem;
     line-height: 0.75rem;
-    margin-bottom: -1.5px;
+    margin-bottom: -1.5px; */
+    display: none;
   }
 }

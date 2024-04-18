@@ -19,12 +19,21 @@
 /* .sports .selected {
   border-bottom: 4px solid #03a1cd;
 } */
-.customized-border {
+.customized-border,
+.customized-hover {
   width: 100%;
   height: 4px;
   background-color: #03a1cd;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.customized-hover {
+  background-color: transparent;
+}
+
+.sports > div:hover .customized-hover {
+  background-color: #293237;
 }
 .sports p {
   font-family: RobotoRegular;

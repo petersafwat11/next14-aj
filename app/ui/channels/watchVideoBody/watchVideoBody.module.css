@@ -46,21 +46,29 @@
 }
 @media (max-width: 56.25rem) {
   .watch-video-options {
-    padding-left: 0.875rem;
-    padding-right: 0.19rem;
-    margin-top: 0.75rem;
+    /* padding-left: 0.875rem;
+    padding-right: 0.19rem; */
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    margin: 1rem auto 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    width: 14.96rem;
-    height: 3.525rem;
-    border-radius: 3.17rem;
-    background: #0d1317;
-    gap: 1.25rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 14px 10px;
+    border-radius: 1.56rem;
+    background: transparent;
   }
 
   .server-btn-wrapper {
     flex-grow: 0;
     margin-left: 0;
     margin-right: 0;
+    background: #0d1317;
+    border-radius: 50px;
+    padding: 0.5rem;
   }
 
   .server-name-btn {
@@ -73,11 +81,12 @@
   }
   .modes-icons {
     gap: 0.5rem;
-    width: 5.25rem;
-    height: 2.75rem;
-    border-radius: 1.875rem;
-    background: rgba(12, 27, 37, 0.7);
+    width: 100%;
+    height: auto;
+    border-radius: none;
+    background: transparent;
   }
+
   .icon-div {
     width: 2.03rem;
     height: 2.03rem;

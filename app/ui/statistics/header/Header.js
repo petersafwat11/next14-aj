@@ -3,8 +3,8 @@ import FixtureAndResults from "../fixitureAndResults/FixtureAndResults";
 // import KnockoutStandings from "../standings/knockoutStandings/KnockoutStandings";
 // import Knockout from "../standings/knockoutStandings/mobileVersion/Knockout";
 import Standings from "../standings/Standings";
-import ChampStandings from "../standings/championsStandings/ChampStandings";
 import classes from "./header.module.css";
+import ChampStandings from "../standings/championsStandings/ChampStandings";
 
 const Header = ({
   statisticsType,

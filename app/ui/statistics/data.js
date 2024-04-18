@@ -8,3 +8,4 @@ export const leaguesData = [
   { name: "Ligue 1", id: 61 },
   { name: "Serie A", id: 135 },
 ];
+// 39

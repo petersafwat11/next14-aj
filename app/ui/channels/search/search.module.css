@@ -29,14 +29,16 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+
   }
   .search-div {
     position: relative;
+    width: 100%;
   }
 
   .channel-search {
     padding-left: 1.75rem;
-    width: min(26rem, 95vw);
+    width: min(24rem, 100%);
 
     height: 2.8rem;
     border-radius: 0.35rem;

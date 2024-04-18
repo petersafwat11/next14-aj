@@ -17,11 +17,22 @@ import { unstable_noStore as noStore } from "next/cache";
 const Page = async ({ searchParams }) => {
   noStore();
   const session = await getServerSession(authConfig);
-  // console.log("session", session);
   const searchValue = searchParams?.search;
 
   const filterValue = searchParams?.filter;
   const channalActive = searchParams?.channel?.replace(/-/g, " ");
+  let queryChannel;
+  if (channalActive) {
+    queryChannel = await axios.get(
+      `${process.env.BACKEND_SERVER}/channels/channelName`,
+      {
+        params: {
+          mode: "Visible",
+          channelName: channalActive,
+        },
+      }
+    );
+  }
 
   const channels = await axios.get(`${process.env.BACKEND_SERVER}/channels`, {
     params: {
@@ -29,7 +40,6 @@ const Page = async ({ searchParams }) => {
       limit: 8,
       mode: "Visible",
       language: filterValue,
-      // channelName: channalActive,
       searchValue: searchValue,
       or: ["channelName"],
     },
@@ -52,22 +62,20 @@ const Page = async ({ searchParams }) => {
   //     mode: "normal",
   //   },
   // });
-  const social = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
-    params: {
-      fields: "social",
-    },
-  });
-  const Allsocial = social.data?.data?.data[0].social;
   const channelsServers = {
     channels: channels?.data?.data?.data,
     totalResults: channels?.data?.results,
   };
   // const channelsServers = channelsServer;
-  const playingServer = channels?.data?.data?.data[0]?.streamLinkUrl || null;
-  const playingServerName = channels?.data?.data?.data[0]?.channelName || null;
+  const playingServer =
+    queryChannel?.data?.data?.streamLinkUrl ||
+    channels?.data?.data?.data[0]?.streamLinkUrl ||
+    null;
+  const playingServerName =
+    queryChannel?.data?.data?.channelName ||
+    channels?.data?.data?.data[0]?.channelName ||
+    null;
   const langs = channels?.data?.allLanguages;
-  console.log("allLanguages", channels?.data?.allLanguages);
-
   return (
     <div className={classes["channels"]}>
       {/* <ShowingChat
@@ -87,18 +95,22 @@ const Page = async ({ searchParams }) => {
 
         <div className="watch-video-wrapper">
           <div className={classes["watch-video-top"]}>
-            <WatchNavigation page={"channels"} />
+            <div className={classes["navigation"]}>
+              <WatchNavigation page={"channels"} />
+            </div>
 
-            <SocialIcons playingServerName={playingServerName} />
+            <SocialIcons
+              reportData={{ event: playingServerName, server: "Server 1" }}
+            />
           </div>
           <WatchVideoBody
             // chatMessages={chatMessages}
             // chatRules={chatRules}
             // chatFilteredWords={chatFilteredWords}
             url={playingServer}
-            social={Allsocial}
           />
-
+        </div>
+        <div className={classes["after-video"]}>
           <div className={classes["vpn"]}>
             <ProtonVpn />
           </div>
@@ -111,7 +123,7 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <Servers
-            channalActive={channalActive}
+            channalActive={channalActive || "BT Sports 1"}
             channelsServers={channelsServers}
             filterValue={filterValue}
             searchValue={searchValue}
