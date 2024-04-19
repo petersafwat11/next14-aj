@@ -14,7 +14,9 @@ const nextConfig = {
       "localhost",
       "media-4.api-sports.io",
       "lh3.googleusercontent.com",
+      "al-backend-tle9.onrender.com",
       "media.tenor.com",
+      "media.api-sports.io",
     ],
     // remotePatterns: [
     //   {

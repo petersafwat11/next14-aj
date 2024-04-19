@@ -2,21 +2,18 @@ import React from "react";
 import Wrapper from "../ui/statistics/wrapper/Wrapper";
 import axios from "axios";
 const Statistics = async () => {
-  const standings = await axios.get(`${process.env.BACKEND_SERVER}/channels`, {
-    params: {
-      page: 1,
-      limit: 8,
-      mode: "Visible",
-      language: filterValue,
-      searchValue: searchValue,
-      or: ["channelName"],
-    },
-  });
-const fixtures= 
-const results=
-  return (
-    <Wrapper standings={standings} fixtures={fixtures} results={results} />
+  const response = await axios.get(
+    `${process.env.BACKEND_SERVER}/statistics/fixtures`,
+    {
+      params: {
+        id: 39,
+        type: "Fixtures",
+        week: 1,
+      },
+    }
   );
+
+  return <Wrapper data={response?.data?.data} />;
 };
 
 export default Statistics;

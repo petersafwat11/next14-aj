@@ -8,11 +8,12 @@ import Header from "../header/Header";
 import LeagueMenu from "../leage/League";
 import classes from "./wrapper.module.css";
 import { groupEventsByDate } from "@/app/lib/datesFunctions";
-const Wrapper = ({ standings, fixtures, results }) => {
+const Wrapper = ({ data }) => {
   const [leagueActive, setLeagueActive] = useState("Premier League");
   const [statisticsType, setStatisticsType] = useState("fixtures");
   const [standingsType, setStandingsType] = useState("Leagues");
   const [standingsData, setStandingsData] = useState([]);
+  // const [fixturesData, setFixturesData] = useState(data);
   const [fixturesData, setFixturesData] = useState([]);
   const [resultsData, setResultsData] = useState([]);
   const [requiredWeekData, setRequiredWeekData] = useState(1);
@@ -34,22 +35,23 @@ const Wrapper = ({ standings, fixtures, results }) => {
             type: type === "fixtures" ? "Fixtures" : "Results",
             week: week || requiredWeekData,
           };
-    const response = await axios.get(`statistics/${type}`, query);
+    const response = await axios.get(
+      `${process.env.BACKEND_SERVER}/statistics/${type}`,
+      { params: query }
+    );
     console.log("response ", response.data);
-    if (response.data.length < 1) {
-      return showMoreHandeler();
-    } else if (type === "standings") {
-      setStandingsData(response.data);
+    if (type === "standings") {
+      setStandingsData(response?.data?.data);
     } else {
-      const formatedData = groupEventsByDate(response.data);
-      type === "fixtures"
-        ? setFixturesData(formatedData)
-        : setResultsData(formatedData);
+      const formatedData = groupEventsByDate(response?.data?.data);
       if (week) {
         type === "fixtures"
           ? setFixturesData((prevData) => [...prevData, ...formatedData])
           : setResultsData((prevData) => [...prevData, ...formatedData]);
       }
+      type === "fixtures"
+        ? setFixturesData(formatedData)
+        : setResultsData(formatedData);
     }
   };
   const handleChangeLeagueActive = async (val) => {
