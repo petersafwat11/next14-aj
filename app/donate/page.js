@@ -1,8 +1,6 @@
 // "use client";
 import React from "react";
 import classes from "./page.module.css";
-import Popup from "../ui/popupWrapper/Popup";
-import OtherPaymentMethod from "../ui/donate/otherPaymentMethod/OtherPaymentMethod";
 import PageTitle from "../ui/pageTitle/PageTitle";
 import Top from "../ui/donate/top/Top";
 import Input from "../ui/donate/input/Input";

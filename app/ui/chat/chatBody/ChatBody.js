@@ -9,6 +9,7 @@ const ChatBody = ({
   messagesRef,
   lastMessage,
 }) => {
+  
   const censorWords = (text) => {
     // Create a regular expression pattern for all words in the word list
     const pattern = new RegExp(`\\b(${chatFilteredWords.join("|")})\\b`, "gi");
@@ -47,7 +48,7 @@ const ChatBody = ({
                 }}
                 src={
                   message.image.startsWith("user")
-                    ? `${process.env.STATIC_SERVER}img/users/${message.image}`
+                    ? `${process.env.STATIC_SERVER}/img/users/${message.image}`
                     : message.image
                 }
                 alt="avatar"

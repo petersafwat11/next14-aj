@@ -11,7 +11,7 @@ const ReportBtn = ({ toggleReport }) => {
         viewBox="0 0 18 18"
         fill="none"
       >
-        <g opacity="0.4" clip-path="url(#clip0_265_5671)">
+        <g opacity="0.4" clipPath="url(#clip0_265_5671)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

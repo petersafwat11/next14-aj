@@ -10,14 +10,14 @@ import ChatTop from "./chatTop/ChatTop";
 import EmojiaAndGifs from "./emojiAndGifs/EmojiaAndGifs";
 import Poll from "./poll/Poll";
 import UserInfo from "./userInfo/UserInfo";
-import { getData } from "@/utils/dashboardTablePagesFunctions";
 import SelectColor from "./userInfo/selectColor/SelectColor";
 import Popup from "../popupWrapper/Popup";
 import Cookies from "js-cookie";
 import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
-import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
+import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
+// import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 
 const Chat = ({
   toggleChat,
@@ -236,7 +236,8 @@ const Chat = ({
         message: messageDestructure,
       });
       console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, message);
+      socket.emit(`chat message ${chatRoomSelection}`, messageDestructure);
+
       setMessages((prevState) => {
         return [...prevState, messageDestructure];
       });
@@ -296,7 +297,6 @@ const Chat = ({
           console.log("modifiedString", modifiedString);
           return { ...prevState, message: modifiedString };
         }
-        return prevState;
       }
     });
 
@@ -306,11 +306,16 @@ const Chat = ({
   };
   const contollChatRoom = async (room) => {
     try {
-      const roomMessages = await axios.get("chat", {
-        limit: 40,
-        room: room,
-        sort: { eventDate: 1 },
-      });
+      const roomMessages = await axios.get(
+        `${process.env.BACKEND_SERVER}/chat`,
+        {
+          params: {
+            limit: 40,
+            room: room,
+            sort: { eventDate: 1 },
+          },
+        }
+      );
       console.log("roomMessages", roomMessages?.data?.data);
       setChatRoomSelection(room);
       setMessages(roomMessages?.data?.data);
@@ -324,7 +329,7 @@ const Chat = ({
   };
   useEffect(() => {
     // Event listeners can be added here
-    socket.on(`chat message ${chatRoomSelection}`, (msg) => {
+    socket.on(`chat message English (Default)`, (msg) => {
       console.log("message recieved", msg);
       setMessages((prevState) => {
         return [...prevState, msg];
@@ -365,14 +370,22 @@ const Chat = ({
   useEffect(() => {
     const fetchChatData = async () => {
       try {
-        const chatPolls = await axios.get("chat/chatPoll", {
-          sort: { createdAt: -1 },
-        });
+        const chatPolls = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
+          {
+            params: {
+              sort: { createdAt: -1 },
+            },
+          }
+        );
 
-        const chatMode = await axios.get("chat/chatMode");
-        setChatMode(chatMode?.data?.data[0]);
-        setPolls(chatPolls?.data?.data || []);
-        console.log("chat polls", chatPolls?.data?.data);
+        const chatMode = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatMode`
+        );
+        console.log("chatPolls?.data?.data", chatPolls?.data?.data);
+        setChatMode(chatMode?.data?.data?.data[0]);
+        setPolls(chatPolls?.data?.data?.data || []);
+        // console.log("chat polls", chatPolls?.data?.data);
       } catch (error) {
         console.log(error);
       }
@@ -385,9 +398,12 @@ const Chat = ({
   useEffect(() => {
     const getFirstData = async () => {
       try {
-        const chatPolls = await axios.get("chat/chatPoll", {
-          sort: { createdAt: -1 },
-        });
+        const chatPolls = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
+          {
+            params: { sort: { createdAt: -1 } },
+          }
+        );
         setPolls(chatPolls?.data?.data);
         const remaining = getTimeRemainingInMinutes(
           chatPolls?.data?.data[0]?.createdAt,

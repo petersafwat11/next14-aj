@@ -6,6 +6,8 @@ import ServersButtons from "../serverButtons/ServersButtons";
 import BottomSocial from "../../bottomSocial/BottomSocial";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 import { calcRemainingTime, determineLive } from "@/app/lib/datesFunctions";
+import BottomSocialFallback from "../../bottomSocial/fallback/BottomSocial";
+
 import EventCountDown from "../eventCoutdown/EventCountDown";
 import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
@@ -47,7 +49,7 @@ const VideoBody = ({ eventDate, playStream, activeServer, servers }) => {
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>
         <div className={classes["social-links-desktop"]}>
-          <Suspense>
+          <Suspense fallback={<BottomSocialFallback />}>
             <BottomSocial />
           </Suspense>
         </div>

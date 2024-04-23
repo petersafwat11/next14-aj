@@ -5,7 +5,6 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import WhoWillWin from "./WhoWillWin";
 import classes from "./poll.module.css";
 import Cookies from "js-cookie";
-import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 import axios from "axios";
 
 const Poll = ({ polls }) => {

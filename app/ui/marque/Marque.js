@@ -2,19 +2,6 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import classes from "./marque.module.css";
 const Marque = ({ domains }) => {
-  // const [domains, setDomains] = useState([]);
-  // const fetchNewData = useCallback(async (query) => {
-  //   try {
-  //     const domains = await axios.get("links", query);
-  //     setDomains(response?.data?.data[0]?.domains?.split(" "));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   fetchNewData({ fields: "domains" });
-  // }, [fetchNewData]);
 
   return (
     <div className={classes["xx"]}>

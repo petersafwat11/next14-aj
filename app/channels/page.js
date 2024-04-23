@@ -34,56 +34,73 @@ const Page = async ({ searchParams }) => {
     );
   }
 
-  const channels = await axios.get(`${process.env.BACKEND_SERVER}/channels`, {
-    params: {
-      page: 1,
-      limit: 8,
-      mode: "Visible",
-      language: filterValue,
-      searchValue: searchValue,
-      or: ["channelName"],
-    },
-  });
-  // const chatRules = await axios.get(
-  //   `${process.env.BACKEND_SERVER}/chat/chatRules`
-  // );
-  // const chatMode = await axios.get(
-  //   `${process.env.BACKEND_SERVER}/chat/chatMode`
-  // );
-  // const chatFilteredWords = await axios.get(
-  //   `${process.env.BACKEND_SERVER}/chat/chatFilteredWords`
-  // );
+  const data = await Promise.all([
+    axios.get(`${process.env.BACKEND_SERVER}/chat/chatRules`),
+    axios.get(`${process.env.BACKEND_SERVER}/chat/chatMode`),
+    axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
+    axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+      params: {
+        limit: 0,
+        room: "English (Default)",
+        sort: { _id: 1 },
+        mode: "normal",
+      },
+    }),
+    axios.get(`${process.env.BACKEND_SERVER}/channels`, {
+      params: {
+        page: 1,
+        limit: 8,
+        mode: "Visible",
+        language: filterValue,
+        searchValue: searchValue,
+        or: ["channelName"],
+      },
+    }),
+  ])
+    .then((responses) => {
+      // responses is an array of axios responses
+      const [
+        chatRules,
+        chatMode,
+        chatFilteredWords,
+        chatMessages,
+        channelsData,
+      ] = responses;
 
-  // const chatMessages = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
-  //   params: {
-  //     limit: 0,
-  //     room: "English (Default)",
-  //     sort: { _id: 1 },
-  //     mode: "normal",
-  //   },
-  // });
+      // Access the data from each response
+      const rulesData = chatRules?.data?.data?.data[0].rules;
+      const modeData = chatMode?.data?.data?.data[0];
+      const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
+      const messagesData = chatMessages.data?.data?.data;
+      const channels = channelsData.data;
+      return { rulesData, modeData, filteredWordsData, messagesData, channels };
+    })
+    .catch((error) => {
+      // Handle any errors that occurred during any of the requests
+      console.error("Error in fetching chat resources:", error);
+    });
   const channelsServers = {
-    channels: channels?.data?.data?.data,
-    totalResults: channels?.data?.results,
+    channels: data?.channels?.data?.data,
+    totalResults: data?.channels?.results,
   };
   // const channelsServers = channelsServer;
   const playingServer =
     queryChannel?.data?.data?.streamLinkUrl ||
-    channels?.data?.data?.data[0]?.streamLinkUrl ||
+    data?.channels?.data?.data[0]?.streamLinkUrl ||
     null;
   const playingServerName =
     queryChannel?.data?.data?.channelName ||
-    channels?.data?.data?.data[0]?.channelName ||
+    data?.channels?.data?.data[0]?.channelName ||
     null;
-  const langs = channels?.data?.allLanguages;
+  const langs = data?.channels?.allLanguages;
   return (
     <div className={classes["channels"]}>
-      {/* <ShowingChat
-        mode={chatMode}
-        // chatMessages={chatMessages}
-        // chatRules={chatRules}
-        // chatFilteredWords={chatFilteredWords}
-      /> */}
+      <ShowingChat
+        mode={data.modeData}
+        chatMessages={data.messagesData}
+        chatRules={data.rulesData}
+        chatFilteredWords={data.filteredWordsData}
+      />
       <div className={classes["container"]}>
         <div className={classes["top-heading"]}>
           <span className={classes["heading-span"]}> Now Playing </span>
@@ -104,9 +121,10 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <WatchVideoBody
-            // chatMessages={chatMessages}
-            // chatRules={chatRules}
-            // chatFilteredWords={chatFilteredWords}
+            mode={data.modeData}
+            chatMessages={data.messagesData}
+            chatRules={data.rulesData}
+            chatFilteredWords={data.filteredWordsData}
             url={playingServer}
           />
         </div>

@@ -249,11 +249,16 @@ const Chat = ({
   };
   const contollChatRoom = async (room) => {
     try {
-      const roomMessages = await axios.get("chat", {
-        limit: 40,
-        room: room,
-        sort: { eventDate: 1 },
-      });
+      const roomMessages = await axios.get(
+        `${process.env.BACKEND_SERVER}/chat`,
+        {
+          params: {
+            limit: 40,
+            room: room,
+            sort: { eventDate: 1 },
+          },
+        }
+      );
       console.log("roomMessages", roomMessages?.data?.data);
       setChatRoomSelection(room);
       setMessages(roomMessages?.data?.data);

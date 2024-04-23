@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Match from "../match/Match";
 import ShowMore from "../../showMore/ShowMore";
 import classes from "./otherMatches.module.css";
 const OtherMatches = ({ data, searchValue, sportCategory }) => {
   const [otherMatches, setOtherMatches] = useState(data?.matches?.data);
   console.log("data", data?.total, otherMatches.length);
-
+  useEffect(() => {
+    setOtherMatches(data?.matches?.data);
+  }, [data]);
   return (
     <>
       <div>

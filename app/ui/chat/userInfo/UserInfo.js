@@ -7,8 +7,8 @@ import Cookies from "js-cookie";
 import classes from "./userInfo.module.css";
 import SignedIn from "./signed-in/SignedIn";
 import SignedOut from "./singed-out/SignedOut";
-import { checkSessionValidty } from "@/utils/checkSessionValid";
 import axios from "axios";
+import { checkSessionValidty } from "@/app/lib/sessionCheck";
 const UserInfo = ({
   toggleChangeAvatar,
   selectedAvatar,
@@ -115,7 +115,7 @@ const UserInfo = ({
           <Image
             src={
               selectedAvatar.startsWith("user")
-                ? `${process.env.STATIC_SERVER}img/users/${selectedAvatar}`
+                ? `${process.env.STATIC_SERVER}/img/users/${selectedAvatar}`
                 : selectedAvatar
             }
             style={{

@@ -6,6 +6,8 @@ import WatchDetails from "@/app/ui/watch/watch-details/WatchDetailsFootball";
 import WatchNavigation from "@/app/ui/watchNavigation/WatchNavigation";
 import SocialIcons from "@/app/ui/whatchShare/SocialIcons";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
+import BottomSocialFallback from "@/app/ui/BottomSocial/fallback/BottomSocial";
+
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
 import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
 import { determineLive, getMatchDate } from "@/app/lib/datesFunctions";
@@ -94,7 +96,7 @@ const Page = async ({ params }) => {
             <ProtonVpn />
           </div>
           <div className={classes["mobile-social"]}>
-            <Suspense>
+            <Suspense fallback={<BottomSocialFallback />}>
               <BottomSocial />
             </Suspense>
           </div>

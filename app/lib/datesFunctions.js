@@ -126,3 +126,31 @@ export const groupEventsByDate = (array) => {
 
   return arrayOfArrays;
 };
+export const getTimeRemainingInMinutes = (timeInZeroTimezone, minutesToAdd) => {
+  console.log("xx", timeInZeroTimezone, minutesToAdd);
+  if (!timeInZeroTimezone || !minutesToAdd) {
+    return false;
+  }
+  // Convert timeInZeroTimezone to milliseconds
+  const targetTime = new Date(timeInZeroTimezone).getTime();
+
+  // Add minutes to the target time
+  const newTargetTime = targetTime + minutesToAdd * 60 * 1000;
+
+  // Get current time in milliseconds
+  const currentTime = new Date().getTime();
+
+  // Calculate the difference in milliseconds
+  const timeDifference = newTargetTime - currentTime;
+
+  // Convert difference to minutes
+  const timeRemainingInMinutes = Math.round(timeDifference / (1000 * 60));
+
+  // Return time remaining in minutes if it's positive, otherwise return false
+  console.log(
+    "xxxx",
+    timeRemainingInMinutes >= 0 ? timeRemainingInMinutes : false
+  );
+
+  return timeRemainingInMinutes >= 0 ? timeRemainingInMinutes : false;
+};

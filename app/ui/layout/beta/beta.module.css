@@ -1,14 +1,13 @@
 .beta {
-  width: 3.82rem;
-  height: 1.75rem;
+  width: 3.056rem;
+  height: 1.4rem;
   flex-shrink: 0;
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
   background: #1d2e39;
   color: #fff;
   text-align: center;
   font-family: "Poppins";
-  /* "BankGothic Md BT"; */
-  font-size: 0.93rem;
+  font-size: 0.744rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
