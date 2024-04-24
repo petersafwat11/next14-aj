@@ -1,15 +1,15 @@
 .container {
-  padding: 1.5rem 0.4rem 0;
+  padding: 1.2rem 0.32rem 0;
 }
 .success {
   background-color: #10adff;
-  width: 7.78rem;
-  height: 7.7rem;
+  width: 6.224rem;
+  height: 6.16rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.03rem;
+  margin: 0 auto 0.824rem;
 }
 .body {
   text-align: center;
@@ -18,8 +18,8 @@
 .success-id span {
   font-family: "Poppins";
   font-weight: 700;
-  font-size: 0.93rem;
-  line-height: 1.69rem;
+  font-size: 0.744rem;
+  line-height: 1.352rem;
   color: rgba(255, 255, 255, 0.9);
 }
 .success-id span {
@@ -29,10 +29,10 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   line-height: 138%;
   color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.35rem;
+  margin-top: 0.28rem;
 }
 @media (max-width: 56.25rem) {
   .container {

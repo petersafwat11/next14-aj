@@ -11,8 +11,8 @@ const RegionalSettings = ({ toggleSettings }) => {
           <Image
             src="/svg/layout/header/world.svg"
             alt="logo"
-            width="17"
-            height="17"
+            width="14"
+            height="14"
           />
         </div>
         <p className={classes["text"]}>Regional Settings</p>

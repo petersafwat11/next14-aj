@@ -7,21 +7,21 @@
 .channel-search {
   display: flex;
   align-items: center;
-  padding-left: 2rem;
-  width: 11.1rem;
-  height: 1.875rem;
+  padding-left: 1.6rem;
+  width: 8.88rem;
+  height: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
   font-weight: 400;
-  font-size: 0.703rem;
-  line-height: 0.937rem;
+  font-size: 0.5624rem;
+  line-height: 0.7496rem;
   color: rgba(216, 216, 216, 0.4);
 }
 .search-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 12px;
+  left: 9.6px;
 }
 @media (max-width: 56.25rem) {
   .search-wrapper {
@@ -29,7 +29,6 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-
   }
   .search-div {
     position: relative;

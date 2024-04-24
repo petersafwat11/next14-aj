@@ -1,36 +1,36 @@
 .container {
-  max-width: 95%;
+  max-width: 76%;
   margin: auto;
-  padding-bottom: 7rem;
+  padding-bottom: 5.6rem;
 }
 .top-heading {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 3.94rem;
+  margin-top: 3.152rem;
 }
 .heading-span {
   color: rgba(255, 255, 255, 0.2);
-  font-size: 0.9375rem;
-  line-height: 1.2rem;
+  font-size: 0.75rem;
+  line-height: 0.96rem;
   font-family: RobotoSemiBold;
 }
 .heading-title {
   font-family: RobotoSemiBold;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  margin-bottom: 1rem;
-  margin-top: 0.35rem;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.8rem;
+  margin-top: 0.28rem;
 }
 
 .watch-video-top {
   display: flex;
   justify-content: space-between;
-  width: 98%;
-  margin: 1rem auto 5px;
+  width: 74.5%;
+  margin: 0.8rem auto 5px;
 }
 .after-video {
-  max-width: min(73vw, 63.3vw);
+  max-width: min(58.4vw, 50.64vw);
   margin: auto;
 }
 
@@ -38,11 +38,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 87.6%;
-  margin: 2.2rem auto 1.6rem;
-  height: 4.07rem;
+  width: 70.08%;
+  margin: 1.76rem auto 1.28rem;
+  height: 3.256rem;
   background-color: rgba(13, 19, 23, 0.96);
-  padding: 0 1.03rem;
+  padding: 0 0.824rem;
   border-radius: 0.3rem;
 }
 .watch-video-options > * {

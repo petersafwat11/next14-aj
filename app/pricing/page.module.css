@@ -1,41 +1,40 @@
 .pricing {
-  max-width: min(85%, 63rem);
+  max-width: min(68%, 50.4rem);
   margin: 0 auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 .div-title {
-  max-width: 53rem;
+  max-width: 42.4rem;
   margin: auto;
 }
 .notify-me {
-  width: 54.46rem;
-  height: 37.3rem;
-  border-radius: 41px;
+  width: 43.568rem;
+  height: 29.84rem;
+  border-radius: 32.8px;
   background: #0d1317;
-  /* Drop Shadow/High */
-  box-shadow: 0px 20px 50px 0px rgba(18, 17, 39, 0.08);
-  padding: 4.45rem 4.03rem 3.6rem 4.125rem;
-  margin: 1.78rem auto 0;
+  box-shadow: 0px 16px 40px 0px rgba(18, 17, 39, 0.08);
+  padding: 3.56rem 3.224rem 2.88rem 3.3rem;
+  margin: 1.424rem auto 0;
 }
 .notify-me .container {
   display: flex;
   align-items: flex-start;
-  gap: 1.125rem;
+  gap: 0.9rem;
 }
 .title {
   color: #e8e8e8;
-  font-size: 3rem;
+  font-size: 2.4rem;
   line-height: 140%;
   font-family: "Poppins";
   font-weight: 700;
-  letter-spacing: 0.64px;
-  margin-top: 1.36rem;
+  letter-spacing: 0.512px;
+  margin-top: 1.088rem;
 }
 .left {
-  margin-top: 2.9rem;
+  margin-top: 2.32rem;
 }
 .input-group {
-  margin-top: 2.9rem;
+  margin-top: 2.32rem;
 }
 
 .devider,
@@ -45,26 +44,26 @@
   display: block;
   opacity: 0.6000000238418579;
   background: #616161;
-  margin-top: 3.46rem;
-  margin-bottom: 2.43rem;
+  margin-top: 2.768rem;
+  margin-bottom: 1.944rem;
 }
 .devider-2 {
-  margin-top: 3rem;
-  margin-bottom: 1.12rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.896rem;
 }
 .sub-title {
   color: #fff;
   text-align: center;
-  font-size: 2.25rem;
+  font-size: 1.8rem;
   font-family: "Roboto";
   font-weight: 600;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.8rem;
 }
 .comming-soon,
 .comming-soon span {
   color: #fff;
   text-align: center;
-  font-size: 2.25rem;
+  font-size: 1.8rem;
   font-family: "Poppins";
   font-weight: 600;
 }

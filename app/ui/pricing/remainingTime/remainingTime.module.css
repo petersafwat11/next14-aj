@@ -1,9 +1,9 @@
 .remaining-time {
   color: #eb5757;
-  font-size: 1.21rem;
+  font-size: 0.968rem;
   font-family: "Poppins";
   font-weight: 700;
-  letter-spacing: 0.26px;
+  letter-spacing: 0.208px;
 }
 @media (max-width: 75rem) {
   .remaining-time {

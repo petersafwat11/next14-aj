@@ -1,16 +1,17 @@
 .container {
-  width: 79.5rem;
-  height: 2.79rem;
+  width: 63.6rem;
+  height: 2.232rem;
   background-color: #0d1317;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
 }
+
 .round {
   color: #fff;
   font-family: "Roboto";
-  font-size: 0.94rem;
+  font-size: 0.752rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

@@ -32,8 +32,8 @@ export default function Provider({ children, session }) {
           className={styles["scroll-top"]}
           src="/svg/layout/scroll-top.svg"
           alt="scroll-top"
-          width="30"
-          height="30"
+          width="24"
+          height="24"
         />
       )}
 

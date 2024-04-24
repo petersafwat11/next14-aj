@@ -1,28 +1,27 @@
 .donate {
-  /* margin-top: 2rem; */
   max-width: 100%;
-  margin: 0 3px;
-  padding-bottom: 3rem;
+  margin: 0 2.4px;
+  padding-bottom: 2.4rem;
 }
 .container {
-  max-width: 34.5rem;
-  margin: 0 auto 3rem;
-  font-size: 0.75rem;
-  line-height: 0.875rem;
+  max-width: 27.6rem;
+  margin: 0 auto 2.4rem;
+  font-size: 0.6rem;
+  line-height: 0.7rem;
 }
 .donate-wrapper-first,
 .donate-wrapper-second {
   background-color: #0d1317;
-  border-radius: 1.125rem;
+  border-radius: 0.9rem;
 }
 .paragraph {
   color: rgba(255, 255, 255, 0.48);
   text-align: center;
   font-family: "Poppins";
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 144.5%; /* 23.12px */
+  line-height: 115.6%;
 }
 .donation-methods-first,
 .donation-methods-second {
@@ -30,41 +29,41 @@
   flex-direction: column;
 }
 .donation-methods-first {
-  gap: 0.61rem;
-  padding: 1.36rem 1.875rem 1.875rem;
+  gap: 0.488rem;
+  padding: 1.088rem 1.5rem 1.5rem;
 }
 .donation-methods-second {
-  padding: 1.54rem 1.875rem;
-  gap: 0.89rem;
+  padding: 1.232rem 1.5rem;
+  gap: 0.712rem;
 }
 .pay-by-card,
 .or {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   cursor: pointer;
-  transition: all 0.3s ease-out;
-  height: 3.42rem;
+  transition: all 0.24s ease-out;
+  height: 2.736rem;
 }
 
 .pay-by-card {
   background-color: #03a1ce;
   font-family: RobotoRegular;
-  transition: all 0.4s ease-out;
-  font-size: 1.1rem;
+  transition: all 0.32s ease-out;
+  font-size: 0.88rem;
 }
 .or {
   font-family: RobotoRegular;
-  font-size: 0.85rem;
+  font-size: 0.68rem;
 }
 
 .devider {
   display: block;
   margin: 0 auto;
-  width: 2.06rem;
-  height: 1.45rem;
+  width: 1.648rem;
+  height: 1.16rem;
   background: #03a1cd;
 }
 @media (max-width: 56.25rem) {

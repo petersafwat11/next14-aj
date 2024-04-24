@@ -1,15 +1,15 @@
 .dropdown-lang {
   display: flex;
   align-items: center;
-  gap: 0.365rem;
+  gap: 0.292rem;
   justify-content: center;
-  width: 5.8125rem;
-  height: 1.875rem;
+  width: 4.65rem;
+  height: 1.5rem;
   color: rgba(255, 255, 255, 0.4);
-  border-radius: 0.33rem;
+  border-radius: 0.264rem;
   background: #161e25;
   text-align: center;
-  font-size: 0.796rem;
+  font-size: 0.6368rem;
   font-family: RobotoRegular;
   font-weight: 500;
   cursor: pointer;

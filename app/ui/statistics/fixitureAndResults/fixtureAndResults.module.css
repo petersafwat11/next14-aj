@@ -2,7 +2,7 @@
   width: 100%;
 }
 .dates {
-  border-radius: 1.12rem;
+  border-radius: 0.896rem;
   background: #0d1317;
   width: 100%;
   overflow: hidden;
@@ -10,8 +10,8 @@
 .devider {
   display: block;
   margin: 0 auto;
-  width: 2.3rem;
-  height: 1.125rem;
+  width: 1.84rem;
+  height: 0.9rem;
   background: #03a1cd;
 }
 

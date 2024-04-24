@@ -28,8 +28,8 @@ const Sports = () => {
           className={classes["sport-image"]}
           src="/svg/sports/nfl.svg"
           alt="nfl"
-          width="60"
-          height="60"
+          width="48"
+          height="48"
         />
         <p>NFL</p>
         {searchParams.get("category") === "nfl" ? (
@@ -48,8 +48,8 @@ const Sports = () => {
           className={classes["sport-image"]}
           src="/svg/sports/basketball.svg"
           alt="basketball"
-          width="60"
-          height="60"
+          width="48"
+          height="48"
         />
         <p>Basketball</p>
         {searchParams.get("category") === "basketball" ? (
@@ -68,8 +68,8 @@ const Sports = () => {
           className={classes["sport-image"]}
           src="/svg/sports/football.svg"
           alt="football"
-          width="60"
-          height="60"
+          width="48"
+          height="48"
         />
         <p>Football</p>
         {searchParams.get("category") === "football" ||
@@ -89,8 +89,8 @@ const Sports = () => {
           className={classes["sport-image"]}
           src="/svg/sports/boxing.svg"
           alt="boxing"
-          width="60"
-          height="60"
+          width="48"
+          height="48"
         />
         <p>Fights</p>
         {searchParams.get("category") === "fights" ? (
@@ -109,8 +109,8 @@ const Sports = () => {
           className={classes["sport-image"]}
           src="/svg/sports/other.svg"
           alt="other"
-          width="65"
-          height="60"
+          width="52"
+          height="48"
         />
         <p>Others</p>
         {searchParams.get("category") !== "football" &&

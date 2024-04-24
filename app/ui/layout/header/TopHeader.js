@@ -12,8 +12,8 @@ const TopHeader = ({ toggleSettings }) => {
           className={classes["logo"]}
           src="/svg/layout/header/logo.svg"
           alt="logo"
-          width="76"
-          height="54"
+          width="61"
+          height="43"
         />
         <div className={classes["beta"]}>
           <Beta />
@@ -35,8 +35,8 @@ const TopHeader = ({ toggleSettings }) => {
           <Image
             src="/svg/layout/header/user.svg"
             alt="user"
-            width="15"
-            height="15"
+            width="12"
+            height="12"
           />
         </div>
         <RegionalSettings toggleSettings={toggleSettings} />

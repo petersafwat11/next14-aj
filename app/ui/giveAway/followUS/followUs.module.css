@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 1.75rem;
+  padding: 0.72rem 1.4rem;
   background-color: #182228;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
@@ -12,11 +12,11 @@
   background-color: rgba(24, 34, 40, 0.25);
 }
 .follow-us-method-para {
-  font-size: 1.05rem;
-  line-height: 0.9375rem;
+  font-size: 0.84rem;
+  line-height: 0.75rem;
   font-weight: 400;
 
-  margin-left: 10.6%;
+  margin-left: 8.48%;
   margin-right: auto;
 }
 @media (min-width: 56.25rem) {

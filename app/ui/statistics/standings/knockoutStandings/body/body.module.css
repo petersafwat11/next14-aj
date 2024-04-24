@@ -1,12 +1,13 @@
 .container {
-  width: 76.74rem;
-  height: 67.7rem;
-  border-radius: 1.125rem;
+  width: 61.392rem;
+  height: 54.16rem;
+  border-radius: 0.9rem;
   background: #17232c;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   position: relative;
 }
+
 .round,
 .round-2,
 .round-3,
@@ -16,9 +17,10 @@
   justify-content: space-evenly;
   flex-direction: column;
 }
+
 .round-2 {
   justify-content: space-between;
-  margin: 7.4rem 0;
+  margin: 5.92rem 0;
 }
 .round-3 {
   justify-content: space-between;

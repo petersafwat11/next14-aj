@@ -1,13 +1,13 @@
 .news {
-  max-width: min(85%, 45rem);
+  max-width: min(68%, 36rem);
   margin: 0 auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 .container {
   width: 100%;
-  margin-top: 1.07rem;
+  margin-top: 0.856rem;
   background-color: #0d1317;
-  border-radius: 1.125rem;
+  border-radius: 0.9rem;
   padding: 0;
 }
 .news-items {
@@ -15,7 +15,6 @@
   align-items: flex-start;
   flex-direction: column;
 }
-
 @media (max-width: 56.25rem) {
   .news {
     max-width: min(87%, 35rem);

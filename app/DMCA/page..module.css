@@ -1,57 +1,57 @@
 .DMCA {
-  max-width: min(85%, 45rem);
+  max-width: min(68%, 36rem);
   margin: 0 auto;
-  padding-bottom: 7rem;
+  padding-bottom: 5.6rem;
 }
 
 .container {
-  margin-top: 1.15rem;
+  margin-top: 0.92rem;
   background-color: #0d1317;
-  border-radius: 1.125rem;
-  padding-bottom: 2.625rem;
+  border-radius: 0.9rem;
+  padding-bottom: 2.1rem;
   overflow: hidden;
 }
 .disclaimer {
-  padding: 2.4rem 4.125rem 2.9rem;
+  padding: 1.92rem 3.3rem 2.32rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 .disclaimer-heading {
   align-self: center;
   font-weight: 700;
   font-family: "Poppins";
-  font-size: 1.687rem;
+  font-size: 1.35rem;
   line-height: normal;
 }
 .disclaimer-para {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 2.76rem;
+  gap: 2.208rem;
 }
 .disclaimer-para p {
   font-weight: 600;
-  font-size: 0.94rem;
-  line-height: 1.22rem;
+  font-size: 0.752rem;
+  line-height: 0.976rem;
   color: rgba(255, 255, 255, 0.75);
   font-family: "Poppins", sans-serif;
 }
 .second-part {
   background: #131d23;
-  width: 88%;
+  width: 70.4%;
   margin: auto;
-  padding: 2.86rem 3.5rem 3.2rem;
-  border-radius: 0.85rem;
+  padding: 2.288rem 2.8rem 2.56rem;
+  border-radius: 0.68rem;
 }
 
 .companies-logoes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 5.8rem;
-  /* margin-bottom: 3.6rem; */
+  grid-row-gap: 4.64rem;
 }
+
 .companies-logoes-mobile {
   display: none;
 }

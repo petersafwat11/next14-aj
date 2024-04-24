@@ -1,8 +1,8 @@
 .container {
-  width: 29.5rem;
+  width: 23.6rem;
   background: #182228;
-  border-radius: 1.875rem;
-  padding: 2.1rem;
+  border-radius: 1.5rem;
+  padding: 1.68rem;
 }
 .top {
   display: flex;
@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 .exit {
   cursor: pointer;

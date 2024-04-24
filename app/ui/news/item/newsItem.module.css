@@ -1,37 +1,38 @@
 .news-item {
   display: flex;
   align-items: flex-start;
-  gap: 1.17rem;
-  padding: 18.4px 36.75px 20.4px 22.5px;
+  gap: 0.936rem;
+  padding: 14.72px 29.4px 16.32px 18px;
   cursor: pointer;
   width: 100%;
 }
 .news-item-image {
-  width: 13.2rem;
-  height: 11rem;
-  border-radius: 0.6rem;
+  width: 10.56rem;
+  height: 8.8rem;
+  border-radius: 0.48rem;
 }
 .news-item-content {
-  margin-top: 0.625rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.625rem;
-  padding-right: 1.3rem;
-  width: calc(100%- 108px);
+  gap: 0.5rem;
+  padding-right: 1.04rem;
+  width: calc(
+    100% - 86.4px
+  ); /* Adjust calc() to respect the exact calculation needed */
 }
 .news-item-heading {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.3215rem;
+  font-size: 0.9rem;
+  line-height: 1.0572rem;
 }
 .news-item-para {
   font-weight: 400;
   font-family: "Roboto", sans-serif;
-
-  font-size: 0.75rem;
-  line-height: 0.9rem;
+  font-size: 0.6rem;
+  line-height: 0.72rem;
   color: rgba(255, 255, 255, 0.7);
 }
 @media (max-width: 56.25rem) {

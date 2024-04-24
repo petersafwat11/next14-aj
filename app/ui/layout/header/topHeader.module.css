@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 5.71rem;
+  height: 4.568rem;
   background: #0d1317;
-  padding-right: 5.15rem;
+  padding-right: 4.12rem;
   z-index: 10;
   position: relative;
 }
@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  margin-left: 31.9rem;
+  gap: 1.2rem;
+  margin-left: 25.52rem;
   position: relative;
 }
 .logo {
@@ -30,7 +30,7 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  right: 2rem;
+  right: 1.6rem;
 }
 .right {
   display: flex;
@@ -41,14 +41,14 @@
 .top-header-items {
   display: flex;
   align-items: center;
-  gap: 2.06rem;
+  gap: 1.648rem;
 }
 .top-header-item {
   color: #7d7d7d;
-  padding-bottom: 8px;
+  padding-bottom: 6.4px;
   border-bottom: 1.5px solid transparent;
   transition: all 0.3s ease-in-out;
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   font-family: RobotoRegular;
   font-weight: 500;
   line-height: normal;
@@ -59,10 +59,10 @@
   border-bottom: 1.5px solid white;
 }
 .user-wrapper {
-  margin-left: 1.45rem;
-  margin-right: 1.875rem;
-  width: 2.53rem;
-  height: 2.53rem;
+  margin-left: 1.16rem;
+  margin-right: 1.5rem;
+  width: 2.024rem;
+  height: 2.024rem;
   border-radius: 50%;
   background-color: #00c4fb;
   display: flex;

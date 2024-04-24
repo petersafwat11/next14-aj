@@ -1,12 +1,12 @@
 .uesr-feedback-button {
-  font-size: 1.125rem;
-  line-height: 1.56rem;
+  font-size: 0.9rem;
+  line-height: 1.248rem;
   font-family: "Roboto";
   color: white;
   background-color: #03a1cd;
-  border-radius: 1.73rem;
-  width: 9rem;
-  height: 2.68rem;
+  border-radius: 1.384rem;
+  width: 7.2rem;
+  height: 2.144rem;
   display: flex;
   align-items: center;
   justify-content: center;

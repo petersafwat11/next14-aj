@@ -3,16 +3,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 4.07rem;
-  border-top-right-radius: 0.85rem;
-  border-top-left-radius: 0.85rem;
+  height: 3.256rem; 
+  border-top-right-radius: 0.68rem; 
+  border-top-left-radius: 0.68rem; 
   background: #19252d !important;
 }
 .title {
   color: #fff;
   text-align: center;
   font-family: "Roboto";
-  font-size: 1.22rem;
+  font-size: 0.976rem; 
   font-weight: 500;
   line-height: normal;
 }

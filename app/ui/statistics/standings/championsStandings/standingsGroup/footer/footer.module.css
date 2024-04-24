@@ -2,31 +2,36 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.94rem;
-  padding-top: 1.2rem;
-  margin-left: 1.5rem;
+  gap: 0.752rem;
+  padding-top: 0.96rem;
+  margin-left: 1.2rem;
 }
+
 .item {
   display: flex;
   align-items: center;
-  gap: 0.52rem;
+  gap: 0.416rem;
 }
+
 .EuropaLeague-span,
 .Knockouts-span {
-  width: 0.52rem;
-  height: 0.52rem;
+  width: 0.416rem;
+  height: 0.416rem;
   border-radius: 50%;
 }
+
 .EuropaLeague-span {
   background-color: #b77e2a;
 }
+
 .Knockouts-span {
   background-color: #396eb2;
 }
+
 .para {
   color: #fff;
   font-family: "Roboto";
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 500;
   line-height: normal;
 }

@@ -1,16 +1,16 @@
 .wrapper {
-  width: 43.7rem;
-  margin-top: 2.72rem;
+  width: 34.96rem;
+  margin-top: 2.176rem;
 }
 .title {
   color: #fff;
   font-family: "Poppins";
-  font-size: 1.6rem;
+  font-size: 1.28rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin: auto;
-  padding-bottom: 1.78rem;
+  padding-bottom: 1.424rem;
   border-bottom: 1px solid rgba(97, 97, 97, 0.6);
   width: 100%;
   display: flex;
@@ -18,12 +18,12 @@
 }
 .container {
   display: flex;
-  margin-top: 1.55rem;
+  margin-top: 1.24rem;
   width: 100%;
-  padding: 2.43rem 2.82rem 1.4rem 3.1rem;
+  padding: 1.944rem 2.256rem 1.12rem 2.48rem;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 0.85rem;
+  border-radius: 0.68rem;
   background: #0d1317;
   box-shadow: 0px 30px 60px 0px rgba(2, 80, 124, 0.02);
 }
@@ -32,24 +32,24 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 3.28rem;
-  border-radius: 0.45rem;
+  height: 2.624rem;
+  border-radius: 0.36rem;
   background: rgba(29, 36, 42, 0.4);
-  padding: 0 1.125rem 0 0.8rem;
+  padding: 0 0.9rem 0 0.64rem;
 }
 .comments {
-  margin: 1.4rem auto 3.94rem;
+  margin: 1.12rem auto 3.152rem;
 }
 .comment {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
   width: 100%;
 }
 .user {
   color: #fff;
   font-family: "Poppins";
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -57,15 +57,15 @@
 .para {
   color: rgba(255, 255, 255, 0.6);
   font-family: "Poppins";
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.32rem; /* 175% */
+  line-height: 1.056rem; /* 175% */
 }
 .time {
   color: rgba(255, 255, 255, 0.4);
   font-family: "Source Sans 3";
-  font-size: 14px;
+  font-size: 0.8rem; /* Converted px to rem assuming base font-size: 16px */
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -74,27 +74,27 @@
   color: #03a1cd;
   text-align: center;
   font-family: "Roboto";
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 0.94rem; /* 111.111% */
-  letter-spacing: 0.1px;
-  padding: 0.66rem;
-  border-bottom: 2.5px solid #03a1cd;
+  line-height: 0.752rem; /* 111.111% */
+  letter-spacing: 0.08px;
+  padding: 0.528rem;
+  border-bottom: 2px solid #03a1cd;
   cursor: pointer;
 }
 
 .load-more {
   width: 100%;
-  height: 2.95rem;
+  height: 2.36rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.28rem;
+  border-radius: 0.224rem;
   background: #1d242a;
   color: #fff;
   font-family: "Poppins";
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   font-weight: 600;
   line-height: normal;
   cursor: pointer;

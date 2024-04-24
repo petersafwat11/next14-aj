@@ -1,21 +1,21 @@
 .input-wrapper {
   position: relative;
-  width: 30.84rem;
-  height: 3.42rem;
-  border-radius: 11px;
+  width: 24.672rem;
+  height: 2.736rem;
+  border-radius: 8.8px;
   border: 3px solid #1f2f39;
   background-color: inherit;
-  margin: 1.36rem auto 0.8rem;
+  margin: 1.088rem auto 0.64rem;
 }
 .currency-sign {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 1.22rem;
+  left: 0.976rem;
   color: #465865;
   text-align: center;
   font-family: "Roboto";
-  font-size: 1.22rem;
+  font-size: 0.976rem;
   font-weight: 500;
   line-height: normal;
 }
@@ -25,10 +25,10 @@
   background-color: inherit;
   display: flex;
   align-items: center;
-  padding: 0 2.34rem;
+  padding: 0 1.872rem;
   color: #465865;
   font-family: "Roboto";
-  font-size: 1.22rem;
+  font-size: 0.976rem;
   font-weight: 500;
   line-height: normal;
 }
@@ -36,17 +36,17 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0.42rem;
+  right: 0.336rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.31rem;
-  height: 2.43rem;
-  border-radius: 0.52rem;
+  width: 3.448rem;
+  height: 1.944rem;
+  border-radius: 0.416rem;
   background: #111a20;
   color: rgba(70, 88, 101, 0.98);
   font-family: "Roboto";
-  font-size: 1.22rem;
+  font-size: 0.976rem;
   font-weight: 500;
   line-height: normal;
 }

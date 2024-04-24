@@ -29,8 +29,8 @@
 
 .icons {
   justify-content: center;
-  /* gap: 0.7rem; */
 }
+
 .link {
   display: flex;
   align-items: center;
@@ -38,22 +38,19 @@
   cursor: pointer;
   border: 1px solid transparent;
   padding: 4.5px;
-  /* border-radius: 50%; */
 }
-/* .link:hover {
-  border: 1px solid red;
-} */
+
 .link * {
   font-size: 1.04rem;
-  /* width: 16px;
-  height: auto; */
   color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .link:hover * {
   color: white;
 }
+
 @media (max-width: 56.25rem) {
   /* .container {
     display: none !important;

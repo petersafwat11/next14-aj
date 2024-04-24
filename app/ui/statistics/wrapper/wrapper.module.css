@@ -1,7 +1,7 @@
 .container {
-  max-width: min(55.5rem, 95%);
+  max-width: min(44.4rem, 95%);
   margin: auto;
-  padding-bottom: 7rem;
+  padding-bottom: 5.6rem;
 }
 @media (max-width: 56.25rem) {
   .container {

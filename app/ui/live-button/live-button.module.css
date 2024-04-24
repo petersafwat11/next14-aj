@@ -1,9 +1,9 @@
 .live-btn {
   color: white;
   background-color: var(--btn-background);
-  padding: 0.375rem 0.925rem;
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
+  padding: 0.3rem 0.74rem;
+  font-size: 0.6rem;
+  border-radius: 0.4rem;
   text-transform: uppercase;
   font-family: RobotoRegular;
   font-weight: 500;
@@ -18,11 +18,11 @@
 }
 
 .live-btn-rounded {
-  height: 0.75rem;
-  width: 0.75rem;
+  height: 0.6rem;
+  width: 0.6rem;
   background-color: white;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
   animation: live 0.8s ease-in-out infinite;
 }
 
@@ -51,7 +51,7 @@
 }
 @media (max-width: 56.25rem) {
   .live-btn {
-    padding: 0.27rem 0.75rem ;
+    padding: 0.27rem 0.75rem;
     font-size: 0.7rem;
     border-radius: 7px;
   }

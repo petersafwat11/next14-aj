@@ -3,9 +3,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin: 2.63rem auto 3.2rem;
-  gap: 0.5rem;
-  height: 1.75rem;
+  margin: 2.104rem auto 2.56rem;
+  gap: 0.4rem;
+  height: 1.4rem;
 }
 .button-share {
   display: flex;
@@ -13,7 +13,7 @@
   justify-content: center;
 }
 .wrapper {
-  height: 1.25rem;
+  height: 1rem;
 }
 .wrapper,
 .reddit {
@@ -26,16 +26,16 @@
 .reddit:hover > .tooltip {
   display: inline;
   position: absolute;
-  top: -1.8rem;
-  left: -2.5rem;
+  top: -1.44rem;
+  left: -2rem;
   z-index: 10;
   font-family: RobotoSemiBold;
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.52rem;
   line-height: 0%;
   background-color: #2b3134;
-  border-radius: 0.25rem;
-  padding: 0.67rem 0.71rem 0.6rem;
+  border-radius: 0.2rem;
+  padding: 0.536rem 0.568rem 0.48rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -48,42 +48,40 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -8px;
-  border-width: 8px;
+  margin-left: -6.4px;
+  border-width: 6.4px;
   border-style: solid;
   border-color: #2b3134 transparent transparent transparent;
 }
 .watch-video-share > * {
-  font-size: 1.7rem;
+  font-size: 1.36rem;
   color: white;
   cursor: pointer;
 }
 .share-icon {
-  font-size: 1.7rem;
+  font-size: 1.36rem;
 }
 .reddit {
-  height: 24px;
-  width: 24px;
+  height: 19.2px;
+  width: 19.2px;
   border-radius: 50%;
   background-color: white;
-  /* rgba(47, 52, 56, 0.9); */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-out;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 /* .reddit:hover > *, */
 .instagram:hover > *,
 .wrapper:hover > * {
-  /* color: #f74300; */
   color: white !important;
 }
 .reddit:hover {
   background-color: white;
 }
 .reddit-icon {
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   color: #1d2226;
   transition: all 0.2s ease-out;
 }
@@ -94,6 +92,7 @@
 .watch-video-share-icon {
   cursor: pointer;
 }
+
 @media (max-width: 56.25rem) {
   .watch-video-share {
     gap: 0.5rem;

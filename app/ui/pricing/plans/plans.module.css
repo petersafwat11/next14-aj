@@ -6,8 +6,8 @@
 .plans > * {
   display: flex;
   flex-direction: column;
-  border-radius: 0.7rem;
-  box-shadow: 0px 4px 23px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 0.56rem; 
+  box-shadow: 0px 3.2px 18.4px 0px rgba(0, 0, 0, 0.5);
 }
 .slider-wrapper {
   display: none;

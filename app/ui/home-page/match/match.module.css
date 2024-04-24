@@ -5,15 +5,15 @@
   align-items: center;
   justify-content: space-between;
   background: #203639;
-  border-radius: 0.55rem;
-  padding: 1.03rem 1.94rem 1.07rem 1.82rem;
+  border-radius: 0.44rem;
+  padding: 0.824rem 1.552rem 0.856rem 1.456rem;
   transition: all 0.3s ease-in-out;
 }
 .hot-match {
-  border-bottom: 2px solid #fbbf00;
+  border-bottom: 1.6px solid #fbbf00;
 }
 .other-match {
-  border-bottom: 2px solid #03a1cd;
+  border-bottom: 1.6px solid #03a1cd;
 }
 
 .hot-match:hover,
@@ -28,23 +28,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 25px;
+  gap: 20px;
 }
 
 .match-details {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-  line-height: 0.9rem;
-  width: 89px;
+  gap: 0.2rem;
+  font-size: 0.6rem;
+  line-height: 0.72rem;
+  width: 61.2px;
 }
 .leage {
   font-family: RobotoRegular;
   color: rgba(255, 255, 255, 0.408);
   white-space: nowrap;
-  /* opacity: 0.8; */
 }
 .date {
   font-family: RobotoRegular;
@@ -54,16 +53,16 @@
 .second-team {
   display: flex;
   align-items: center;
-  gap: 0.98rem;
-  width: 10rem;
+  gap: 0.784rem;
+  width: 8rem;
 }
 .first-team-name,
 .second-team-name,
 .teams-title {
-  font-size: 1.125rem;
-  line-height: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1rem;
   font-family: RobotoSemiBold;
-  margin-top: 2px;
+  margin-top: 1.6px;
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -72,9 +71,9 @@
 }
 .match-vs {
   font-family: RobotoBold;
-  font-size: 1rem;
-  line-height: 1rem;
-  margin-top: 2px;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  margin-top: 1.6px;
 }
 .teams-title {
   display: flex;
@@ -84,9 +83,9 @@
 }
 .status {
   font-family: RobotoSemiBold;
-  font-size: 0.75rem;
-  line-height: 0.9;
-  margin-top: 2px;
+  font-size: 0.6rem;
+  line-height: 0.72;
+  margin-top: 1.6px;
 
   color: #4ae96d;
 }
@@ -97,8 +96,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.58rem;
-  height: 1.4rem;
+  width: 2.064rem;
+  height: 1.12rem;
   background: #fbbf00;
 }
 .other-matches-devider {

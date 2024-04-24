@@ -1,17 +1,16 @@
 .contact {
-  max-width: 45rem;
+  max-width: 36rem;
   margin: 0 auto;
-  padding-bottom: 7rem;
+  padding-bottom: 5.6rem; 
 }
 .heading {
-  margin: 3.75rem auto 1.54rem;
-  font-weight: 700;
-  font-size: 2.25rem;
-  line-height: 2.625rem;
+  margin: 3rem auto 1.232rem; 
+  font-weight: 700; 
+  font-size: 1.8rem; 
+  line-height: 2.1rem; 
   text-align: center;
-  font-family: RobotoBold;
+  font-family: RobotoBold; 
 }
-
 @media (max-width: 56.25rem) {
   .contact {
     max-width: min(35rem, 95%);

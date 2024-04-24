@@ -7,21 +7,21 @@
   justify-content: center;
 }
 .container {
-  gap: 3.14rem;
+  gap: 2.512rem;
   flex-direction: column;
 }
 .servers {
-  gap: 1.45rem;
+  gap: 1.16rem;
   flex-direction: column;
 }
 .server,
 .selected-server {
-  width: 15.8rem;
-  height: 3.75rem;
-  border-radius: 2.9rem;
+  width: 12.64rem;
+  height: 3rem;
+  border-radius: 2.32rem;
   text-align: center;
   font-family: RobotoSemiBold;
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

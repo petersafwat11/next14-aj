@@ -5,13 +5,13 @@
 .retweet,
 .twitter {
   background: linear-gradient(to right, #2aabee, #229ed9);
-  width: 7.26rem;
-  height: 7.26rem;
+  width: 5.808rem;
+  height: 5.808rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.1rem auto 1.55rem;
+  margin: 1.68rem auto 1.24rem;
 }
 .retweet,
 .twitter {
@@ -22,23 +22,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.32rem;
-  margin-bottom: 1.55rem;
+  gap: 1.056rem;
+  margin-bottom: 1.24rem;
   white-space: nowrap;
 }
 .loading {
-  width: 14.48rem;
-  height: 0.32rem;
+  width: 11.584rem;
+  height: 0.256rem;
   background: #d9d9d9;
-  border-radius: 0.85rem;
+  border-radius: 0.68rem;
   position: relative;
   overflow: hidden;
 }
 .loading > span {
   background: #26a5e4;
-  border-radius: 0.85rem;
+  border-radius: 0.68rem;
   height: 100%;
-  width: 6.5rem;
+  width: 5.2rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -47,35 +47,23 @@
   animation-timing-function: linear;
   animation-delay: 0.2s;
   animation-iteration-count: infinite;
-  /* animation-direction: alternate; */
-}
-
-@keyframes example {
-  0% {
-    right: -50%;
-  }
-  100% {
-    right: 100%;
-  }
 }
 
 .join-button {
-  width: 7.97rem;
-  height: 1.875rem;
+  width: 6.376rem;
+  height: 1.5rem;
   background: #25a2e0;
-  border-radius: 0.375rem;
+  border-radius: 0.3rem;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
-  
 }
 .join-button:hover {
   background: rgba(1, 189, 241, 0.3);
@@ -84,8 +72,8 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.36rem;
+  font-size: 0.6rem;
+  line-height: 1.088rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.48);
 }

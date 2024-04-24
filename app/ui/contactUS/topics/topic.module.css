@@ -3,14 +3,13 @@
 }
 .topic-option {
   font-family: "Poppins";
-  height: 2.2rem;
+  height: 1.76rem;
   background: rgba(255, 255, 255, 0.08);
-  padding: 0.42rem 0.9375rem;
+  padding: 0.336rem 0.75rem;
   line-height: 0%;
-  /* border: 1px solid rgba(255, 255, 255, 0.12); */
-  border-radius: 4.68rem;
+  border-radius: 3.744rem;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   display: flex;
   align-items: center;
   white-space: nowrap;

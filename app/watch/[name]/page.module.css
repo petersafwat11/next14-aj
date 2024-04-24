@@ -1,27 +1,27 @@
 .watch-video-top {
   display: flex;
   justify-content: space-between;
-  width: 98%;
-  margin: 0 auto 5px;
+  width: 78.4%;
+  margin: 0 auto 4px;
 }
 .bottom {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2.775rem;
+  margin-top: 2.22rem;
   width: 100%;
 }
 .mobile-social {
   display: none;
 }
 .takticks {
-  margin-top: 1.7rem;
-  margin-bottom: 5.53rem;
+  margin-top: 1.36rem;
+  margin-bottom: 4.424rem;
 }
 
 .casino {
-  margin-bottom: 3.32rem;
+  margin-bottom: 2.656rem;
 }
 @media (max-width: 56.25rem) {
   .social-links-desktop {

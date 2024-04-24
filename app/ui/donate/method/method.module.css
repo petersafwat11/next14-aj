@@ -2,16 +2,16 @@
 .bitcoin,
 .stripe,
 .share,
-.goggle-pay,
+.google-pay,
 .apple-pay {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 4px; 
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-out;
-  height: 3.42rem;
+  height: 2.736rem; 
 }
 .paypal {
   background-color: white;

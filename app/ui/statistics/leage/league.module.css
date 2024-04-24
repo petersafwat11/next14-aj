@@ -1,35 +1,33 @@
 .leagueMenu {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  /* width: 45%; */
-  margin: auto;
+  padding-top: 2.4rem; 
+  padding-bottom: 2.4rem; 
+  margin: auto; 
 }
+
 .leagueMenu-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem; 
 }
-/* .leagueMenu-container {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-} */
+
 .leagueMenu-container-img-active > img {
-  opacity: 1;
+  opacity: 1; 
 }
+
 .leagueMenu-container-img > img,
 .leagueMenu-container-img-active > img {
-  /* background-color: black; */
-  border-radius: 50%;
+  border-radius: 50%; 
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
-.leagueMenu-container-img> img {
-  opacity: 0.4;
+
+.leagueMenu-container-img > img {
+  opacity: 0.4; 
 }
+
 .leagueMenu-container-img > img:hover {
-  opacity: 0.8;
+  opacity: 0.8; 
 }
 @media (max-width: 56.25rem) {
   .leagueMenu {

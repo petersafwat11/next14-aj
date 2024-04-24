@@ -1,16 +1,15 @@
 .matches {
-  margin-top: 0.5rem;
+  margin-top: 0.4rem; 
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  /* gap: 1.22rem; */
 }
+
 .show-more-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3.3rem;
-
+  margin-top: 2.64rem; 
 }
 
 @media (max-width: 56.25rem) {

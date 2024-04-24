@@ -1,21 +1,22 @@
 .standings {
-  background-color: #0d1317;
-  border-radius: 0.9rem;
+  background-color: #0d1317; 
+  border-radius: 0.72rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  /* grid-row-gap: 0.8rem; */
+  grid-template-columns: 1fr; 
 }
+
 .devider,
 .devider-2 {
   display: block;
-  height: 1px;
-  background: #797979;
-  width: 95%;
+  height: 0.8px; 
+  background: #797979; 
+  width: 95%; 
   margin: auto;
 }
+
 .devider-2 {
-  margin: 1.5rem auto 1.175rem;
+  margin: 1.2rem auto 0.94rem; 
 }
 
 @media (max-width: 56.25rem) {

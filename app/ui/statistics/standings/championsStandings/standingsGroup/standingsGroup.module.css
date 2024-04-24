@@ -1,18 +1,20 @@
 .container {
-  border-radius: 1.07rem;
+  border-radius: 0.856rem;
   background: #0d1317;
   width: 100%;
-  padding: 0.47rem 0.47rem 1.5rem;
+  padding: 0.376rem 0.376rem 1.2rem;
 }
+
 .title {
   color: #fff;
   font-family: "Roboto";
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-align: center;
 }
+
 .devider {
   display: block;
   margin: auto;

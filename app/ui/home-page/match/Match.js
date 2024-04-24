@@ -70,7 +70,7 @@ export const Match = ({ matchData, type, index, length }) => {
                       : "/svg/home/default-team-icon.svg"
                   }
                   alt="logo"
-                  width={34}
+                  width={28}
                 />
                 <p className={classes["first-team-name"]}>
                   {matchData?.firstTeamName}
@@ -90,7 +90,7 @@ export const Match = ({ matchData, type, index, length }) => {
                       : "/svg/home/default-team-icon.svg"
                   }
                   alt="logo"
-                  width={34}
+                  width={28}
                 />
               </div>
             </>

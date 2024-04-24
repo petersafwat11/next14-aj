@@ -1,31 +1,31 @@
 .container {
-  width: 25.8rem;
-  border-radius: 0.85rem;
+  width: 20.64rem;
+  border-radius: 0.68rem;
   background: #161f24;
-  padding: 1.7rem 2rem;
+  padding: 1.36rem 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.07rem;
-  margin: 10rem auto;
+  gap: 0.856rem;
+  margin: 8rem auto;
 }
 .text-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 .text {
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.04rem;
   line-height: normal;
   font-weight: 400;
 }
 .remaining-time {
   color: #fff;
   font-family: RobotoBold;
-  font-size: 1.3rem;
+  font-size: 1.04rem;
   font-weight: 700;
   line-height: normal;
 }

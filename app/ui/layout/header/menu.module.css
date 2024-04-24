@@ -1,19 +1,19 @@
 .nav {
-  width: 46.5rem;
+  width: 37.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0 1.64rem;
+  padding: 0.8rem 0 1.312rem;
   background: url("/svg/layout/header/background.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: top;
-  margin: -5.5px auto 0;
+  margin: -4.4px auto 0;
 }
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 1.48rem;
+  gap: 1.184rem;
   justify-content: center;
   margin: auto;
 }
@@ -21,11 +21,11 @@
 .list-item-active {
   color: #fff;
   text-align: center;
-  font-size: 1.23rem;
+  font-size: 0.984rem;
   font-family: RobotoSemiBold;
   font-weight: 600;
-  border-radius: 0.33rem;
-  padding: 0.22rem 0.5rem;
+  border-radius: 0.264rem;
+  padding: 0.176rem 0.4rem;
   transition: 0.3s all ease-out;
   cursor: pointer;
 }

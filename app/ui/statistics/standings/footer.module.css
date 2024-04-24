@@ -1,27 +1,31 @@
 .standings-footer {
-  margin-left: 1.96rem;
-  margin-bottom: 1.73rem;
+  margin-left: 1.568rem; 
+  margin-bottom: 1.384rem;
 }
+
 .leagues {
   display: flex;
   align-items: center;
-  gap: 1.22rem;
+  gap: 0.976rem; 
 }
+
 .league {
   display: flex;
   align-items: center;
-  gap: 0.515rem;
+  gap: 0.412rem; 
 }
+
 .league-name {
-  color: #fff;
-  font-size: 0.75rem;
+  color: #fff; 
+  font-size: 0.6rem;
   font-family: "Roboto";
-  font-weight: 500;
+  font-weight: 500; 
 }
+
 .league span {
-  width: 0.515rem;
-  height: 0.515rem;
-  border-radius: 50%;
+  width: 0.412rem; 
+  height: 0.412rem; 
+  border-radius: 50%; 
 }
 .conference-league {
   background: #26b812;
