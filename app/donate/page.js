@@ -23,18 +23,18 @@ const Donate = () => {
             <div className={classes["pay-by-card"]}>PAY BY CARD</div>
             <div className={classes["or"]}>OR</div>
 
-            <Method name={"paypal"} width={28} height={32} />
-            <Method name={"bitcoin"} width={23} height={30} />
-            <Method name={"stripe"} width={72} height={30} />
-            <Method name={"share"} width={20} height={34} />
+            <Method name={"paypal"} width={23} height={26} />
+            <Method name={"bitcoin"} width={19} height={24} />
+            <Method name={"stripe"} width={85} height={24} />
+            <Method name={"share"} width={16} height={28} />
           </div>
         </div>
         <span className={classes["devider"]}></span>
 
         <div className={classes["donate-wrapper-second"]}>
           <div className={classes["donation-methods-second"]}>
-            <Method name={"goggle-pay"} width={32} height={32} />
-            <Method name={"apple-pay"} width={32} height={38} />
+            <Method name={"goggle-pay"} width={26} height={26} />
+            <Method name={"apple-pay"} width={26} height={31} />
           </div>
         </div>
       </div>

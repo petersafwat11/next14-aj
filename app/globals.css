@@ -218,7 +218,7 @@ button {
   align-items: flex-start;
   flex-direction: column;
   /* min-height: 40.6rem; */
-  max-width: min(73vw, 63.3vw);
+  max-width: min(58.4vw, 50.64vw);
 }
 .watch-video {
   display: flex;

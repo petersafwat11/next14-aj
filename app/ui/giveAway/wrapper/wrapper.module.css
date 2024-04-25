@@ -1,34 +1,36 @@
 .give-away {
   position: relative;
-  margin: 1.3rem 2.4px;
-  padding-bottom: 2.4rem;
+  margin: 1.625rem 3px;
+  padding-bottom: 3rem;
 }
 .container {
   max-width: 100%;
 }
 .give-away-wrapper {
-  height: 48.8rem;
+  height: 61rem;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 7.2% 1fr 32%;
-  padding: 0.8rem 0.5496rem 0.75rem 0.7rem;
+  grid-template-rows: 9% 1fr 40%;
+  /* grid-row-gap: 2rem; */
+  padding: 1rem 0.687rem 0.9375rem 0.875rem;
   background-color: #0d1317;
-  border-radius: 0.9rem;
+  border-radius: 1.125rem;
 }
 .give-away-details {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 0.48rem 0.88rem 0.55rem;
+  /* grid-column-gap: 2.5rem; */
+  padding: 0.6rem 1.1rem 0.6875rem;
   font-family: RobotoSemiBold;
-  font-size: 0.88rem;
-  line-height: 0.95rem;
+  font-size: 1.1rem;
+  line-height: 1.1875rem;
   text-align: center;
 }
 .give-away-details-item {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 0.24rem;
+  gap: 0.3rem;
 }
 .give-away-details-item > p {
   font-family: RobotoRegular;
@@ -36,62 +38,60 @@
 }
 .give-away-compition {
   position: relative;
-  padding-top: 1.7rem;
+  padding-top: 2.125rem;
 }
 .give-away-heading-2 {
-  font-size: 1.92rem;
-  line-height: 1.84rem;
+  font-size: 2.4rem;
+  line-height: 2.3rem;
   max-width: 84%;
   text-align: center;
   margin: auto;
-  font-family: RobotoRegular;
-  font-weight: 500;
-}
-.give-away-heading-2 > span {
-  color: #00c4fb;
   display: inline-block;
 }
 .give-away-image {
-  height: 61.6%;
-  margin-top: -1.6rem;
+  height: 77%;
+  margin-top: -2rem;
   background: url("/svg/give-away/wrapper.svg");
   max-width: 100%;
   margin: auto;
   background-repeat: no-repeat;
   background-position: top;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 .give-away-center-image {
-  margin-top: 2.08rem;
-  margin-left: 16%;
+  margin-top: 2.6rem;
+  margin-left: 20%;
 }
 .give-away-para {
-  font-size: 0.75rem;
-  line-height: 0.9rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   font-family: RobotoRegular;
   font-weight: 500;
+
   max-width: 82%;
   text-align: center;
   margin: auto;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
 }
 .give-away-para > span {
   color: #02c6f9;
-  margin-left: 0.2rem;
+  margin-left: 0.25rem;
 }
 .devider {
   position: absolute;
   top: 0;
-  left: -10.4px;
-  width: 84.8%;
-  height: 0.8px;
+  left: -13px;
+  height: 1px;
+  width: 106%;
+  height: 1px;
   background-color: white;
 }
 .follow-us {
   display: grid;
+
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-row-gap: 0.35rem;
+  grid-row-gap: 0.4375rem;
 }
 @media (min-width: 34rem) {
   .container {
@@ -114,60 +114,71 @@
 }
 @media (min-width: 56.25rem) {
   .give-away {
-    max-width: 35rem;
+    max-width: 28rem;
     margin: auto;
   }
+
   .container {
-    margin-top: 3.65rem;
+    margin-top: 2.92rem;
     width: 100%;
-    margin-bottom: 3rem;
-    padding-bottom: 9.2rem;
+    margin-bottom: 2.4rem;
+    padding-bottom: 7.36rem;
   }
+
   .give-away-wrapper {
-    height: 67rem;
-    grid-template-rows: 7.9% 1fr 40%;
-    padding: 1.25rem 1rem 1.7rem;
+    height: 53.6rem;
+    grid-template-rows: 7.9% 1fr 46%;
+    padding: 1rem 0.8rem 1.36rem;
   }
+
   .give-away-details {
-    padding: 0 0.3rem 1.1rem 0.6875rem;
+    padding: 0 0.24rem 0.88rem 0.55rem;
     font-family: RobotoRegular;
-    font-size: 1.3125rem;
-    line-height: 1.575rem;
+    font-size: 1.05rem;
+    line-height: 1.26rem;
     text-align: center;
   }
+
   .give-away-details-item {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
+
   .give-away-compition {
     position: relative;
-    padding-top: 2.125rem;
+    padding-top: 1.7rem;
   }
+
   .give-away-heading-2 {
-    font-size: 2.72rem;
-    line-height: 3.2rem;
+    font-size: 2.176rem;
+    line-height: 2.56rem;
     max-width: 72%;
   }
+
   .give-away-image {
-    height: 70%;
-    margin-top: -2rem;
+    height: 83%;
+    margin-top: -1.6rem;
     background: url("/svg/give-away/wrapper.svg");
-    /* max-width: 80%; */
     margin: auto;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: top;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
+
   .give-away-para {
-    font-size: 1.6rem;
-    line-height: 1.875rem;
+    font-size: 1.28rem;
+    line-height: 1.5rem;
     max-width: 85%;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
   }
+
   .follow-us {
-    margin-top: 1.875rem;
-    grid-row-gap: 0.7rem;
+    margin-top: 1.5rem;
+    grid-row-gap: 0.56rem;
   }
 }

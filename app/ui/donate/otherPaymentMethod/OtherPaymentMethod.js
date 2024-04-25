@@ -11,8 +11,8 @@ const OtherPaymentMethod = ({ title, data, message, toggle, button }) => {
           className={classes["exit"]}
           src="/svg/exit.svg"
           alt="exit"
-          width="15"
-          height="15"
+          width="12"
+          height="12"
         />
       </div>
       <div className={classes["data"]}>{data}</div>

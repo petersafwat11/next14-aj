@@ -37,15 +37,15 @@ const FreebiePlan = () => {
               <Image
                 src="/svg/pricing/free-supported.svg"
                 alt="free-supported"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
               />
             ) : (
               <Image
                 src="/svg/pricing/free-not-supported.svg"
                 alt="free-not-supported"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
               />
             )}
             {feature}

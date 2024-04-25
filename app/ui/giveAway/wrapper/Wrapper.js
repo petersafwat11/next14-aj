@@ -30,7 +30,7 @@ const followUsReducer = (state, action) => {
   }
 };
 
-const Wrapper = ({ entries, eventData , allSocial}) => {
+const Wrapper = ({ entries, eventData, allSocial }) => {
   console.log(entries);
   const [followUs, dispatchAction] = useReducer(followUsReducer, {
     display: false,
@@ -48,7 +48,11 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
     <main className={classes["give-away"]}>
       {followUs.display && (
         <Popup>
-          <StepsWrapper dispatchAction={dispatchAction} followUs={followUs} allSocial={allSocial} />
+          <StepsWrapper
+            dispatchAction={dispatchAction}
+            followUs={followUs}
+            allSocial={allSocial}
+          />
         </Popup>
       )}
 
@@ -84,8 +88,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
                 src={`${process.env.STATIC_SERVER}/img/giveaway/${eventData?.prizeImage}`}
                 crossOrigin="anonymous"
                 alt="playstation"
-                width={160}
-                height={190}
+                width={128}
+                height={152}
               />
               <p className={classes["give-away-para"]}>
                 {eventData?.description}
@@ -98,8 +102,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
               dispatchAction={dispatchAction}
               src={"/svg/give-away/id-badge.svg"}
               alt={"Id-Badge"}
-              width={28}
-              height={28}
+              width={23}
+              height={23}
               indicatorsNum={2}
               para={"Full name and email"}
             />
@@ -108,8 +112,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
               dispatchAction={dispatchAction}
               src={"/svg/give-away/mail.svg"}
               alt={"Mail"}
-              width={28}
-              height={28}
+              width={23}
+              height={23}
               indicatorsNum={2}
               para={"Join an Email Newsletter"}
             />
@@ -119,8 +123,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
               src={"/svg/give-away/telegram.svg"}
               alt={"Telegram"}
               indicatorsNum={3}
-              width={28}
-              height={28}
+              width={23}
+              height={23}
               para={"Join our Telegram Channel"}
             />
             <FollowUS
@@ -129,8 +133,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
               src={"/svg/give-away/twitter.svg"}
               alt={"Twitter"}
               indicatorsNum={3}
-              width={28}
-              height={28}
+              width={23}
+              height={23}
               para={"Follow us on Twitter"}
             />
             <FollowUS
@@ -139,8 +143,8 @@ const Wrapper = ({ entries, eventData , allSocial}) => {
               src={"/svg/give-away/retweet.svg"}
               alt={"Retweet"}
               indicatorsNum={3}
-              width={28}
-              height={28}
+              width={23}
+              height={23}
               para={"Retweet us on Twitter"}
             />
           </div>

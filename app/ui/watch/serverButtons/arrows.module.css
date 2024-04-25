@@ -1,25 +1,28 @@
 .prev-wrapper,
 .next-wrapper {
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 1.32rem;
+  height: 1.32rem;
   border-radius: 50%;
   background-color: rgba(35, 43, 47, 1);
   position: absolute;
-  top: 0.25rem;
+  top: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .arrow {
   color: #dbdbdb;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
+
 .prev-wrapper {
-  left: -2rem;
+  left: -1.6rem;
 }
+
 .next-wrapper {
-  right: -2rem;
+  right: -1.6rem;
 }
 @media (max-width: 56.25rem) {
   .prev-wrapper,

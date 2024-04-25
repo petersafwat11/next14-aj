@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 .league-image {
-  width: 96px;
+  width: 77px;
 }
 .date-and-place {
   display: flex;
@@ -36,7 +36,7 @@
   overflow: hidden;
 }
 .team-image {
-  width: 84.8px;
+  width: 68px;
 }
 .first-team {
   justify-content: flex-start;

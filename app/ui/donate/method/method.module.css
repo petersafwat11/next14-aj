@@ -2,7 +2,7 @@
 .bitcoin,
 .stripe,
 .share,
-.google-pay,
+.goggle-pay,
 .apple-pay {
   display: flex;
   align-items: center;

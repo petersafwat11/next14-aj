@@ -43,7 +43,7 @@ const ServersButtons = ({
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: servers?.length > 4 ? 4 : servers?.length,
+    slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow:
       servers?.length - 4 > 0 && servers?.length - 4 - currentSlide > 0 ? (

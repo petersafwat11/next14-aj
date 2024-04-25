@@ -38,8 +38,8 @@ const YearlyPlan = () => {
           <Image
             src="/svg/pricing/premuim-supported.svg"
             alt="premuim-supported"
-            width="24"
-            height="24"
+            width="20"
+            height="20"
           />
           {feature}
         </div>

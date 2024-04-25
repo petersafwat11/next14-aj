@@ -29,8 +29,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 70px;
-  height: 80px;
+  width: 56px;
+  height: 64px;
   cursor: pointer;
   display: flex;
   align-items: center;

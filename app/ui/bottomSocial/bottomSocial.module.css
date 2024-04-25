@@ -2,29 +2,31 @@
 .icons {
   display: flex;
   align-items: center;
-  border-radius: 2rem;
+  border-radius: 1.6rem;
 }
+
 .container {
   justify-content: space-between;
-  width: 12.37rem;
-  height: 2.3rem;
+  width: 9.896rem;
+  height: 1.84rem;
   background: rgba(13, 19, 23, 0.96);
-  gap: 0.61rem;
-  padding: 0 0.7rem 0 0.24rem;
+  gap: 0.488rem;
+  padding: 0 0.56rem 0 0.192rem;
 }
+
 .text {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 6.23rem;
-  height: 1.875rem;
+  width: 4.984rem;
+  height: 1.5rem;
   background-color: rgba(22, 29, 34, 0.96);
   color: rgba(255, 255, 255, 0.4);
   font-family: "Poppins";
-  font-size: 0.77rem;
+  font-size: 0.616rem;
   font-weight: 500;
   line-height: normal;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
 }
 
 .icons {
@@ -37,11 +39,11 @@
   justify-self: center;
   cursor: pointer;
   border: 1px solid transparent;
-  padding: 4.5px;
+  padding: 3.6px;
 }
 
 .link * {
-  font-size: 1.04rem;
+  font-size: 0.84rem;
   color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s ease-in-out;

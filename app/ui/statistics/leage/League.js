@@ -20,8 +20,8 @@ const LeagueMenu = ({ handleChangeLeagueActive, leagueActive }) => {
             <Image
               src={`/svg/statistics/${item.name}.svg`}
               alt={item.name}
-              width="70"
-              height="70"
+              width="56"
+              height="56"
             />
           </div>
         ))}

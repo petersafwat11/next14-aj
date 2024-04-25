@@ -11,8 +11,8 @@ const ReachUs = () => {
           className={classes["email-icon"]}
           src="/svg/contact/email.svg"
           alt="mail"
-          width="27"
-          height="27"
+          width="22"
+          height="22"
         />
         <p>info@ajsports.ch</p>
       </div>
@@ -21,8 +21,8 @@ const ReachUs = () => {
           className={classes["phone-icon"]}
           src="/svg/contact/phone.svg"
           alt="phone"
-          width="27"
-          height="27"
+          width="22"
+          height="22"
         />
         <p>+7(4942)35-51-86</p>
       </div>
@@ -33,8 +33,8 @@ const ReachUs = () => {
           className={classes["location-icon"]}
           src="/svg/contact/location.svg"
           alt=""
-          width="22"
-          height="30"
+          width="18"
+          height="24"
         />
         <p>Festival naya Ul, bld. 10, appt. 19, Kostroma, Russia</p>
       </div>

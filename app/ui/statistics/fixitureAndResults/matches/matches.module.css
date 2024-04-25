@@ -44,12 +44,16 @@
 .second-team {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 9.04rem;
+  white-space: nowrap;
+  gap: 1rem;
 }
-
+.first-team {
+  justify-content: flex-end;
+}
 .second-team {
-  justify-self: start;
+  justify-self: flex-start;
 }
 
 .center {
@@ -88,7 +92,7 @@
 }
 
 .team-image {
-  width: 34px;
+  width: 28px;
   height: auto;
 }
 @media (max-width: 56.25rem) {

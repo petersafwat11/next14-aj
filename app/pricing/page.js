@@ -28,8 +28,8 @@ const page = () => {
               className={classes["rocket-icon"]}
               src="/svg/pricing/rocket-icon.svg"
               alt="faster"
-              width="297"
-              height="303"
+              width="238"
+              height="242"
             />
           </div>
           <div className={classes["input-group-mobile"]}>
