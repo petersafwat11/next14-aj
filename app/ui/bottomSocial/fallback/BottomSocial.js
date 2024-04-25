@@ -1,6 +1,6 @@
 import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
 import { TfiTwitterAlt } from "react-icons/tfi";
-import classes from "./bottomSocial.module.css";
+import classes from "../bottomSocial.module.css";
 const BottomSocial = () => {
   // const links = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
   //   params: {
@@ -17,7 +17,7 @@ const BottomSocial = () => {
           rel="noreferrer"
           target="_blank"
           className={classes["link"]}
-          href={'/'}
+          href={"/"}
         >
           <FaDiscord />
         </a>
@@ -25,7 +25,7 @@ const BottomSocial = () => {
           rel="noreferrer"
           target="_blank"
           className={classes["link"]}
-          href={'/'}
+          href={"/"}
         >
           <TfiTwitterAlt />
         </a>
@@ -33,7 +33,7 @@ const BottomSocial = () => {
           rel="noreferrer"
           target="_blank"
           className={classes["link"]}
-          href={'/'}
+          href={"/"}
         >
           <FaTelegramPlane />
         </a>

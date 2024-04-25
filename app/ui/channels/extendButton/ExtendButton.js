@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./extendButton.module.css";
 const ExtendButton = ({ activeExtendMode }) => {
   return (
-    <div className={classes["extend"]}>
+    <div onClick={activeExtendMode} className={classes["extend"]}>
       <svg
         className={classes["svg"]}
         xmlns="http://www.w3.org/2000/svg"

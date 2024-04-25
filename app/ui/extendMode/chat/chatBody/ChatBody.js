@@ -15,11 +15,15 @@ const ChatBody = ({
           <div ref={lastMessage} key={index} className={classes["message"]}>
             <div className={classes["user-image"]}>
               <Image
-                onClick={() => {
-                  console.log("usernames", message?.username, username);
-                }}
+                // onClick={() => {
+                //   console.log("usernames", message?.username, username);
+                // }}
                 className={classes["user-icon"]}
-                src={message.image}
+                src={
+                  message.image.startsWith("user")
+                    ? `${process.env.STATIC_SERVER}/img/users/${message.image}`
+                    : message.image
+                }
                 alt="avatar"
                 width="26"
                 height="26"

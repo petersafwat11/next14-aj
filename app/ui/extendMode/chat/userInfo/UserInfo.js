@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import classes from "./userInfo.module.css";
 import SignedIn from "./signed-in/SignedIn";
 import SignedOut from "./singed-out/SignedOut";
-> 3 | import { RgbaStringColorPicker } from "react-colorful";
 import axios from "axios";
 import { checkSessionValidty } from "@/app/lib/sessionCheck";
 const UserInfo = ({

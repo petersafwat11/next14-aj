@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./wrapper.module.css";
 // import Chat from "../chat/Chat";
 import Image from "next/image";
+import Chat from "../chat/Chat";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 const ExtendModeWrapper = ({
   url,
@@ -101,7 +102,7 @@ const ExtendModeWrapper = ({
           <HlcPlayer notRounded={true} url={url} />
         </div>
 
-        {/* <div className={inputActive ? classes["chat-active"] : classes["chat"]}>
+        <div className={inputActive ? classes["chat-active"] : classes["chat"]}>
           <Chat
             setInputActive={setInputActive}
             setExtendMode={setExtendMode}
@@ -109,7 +110,7 @@ const ExtendModeWrapper = ({
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );

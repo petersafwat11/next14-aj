@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./globalHeader.module.css";
 const GlobalHeader = ({ category, changeCategory, categories }) => {
-  console.log("categories", categories);
+  // console.log("categories", categories);
   return (
     <div className={classes["header"]}>
       {categories.map((item, index) => (
