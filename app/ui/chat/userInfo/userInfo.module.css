@@ -1,104 +1,110 @@
 .user-info {
   background: #0d1317;
-  box-shadow: 0px 3.20559px 32.0559px rgba(0, 0, 0, 0.08);
-  border-radius: 1.4rem;
-  width: 24.23rem;
-  padding: 2.25rem 3.9rem 2rem 4rem;
+  box-shadow: 0px 2.564472px 25.64472px rgba(0, 0, 0, 0.08);
+  border-radius: 1.12rem;
+  width: 19.384rem;
+  padding: 1.8rem 3.12rem 1.6rem 3.2rem;
 }
+
 .user-info-top {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 0.75rem;
-  gap: 1.875rem;
+  padding-right: 0.6rem;
+  gap: 1.5rem;
 }
+
 .username-color {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.04rem;
+  height: 1.04rem;
   border-radius: 50%;
   cursor: pointer;
 }
+
 .username-unavailable {
   color: #f54336;
-  margin-top: 0.375rem;
+  margin-top: 0.3rem;
   font-family: "Roboto";
-  font-size: 0.61rem;
+  font-size: 0.488rem;
   font-weight: 400;
-  margin-left: 0.1rem;
+  margin-left: 0.08rem;
 }
+
 .selected-avatar {
-  /* background: url("/svg/chat/background.svg"); */
-  /* background-size: 100%; */
-  /* width: 6.8rem;
-  height: 7.54rem; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .change-button {
-  padding: 0.46rem 0.93rem;
-  width: 3.56rem;
-  height: 1.4rem;
+  padding: 0.368rem 0.744rem;
+  width: 2.848rem;
+  height: 1.12rem;
   background: #eaf2fc;
-  border-radius: 0.18rem;
+  border-radius: 0.144rem;
   font-family: RobotoSemiBold;
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.52rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #364e5c;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.16s ease-in-out;
 }
+
 .change-button:hover {
   background: rgba(234, 242, 252, 0.5);
   color: rgba(255, 255, 255, 0.75);
 }
+
 .user-info-para {
   font-family: RobotoSemiBold;
   font-weight: 600;
-  font-size: 1.03rem;
-  line-height: 1.22rem;
+  font-size: 0.824rem;
+  line-height: 0.976rem;
   color: #ffffff;
-  margin-top: 1.78rem;
-  letter-spacing: 0.2px;
-  margin-bottom: 0.56rem;
+  margin-top: 1.424rem;
+  letter-spacing: 0.16px;
+  margin-bottom: 0.448rem;
 }
 
 .user-info-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.26rem;
-  margin-top: 1.32rem;
+  gap: 1.008rem;
+  margin-top: 1.056rem;
 }
 .confirm-button {
-  width: 4.2rem;
-  height: 1.83rem;
+  width: 3.36rem;
+  height: 1.464rem;
   background: #01bcf1;
   color: white;
-  border-radius: 0.18rem;
+  border-radius: 0.144rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: RobotoRegular;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   cursor: pointer;
 }
+
 .confirm-button:hover {
   background: rgba(1, 189, 241, 0.5);
 }
+
 .cancel-button {
   cursor: pointer;
   font-family: RobotoRegular;
   font-weight: 500;
-  font-size: 0.65rem;
-  line-height: 0.75rem;
+  font-size: 0.52rem;
+  line-height: 0.6rem;
   color: #acacac;
   background-color: inherit;
 }
+
 .cancel-button:hover {
   color: #666464;
 }

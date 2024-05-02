@@ -65,9 +65,10 @@ export const Match = ({ matchData, type, index, length }) => {
                   crossOrigin="anonymous"
                   className={classes["first-team-image"]}
                   src={
-                    matchData?.firstTeamLogo !== null
-                      ? `${process.env.STATIC_SERVER}/img/matches/${matchData?.firstTeamLogo}`
-                      : "/svg/home/default-team-icon.svg"
+                    matchData?.firstTeamLogo === null ||
+                    matchData?.firstTeamLogo === undefined
+                      ? "/svg/home/default-team-icon.svg"
+                      : `${process.env.STATIC_SERVER}/img/matches/${matchData?.firstTeamLogo}`
                   }
                   alt="logo"
                   width={28}
@@ -85,9 +86,10 @@ export const Match = ({ matchData, type, index, length }) => {
                   crossOrigin="anonymous"
                   className={classes["second-team-image"]}
                   src={
-                    matchData?.secondTeamLogo !== null
-                      ? `${process.env.STATIC_SERVER}/img/matches/${matchData?.secondTeamLogo}`
-                      : "/svg/home/default-team-icon.svg"
+                    matchData?.secondTeamLogo === null ||
+                    matchData?.secondTeamLogo === undefined
+                      ? "/svg/home/default-team-icon.svg"
+                      : `${process.env.STATIC_SERVER}/img/matches/${matchData?.secondTeamLogo}`
                   }
                   alt="logo"
                   width={28}

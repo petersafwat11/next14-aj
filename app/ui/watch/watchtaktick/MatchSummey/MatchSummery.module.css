@@ -1,0 +1,7 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 2rem;
+  }
+  

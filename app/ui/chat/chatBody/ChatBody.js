@@ -9,7 +9,6 @@ const ChatBody = ({
   messagesRef,
   lastMessage,
 }) => {
-  
   const censorWords = (text) => {
     // Create a regular expression pattern for all words in the word list
     const pattern = new RegExp(`\\b(${chatFilteredWords.join("|")})\\b`, "gi");
@@ -89,6 +88,7 @@ const ChatBody = ({
               )}
               {message.message.includes("media.tenor.com") && (
                 <Image
+                  unoptimized
                   src={message.message}
                   width={"100"}
                   height={"100"}

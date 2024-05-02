@@ -1,47 +1,49 @@
 .change-avatars-second {
   background: #182228;
-  width: 14.8rem;
+  width: 11.84rem;
   height: 100%;
-  padding: 1.5rem 1.45rem 5.2rem 1.35rem;
-  height: 100%;
+  padding: 1.2rem 1.16rem 4.16rem 1.08rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 0.75rem;
+  border-radius: 0.6rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-
   position: relative;
 }
+
 .exit {
   cursor: pointer;
   position: absolute;
-  top: 1.5rem;
-  right: 1.45rem;
+  top: 1.2rem;
+  right: 1.16rem;
 }
+
 .selected-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
+
 .new-selected-image {
   background: url("/svg/chat/background-avatar.svg");
   background-size: 100%;
   background-repeat: no-repeat;
-  width: 11.718rem;
-  height: 13rem;
+  width: 9.3744rem;
+  height: 10.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .selected-avatar > p {
   font-family: RobotoRegular;
   font-weight: 500;
-  font-size: 0.75rem;
-  line-height: 0.89rem;
+  font-size: 0.6rem;
+  line-height: 0.712rem;
   color: rgba(255, 255, 255, 0.6);
 }
 @media (max-width: 56.25rem) {

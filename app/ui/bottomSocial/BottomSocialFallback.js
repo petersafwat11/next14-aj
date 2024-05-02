@@ -1,39 +1,38 @@
 import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
 import { TfiTwitterAlt } from "react-icons/tfi";
 import classes from "./bottomSocial.module.css";
-import axios from "axios";
-const BottomSocial = ({social}) => {
+const BottomSocialFallback = () => {
   return (
     <div className={classes["container"]}>
       <h4 className={classes["text"]}>Our Socials</h4>
       <div className={classes["icons"]}>
-        <a
-          rel="noreferrer"
-          target="_blank"
+        <button
+          // rel="noreferrer"
+          // target="_blank"
           className={classes["link"]}
-          href={social?.discord}
+          // href={"/"}
         >
           <FaDiscord />
-        </a>
-        <a
-          rel="noreferrer"
-          target="_blank"
+        </button>
+        <button
+          // rel="noreferrer"
+          // target="_blank"
           className={classes["link"]}
-          href={social?.twitter}
+          // href={"/"}
         >
           <TfiTwitterAlt />
-        </a>
-        <a
-          rel="noreferrer"
-          target="_blank"
+        </button>
+        <button
+          // rel="noreferrer"
+          // target="_blank"
           className={classes["link"]}
-          href={social?.telegram}
+          // href={"/"}
         >
           <FaTelegramPlane />
-        </a>
+        </button>
       </div>
     </div>
   );
 };
 
-export default BottomSocial;
+export default BottomSocialFallback;

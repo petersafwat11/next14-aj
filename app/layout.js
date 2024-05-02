@@ -21,11 +21,11 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authConfig);
-  const domains = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
-    params: {
-      fields: "domains",
-    },
-  });
+  // const domains = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
+  //   params: {
+  //     fields: "domains",
+  //   },
+  // });
 
   return (
     <html lang="en">
@@ -52,7 +52,7 @@ export default async function RootLayout({ children }) {
 
         <div className={styles["wrapper"]}>
           <Header />
-          <Marque domains={domains?.data?.data[0]?.domains?.split(" ")} />
+          <Marque />
           <Provider session={session}> {children}</Provider>
         </div>
         <NewsLetter />

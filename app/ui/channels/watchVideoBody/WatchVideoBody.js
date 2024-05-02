@@ -4,7 +4,6 @@ import classes from "./watchVideoBody.module.css";
 import Image from "next/image";
 // import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
 import BottomSocial from "../../bottomSocial/BottomSocial";
-import BottomSocialFallback from "../../bottomSocial/fallback/BottomSocial";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 import ExtendButton from "../extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
@@ -14,6 +13,7 @@ const WatchVideoBody = ({
   chatRules,
   chatFilteredWords,
   playingServer,
+  social
 }) => {
   const [extendMode, setExtendMode] = useState(false);
   const activeExtendMode = () => {
@@ -37,9 +37,7 @@ const WatchVideoBody = ({
         )}
 
         <div className={classes["social-desktop"]}>
-          <Suspense fallback={<BottomSocialFallback />}>
-            <BottomSocial />
-          </Suspense>
+          <BottomSocial social={social} />
         </div>
         <div className={classes["server-btn-wrapper"]}>
           <button className={classes["server-name-btn"]}>Full HD</button>

@@ -1,73 +1,79 @@
 .signedin-with-username {
-  width: 16.3rem;
-  height: 5.5rem;
-  border-radius: 0.47rem;
+  width: 13.04rem;
+  height: 4.4rem;
+  border-radius: 0.376rem;
   background: #171d21;
-  padding: 1.125rem 2rem 1.45rem;
+  padding: 0.9rem 1.6rem 1.16rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0.56rem;
+  gap: 0.448rem;
 }
+
 .username-text {
   color: #fff;
   text-align: center;
   font-family: "Roboto";
-  font-size: 0.8rem;
+  font-size: 0.64rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 .change-username {
-  width: 6.33rem;
-  height: 1.4rem;
+  width: 5.064rem;
+  height: 1.12rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 3px;
+  border-radius: 2.4px;
   background: #616161;
   color: #fdfdfd;
   font-family: "Roboto";
-  font-size: 0.61rem;
+  font-size: 0.488rem;
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
 }
+
 .container {
-  width: 16.3rem;
-  height: 5.53rem;
-  border-radius: 0.47rem;
+  width: 13.04rem;
+  height: 4.424rem;
+  border-radius: 0.376rem;
   background: #171d21;
-  padding: 1.17rem;
+  padding: 0.936rem;
   display: flex;
   align-items: center;
-  gap: 1.17rem;
+  gap: 0.936rem;
 }
+
 .right {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.61rem;
+  gap: 0.488rem;
 }
+
 .username {
   color: #fff;
   text-align: center;
   font-family: "Roboto";
-  font-size: 0.8rem;
+  font-size: 0.64rem;
   font-weight: 400;
 }
+
 .sign-out {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.19rem;
+  border-radius: 0.152rem;
   background: #616161;
-  width: 3.375rem;
-  height: 1.32rem;
+  width: 2.7rem;
+  height: 1.056rem;
   color: #fdfdfd;
   font-family: "Roboto";
-  font-size: 0.61rem;
+  font-size: 0.488rem;
   font-weight: 500;
   line-height: normal;
   cursor: pointer;

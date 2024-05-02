@@ -1,70 +1,75 @@
 .container {
   position: absolute;
-  top: 2.5rem;
+  top: 2rem;
   width: 97%;
-  right: 1.5%;
+  right: 1.2%;
   z-index: 10;
-  border-radius: 0.3rem;
+  border-radius: 0.24rem;
   background: #1d242b;
-  min-height: 5.25rem;
-  padding: 0.6rem 0.6rem 0.67rem 0.97rem;
+  min-height: 4.2rem;
+  padding: 0.48rem 0.48rem 0.536rem 0.776rem;
   display: flex;
   flex-direction: column;
-  border-bottom: 9px solid #03a1cd;
+  border-bottom: 7.2px solid #03a1cd;
 }
+
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .poll-maker {
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 0.565rem;
-  line-height: 0.85rem;
+  font-size: 0.452rem;
+  line-height: 0.68rem;
   color: rgba(255, 255, 255, 0.5);
 }
-.poll-body {
-}
+
 .poll-title {
   font-family: "Poppins";
   font-weight: 700;
-  font-size: 0.93rem;
-  line-height: 1.4rem;
+  font-size: 0.744rem;
+  line-height: 1.12rem;
   text-align: center;
 }
+
 .poll-para {
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 0.8rem;
-  line-height: 1.2rem;
+  font-size: 0.64rem;
+  line-height: 0.96rem;
   text-align: center;
   color: #58b3cc;
 }
+
 .arrow-wrapper {
   border-radius: 50%;
-  height: 0.65rem;
-  width: 0.65rem;
+  height: 0.52rem;
+  width: 0.52rem;
   background: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem auto 0;
+  margin: 0.4rem auto 0;
 }
+
 .arrow-down,
 .arrow-up {
-  font-size: 0.7rem;
+  font-size: 0.56rem;
   color: #203639;
   cursor: pointer;
-  rotate: 0;
 }
+
 .arrow-down {
   rotate: 180deg;
 }
+
 .button-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 .show-less {
@@ -75,15 +80,14 @@
   color: #fff;
   font-feature-settings: "clig" off, "liga" off;
   font-family: "Roboto";
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 100px;
-  height: 32px;
-  border-radius: 3px;
-  background: rgb(33, 46, 57, 0.6);
-  /* margin-top: 1.25rem; */
+  width: 80px;
+  height: 25.6px;
+  border-radius: 2.4px;
+  background: rgba(33, 46, 57, 0.6);
 }
 @media (max-width: 56.25rem) {
   .container {

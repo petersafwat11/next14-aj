@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { SessionProvider } from "next-auth/react";
 import Image from "next/image";
 import styles from "./clientProvider.module.css";
-import SessionLayout from "./SessionLayout";
+import { SessionProvider } from "next-auth/react";
 export default function Provider({ children, session }) {
   const [showScrollTopIcon, setShowScrollTopIcon] = useState(false);
   const updateDimensions = () => {
@@ -36,8 +35,8 @@ export default function Provider({ children, session }) {
           height="24"
         />
       )}
-
-      <SessionLayout>{children}</SessionLayout>
+      <SessionProvider session={session}>{children}</SessionProvider>
+      {/* <SessionLayout session={session}>{children}</SessionLayout> */}
     </>
   );
 }

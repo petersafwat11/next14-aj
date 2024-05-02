@@ -46,27 +46,6 @@ export const MenuMobile = () => {
       </div>
       {showMenu && (
         <div className={classes["side-menu"]}>
-          {/* <div className={classes["nav-top"]}>
-            <Image
-              onClick={() => {
-                setShowMenu(!showMenu);
-              }}
-              className={classes["exit"]}
-              src="/svg/layout/mobile-menu/exit.svg"
-              alt="donate"
-              width="17"
-              height="17"
-            />
-            <div className={classes["logo-wrapper"]}>
-              <Image
-                className={classes["logo"]}
-                src="/logo-mobile.svg"
-                alt="logo"
-                width="76"
-                height="59"
-              />
-            </div>
-          </div> */}
           <div className={classes["user-details"]}>
             <Image
               className={classes["user-icon"]}
@@ -95,6 +74,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -107,6 +87,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/channels");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -118,6 +99,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/statistics");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -129,6 +111,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/news");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -141,6 +124,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/contact");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -152,6 +136,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/pricing");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -164,6 +149,7 @@ export const MenuMobile = () => {
               <button
                 onClick={() => {
                   router.push("/donate");
+                  setShowMenu(!showMenu);
                 }}
                 className={classes["donate-button"]}
               >

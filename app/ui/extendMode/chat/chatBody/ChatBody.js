@@ -55,6 +55,7 @@ const ChatBody = ({
               )}
               {message.message.includes("media.tenor.com") && (
                 <Image
+                  unoptimized
                   src={message.message}
                   width={"50"}
                   height={"50"}

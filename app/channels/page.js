@@ -56,6 +56,11 @@ const Page = async ({ searchParams }) => {
         or: ["channelName"],
       },
     }),
+    await axios.get(`${process.env.BACKEND_SERVER}/links`, {
+      params: {
+        fields: "social",
+      },
+    }),
   ])
     .then((responses) => {
       // responses is an array of axios responses
@@ -65,6 +70,7 @@ const Page = async ({ searchParams }) => {
         chatFilteredWords,
         chatMessages,
         channelsData,
+        links,
       ] = responses;
 
       // Access the data from each response
@@ -73,7 +79,16 @@ const Page = async ({ searchParams }) => {
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
       const messagesData = chatMessages.data?.data?.data;
       const channels = channelsData.data;
-      return { rulesData, modeData, filteredWordsData, messagesData, channels };
+      const social = links.data?.data?.data[0].social;
+
+      return {
+        rulesData,
+        modeData,
+        filteredWordsData,
+        messagesData,
+        channels,
+        social,
+      };
     })
     .catch((error) => {
       // Handle any errors that occurred during any of the requests
@@ -121,6 +136,7 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <WatchVideoBody
+            social={data.social}
             mode={data.modeData}
             chatMessages={data.messagesData}
             chatRules={data.rulesData}

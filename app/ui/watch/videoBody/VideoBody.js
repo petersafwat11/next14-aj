@@ -6,14 +6,23 @@ import ServersButtons from "../serverButtons/ServersButtons";
 import BottomSocial from "../../bottomSocial/BottomSocial";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 import { calcRemainingTime, determineLive } from "@/app/lib/datesFunctions";
-import BottomSocialFallback from "../../bottomSocial/fallback/BottomSocial";
 
 import EventCountDown from "../eventCoutdown/EventCountDown";
 import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
 import ServersButtonsMobile from "../serverButtons/serversButtonsMobile/ServersButtonsMobile";
+import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
 
-const VideoBody = ({ eventDate, playStream, activeServer, servers }) => {
+const VideoBody = ({
+  social,
+  eventDate,
+  playStream,
+  activeServer,
+  servers,
+  chatMessages,
+  chatRules,
+  chatFilteredWords,
+}) => {
   const [playingServer, setPlayingServer] = useState(activeServer);
   //   const [videoUrl, setVideoUrl] = useState(url);
   const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
@@ -38,6 +47,16 @@ const VideoBody = ({ eventDate, playStream, activeServer, servers }) => {
   return (
     <>
       <div id="my-root-div" className="watch-video">
+        {extendMode && (
+          <ExtendModeWrapper
+            chatMessages={chatMessages}
+            chatRules={chatRules}
+            chatFilteredWords={chatFilteredWords}
+            url={playingServer.server.streamLinkUrl}
+            setExtendMode={setExtendMode}
+          />
+        )}
+
         {playStreaming ? (
           <HlcPlayer url={playingServer.server.streamLinkUrl} />
         ) : (
@@ -49,9 +68,7 @@ const VideoBody = ({ eventDate, playStream, activeServer, servers }) => {
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>
         <div className={classes["social-links-desktop"]}>
-          <Suspense fallback={<BottomSocialFallback />}>
-            <BottomSocial />
-          </Suspense>
+          <BottomSocial social={social} />
         </div>
         <div className={classes["servers-mobile"]}>
           <ServersButtonsMobile
