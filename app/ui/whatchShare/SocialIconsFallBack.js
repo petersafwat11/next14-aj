@@ -38,14 +38,12 @@ const SocialIconsFallback = () => {
         </div>
         <div className={classes["wrapper"]}>
           <FaShareAlt
-            onClick={toggleShareLinks}
             className={classes["share-icon"]}
           />
           <span className={classes["tooltip"]}>Other Websites</span>
         </div>
 
         <span
-          onClick={toggleReport}
           className={classes["watch-video-share-text"]}
         >
           Report Link

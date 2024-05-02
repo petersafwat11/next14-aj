@@ -13,6 +13,7 @@ import NewFilter from "../ui/filter/NewFilter";
 import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
+ 
 
 const Page = async ({ searchParams }) => {
   noStore();

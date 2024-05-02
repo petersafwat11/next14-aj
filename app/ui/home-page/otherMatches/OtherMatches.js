@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Match from "../match/Match";
 import ShowMore from "../../showMore/ShowMore";
 import classes from "./otherMatches.module.css";
+import NoMatches from "../noMatches/NoMatches";
 const OtherMatches = ({ data, searchValue, sportCategory }) => {
   const [otherMatches, setOtherMatches] = useState(data?.matches?.data);
   console.log("data", data?.total, otherMatches.length);
@@ -12,7 +13,7 @@ const OtherMatches = ({ data, searchValue, sportCategory }) => {
   return (
     <>
       <div>
-        {otherMatches.length > 0 &&
+        {otherMatches.length > 0 ? (
           otherMatches?.map((matchData, index) => (
             <Match
               type={"hot-matches"}
@@ -21,7 +22,12 @@ const OtherMatches = ({ data, searchValue, sportCategory }) => {
               index={index}
               length={otherMatches?.length}
             />
-          ))}
+          ))
+        ) : (
+          <div className={classes["center"]}>
+            <NoMatches />
+          </div>
+        )}
       </div>
 
       {data?.total > otherMatches.length && (

@@ -1,17 +1,29 @@
 "use client";
+import dynamic from "next/dynamic";
 import classes from "./videoBody.module.css";
-import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
-import ServersButtons from "../serverButtons/ServersButtons";
+import React, { useEffect, useState } from "react";
+const ServersButtons = dynamic(() => import("../serverButtons/ServersButtons"), {
+  ssr: false,
+});
+
 import BottomSocial from "../../bottomSocial/BottomSocial";
-import HlcPlayer from "../../hlcPlayer/HlcPlayer";
+const HlcPlayer = dynamic(() => import("../../hlcPlayer/HlcPlayer"), {
+  ssr: false,
+});
+
 import { calcRemainingTime, determineLive } from "@/app/lib/datesFunctions";
 
 import EventCountDown from "../eventCoutdown/EventCountDown";
 import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
-import ServersButtonsMobile from "../serverButtons/serversButtonsMobile/ServersButtonsMobile";
-import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
+const ServersButtonsMobile = dynamic(() => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"), {
+  ssr: false,
+});
+
+
+const ExtendModeWrapper = dynamic(() => import("../../extendMode/wrapper/Wrapper"), {
+  ssr: false,
+});
 
 const VideoBody = ({
   social,

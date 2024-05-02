@@ -3,16 +3,19 @@ import axios from "axios";
 import WatchDetailsSingleTeam from "@/app/ui/watch/watchDetailsSingleTeam/WatchDetailsSingleTeam";
 import WatchDetails from "@/app/ui/watch/watch-details/WatchDetailsFootball";
 import WatchNavigation from "@/app/ui/watchNavigation/WatchNavigation";
-import SocialIcons from "@/app/ui/whatchShare/SocialIcons";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
-import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
+// import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
 import { determineLive, getMatchDate } from "@/app/lib/datesFunctions";
 import { changeServersFormat } from "@/app/lib/changeServersFormat";
 import WhoWillWin from "@/app/ui/whoWillWin/WhoWillWin";
 import { getMatchQuery } from "./getMatchQuery";
-import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
+import MatchSummeryFallback from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummeryFallback";
 import ShowingChat from "@/app/ui/showingChat/ShowingChat";
+
+import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
+import WatchShare from "@/app/ui/whatchShare/WatchShare";
+
 const Page = async ({ params }) => {
   const query = getMatchQuery(params.name);
   const data = await Promise.all([
@@ -123,7 +126,7 @@ const Page = async ({ params }) => {
             <div className="navigation">
               <WatchNavigation page={"Sports"} />
             </div>
-            <SocialIcons
+            <WatchShare
               reportData={{
                 event: query?.secondTeamName
                   ? `${query?.firstTeamName} vs ${query?.secondTeamName}`
@@ -153,14 +156,15 @@ const Page = async ({ params }) => {
           </div>
 
           <div className={classes["takticks"]}>
-            <MatchSummery
+            <MatchSummeryFallback />
+            {/* <MatchSummery
               customAPi={matchData?.customAPI?.customAPIData}
               eventDate={matchData?.eventDate}
               matchId={matchData?.matchId || null}
               sportCategory={matchData?.sportCategory}
               firstTeamName={matchData?.firstTeamName}
               secondTeamName={matchData?.secondTeamName}
-            />
+            /> */}
           </div>
           {/* <div className={classes["casino"]}>
                 <Casino />

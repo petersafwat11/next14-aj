@@ -1,8 +1,7 @@
 import React from "react";
 import BottomSocialFallback from "../../bottomSocial/BottomSocialFallback";
-import ExtendButtonFallback from "../extendButton/ExtendButtonFallback";
 import ReportBtn from "../../reportBtn/ReportBtn";
-import classes from "./watchVideoBody.module.css";
+import classes from "./videoBody.module.css";
 const VideoBodyFallback = () => {
   return (
     <>

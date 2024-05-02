@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import classes from "./showingChat.module.css";
 import Image from "next/image";
-import Chat from "../chat/Chat";
-// import Chat from "../chat/Chat";
+import dynamic from "next/dynamic";
+const Chat = dynamic(() => import("../chat/Chat"), {
+  ssr: false,
+});
 const ShowingChat = ({ mode, chatMessages, chatRules, chatFilteredWords }) => {
   const [showChat, setShowChat] = useState(false);
 
