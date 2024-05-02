@@ -23,14 +23,14 @@ const RightPart = ({
               className={classes["selected-avatar-icon"]}
               src={`/svg/chat/avatars/${newSelectedAvatar}.svg`}
               alt="avatar"
-              width="114"
+              width="92"
             />
           ) : (
             <img
               className={classes["selected-avatar-icon"]}
               src={selectedAvatar}
               alt="avatar"
-              width="114"
+              width="92"
             />
           )}
         </div>

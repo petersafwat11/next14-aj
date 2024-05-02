@@ -8,16 +8,16 @@ const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
         className={classes["chat-top-extend"]}
         src="/svg/chat/extend.svg"
         alt="extend"
-        width="13"
-        height="13"
+        width="11"
+        height="11"
       />
       <div className={classes["chat-top-text"]}>
         Chat
         <Image
           src="/svg/chat/down-arrow.svg"
           alt="extend"
-          width="14"
-          height="10"
+          width="12"
+          height="8"
         />
         <div className={classes["chat-rooms"]}>
           {["English (Default)", "Espain", "العربية", "Français"].map(
@@ -44,8 +44,8 @@ const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
         className={classes["chat-top-exit"]}
         src="/svg/exit.svg"
         alt="exit"
-        width="15"
-        height="15"
+        width="12"
+        height="12"
       />
     </div>
   );

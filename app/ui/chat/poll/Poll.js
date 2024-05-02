@@ -62,8 +62,8 @@ const Poll = ({ polls }) => {
           className={classes["poll-icon"]}
           alt="pin"
           src="/svg/chat/pin.svg"
-          width="18"
-          height="18"
+          width="15"
+          height="15"
         />
       </div>
       <div className={classes["body"]}>

@@ -142,8 +142,8 @@ const ChangeAvatar = ({
                         className={classes["checked-icon"]}
                         src="/svg/chat/check.svg"
                         alt="avatar"
-                        width="21"
-                        height="21"
+                        width="17"
+                        height="17"
                       />
                     )}
                     <Image
@@ -152,8 +152,8 @@ const ChangeAvatar = ({
                         index + 1
                       }.svg`}
                       alt="avatar"
-                      width="57"
-                      height="57"
+                      width="46"
+                      height="46"
                     />
                   </div>
                 ))
@@ -169,8 +169,8 @@ const ChangeAvatar = ({
                       <Image
                         src="svg/chat/change-avatar/folder-icon.svg"
                         alt="folder-icon"
-                        width="67"
-                        height="54"
+                        width="54"
+                        height="44"
                       />
                       <p>{i}</p>
                     </div>
@@ -198,16 +198,16 @@ const ChangeAvatar = ({
                       className={classes["checked-icon"]}
                       src="/svg/chat/check.svg"
                       alt="avatar"
-                      width="21"
-                      height="21"
+                      width="17"
+                      height="17"
                     />
                   )}
                   <Image
                     className={classes["avatar-icon"]}
                     src={`/svg/chat/avatars/${avatarCategory}/${index + 1}.svg`}
                     alt="avatar"
-                    width="57"
-                    height="57"
+                    width="46"
+                    height="46"
                   />
                 </div>
               ))
@@ -222,8 +222,8 @@ const ChangeAvatar = ({
                   <Image
                     src="svg/chat/change-avatar/folder-icon.svg"
                     alt="folder-icon"
-                    width="67"
-                    height="54"
+                    width="54"
+                    height="44"
                   />
                   <p>{i}</p>
                 </div>

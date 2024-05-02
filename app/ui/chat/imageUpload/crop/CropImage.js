@@ -82,8 +82,8 @@ const CropImage = ({
         className={classes["close-icon"]}
         src="/svg/exit.svg"
         alt="exit"
-        width="15"
-        height="15"
+        width="12"
+        height="12"
       />
       <h3 className={classes["heading"]}>Crop Image & Upload</h3>
       <div className="image-wrapper">

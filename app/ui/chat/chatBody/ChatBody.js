@@ -51,8 +51,8 @@ const ChatBody = ({
                     : message.image
                 }
                 alt="avatar"
-                width="22"
-                height="22"
+                width="18"
+                height="18"
               />
               {message.username === username &&
                 message.username !== "anonymous" && (
@@ -90,8 +90,8 @@ const ChatBody = ({
                 <Image
                   unoptimized
                   src={message.message}
-                  width={"100"}
-                  height={"100"}
+                  width={"80"}
+                  height={"80"}
                   alt="gif"
                 />
               )}
@@ -119,8 +119,8 @@ const ChatBody = ({
                     className={classes["replay-icon"]}
                     src="/svg/chat/replay.svg"
                     alt="replay"
-                    width="12"
-                    height="12"
+                    width="10"
+                    height="10"
                   />
                 </div>
 

@@ -16,8 +16,8 @@ export const TopPart = ({ toggleChangeAvatar, toggleImageUpload }) => {
           onClick={toggleChangeAvatar}
           src="/svg/chat/change-avatar/upload.svg"
           alt="upload"
-          width="15"
-          height="18"
+          width="12"
+          height="15"
         />
         <p className={classes["file-upload-para"]}>
           Drag and drop file or

@@ -56,7 +56,7 @@ const Page = async ({ searchParams }) => {
         or: ["channelName"],
       },
     }),
-    await axios.get(`${process.env.BACKEND_SERVER}/links`, {
+    axios.get(`${process.env.BACKEND_SERVER}/links`, {
       params: {
         fields: "social",
       },
@@ -136,11 +136,11 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <WatchVideoBody
-            social={data.social}
-            mode={data.modeData}
-            chatMessages={data.messagesData}
-            chatRules={data.rulesData}
-            chatFilteredWords={data.filteredWordsData}
+            social={data?.social}
+            mode={data?.modeData}
+            chatMessages={data?.messagesData}
+            chatRules={data?.rulesData}
+            chatFilteredWords={data?.filteredWordsData}
             url={playingServer}
           />
         </div>

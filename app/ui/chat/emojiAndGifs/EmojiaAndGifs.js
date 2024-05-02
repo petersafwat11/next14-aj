@@ -53,8 +53,8 @@ const EmojiaAndGifs = ({
         className={classes["exit-emojy"]}
         src="/svg/chat/extend-mode/close.svg"
         alt="exit"
-        width="15"
-        height="15"
+        width="12"
+        height="12"
       />
       <div className={classes["emojie-and-gifs-wrapper"]}>
         <div className={classes["emojies-gifs-top"]}>
