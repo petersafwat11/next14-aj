@@ -55,7 +55,6 @@ const MatchSummery = ({
               },
             }
           );
-          console.log("statistics", statistics);
           const useableData = [
             "Total Shots",
             "Shots on Goal",
@@ -70,7 +69,7 @@ const MatchSummery = ({
             "Red Cards",
           ].map((item) => {
             return {
-              home: statistics.data[0].statistics.find(
+              home: statistics?.data?.data[0].statistics.find(
                 (apiItem) => apiItem.type == item
               ).value,
               name:
@@ -84,16 +83,14 @@ const MatchSummery = ({
                   ? "Accurate Passes"
                   : item,
 
-              away: statistics.data[1].statistics.find(
+              away: statistics.data.data[1].statistics.find(
                 (apiItem) => apiItem.type == item
               ).value,
             };
           });
-          console.log("lineups", lineups.data);
-          console.log("events", events);
-          setStatsData(useableData);
-          setLineupsData(lineups.data);
-          setEventsData(events.data);
+          setStatsData( useableData);
+          setLineupsData(lineups?.data?.data);
+          setEventsData(events?.data?.data);
         } catch (err) {
           console.log("error", err);
         }

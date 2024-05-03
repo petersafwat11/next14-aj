@@ -14,11 +14,26 @@ const Body = ({ options, data }) => {
             <div className={classes["progress-bar"]}>
               <div className={classes["progress-bar-first"]}>
                 <span
-                  style={{ width: Math.round(item.home *100 / (item.home + item.away) )}}
+                  style={{
+                    width: `${Math.round(
+                      (item.home * 100) / (item.home + item.away)
+                    )}%`,
+                  }}
                 ></span>
               </div>
               <div className={classes["progress-bar-last"]}>
-                <span></span>
+                <span
+                  onClick={() => {
+                    console.log(
+                      Math.round((item.away * 100) / (item.home + item.away))
+                    );
+                  }}
+                  style={{
+                    width: `${Math.round(
+                      (item.away * 100) / (item.home + item.away)
+                    )}%`,
+                  }}
+                ></span>
               </div>
             </div>
           </div>

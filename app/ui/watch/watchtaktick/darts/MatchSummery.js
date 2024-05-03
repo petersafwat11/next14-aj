@@ -34,10 +34,10 @@ const MatchSummery = ({
               },
             }
           );
-          const allStats = statistics?.data?.find(
+          const allStats = statistics?.data?.data?.find(
             (stat) => stat.period === "ALL"
           ).groups;
-          console.log("stats", allStats);
+          // console.log("stats", allStats);
           const useableData = [
             {
               name: "THROWN 180",
@@ -104,7 +104,7 @@ const MatchSummery = ({
             },
           ];
           setStatisticsData(useableData);
-          console.log("useable", useableData);
+          // console.log("useable", useableData);
         } catch (err) {
           console.log("error", err);
         }
@@ -122,15 +122,11 @@ const MatchSummery = ({
           "STATISTICS",
         ]}
       />
-      {category === "LINEUPS" ? (
-        <Lineups />
-      ) : (
-        <Statistics
-          data={statisticsData}
-          firstTeamName={firstTeamName}
-          secondTeamName={secondTeamName}
-        />
-      )}
+      <Statistics
+        data={statisticsData}
+        firstTeamName={firstTeamName}
+        secondTeamName={secondTeamName}
+      />
     </div>
   );
 };

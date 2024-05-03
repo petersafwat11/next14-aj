@@ -47,12 +47,11 @@ const MatchSummery = ({
             }
           );
 
-          setLineupsData(lineups.data);
-          const allStats = statistics?.data?.find(
+          const allStats = statistics?.data?.data?.find(
             (stat) => stat.period === "ALL"
           ).groups;
-          console.log("lineups", lineups.data);
-          console.log("stats", allStats);
+          // console.log("lineups", lineups.data);
+          // console.log("stats", allStats);
           const useableData = [
             {
               name: "Runs",
@@ -120,7 +119,7 @@ const MatchSummery = ({
             },
           ];
           setStatisticsData(useableData);
-          setLineupsData(lineups.data);
+          setLineupsData(lineups?.data?.data);
         } catch (err) {
           console.log("error", err);
         }

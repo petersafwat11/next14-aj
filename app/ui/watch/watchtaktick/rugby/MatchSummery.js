@@ -34,7 +34,7 @@ const MatchSummery = ({
               },
             }
           );
-          const allStats = statistics?.data?.find(
+          const allStats = statistics?.data?.data?.find(
             (stat) => stat.period === "ALL"
           ).groups;
           console.log("stats", allStats);

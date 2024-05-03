@@ -27,7 +27,7 @@ const MatchSummery = ({ sportCategory, matchId, eventDate, customAPi }) => {
             }
           );
 
-          const useableData = statistics.data.filter(
+          const useableData = statistics?.data?.data?.filter(
             (stat) => stat.period !== "ALL"
           );
           setSummeryData(useableData);

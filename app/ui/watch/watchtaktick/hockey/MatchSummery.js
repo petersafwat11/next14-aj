@@ -73,7 +73,7 @@ const MatchSummery = ({
             },
           }
         );
-        const allStats = statistics?.data
+        const allStats = statistics?.data?.data
           ?.find((stat) => stat.period === "ALL")
           .groups.find(
             (item) => item.groupName === "Attacking"
@@ -94,10 +94,10 @@ const MatchSummery = ({
             },
           }
         );
-        console.log("lineups", lineups);
-        console.log("stats", statistics);
+        // console.log("lineups", lineups);
+        // console.log("stats", statistics);
 
-        setLineupsData(lineups.data);
+        setLineupsData(lineups?.data?.data);
         setStatisticsData(useableStatsData);
       } catch (err) {
         console.log("error", err);

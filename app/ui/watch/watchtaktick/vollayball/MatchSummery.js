@@ -71,10 +71,10 @@ const MatchSummery = ({
               },
             }
           );
-          const allStats = statistics?.data?.find(
+          const allStats = statistics?.data?.data?.find(
             (stat) => stat.period === "ALL"
           ).groups;
-          console.log("stats", allStats);
+          // console.log("stats", allStats);
           const useableData = [
             {
               name: "POINTS WON",
@@ -150,7 +150,7 @@ const MatchSummery = ({
             },
           ];
           setStatisticsData(useableData);
-          console.log("useable", useableData);
+          // console.log("useable", useableData);
         } catch (err) {
           console.log("error", err);
         }
