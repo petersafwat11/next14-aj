@@ -5,12 +5,11 @@ import WatchDetails from "@/app/ui/watch/watch-details/WatchDetailsFootball";
 import WatchNavigation from "@/app/ui/watchNavigation/WatchNavigation";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
-// import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
+import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
 import { determineLive, getMatchDate } from "@/app/lib/datesFunctions";
 import { changeServersFormat } from "@/app/lib/changeServersFormat";
 import WhoWillWin from "@/app/ui/whoWillWin/WhoWillWin";
 import { getMatchQuery } from "./getMatchQuery";
-import MatchSummeryFallback from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummeryFallback";
 import ShowingChat from "@/app/ui/showingChat/ShowingChat";
 
 import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
@@ -156,15 +155,14 @@ const Page = async ({ params }) => {
           </div>
 
           <div className={classes["takticks"]}>
-            <MatchSummeryFallback />
-            {/* <MatchSummery
+            <MatchSummery
               customAPi={matchData?.customAPI?.customAPIData}
               eventDate={matchData?.eventDate}
               matchId={matchData?.matchId || null}
               sportCategory={matchData?.sportCategory}
               firstTeamName={matchData?.firstTeamName}
               secondTeamName={matchData?.secondTeamName}
-            /> */}
+            />
           </div>
           {/* <div className={classes["casino"]}>
                 <Casino />

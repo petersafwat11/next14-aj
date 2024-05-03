@@ -78,7 +78,6 @@ const Page = async ({ searchParams }) => {
               <NoMatches />
             </div>
           )}
-          {/* <Matches data={hotMatches} /> */}
         </section>
         <section className={classes["other-matches"]}>
           <div className={classes["other-matches-title-and-search"]}>

@@ -13,7 +13,6 @@ import NewFilter from "../ui/filter/NewFilter";
 import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
- 
 
 const Page = async ({ searchParams }) => {
   noStore();
@@ -95,14 +94,15 @@ const Page = async ({ searchParams }) => {
       // Handle any errors that occurred during any of the requests
       console.error("Error in fetching chat resources:", error);
     });
+  console.log(data?.channels?.data?.data[0]?.streamLink?.URL);
   const channelsServers = {
     channels: data?.channels?.data?.data,
     totalResults: data?.channels?.results,
   };
   // const channelsServers = channelsServer;
   const playingServer =
-    queryChannel?.data?.data?.streamLinkUrl ||
-    data?.channels?.data?.data[0]?.streamLinkUrl ||
+    queryChannel?.data?.data?.streamLink?.URL ||
+    data?.channels?.data?.data[0]?.streamLink?.URL ||
     null;
   const playingServerName =
     queryChannel?.data?.data?.channelName ||
