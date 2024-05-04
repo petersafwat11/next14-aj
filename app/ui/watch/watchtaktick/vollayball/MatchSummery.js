@@ -52,7 +52,6 @@ const MatchSummery = ({
       away: 0,
     },
   ]);
-  const [lineupsData, setLineupsData] = useState();
 
   const changeCategory = (category) => {
     setCategory(category);
@@ -68,6 +67,7 @@ const MatchSummery = ({
                 matchId,
                 sportCategory,
                 eventDate,
+                dataType: "Statistics",
               },
             }
           );
@@ -150,7 +150,7 @@ const MatchSummery = ({
             },
           ];
           setStatisticsData(useableData);
-          // console.log("useable", useableData);
+          console.log("useable", useableData);
         } catch (err) {
           console.log("error", err);
         }

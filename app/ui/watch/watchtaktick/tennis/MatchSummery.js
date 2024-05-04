@@ -66,6 +66,7 @@ const MatchSummery = ({
                 matchId,
                 sportCategory,
                 eventDate,
+                dataType: "Statistics",
               },
             }
           );

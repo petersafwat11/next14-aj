@@ -40,7 +40,7 @@ const WhoWillWin = ({ pollItems, selectedValue, pollsData, makeVote }) => {
                     <Image
                       className={classes["check-icon"]}
                       src="/svg/watch/check.svg"
-                      alt="chaeck"
+                      alt="check"
                       width="12"
                       height="10"
                     />

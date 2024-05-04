@@ -78,12 +78,19 @@ export const determineLive = (dateString) => {
   // Compare the two dates
   return now.getTime() >= date.getTime();
 };
-export const extarctDateAndTime = (isoString) => {
-  const dateObject = new Date(isoString);
-  const utcString = dateObject.toISOString();
-  const date = utcString.slice(0, 10); // YYYY-MM-DD
-  const time = utcString.slice(11, 16); // HH:mm
-  return { date, time };
+export const convertDate = (dateStr) => {
+  const dateOj = new Date(dateStr);
+  // const year = dateOj.getFullYear();
+  // const month = (dateOj.getMonth() + 1).toString().padStart(2, "0");
+  // const day = dateOj.getDate().toString().padStart(2, "0");
+  const hours = dateOj.getHours().toString().padStart(2, "0");
+  const minutes = dateOj.getMinutes().toString().padStart(2, "0");
+  // let date = `${year}-${month}-${day}` || 1;
+  let time = `${hours}:${minutes}` || 2;
+
+  return { 
+    // date, 
+    time };
 };
 export const getDateDifference = (dateString) => {
   const date = new Date(dateString);

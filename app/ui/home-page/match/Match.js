@@ -1,11 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import { extarctDateAndTime } from "../../../utils/combineDate";
-// import {
-//   calcRemainingTime,
-//   determineLive,
-//   getMatchDate,
-// } from "../../../utils/convertDateFormat";
 import LiveBtn from "./LiveBtn";
 import RemainingTime, { RemainingTimeMobile } from "./RemainingTime";
 import WatchBtn from "./WatchBtn";
@@ -13,23 +7,26 @@ import classes from "./match.module.css";
 import {
   calcRemainingTime,
   determineLive,
-  extarctDateAndTime,
+  convertDate,
   getMatchDate,
 } from "@/app/lib/datesFunctions";
-import Image from "next/image";
 
 export const Match = ({ matchData, type, index, length }) => {
   const [live, setLive] = useState(determineLive(""));
   const [remainingTime, setRemainingTime] = useState("");
+  const [endedEvent, setEndedEvent] = useState(
+    determineLive(matchData?.endedEvent)
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(matchData?.eventDate));
       setLive(determineLive(matchData?.playStream));
+      setEndedEvent(determineLive(matchData?.endedEvent));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [matchData?.eventDate, matchData?.playStream]);
+  }, [matchData?.eventDate, matchData?.playStream, matchData?.endedEvent]);
   return (
     <>
       <div
@@ -41,7 +38,7 @@ export const Match = ({ matchData, type, index, length }) => {
           <p className={classes["date"]}>
             {" "}
             {` ${getMatchDate(matchData?.eventDate, true)}- ${
-              extarctDateAndTime(matchData?.eventDate).time
+              convertDate(matchData?.eventDate).time
             }`}
           </p>
           <RemainingTimeMobile timer={remainingTime} live={live} />
@@ -52,12 +49,12 @@ export const Match = ({ matchData, type, index, length }) => {
           <div className={classes["match-details"]}>
             <p className={classes["date"]}>
               {` ${getMatchDate(matchData?.eventDate, true)}- ${
-                extarctDateAndTime(matchData?.eventDate).time
+                convertDate(matchData?.eventDate).time
               }`}
             </p>
             <p className={classes["leage"]}>{matchData?.eventLeague}</p>
           </div>
-          <LiveBtn live={live} />
+          <LiveBtn live={live && !endedEvent} />
           {matchData?.firstTeamName && matchData?.secondTeamName ? (
             <>
               <div className={classes["first-team"]}>

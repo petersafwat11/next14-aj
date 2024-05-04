@@ -32,7 +32,7 @@ const HlcPlayer = ({ url, notRounded }) => {
     const p2pConfig = {
       // Other p2pConfig options if applicable
     };
-    if (Hls.isSupported() && url) {
+    if (url) {
       const hls = new Hls({
         maxBufferSize: 0, // Highly recommended setting in live mode
         maxBufferLength: 10, // Highly recommended setting in live mode

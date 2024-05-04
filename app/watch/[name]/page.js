@@ -6,7 +6,11 @@ import WatchNavigation from "@/app/ui/watchNavigation/WatchNavigation";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
 import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
-import { determineLive, getMatchDate } from "@/app/lib/datesFunctions";
+import {
+  convertDate,
+  determineLive,
+  getMatchDate,
+} from "@/app/lib/datesFunctions";
 import { changeServersFormat } from "@/app/lib/changeServersFormat";
 import WhoWillWin from "@/app/ui/whoWillWin/WhoWillWin";
 import { getMatchQuery } from "./getMatchQuery";
@@ -75,7 +79,7 @@ const Page = async ({ params }) => {
     server: servers[0][Object.keys(servers[0])][0],
     lang: Object.keys(servers[0])[0],
   };
-  console.log("data?.chatRules", data?.chatRules);
+  console.log("matchData", matchData);
   const live = determineLive(matchData?.eventDate);
 
   return (
@@ -95,7 +99,9 @@ const Page = async ({ params }) => {
             width={"100"}
             leagueLogo={`${process.env.STATIC_SERVER}/img/matches/${matchData?.leagueLogo}`}
             flagLogo={`${process.env.STATIC_SERVER}/img/matches/${matchData?.flagLogo}`}
-            date={getMatchDate(matchData?.eventDate)}
+            date={` ${getMatchDate(matchData?.eventDate, true)}- ${
+              convertDate(matchData?.eventDate).time
+            }`}
             place={matchData?.eventStadium}
             teamName={matchData?.teamsTitle}
           />
@@ -115,7 +121,9 @@ const Page = async ({ params }) => {
                 : "/svg/home/default-team-icon.svg"
             }
             seconteamName={matchData?.secondTeamName}
-            date={getMatchDate(matchData?.eventDate)}
+            date={` ${getMatchDate(matchData?.eventDate, true)}- ${
+              convertDate(matchData?.eventDate).time
+            }`}
             place={matchData?.eventStadium}
             // half={"2nd Half: 47’"}
           />
@@ -142,6 +150,7 @@ const Page = async ({ params }) => {
             url={playingServer?.server?.streamLinkUrl}
             eventDate={matchData?.eventDate}
             playStream={matchData?.playStream}
+            eventEnds={matchData?.endedEvent}
             activeServer={playingServer}
             servers={servers}
           />
@@ -167,9 +176,11 @@ const Page = async ({ params }) => {
           {/* <div className={classes["casino"]}>
                 <Casino />
               </div> */}
-          <div className={classes["who-will-win"]}>
-            <WhoWillWin />
-          </div>
+          {matchData?.matchPoll?.enabled && (
+            <div className={classes["who-will-win"]}>
+              <WhoWillWin query={query} data={matchData?.matchPoll} />
+            </div>
+          )}
         </div>
       </div>
     </section>

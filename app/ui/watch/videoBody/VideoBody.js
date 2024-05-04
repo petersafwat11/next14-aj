@@ -2,9 +2,12 @@
 import dynamic from "next/dynamic";
 import classes from "./videoBody.module.css";
 import React, { useEffect, useState } from "react";
-const ServersButtons = dynamic(() => import("../serverButtons/ServersButtons"), {
-  ssr: false,
-});
+const ServersButtons = dynamic(
+  () => import("../serverButtons/ServersButtons"),
+  {
+    ssr: false,
+  }
+);
 
 import BottomSocial from "../../bottomSocial/BottomSocial";
 const HlcPlayer = dynamic(() => import("../../hlcPlayer/HlcPlayer"), {
@@ -16,14 +19,20 @@ import { calcRemainingTime, determineLive } from "@/app/lib/datesFunctions";
 import EventCountDown from "../eventCoutdown/EventCountDown";
 import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
-const ServersButtonsMobile = dynamic(() => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"), {
-  ssr: false,
-});
+import EventEnded from "../eventEnded/EventEnded";
+const ServersButtonsMobile = dynamic(
+  () => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"),
+  {
+    ssr: false,
+  }
+);
 
-
-const ExtendModeWrapper = dynamic(() => import("../../extendMode/wrapper/Wrapper"), {
-  ssr: false,
-});
+const ExtendModeWrapper = dynamic(
+  () => import("../../extendMode/wrapper/Wrapper"),
+  {
+    ssr: false,
+  }
+);
 
 const VideoBody = ({
   social,
@@ -34,10 +43,12 @@ const VideoBody = ({
   chatMessages,
   chatRules,
   chatFilteredWords,
+  eventEnds,
 }) => {
   const [playingServer, setPlayingServer] = useState(activeServer);
   //   const [videoUrl, setVideoUrl] = useState(url);
   const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
+  const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
   const [remainingTime, setRemainingTime] = useState(
     calcRemainingTime(eventDate)
   );
@@ -47,10 +58,11 @@ const VideoBody = ({
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(eventDate));
       setPlayStreaming(determineLive(playStream));
+      setEndedEvent(determineLive(eventEnds));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [playStream, eventDate]);
+  }, [playStream, eventDate, eventEnds]);
   const activeExtendMode = () => {
     setExtendMode(!extendMode);
     document.body.style.overflow = "hidden";
@@ -69,7 +81,9 @@ const VideoBody = ({
           />
         )}
 
-        {playStreaming ? (
+        {endedEvent ? (
+          <EventEnded />
+        ) : playStreaming ? (
           <HlcPlayer url={playingServer.server.streamLinkUrl} />
         ) : (
           <EventCountDown
@@ -84,7 +98,7 @@ const VideoBody = ({
         </div>
         <div className={classes["servers-mobile"]}>
           <ServersButtonsMobile
-            notLive={!playStreaming}
+            notLive={!playStreaming || endedEvent}
             playingServer={playingServer}
             setPlayingServer={setPlayingServer}
             servers={servers}
@@ -99,7 +113,7 @@ const VideoBody = ({
 
       <div className={classes["servers"]}>
         <ServersButtons
-          notLive={!playStreaming}
+          notLive={!playStreaming || endedEvent}
           playingServer={playingServer}
           setPlayingServer={setPlayingServer}
           servers={servers}

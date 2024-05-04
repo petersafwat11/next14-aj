@@ -14,7 +14,7 @@ const MatchSummery = ({
   secondTeamName,
   firstTeamName,
 }) => {
-  const [category, setCategory] = useState("LINEUPS");
+  const [category, setCategory] = useState("STANDINGS");
   const [statisticsData, setStatisticsData] = useState(null);
 
   const changeCategory = (category) => {
@@ -31,9 +31,11 @@ const MatchSummery = ({
                 matchId,
                 sportCategory,
                 eventDate,
+                dataType: "Statistics",
               },
             }
           );
+          console.log("statistics", statistics);
           const allStats = statistics?.data?.data?.find(
             (stat) => stat.period === "ALL"
           ).groups;
@@ -131,9 +133,9 @@ const MatchSummery = ({
       <GlobalHeader
         category={category}
         changeCategory={changeCategory}
-        categories={["LINEUPS", "STATISTICS", "STANDINGS"]}
+        categories={["STATISTICS"]}
       />
-      {category === "LINEUPS" ? (
+      {/* {category === "LINEUPS" ? (
         <Lineups />
       ) : category === "STANDINGS" ? (
         <Standings
@@ -141,13 +143,13 @@ const MatchSummery = ({
           items={["PL", "PTS"]}
           footerElements={["Playoffs", "Qualification Playoffs"]}
         />
-      ) : (
-        <Statistics
-          data={statisticsData}
-          firstTeamName={firstTeamName}
-          secondTeamName={secondTeamName}
-        />
-      )}
+      ) : ( */}
+      <Statistics
+        data={statisticsData}
+        firstTeamName={firstTeamName}
+        secondTeamName={secondTeamName}
+      />
+      {/* )} */}
     </div>
   );
 };

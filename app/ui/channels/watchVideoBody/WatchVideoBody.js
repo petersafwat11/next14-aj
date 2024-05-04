@@ -1,8 +1,6 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./watchVideoBody.module.css";
-import Image from "next/image";
-// import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
 import BottomSocial from "../../bottomSocial/BottomSocial";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 import ExtendButton from "../extendButton/ExtendButton";
@@ -12,8 +10,8 @@ const WatchVideoBody = ({
   chatMessages,
   chatRules,
   chatFilteredWords,
-  playingServer,
-  social
+  url,
+  social,
 }) => {
   const [extendMode, setExtendMode] = useState(false);
   const activeExtendMode = () => {
@@ -23,7 +21,7 @@ const WatchVideoBody = ({
   return (
     <>
       <div className="watch-video">
-        <HlcPlayer url={playingServer} />
+        <HlcPlayer url={url} />
       </div>
       <div className={classes["watch-video-options"]}>
         {extendMode && (
@@ -31,7 +29,7 @@ const WatchVideoBody = ({
             chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
-            url={playingServer}
+            url={url}
             setExtendMode={setExtendMode}
           />
         )}

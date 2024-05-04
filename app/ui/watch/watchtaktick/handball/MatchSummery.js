@@ -47,9 +47,7 @@ const MatchSummery = ({
             }
           );
 
-          console.log(
-            statistics?.data?.find((stat) => stat.period === "ALL").groups
-          );
+          console.log("stats", statistics?.data?.data);
 
           setLineupsData(lineups?.data?.data);
           const allStats = statistics?.data?.data?.find(

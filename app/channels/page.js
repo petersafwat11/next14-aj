@@ -104,6 +104,7 @@ const Page = async ({ searchParams }) => {
     queryChannel?.data?.data?.streamLink?.URL ||
     data?.channels?.data?.data[0]?.streamLink?.URL ||
     null;
+  console.log("playing server", playingServer);
   const playingServerName =
     queryChannel?.data?.data?.channelName ||
     data?.channels?.data?.data[0]?.channelName ||

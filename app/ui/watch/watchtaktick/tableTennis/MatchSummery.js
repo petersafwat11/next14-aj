@@ -23,6 +23,7 @@ const MatchSummery = ({ sportCategory, matchId, eventDate, customAPi }) => {
                 matchId,
                 sportCategory,
                 eventDate,
+                dataType: "Statistics",
               },
             }
           );
