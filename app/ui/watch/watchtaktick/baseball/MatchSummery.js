@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -20,112 +21,69 @@ const MatchSummery = ({
   const changeCategory = (category) => {
     setCategory(category);
   };
+  const getUsableData = useCallback((statisticsResponse) => {
+    const statNames = [
+      "Runs",
+      "Doubles",
+      "Triples",
+      "Home runs",
+      "Base on balls",
+      "Hits",
+    ];
+    const allStats = statisticsResponse?.data?.data?.find(
+      (stat) => stat.period === "ALL"
+    ).groups;
+    const battingStatsGroup = allStats?.find(
+      (group) => group.groupName === "Batting"
+    )?.statisticsItems;
+    // Reduce the battingStatsGroup into an object for constant-time lookups.
+    const battingStatsDictionary = battingStatsGroup.reduce((acc, item) => {
+      acc[item.name] = item;
+      return acc;
+    }, {});
+
+    const useableData = statNames.map((name) => {
+      const stat = battingStatsDictionary[name];
+      return {
+        name,
+        home: stat?.home,
+        away: stat?.away,
+      };
+    });
+    return useableData;
+  }, []);
   useEffect(() => {
     if (sportCategory && matchId) {
-      (async () => {
+      const getEventIntialData = async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
-          );
-          const lineups = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/lineups`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Lineups",
-              },
-            }
-          );
-
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-          // console.log("lineups", lineups.data);
-          // console.log("stats", allStats);
-          const useableData = [
-            {
-              name: "Runs",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Runs")?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Runs")?.away,
-            },
-            {
-              name: "Doubles",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Doubles")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Doubles")
-                ?.away,
-            },
-            {
-              name: "Triples",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Triples")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Triples")
-                ?.away,
-            },
-            {
-              name: "Home runs",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Home runs")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Home runs")
-                ?.away,
-            },
-            {
-              name: "Base on balls",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Base on balls"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Base on balls"
-                )?.away,
-            },
-            {
-              name: "Hits",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Hits")?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Batting")
-                ?.statisticsItems?.find((items) => items.name === "Hits")?.away,
-            },
-          ];
+          const responses = await Promise.all([
+            fetchEventData("Statistics"),
+            fetchEventData("Lineups"),
+          ]);
+          const [statisticsResponse, lineupsResponse] = responses;
+          const useableData = getUsableData(statisticsResponse);
           setStatisticsData(useableData);
-          setLineupsData(lineups?.data?.data);
-        } catch (err) {
-          console.log("error", err);
+
+          setLineupsData(lineupsResponse?.data?.data);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
         }
-      })();
+      };
+      getEventIntialData();
+      const getUpdatedData = async () => {
+        const stats = await fetchEventData(
+          "Statistics",
+          matchId,
+          sportCategory,
+          eventDate
+        );
+        const useableData = getUsableData(stats);
+        setStatisticsData(useableData);
+      };
+      const intervalId = setInterval(getUpdatedData, 210000);
+      return () => clearInterval(intervalId);
     }
-  }, [matchId, sportCategory, eventDate]);
+  }, [matchId, sportCategory, eventDate, getUsableData]);
   return (
     <div className={classes["container"]}>
       <GlobalHeader

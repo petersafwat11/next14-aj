@@ -4,14 +4,14 @@ import Bottom from "./Bottom";
 import classes from "./statistics.module.css";
 import Top from "./Top";
 import UnderDevelopment from "@/app/ui/underDevelopment/component/underDevelopment";
-const Statistics = ({ optionsOne, data, firstTeamName, secondTeamName }) => {
+const Statistics = ({ data, firstTeamName, secondTeamName }) => {
   console.log("data", data);
   return data !== null ? (
     <div className={classes["container"]}>
       <Top firstTeamName={firstTeamName} secondTeamName={secondTeamName} />
       <span className={classes["devider"]}></span>
       <div className={classes["body"]}>
-        <Body options={optionsOne} data={data} />
+        <Body  data={data} />
       </div>
       <span className={classes["devider"]}></span>
 

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -15,103 +16,68 @@ const MatchSummery = ({
 }) => {
   const [category, setCategory] = useState("STATISTICS");
   const [statisticsData, setStatisticsData] = useState(null);
-  const [lineupsData, setLineupsData] = useState("");
 
   const changeCategory = (category) => {
     setCategory(category);
   };
+  const getUsableData = useCallback((ss) => {
+    const allGroups = statistics?.data?.data?.find(
+      (stat) => stat.period === "ALL"
+    )?.groups;
+
+    // Function to extract and cache stats for a specific group.
+    const getStatsForGroup = (groupName, allGroups) => {
+      const groupStats = allGroups?.find(
+        (group) => group.groupName === groupName
+      );
+      const statsItems = groupStats?.statisticsItems;
+      return statsItems?.reduce((acc, item) => {
+        acc[item.name] = { home: item.home, away: item.away };
+        return acc;
+      }, {});
+    };
+
+    // Retrieve and cache the 'Attacking' group statistics once.
+    const attackingStats = getStatsForGroup("Attacking", allGroups);
+
+    // Define the names and corresponding keys for the statistics we want to extract.
+    const statsDefinitions = [
+      { name: "THROWN 180", key: "Thrown 180" },
+      { name: "THROWN OVER 140", key: "Thrown over 140" },
+      { name: "THROWN OVER 100", key: "Thrown over 100" },
+      { name: "HIGHEST CHECKOUT", key: "Highest checkout" },
+      { name: "CHECKOUTS ACCURACY", key: "Checkouts accuracy" },
+    ];
+
+    // Map through the definitions to create 'useableData' using the cached 'attackingStats'.
+    const useableData = statsDefinitions.map(({ name, key }) => ({
+      name,
+      home: attackingStats[key]?.home,
+      away: attackingStats[key]?.away,
+    }));
+    return useableData;
+  }, []);
   useEffect(() => {
     if (sportCategory && matchId) {
-      (async () => {
+      const getEventIntialUpdatedData = async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
+          const stats = await fetchEventData(
+            "Statistics",
+            matchId,
+            sportCategory,
+            eventDate
           );
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-          // console.log("stats", allStats);
-          const useableData = [
-            {
-              name: "THROWN 180",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find((items) => items.name === "Thrown 180")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find((items) => items.name === "Thrown 180")
-                ?.away,
-            },
-            {
-              name: "THROWN OVER 140",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Thrown over 140"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Thrown over 140"
-                )?.away,
-            },
-            {
-              name: "THROWN OVER 100",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Thrown over 100"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Thrown over 100"
-                )?.away,
-            },
-            {
-              name: "HIGHEST CHECKOUT",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Highest checkout"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Highest checkout"
-                )?.away,
-            },
-            {
-              name: "CHECKOUTS ACCURACY",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Checkouts accuracy"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Attacking")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Checkouts accuracy"
-                )?.away,
-            },
-          ];
+          const useableData = getUsableData(stats);
           setStatisticsData(useableData);
-          // console.log("useable", useableData);
-        } catch (err) {
-          console.log("error", err);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
         }
-      })();
+      };
+      getEventIntialUpdatedData();
+      const intervalId = setInterval(getEventIntialUpdatedData, 60000);
+      return () => clearInterval(intervalId);
     }
-  }, [matchId, sportCategory, eventDate]);
+  }, [matchId, sportCategory, eventDate, getUsableData]);
 
   return (
     <div className={classes["container"]}>

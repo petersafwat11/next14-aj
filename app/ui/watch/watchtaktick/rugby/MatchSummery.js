@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Standings from "../standings/Standings";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -20,113 +21,66 @@ const MatchSummery = ({
   const changeCategory = (category) => {
     setCategory(category);
   };
+  const getUsableData = useCallback((statistics) => {
+    const allStats = statistics?.data?.data?.find(
+      (stat) => stat.period === "ALL"
+    )?.groups;
+
+    // Create a function that returns a group array by name for constant-time lookups.
+    function getGroupStats(groupName) {
+      const group = allStats?.find(
+        (stat) => stat.groupName === groupName
+      )?.statisticsItems;
+      return group?.reduce((acc, item) => {
+        acc[item.name] = item;
+        return acc;
+      }, {});
+    }
+
+    // Create lookup dictionaries for each group of interest.
+    const possessionStats = getGroupStats("Possession");
+    const scoringStats = getGroupStats("Scoring");
+    const otherStats = getGroupStats("Other");
+
+    // Helper function to retrieve the data struct.
+    function getStats(name, item, statsGroup) {
+      return {
+        name,
+        home: statsGroup[item]?.home,
+        away: statsGroup[item]?.away,
+      };
+    }
+
+    const useableData = [
+      getStats("POSSESSION", "Ball possession", possessionStats),
+      getStats("TRIES", "Tries", scoringStats),
+      getStats("CONVERSIONS", "Conversions", scoringStats),
+      getStats("PENALTY GOALS", "Penalty goals", scoringStats),
+      getStats("SCRUMS", "Scrums", otherStats),
+      getStats("TURNOVERS", "Turnovers", otherStats),
+    ];
+  }, []);
   useEffect(() => {
     if (sportCategory && matchId) {
-      (async () => {
+      const getEventIntialUpdatedData = async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
+          const stats = await fetchEventData(
+            "Statistics",
+            matchId,
+            sportCategory,
+            eventDate
           );
-          console.log("statistics", statistics);
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-          console.log("stats", allStats);
-          "POSSESSION",
-            "TRIES",
-            "CONVERSIONS",
-            "PENALTY GOALS",
-            "SCRUMS",
-            "TURNOVERS";
-
-          const useableData = [
-            {
-              name: "POSSESSION",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Possession")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Ball possession"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Possession")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Ball possession"
-                )?.away,
-            },
-            {
-              name: "TRIES",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Tries")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Tries")
-                ?.away,
-            },
-            {
-              name: "CONVERSIONS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Conversions")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Conversions")
-                ?.away,
-            },
-            {
-              name: "PENALTY GOALS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Penalty goals"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Penalty goals"
-                )?.away,
-            },
-            {
-              name: "SCRUMS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Scrums")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Scrums")
-                ?.away,
-            },
-            {
-              name: "TURNOVERS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Turnovers")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Turnovers")
-                ?.away,
-            },
-          ];
+          const useableData = getUsableData(stats);
           setStatisticsData(useableData);
-          console.log("useable", useableData);
-        } catch (err) {
-          console.log("error", err);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
         }
-      })();
+      };
+      getEventIntialUpdatedData();
+      const intervalId = setInterval(getEventIntialUpdatedData, 60000);
+      return () => clearInterval(intervalId);
     }
-  }, [matchId, sportCategory, eventDate]);
+  }, [matchId, sportCategory, eventDate, getUsableData]);
 
   return (
     <div className={classes["container"]}>

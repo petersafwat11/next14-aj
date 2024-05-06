@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -20,108 +21,78 @@ const MatchSummery = ({
   const changeCategory = (category) => {
     setCategory(category);
   };
+  const getUsableData = useCallback((statistics) => {
+    const allStats = statistics?.data?.data?.find(
+      (stat) => stat.period === "ALL"
+    )?.groups;
+
+    // Cache for storing already found groups to avoid repeated searches.
+    const groupCache = {};
+
+    // Function to get the statistics for a given group and stat name.
+    const getStatData = (groupName, itemName) => {
+      // If the group isn't in the cache, find it and add it to the cache.
+      if (!groupCache[groupName]) {
+        const group = allStats?.find(
+          (stat) => stat.groupName === groupName
+        )?.statisticsItems;
+        groupCache[groupName] = group?.reduce((acc, item) => {
+          acc[item.name] = item;
+          return acc;
+        }, {});
+      }
+      // Utilize the cache for quick access to the statistics items.
+      return groupCache[groupName][itemName];
+    };
+
+    const useableData = [
+      { groupName: "Saves", itemName: "Saves" },
+      { groupName: "Penalty", itemName: "2 min penalty" },
+      { groupName: "Goals extra", itemName: "Goals in powerplay" },
+      { groupName: "Goals", itemName: "7 meters" },
+      { groupName: "Goals extra", itemName: "Goal streak" },
+    ].map(({ groupName, itemName }) => {
+      const itemStat = getStatData(groupName, itemName);
+      return {
+        name: itemName.toUpperCase(), // Assuming you want the names to be uppercase, like "7 METRES"
+        home: itemStat?.home,
+        away: itemStat?.away,
+      };
+    });
+    return useableData;
+  }, []);
   useEffect(() => {
     if (sportCategory && matchId) {
-      (async () => {
+      const getEventIntialData = async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
-          );
-          const lineups = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/lineups`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Lineups",
-              },
-            }
-          );
+          const responses = await Promise.all([
+            fetchEventData("Statistics"),
+            fetchEventData("Lineups"),
+          ]);
 
-          console.log("stats", statistics?.data?.data);
-
-          setLineupsData(lineups?.data?.data);
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-
-          const useableData = [
-            {
-              name: "Saves",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Saves")
-                ?.statisticsItems?.find((items) => items.name === "Saves")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Saves")
-                ?.statisticsItems?.find((items) => items.name === "Saves")
-                ?.away,
-            },
-            {
-              name: " 2 Min Penalty",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Penalty")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "2 min penalty"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Penalty")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "2 min penalty"
-                )?.away,
-            },
-            {
-              name: "Goals in Powerplay",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Goals extra")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Goals in powerplay"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Goals extra")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Goals in powerplay"
-                )?.away,
-            },
-            {
-              name: "7 METRES",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Goals")
-                ?.statisticsItems?.find((items) => items.name === "7 meters")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Goals")
-                ?.statisticsItems?.find((items) => items.name === "7 meters")
-                ?.away,
-            },
-            {
-              name: "GOAL STREAK",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Goals extra")
-                ?.statisticsItems?.find((items) => items.name === "Goal streak")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Goals extra")
-                ?.statisticsItems?.find((items) => items.name === "Goal streak")
-                ?.away,
-            },
-          ];
+          const [statisticsResponse, lineupsResponse] = responses;
+          setLineupsData(lineupsResponse?.data?.data);
+          const useableData = getUsableData(statisticsResponse);
           setStatisticsData(useableData);
-        } catch (err) {
-          console.log("error", err);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
         }
-      })();
+      };
+      getEventIntialData();
+      const getUpdatedData = async () => {
+        const stats = await fetchEventData(
+          "Statistics",
+          matchId,
+          sportCategory,
+          eventDate
+        );
+        const useableData = getUsableData(stats);
+        setStatisticsData(useableData);
+      };
+      const intervalId = setInterval(getUpdatedData, 180000);
+      return () => clearInterval(intervalId);
     }
-  }, [matchId, sportCategory, eventDate]);
+  }, [matchId, sportCategory, eventDate, getUsableData]);
   return (
     <div className={classes["container"]}>
       <GlobalHeader
@@ -140,13 +111,6 @@ const MatchSummery = ({
           firstTeamName={firstTeamName}
           secondTeamName={secondTeamName}
           data={statisticsData}
-          optionsOne={[
-            "SHOOTING EFFICIENCY",
-            "WING GOALS",
-            "FAST BREAK GOALS",
-            "7 METRES",
-            "GOAL STREAKS",
-          ]}
         />
       )}
     </div>

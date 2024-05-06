@@ -6,6 +6,7 @@ import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -56,55 +57,51 @@ const MatchSummery = ({
       away: 0,
     },
   ]);
+  const getUsableData = useCallback((statistics) => {
+    const allStats = statistics?.data?.data
+      ?.find((stat) => stat.period === "ALL")
+      .groups.find((item) => item.groupName === "Attacking").statisticsItems;
+    const useableData = allStats.filter((largerObj) =>
+      statisticsDataRef.current.some(
+        (smallerObj) => smallerObj.name === largerObj.name
+      )
+    );
+    return useableData;
+  }, []);
   useEffect(() => {
-    const getstatsData = async () => {
-      if (!sportCategory || !matchId || !eventDate) {
-        return;
-      }
-      try {
-        const statistics = await axios.get(
-          `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-          {
-            params: {
-              matchId,
-              sportCategory,
-              eventDate,
-              dataType: "Statistics",
-            },
-          }
-        );
-        const allStats = statistics?.data?.data
-          ?.find((stat) => stat.period === "ALL")
-          .groups.find(
-            (item) => item.groupName === "Attacking"
-          ).statisticsItems;
-        const useableStatsData = allStats.filter((largerObj) =>
-          statisticsDataRef.current.some(
-            (smallerObj) => smallerObj.name === largerObj.name
-          )
-        );
-        const lineups = await axios.get(
-          `${process.env.BACKEND_SERVER}/sports/eventAPIData/lineups`,
-          {
-            params: {
-              matchId,
-              sportCategory,
-              eventDate,
-              dataType: "Lineups",
-            },
-          }
-        );
-        // console.log("lineups", lineups);
-        // console.log("stats", statistics);
+    if (sportCategory && matchId) {
+      const getEventIntialData = async () => {
+        try {
+          const responses = await Promise.all([
+            fetchEventData("Statistics"),
+            fetchEventData("Lineups"),
+          ]);
 
-        setLineupsData(lineups?.data?.data);
-        setStatisticsData(useableStatsData);
-      } catch (err) {
-        console.log("error", err);
-      }
-    };
-    getstatsData();
-  }, [matchId, sportCategory, eventDate]);
+          const [statisticsResponse, lineupsResponse] = responses;
+
+          const useableData = getUsableData(statisticsResponse);
+          setStatisticsData(useableData);
+
+          setLineupsData(lineupsResponse?.data?.data);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
+        }
+      };
+      getEventIntialData();
+      const getUpdatedData = async () => {
+        const stats = await fetchEventData(
+          "Statistics",
+          matchId,
+          sportCategory,
+          eventDate
+        );
+        const useableData = getUsableData(stats);
+        setStatisticsData(useableData);
+      };
+      const intervalId = setInterval(getUpdatedData, 60000);
+      return () => clearInterval(intervalId);
+    }
+  }, [matchId, sportCategory, eventDate, getUsableData]);
   return (
     <div className={classes["container"]}>
       <GlobalHeader

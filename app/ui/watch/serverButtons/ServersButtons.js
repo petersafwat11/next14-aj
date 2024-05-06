@@ -57,7 +57,7 @@ const ServersButtons = ({
     if (streamNotAvailable) {
       setTimeout(() => {
         setStreamNotAvailable(false);
-      }, [50000]);
+      }, [5000]);
     }
   }, [streamNotAvailable]);
 
@@ -65,7 +65,6 @@ const ServersButtons = ({
     <>
       {streamNotAvailable && (
         <Popup>
-          {" "}
           <StreamNotAvailable eventDate={eventDate} />
         </Popup>
       )}

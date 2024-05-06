@@ -38,7 +38,7 @@ const ServersButtonsMobile = ({
     if (streamNotAvailable) {
       setTimeout(() => {
         setStreamNotAvailable(false);
-      }, [50000]);
+      }, [5000]);
     }
   }, [streamNotAvailable]);
 

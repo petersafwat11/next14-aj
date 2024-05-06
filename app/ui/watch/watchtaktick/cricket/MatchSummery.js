@@ -56,17 +56,6 @@ const MatchSummery = ({
     if (sportCategory && matchId) {
       (async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
-          );
 
           const lineups = await axios.get(
             `${process.env.BACKEND_SERVER}/sports/eventAPIData/lineups`,
@@ -79,85 +68,6 @@ const MatchSummery = ({
               },
             }
           );
-
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-
-          const useableData = [
-            {
-              name: "POSSESSION",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Possession")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Ball possession"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Possession")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Ball possession"
-                )?.away,
-            },
-            {
-              name: "TRIES",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Tries")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Tries")
-                ?.away,
-            },
-            {
-              name: "CONVERSIONS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Conversions")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find((items) => items.name === "Conversions")
-                ?.away,
-            },
-            {
-              name: "PENALTY GOALS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Penalty goals"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Scoring")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Penalty goals"
-                )?.away,
-            },
-            {
-              name: "SCRUMS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Scrums")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Scrums")
-                ?.away,
-            },
-            {
-              name: "TURNOVERS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Turnovers")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Other")
-                ?.statisticsItems?.find((items) => items.name === "Turnovers")
-                ?.away,
-            },
-          ];
-          setStatisticsData(useableData);
-          // console.log("useable", useableData, lineups.data);
           setLineupsData(lineups?.data?.data);
         } catch (err) {
           console.log("error", err);
@@ -173,15 +83,7 @@ const MatchSummery = ({
         changeCategory={changeCategory}
         categories={["LINEUPS", "STATISTICS"]}
       />
-      {category === "LINEUPS" ? (
         <Lineups data={lineupsData} />
-      ) : (
-        <Statistics
-          firstTeamName={firstTeamName}
-          secondTeamName={secondTeamName}
-          data={statisticsData}
-        />
-      )}
     </div>
   );
 };

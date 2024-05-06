@@ -8,14 +8,13 @@ const StreamNotAvailable = ({ eventDate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(eventDate));
+      console.log("eventDate", eventDate, remainingTime);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [eventDate]);
+  }, [eventDate, remainingTime]);
   return (
-    <div
-      className={classes["stream-not-available"]}
-    >
+    <div className={classes["stream-not-available"]}>
       <div className={classes["container"]}>
         <p className={classes["text"]}>This stream will be available in </p>
         <p className={classes["remaining-time"]}>{remainingTime}</p>

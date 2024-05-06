@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
 import Lineups from "./Lineups";
 import classes from "./matchSummery.module.css";
+import { fetchEventData } from "@/app/lib/getEventData";
 const MatchSummery = ({
   sportCategory,
   matchId,
@@ -55,118 +56,80 @@ const MatchSummery = ({
   const changeCategory = (category) => {
     setCategory(category);
   };
+  const getUsableData = useCallback((statistics) => {
+    const allGroups = statistics?.data?.data?.find(
+      (stat) => stat.period === "ALL"
+    )?.groups;
+
+    // Function to convert groups array into an object for constant-time lookups.
+    function createGroupLookup(groups) {
+      return groups.reduce((acc, group) => {
+        acc[group.groupName] = group.statisticsItems.reduce((itemAcc, item) => {
+          itemAcc[item.name] = item;
+          return itemAcc;
+        }, {});
+        return acc;
+      }, {});
+    }
+
+    // Convert allStats into a lookup object once
+    const statsLookup = createGroupLookup(allGroups);
+
+    const statsList = [
+      { groupName: "Points", itemName: "Total", display: "TOTAL POINTS" },
+      { groupName: "Service", itemName: "Aces", display: "ACES" },
+      {
+        groupName: "Service",
+        itemName: "Double faults",
+        display: "DOUBLE FAULTS",
+      },
+      {
+        groupName: "Service",
+        itemName: "Break points saved",
+        display: "BREAK POINTS SAVED",
+      },
+      {
+        groupName: "Points",
+        itemName: "Service points won",
+        display: "SERVICE POINTS WON",
+      },
+      {
+        groupName: "Points",
+        itemName: "Receiver points won",
+        display: "RECEIVER POINTS WON",
+      },
+    ];
+
+    // Map over statsList to extract useableData.
+    const useableData = statsList.map(({ groupName, itemName, display }) => ({
+      name: display,
+      home: statsLookup[groupName]?.[itemName]?.home ?? null,
+      away: statsLookup[groupName]?.[itemName]?.away ?? null,
+    }));
+
+    return useableData;
+  }, []);
   useEffect(() => {
     if (sportCategory && matchId) {
-      (async () => {
+      const getEventIntialUpdatedData = async () => {
         try {
-          const statistics = await axios.get(
-            `${process.env.BACKEND_SERVER}/sports/eventAPIData/statistics`,
-            {
-              params: {
-                matchId,
-                sportCategory,
-                eventDate,
-                dataType: "Statistics",
-              },
-            }
+          const stats = await fetchEventData(
+            "Statistics",
+            matchId,
+            sportCategory,
+            eventDate
           );
-          const allStats = statistics?.data?.data?.find(
-            (stat) => stat.period === "ALL"
-          ).groups;
-
-          const useableData = [
-            {
-              name: "TOTAL POINTS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find((items) => items.name === "Total")
-                ?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find((items) => items.name === "Total")
-                ?.away,
-            },
-            {
-              name: "ACES",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find((items) => items.name === "Aces")?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find((items) => items.name === "Aces")?.away,
-            },
-            {
-              name: "DOUBLE FAULTS",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Double faults"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Double faults"
-                )?.away,
-            },
-            {
-              name: "BREAK POINTS SAVED",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Break points saved"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Service")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Break points saved"
-                )?.away,
-            },
-            // {
-            //   name: "OFFENSIVE REBOUNDS",
-            //   home: allStats
-            //     ?.find((stat) => stat.groupName === "Points")
-            //     ?.statisticsItems?.find((items) => items.name === "Total")
-            //     ?.home,
-            //   away: allStats
-            //     ?.find((stat) => stat.groupName === "Points")
-            //     ?.statisticsItems?.find((items) => items.name === "Total")
-            //     ?.away,
-            // },
-            {
-              name: "SERVICE POINTS WON",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Service points won"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Service points won"
-                )?.away,
-            },
-            {
-              name: "RECEIVER POINTS WON",
-              home: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Receiver points won"
-                )?.home,
-              away: allStats
-                ?.find((stat) => stat.groupName === "Points")
-                ?.statisticsItems?.find(
-                  (items) => items.name === "Receiver points won"
-                )?.away,
-            },
-          ];
-          console.log("useable", useableData);
+          const useableData = getUsableData(stats);
           setStatisticsData(useableData);
-        } catch (err) {
-          console.log("error", err);
+        } catch (error) {
+          console.error("Error fetching event API data:", error);
         }
-      })();
+      };
+      getEventIntialUpdatedData();
+      const intervalId = setInterval(getEventIntialUpdatedData, 30000);
+      return () => clearInterval(intervalId);
     }
-  }, [matchId, sportCategory, eventDate]);
+  }, [matchId, sportCategory, eventDate, getUsableData]);
   return (
     <div className={classes["container"]}>
       <GlobalHeader
@@ -180,17 +143,7 @@ const MatchSummery = ({
         <Statistics
           firstTeamName={firstTeamName}
           secondTeamName={secondTeamName}
-          optionsOne={[
-            "TOTAL POINTS",
-            "ACES",
-            "DOUBLE FAULTS",
-            "BREAK POINTS SAVED",
-            "OFFENSIVE REBOUNDS",
-            "SERVICE POINTS WON",
-            "RECEIVER POINTS WON",
-          ]}
           data={statisticsData}
-          // optionsTwo={["SERVICE POINTS WON", "RECEIVER POINTS WON"]}
         />
       )}
     </div>

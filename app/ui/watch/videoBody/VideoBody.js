@@ -49,9 +49,7 @@ const VideoBody = ({
   //   const [videoUrl, setVideoUrl] = useState(url);
   const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
   const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
-  const [remainingTime, setRemainingTime] = useState(
-    calcRemainingTime(eventDate)
-  );
+  const [remainingTime, setRemainingTime] = useState("");
   const [extendMode, setExtendMode] = useState(false);
 
   useEffect(() => {
@@ -93,22 +91,27 @@ const VideoBody = ({
         )}
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>
-        <div className={classes["social-links-desktop"]}>
-          <BottomSocial social={social} />
-        </div>
+        {playStreaming && !endedEvent && (
+          <div className={classes["social-links-desktop"]}>
+            <BottomSocial social={social} />
+          </div>
+        )}
         <div className={classes["servers-mobile"]}>
           <ServersButtonsMobile
             notLive={!playStreaming || endedEvent}
             playingServer={playingServer}
             setPlayingServer={setPlayingServer}
             servers={servers}
+            eventDate={eventDate}
           />
         </div>
 
-        <div className={classes["modes-icons"]}>
-          <ExtendButton activeExtendMode={activeExtendMode} />
-          <ReportBtn />
-        </div>
+        {playStreaming && !endedEvent && (
+          <div className={classes["modes-icons"]}>
+            <ExtendButton activeExtendMode={activeExtendMode} />
+            <ReportBtn />
+          </div>
+        )}
       </div>
 
       <div className={classes["servers"]}>
@@ -117,6 +120,7 @@ const VideoBody = ({
           playingServer={playingServer}
           setPlayingServer={setPlayingServer}
           servers={servers}
+          eventDate={eventDate}
         />
       </div>
     </>

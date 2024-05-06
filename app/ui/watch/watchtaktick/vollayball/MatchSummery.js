@@ -171,13 +171,6 @@ const MatchSummery = ({
           firstTeamName={firstTeamName}
           secondTeamName={secondTeamName}
           data={statisticsData}
-          optionsOne={[
-            "POINTS WON",
-            "SERVICE POINTS WON",
-            "RECEIVER POINTS WON",
-            "ACES",
-            "TIMEOUTS",
-          ]}
         />
       )}
     </div>
