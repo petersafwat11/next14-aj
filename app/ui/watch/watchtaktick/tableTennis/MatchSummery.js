@@ -17,7 +17,7 @@ const MatchSummery = ({ sportCategory, matchId, eventDate, customAPi }) => {
     const useableData = statistics?.data?.data?.filter(
       (stat) => stat.period !== "ALL"
     );
-    return statistics;
+    return useableData;
   }, []);
   useEffect(() => {
     if (sportCategory && matchId) {

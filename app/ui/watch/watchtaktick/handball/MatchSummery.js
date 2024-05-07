@@ -66,8 +66,8 @@ const MatchSummery = ({
       const getEventIntialData = async () => {
         try {
           const responses = await Promise.all([
-            fetchEventData("Statistics"),
-            fetchEventData("Lineups"),
+            fetchEventData("Statistics", matchId, sportCategory, eventDate),
+            fetchEventData("Lineups", matchId, sportCategory, eventDate),
           ]);
 
           const [statisticsResponse, lineupsResponse] = responses;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useCallback } from "react";
 import axios from "axios";
 import GlobalHeader from "../globalHeader/GlobalHeader";
 import Statistics from "../statistics/Statistics";
@@ -73,8 +73,8 @@ const MatchSummery = ({
       const getEventIntialData = async () => {
         try {
           const responses = await Promise.all([
-            fetchEventData("Statistics"),
-            fetchEventData("Lineups"),
+            fetchEventData("Statistics", matchId, sportCategory, eventDate),
+            fetchEventData("Lineups", matchId, sportCategory, eventDate),
           ]);
 
           const [statisticsResponse, lineupsResponse] = responses;

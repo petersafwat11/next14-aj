@@ -10,9 +10,9 @@ export async function fetchEventData(
     `${process.env.BACKEND_SERVER}/sports/eventAPIData/${dataType}`,
     {
       params: {
-        matchId,
-        sportCategory,
-        eventDate,
+        matchId: matchId,
+        sportCategory: sportCategory,
+        eventDate: eventDate,
         dataType,
       },
     }

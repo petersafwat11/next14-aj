@@ -56,7 +56,7 @@ const Staduim = ({ data }) => {
         data?.secondTeam?.players &&
         data?.secondTeam?.players?.length > 0 &&
         data?.secondTeam?.players?.map((player, index) => (
-          <div key={index} className={classes[`palyer-${index + 3}`]}>
+          <div key={index} className={classes[`palyer-${index + 5}`]}>
             <Image
               className={classes["player-icon"]}
               src="/svg/watch/table-tennis/tennis-racket.svg"

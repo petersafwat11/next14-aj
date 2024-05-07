@@ -15,26 +15,28 @@ const Body = ({ options, data }) => {
               <div className={classes["progress-bar-first"]}>
                 <span
                   style={{
-                    width:
-                      Number(item.home) + Number(item.away) === 0
-                        ? 0
-                        : `${Math.round(
-                            (Number(item.home) * 100) /
-                              (Number(item.home) + Number(item.away))
-                          )}%`,
+                    width: String(item.home).includes("%")
+                      ? item.home
+                      : Number(item.home) + Number(item.away) === 0
+                      ? 0
+                      : `${Math.round(
+                          (Number(item.home) * 100) /
+                            (Number(item.home) + Number(item.away))
+                        )}%`,
                   }}
                 ></span>
               </div>
               <div className={classes["progress-bar-last"]}>
                 <span
                   style={{
-                    width:
-                      Number(item.home) + Number(item.away) === 0
-                        ? 0
-                        : `${Math.round(
-                            (Number(item.away) * 100) /
-                              (Number(item.home) + Number(item.away))
-                          )}%`,
+                    width: String(item.away).includes("%")
+                      ? item.away
+                      : Number(item.home) + Number(item.away) === 0
+                      ? 0
+                      : `${Math.round(
+                          (Number(item.away) * 100) /
+                            (Number(item.home) + Number(item.away))
+                        )}%`,
                   }}
                 ></span>
               </div>

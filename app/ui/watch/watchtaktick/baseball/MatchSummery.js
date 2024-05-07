@@ -57,13 +57,12 @@ const MatchSummery = ({
       const getEventIntialData = async () => {
         try {
           const responses = await Promise.all([
-            fetchEventData("Statistics"),
-            fetchEventData("Lineups"),
+            fetchEventData("Statistics", matchId, sportCategory, eventDate),
+            fetchEventData("Lineups", matchId, sportCategory, eventDate),
           ]);
           const [statisticsResponse, lineupsResponse] = responses;
           const useableData = getUsableData(statisticsResponse);
           setStatisticsData(useableData);
-
           setLineupsData(lineupsResponse?.data?.data);
         } catch (error) {
           console.error("Error fetching event API data:", error);

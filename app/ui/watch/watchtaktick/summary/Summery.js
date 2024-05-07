@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./summery.module.css";
+import UnderDevelopment from "@/app/ui/underDevelopment/component/underDevelopment";
 const Summery = ({ data, secondTeamName, firstTeamName }) => {
-  return (
+  return data !== null ? (
     <div className={classes["container"]}>
       <div className={classes["left"]}>
         <p className={classes["player-name"]}>{firstTeamName}</p>
@@ -41,6 +42,11 @@ const Summery = ({ data, secondTeamName, firstTeamName }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <UnderDevelopment
+      title={"Summery will be available when live"}
+      message={"Please share this link with friends and family until then"}
+    />
   );
 };
 
