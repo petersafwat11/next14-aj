@@ -1,6 +1,23 @@
 import React from "react";
 import classes from "./body.module.css";
 const Body = ({ options, data }) => {
+  const matchPercetageValue = (str) => {
+    const match = str.match(/\((\d+)%\)/); // Regular expression to match the value between parentheses
+    if (match && match[1]) {
+      const value = match[1];
+      return value + "%";
+    }
+  };
+  const getStatPercentage = (baseValue, otherValue) => {
+    const percentageValue = String(baseValue).includes("%")
+      ? matchPercetageValue(baseValue)
+      : Number(baseValue) + Number(otherValue) === 0
+      ? 0
+      : `${Math.round(
+          (Number(baseValue) * 100) / (Number(baseValue) + Number(otherValue))
+        )}%`;
+    return percentageValue;
+  };
   return (
     <div className={classes["stats"]}>
       {data &&
@@ -15,28 +32,14 @@ const Body = ({ options, data }) => {
               <div className={classes["progress-bar-first"]}>
                 <span
                   style={{
-                    width: String(item.home).includes("%")
-                      ? item.home
-                      : Number(item.home) + Number(item.away) === 0
-                      ? 0
-                      : `${Math.round(
-                          (Number(item.home) * 100) /
-                            (Number(item.home) + Number(item.away))
-                        )}%`,
+                    width: getStatPercentage(item.home, item.away),
                   }}
                 ></span>
               </div>
               <div className={classes["progress-bar-last"]}>
                 <span
                   style={{
-                    width: String(item.away).includes("%")
-                      ? item.away
-                      : Number(item.home) + Number(item.away) === 0
-                      ? 0
-                      : `${Math.round(
-                          (Number(item.away) * 100) /
-                            (Number(item.home) + Number(item.away))
-                        )}%`,
+                    width: getStatPercentage(item.away, item.home),
                   }}
                 ></span>
               </div>

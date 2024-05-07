@@ -74,6 +74,7 @@ const MatchSummery = ({
         const useableData = getUsableData(stats);
         setStatisticsData(useableData);
       };
+      getUpdatedData();
       const intervalId = setInterval(getUpdatedData, 120000);
       return () => clearInterval(intervalId);
     }
