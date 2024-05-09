@@ -2,10 +2,8 @@ import classes from "./page.module.css";
 import axios from "axios";
 import WatchDetailsSingleTeam from "@/app/ui/watch/watchDetailsSingleTeam/WatchDetailsSingleTeam";
 import WatchDetails from "@/app/ui/watch/watch-details/WatchDetailsFootball";
-import WatchNavigation from "@/app/ui/watchNavigation/WatchNavigation";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
-import MatchSummery from "@/app/ui/watch/watchtaktick/MatchSummey/MatchSummery";
 import {
   convertDate,
   determineLive,
@@ -17,7 +15,8 @@ import { getMatchQuery } from "./getMatchQuery";
 import ShowingChat from "@/app/ui/showingChat/ShowingChat";
 
 import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
-import WatchShare from "@/app/ui/whatchShare/WatchShare";
+import VideoTop from "@/app/ui/watch/videoTop/VideoTop";
+import MatchData from "@/app/ui/watch/watchtaktick/MatchSummey/MatchData";
 
 const Page = async ({ params }) => {
   const query = getMatchQuery(params.name);
@@ -27,7 +26,7 @@ const Page = async ({ params }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
     axios.get(`${process.env.BACKEND_SERVER}/chat`, {
       params: {
-        limit: 0,
+        limit: 10,
         room: "English (Default)",
         sort: { _id: 1 },
         mode: "normal",
@@ -129,19 +128,7 @@ const Page = async ({ params }) => {
           />
         )}
         <div className="watch-video-wrapper">
-          <div className={classes["watch-video-top"]}>
-            <div className="navigation">
-              <WatchNavigation page={"Sports"} />
-            </div>
-            <WatchShare
-              reportData={{
-                event: query?.secondTeamName
-                  ? `${query?.firstTeamName} vs ${query?.secondTeamName}`
-                  : query?.teamsTitle,
-                server: playingServer?.lang,
-              }}
-            />
-          </div>
+          <VideoTop query={query} lang={playingServer.lang} />
           <VideoBody
             chatMessages={data?.messagesData}
             chatRules={data?.rulesData}
@@ -164,7 +151,7 @@ const Page = async ({ params }) => {
           </div>
 
           <div className={classes["takticks"]}>
-            <MatchSummery
+            <MatchData
               customAPi={matchData?.customAPI?.customAPIData}
               eventDate={matchData?.eventDate}
               matchId={matchData?.matchId || null}

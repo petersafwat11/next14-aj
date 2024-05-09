@@ -40,7 +40,7 @@ const Page = async ({ searchParams }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
     axios.get(`${process.env.BACKEND_SERVER}/chat`, {
       params: {
-        limit: 0,
+        limit: 10,
         room: "English (Default)",
         sort: { _id: 1 },
         mode: "normal",

@@ -3,10 +3,15 @@ import Image from "next/image";
 import React, { useEffect, useReducer, useState } from "react";
 // import { getDateDifference } from "../../../utils/convertDateFormat";
 import FollowUS from "../followUS/FollowUS";
-import StepsWrapper from "../stepsWrapper/StepsWrapper";
+import dynamic from "next/dynamic";
+const StepsWrapper = dynamic(() => import("../stepsWrapper/StepsWrapper"), {
+  ssr: false,
+});
 import classes from "./wrapper.module.css";
 import { getDateDifference } from "@/app/lib/datesFunctions";
-import Popup from "../../popupWrapper/Popup";
+const Popup = dynamic(() => import("../../popupWrapper/Popup"), {
+  ssr: false,
+});
 import PageTitle from "../../pageTitle/PageTitle";
 
 const followUsReducer = (state, action) => {

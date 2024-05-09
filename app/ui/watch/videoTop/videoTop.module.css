@@ -1,0 +1,12 @@
+.watch-video-top {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  margin: 0 auto 4px;
+}
+@media (max-width: 56.25rem) {
+  .watch-video-top {
+    justify-content: center;
+    margin: 15px auto 13px;
+  }
+}

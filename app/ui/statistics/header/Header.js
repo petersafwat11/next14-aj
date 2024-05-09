@@ -1,18 +1,9 @@
 import React from "react";
-import FixtureAndResults from "../fixitureAndResults/FixtureAndResults";
-// import KnockoutStandings from "../standings/knockoutStandings/KnockoutStandings";
-// import Knockout from "../standings/knockoutStandings/mobileVersion/Knockout";
-import Standings from "../standings/Standings";
 import classes from "./header.module.css";
-import ChampStandings from "../standings/championsStandings/ChampStandings";
 
 const Header = ({
   statisticsType,
   changeStatisticsType,
-  standingsData,
-  resultsData,
-  fixturesData,
-  standingsType,
 }) => {
   return (
     <div>
@@ -64,21 +55,6 @@ const Header = ({
           RESULTS
         </p>
       </div>
-      {statisticsType == "fixtures" ? (
-        <FixtureAndResults data={fixturesData} type={"fixture"} />
-      ) : statisticsType == "standings" ? (
-        standingsType == "Leagues" ? (
-          <Standings data={standingsData} />
-        ) : (
-          <ChampStandings data={standingsData} />
-        )
-      ) : (
-        // <>
-        //   <KnockoutStandings />
-        //   <Knockout />
-        // </>
-        <FixtureAndResults data={resultsData} type={"result"} />
-      )}
     </div>
   );
 };

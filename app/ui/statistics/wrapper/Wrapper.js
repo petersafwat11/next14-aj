@@ -8,6 +8,17 @@ import Header from "../header/Header";
 import LeagueMenu from "../leage/League";
 import classes from "./wrapper.module.css";
 import { groupEventsByDate } from "@/app/lib/datesFunctions";
+import dynamic from "next/dynamic";
+
+const FixtureAndResults = dynamic(
+  () => import("../fixitureAndResults/FixtureAndResults"),
+  {
+    ssr: false,
+  }
+);
+
+import Standings from "../standings/Standings";
+import ChampStandings from "../standings/championsStandings/ChampStandings";
 const Wrapper = ({ data }) => {
   const [leagueActive, setLeagueActive] = useState("Premier League");
   const [statisticsType, setStatisticsType] = useState("fixtures");
@@ -83,6 +94,18 @@ const Wrapper = ({ data }) => {
         statisticsType={statisticsType}
         changeStatisticsType={changeStatisticsType}
       />
+      {statisticsType == "fixtures" ? (
+        <FixtureAndResults data={fixturesData} type={"fixture"} />
+      ) : statisticsType == "standings" ? (
+        standingsType == "Leagues" ? (
+          <Standings data={standingsData} />
+        ) : (
+          <ChampStandings data={standingsData} />
+        )
+      ) : (
+        <FixtureAndResults data={resultsData} type={"result"} />
+      )}
+
       {statisticsType !== "standings" && (
         <div className="show-more-wrapper">
           <ShowMore showMoreHandeler={showMoreHandeler} />

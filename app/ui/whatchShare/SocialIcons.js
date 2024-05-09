@@ -48,14 +48,6 @@ const SocialIcons = ({ reportData }) => {
 
     await handleMakingReport(data, toggleReport, toggleThanksMessage);
   };
-  useEffect(() => {
-    if (showThanksMessage) {
-      setTimeout(() => {
-        setShowThanksMessage(false);
-      }, [5000]);
-    }
-  }, [showThanksMessage]);
-
   return (
     <div className={classes["container"]}>
       <p className={classes["share-text"]}>Share this event </p>
@@ -63,7 +55,10 @@ const SocialIcons = ({ reportData }) => {
       <div className={classes["watch-video-share"]}>
         {showThanksMessage && (
           <Popup>
-            <ThanksMessage />
+            <ThanksMessage
+              showThanksMessage={showThanksMessage}
+              setShowThanksMessage={setShowThanksMessage}
+            />
           </Popup>
         )}
 

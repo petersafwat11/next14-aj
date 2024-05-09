@@ -1,11 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import classes from "./watchVideoBody.module.css";
 import BottomSocial from "../../bottomSocial/BottomSocial";
-import HlcPlayer from "../../hlcPlayer/HlcPlayer";
+const HlcPlayer = dynamic(() => import("../../hlcPlayer/HlcPlayer"), {
+  ssr: false,
+});
 import ExtendButton from "../extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
-import ExtendModeWrapper from "../../extendMode/wrapper/Wrapper";
+const ExtendModeWrapper = dynamic(
+  () => import("../../extendMode/wrapper/Wrapper"),
+  {
+    ssr: false,
+  }
+);
 const WatchVideoBody = ({
   chatMessages,
   chatRules,

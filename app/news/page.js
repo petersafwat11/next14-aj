@@ -3,7 +3,15 @@ import classes from "./page.module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
 import axios from "axios";
 import NewsItem from "../ui/news/item/NewsItem";
-import Paginations from "../ui/news/paginations/Paginations";
+import dynamic from "next/dynamic";
+
+const Paginations = dynamic(
+  () => import("../ui/news/paginations/Paginations"),
+  {
+    ssr: false,
+  }
+);
+
 const Page = async ({ searchParams }) => {
   const page = Number(searchParams?.page) || 1;
 

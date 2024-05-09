@@ -1,0 +1,27 @@
+.label {
+  font-weight: 600;
+  font-size: 0.68rem;
+  line-height: 1.2rem;
+  font-family: "Poppins";
+}
+.input-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  flex-direction: column;
+}
+.input {
+  font-family: "Poppins";
+  padding: 0.224rem 0.6rem 0.168rem;
+  height: 1.944rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.3rem;
+  background-color: inherit;
+  font-weight: 400;
+  font-size: 0.6rem;
+  line-height: 1.088rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+.input:focus-visible {
+  border: 1px solid white;
+}

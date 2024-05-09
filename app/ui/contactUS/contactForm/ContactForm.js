@@ -1,11 +1,26 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useReducer, useState } from "react";
-import Popup from "../../popupWrapper/Popup";
-import ThanksMessage from "../../thanksMessage/ThanksMessage";
+import dynamic from "next/dynamic";
+const ThanksMessage = dynamic(
+  () => import("../../thanksMessage/ThanksMessage"),
+  {
+    ssr: false,
+  }
+);
+const Popup = dynamic(() => import("../../popupWrapper/Popup"), {
+  ssr: false,
+});
+
+const SomethingElseSelceted = dynamic(
+  () => import("../sothethingElse/SomethingElseSelceted"),
+  {
+    ssr: false,
+  }
+);
+
 import Topics from "../topics/Topics";
 import classes from "./contactForm.module.css";
-
 const intialValue = {
   email: "",
   topic: "",
@@ -73,19 +88,15 @@ const ContactForm = () => {
       ? dispatchData({ type: "TOPIC-SOMETHING-ELSE", value: "" })
       : "";
   }, [selectedTopic]);
-  useEffect(() => {
-    if (showThanksMessage) {
-      setTimeout(() => {
-        setShowThanksMessage(false);
-      }, [5000]);
-    }
-  }, [showThanksMessage]);
 
   return (
     <div className={classes["container"]}>
       {showThanksMessage && (
         <Popup>
-          <ThanksMessage />
+          <ThanksMessage
+            showThanksMessage={showThanksMessage}
+            setShowThanksMessage={setShowThanksMessage}
+          />
         </Popup>
       )}
 
@@ -106,24 +117,10 @@ const ContactForm = () => {
       </div>
       <Topics topic={contactUs.topic} dispatchData={dispatchData} />
       {contactUs.topic === "Something else" && (
-        <div className={classes["input-group"]}>
-          <label htmlFor="topic-title" className={classes["label"]}>
-            Specify your topic
-          </label>
-          <input
-            value={contactUs.somethingElse}
-            onChange={(e) => {
-              dispatchData({
-                type: "TOPIC-SOMETHING-ELSE",
-                value: e.target.value,
-              });
-            }}
-            id="topic-title"
-            type="text"
-            placeholder="Type a topic..."
-            className={classes["input"]}
-          />
-        </div>
+        <SomethingElseSelceted
+          inputValue={contactUs.somethingElse}
+          dispatchData={dispatchData}
+        />
       )}
 
       <div className={classes["input-group-textarea"]}>

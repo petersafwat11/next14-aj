@@ -1,8 +1,16 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./thanksMessage.module.css";
 
-const ThanksMessage = () => {
+const ThanksMessage = ({ showThanksMessage, setShowThanksMessage }) => {
+  useEffect(() => {
+    if (showThanksMessage) {
+      setTimeout(() => {
+        setShowThanksMessage(false);
+      }, [5000]);
+    }
+  }, [showThanksMessage, setShowThanksMessage]);
+
   return (
     <div className={classes["container"]}>
       <div className={classes["body"]}>

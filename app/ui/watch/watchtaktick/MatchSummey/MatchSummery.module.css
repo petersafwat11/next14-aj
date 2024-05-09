@@ -1,7 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.875rem;
+}
 .header {
-    display: flex;
-    align-items: center;
-    justify-self: end;
-    gap: 2rem;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 2rem;
+}

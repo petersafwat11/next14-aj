@@ -32,20 +32,15 @@ const SendMessage = ({ toggleSendMessageComponent }) => {
   const toggleMessageSentComponent = () => {
     setMessageSent(!messageSent);
   };
-  useEffect(() => {
-    if (messageSent) {
-      setTimeout(() => {
-        setMessageSent(false);
-        toggleSendMessageComponent();
-      }, [5000]);
-    }
-  }, [messageSent, toggleSendMessageComponent]);
 
   return (
     <div className={classes["send-message"]}>
       {messageSent && (
         <Popup>
-          <ThanksMessage />
+          <ThanksMessage
+            showThanksMessage={messageSent}
+            setShowThanksMessage={setMessageSent}
+          />
         </Popup>
       )}
 

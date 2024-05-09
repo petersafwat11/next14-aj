@@ -1,17 +1,31 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import dynamic from 'next/dynamic'
+ 
+const Poll = dynamic(() => import('./poll/Poll'), {
+  ssr: false,
+})
+const ChangeAvatar = dynamic(() => import('./changeAvatars/changeAvatar'), {
+  ssr: false,
+})
+const EmojiaAndGifs = dynamic(() => import('./emojiAndGifs/EmojiaAndGifs'), {
+  ssr: false,
+})
+const UserInfo = dynamic(() => import('./userInfo/UserInfo'), {
+  ssr: false,
+})
+const SelectColor = dynamic(() => import('./userInfo/selectColor/SelectColor'), {
+  ssr: false,
+})
+const Popup = dynamic(() => import('../popupWrapper/Popup'), {
+  ssr: false,
+})
 import avatars from "./avatarsIterator";
-import ChangeAvatar from "./changeAvatars/changeAvatar";
 import classes from "./chat.module.css";
 import ChatBody from "./chatBody/ChatBody";
 import ChatBottom from "./chatBottom/ChatBottom";
 import ChatRules from "./chatRules/ChatRules";
 import ChatTop from "./chatTop/ChatTop";
-import EmojiaAndGifs from "./emojiAndGifs/EmojiaAndGifs";
-import Poll from "./poll/Poll";
-import UserInfo from "./userInfo/UserInfo";
-import SelectColor from "./userInfo/selectColor/SelectColor";
-import Popup from "../popupWrapper/Popup";
 import Cookies from "js-cookie";
 import { useSession } from "next-auth/react";
 import io from "socket.io-client";
