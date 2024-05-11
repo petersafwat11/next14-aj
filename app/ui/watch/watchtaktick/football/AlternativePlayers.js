@@ -8,10 +8,6 @@ const AlternativePlayers = ({
   secondTeamName,
   option,
 }) => {
-  console.log(
-    "firstTeamSubstitutePlayers",
-    firstTeamSubstitutePlayers[0].player
-  );
   return (
     <div className={classes["container"]}>
       <div className={classes["header"]}>

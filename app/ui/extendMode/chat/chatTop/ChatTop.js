@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import classes from "./chatTop.module.css";
-const ChatTop = ({ contollChatRoom, setExtendMode, chatRoomSelection }) => {
+const ChatTop = ({ contollChatRoom, chatRoomSelection, exitExtenMode }) => {
   return (
     <div className={classes["chat-top"]}>
       {/* <Image
@@ -40,10 +40,7 @@ const ChatTop = ({ contollChatRoom, setExtendMode, chatRoomSelection }) => {
       </div>
 
       <Image
-        onClick={() => {
-          setExtendMode(false);
-          document.body.style.overflow = "auto";
-        }}
+        onClick={exitExtenMode}
         className={classes["chat-top-exit"]}
         src="/svg/chat/extend-mode/close.svg"
         alt="exit"

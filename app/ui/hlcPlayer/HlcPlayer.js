@@ -3,8 +3,7 @@ import Hls from "hls.js";
 import React, { useEffect, useRef, useState } from "react";
 import P2pEngineHls from "swarmcloud-hls";
 import classes from "./hlcPlayer.module.css";
-const HlcPlayer = ({ url, notRounded }) => {
-  const videoRef = useRef(null);
+const HlcPlayer = ({ url, notRounded ,videoRef }) => {
   const videoIConRef = useRef(null);
   const [palying, setPlaying] = useState(false);
   // Add a click event listener to the play button
@@ -46,7 +45,7 @@ const HlcPlayer = ({ url, notRounded }) => {
       videoRef.current.src = url;
     }
     setPlaying(false);
-  }, [url]);
+  }, [url, videoRef]);
 
   return (
     <div className={classes["video-container"]}>

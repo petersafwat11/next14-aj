@@ -10,6 +10,7 @@ const Servers = ({
   filterValue,
   searchValue,
 }) => {
+  console.log("channalActive", channalActive);
   const router = useRouter();
   const [servers, setServers] = useState(channelsServers?.channels);
   useEffect(() => {
@@ -32,22 +33,25 @@ const Servers = ({
               }}
               key={index}
               className={
-                channalActive === channelobj?.channelName
+                !channalActive && index === 0
+                  ? classes["servers-button-active"]
+                  : channalActive === channelobj?.channelName
                   ? classes["servers-button-active"]
                   : classes["watch-video-servers-button"]
               }
             >
-              {channalActive === channelobj?.channelName && (
-                <div className={classes["check-div"]}>
-                  <Image
-                    className={classes["checked-icon"]}
-                    width="9"
-                    height="8"
-                    alt="checked"
-                    src="/svg/channels/checked.svg"
-                  />
-                </div>
-              )}
+              {channalActive === channelobj?.channelName ||
+                (!channalActive && index === 0 && (
+                  <div className={classes["check-div"]}>
+                    <Image
+                      className={classes["checked-icon"]}
+                      width="9"
+                      height="8"
+                      alt="checked"
+                      src="/svg/channels/checked.svg"
+                    />
+                  </div>
+                ))}
               {channelobj?.channelName}
             </button>
           ))

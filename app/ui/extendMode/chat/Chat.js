@@ -23,7 +23,7 @@ const Chat = ({
   chatRules,
   chatFilteredWords,
   chatMessages,
-  setExtendMode,
+  exitExtenMode,
   setInputActive,
 }) => {
   console.log("chatMessages", chatMessages);
@@ -356,7 +356,7 @@ const Chat = ({
       <ChatTop
         chatRoomSelection={chatRoomSelection}
         contollChatRoom={contollChatRoom}
-        setExtendMode={setExtendMode}
+        exitExtenMode={exitExtenMode}
       />
       <ChatBody
         messagesRef={messagesRef}

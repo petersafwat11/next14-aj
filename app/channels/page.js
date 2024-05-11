@@ -7,12 +7,12 @@ import LiveBtn from "../ui/live-button/LiveButton";
 import WatchNavigation from "../ui/watchNavigation/WatchNavigation";
 import SocialIcons from "../ui/whatchShare/SocialIcons";
 import WatchVideoBody from "../ui/channels/watchVideoBody/WatchVideoBody";
-import ProtonVpn from "../ui/protonVpn/ProtonVpn";
 import Search from "../ui/channels/search/Search";
 import NewFilter from "../ui/filter/NewFilter";
 import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
+import Casino from "../ui/casino/Casino";
 
 const Page = async ({ searchParams }) => {
   noStore();
@@ -148,7 +148,7 @@ const Page = async ({ searchParams }) => {
         </div>
         <div className={classes["after-video"]}>
           <div className={classes["vpn"]}>
-            <ProtonVpn />
+            <Casino />
           </div>
           <div className={classes["sort-search-wrapper"]}>
             <Search />
@@ -159,7 +159,7 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <Servers
-            channalActive={channalActive || "BT Sports 1"}
+            channalActive={channalActive}
             channelsServers={channelsServers}
             filterValue={filterValue}
             searchValue={searchValue}

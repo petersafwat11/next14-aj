@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import classes from "./videoBody.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 const ServersButtons = dynamic(
   () => import("../serverButtons/ServersButtons"),
   {
@@ -45,13 +45,16 @@ const VideoBody = ({
   chatFilteredWords,
   eventEnds,
 }) => {
+  const videoRef = useRef(null);
+  const extendVideoRef = useRef(null);
+
   const [playingServer, setPlayingServer] = useState(activeServer);
   //   const [videoUrl, setVideoUrl] = useState(url);
   const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
   const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
   const [remainingTime, setRemainingTime] = useState("");
   const [extendMode, setExtendMode] = useState(false);
-
+  const [videoCurrentState, setVideoCurrentState] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(eventDate));
@@ -63,14 +66,34 @@ const VideoBody = ({
   }, [playStream, eventDate, eventEnds]);
   const activeExtendMode = () => {
     setExtendMode(!extendMode);
+    let currentState;
+    videoRef.current.paused ? (currentState = false) : (currentState = true);
+    videoRef.current.pause();
+    setVideoCurrentState(currentState);
+    // currentState
+    //   ? extendVideoRef.current.play()
+    //   : extendVideoRef.current.pause();
     document.body.style.overflow = "hidden";
   };
-
+  const exitExtenMode = () => {
+    setExtendMode(!extendMode);
+    let currentState;
+    extendVideoRef.current.paused
+      ? (currentState = false)
+      : (currentState = true);
+    extendVideoRef.current.pause();
+    currentState ? videoRef.current.play() : videoRef.current.pause();
+    extendVideoRef.current.pause();
+    document.body.style.overflow = "";
+  };
   return (
     <>
       <div id="my-root-div" className="watch-video">
         {extendMode && (
           <ExtendModeWrapper
+            videoCurrentState={videoCurrentState}
+            exitExtenMode={exitExtenMode}
+            videoRef={extendVideoRef}
             chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
@@ -79,16 +102,22 @@ const VideoBody = ({
           />
         )}
 
-        {endedEvent ? (
-          <EventEnded />
-        ) : playStreaming ? (
-          <HlcPlayer url={playingServer.server.streamLinkUrl} />
-        ) : (
-          <EventCountDown
-            // eventDate={matchData?.eventDate}
-            remainingTime={remainingTime}
-          />
-        )}
+        {
+          // endedEvent ? (
+          //   <EventEnded />
+          // ) :
+          playStreaming ? (
+            <HlcPlayer
+              videoRef={videoRef}
+              url={playingServer.server.streamLinkUrl}
+            />
+          ) : (
+            <EventCountDown
+              // eventDate={matchData?.eventDate}
+              remainingTime={remainingTime}
+            />
+          )
+        }
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>
         {playStreaming && !endedEvent && (

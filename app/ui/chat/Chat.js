@@ -1,25 +1,28 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import dynamic from 'next/dynamic'
- 
-const Poll = dynamic(() => import('./poll/Poll'), {
+import dynamic from "next/dynamic";
+
+const Poll = dynamic(() => import("./poll/Poll"), {
   ssr: false,
-})
-const ChangeAvatar = dynamic(() => import('./changeAvatars/changeAvatar'), {
+});
+const ChangeAvatar = dynamic(() => import("./changeAvatars/changeAvatar"), {
   ssr: false,
-})
-const EmojiaAndGifs = dynamic(() => import('./emojiAndGifs/EmojiaAndGifs'), {
+});
+const EmojiaAndGifs = dynamic(() => import("./emojiAndGifs/EmojiaAndGifs"), {
   ssr: false,
-})
-const UserInfo = dynamic(() => import('./userInfo/UserInfo'), {
+});
+const UserInfo = dynamic(() => import("./userInfo/UserInfo"), {
   ssr: false,
-})
-const SelectColor = dynamic(() => import('./userInfo/selectColor/SelectColor'), {
+});
+const SelectColor = dynamic(
+  () => import("./userInfo/selectColor/SelectColor"),
+  {
+    ssr: false,
+  }
+);
+const Popup = dynamic(() => import("../popupWrapper/Popup"), {
   ssr: false,
-})
-const Popup = dynamic(() => import('../popupWrapper/Popup'), {
-  ssr: false,
-})
+});
 import avatars from "./avatarsIterator";
 import classes from "./chat.module.css";
 import ChatBody from "./chatBody/ChatBody";
@@ -159,9 +162,8 @@ const Chat = ({
   };
 
   const selectAvatar = async (avatar) => {
-    console.log("avatar", avatar);
-
-    if (!session?.user?.name && initialName === null) {
+    if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
+      console.log("anon", avatar);
       setMessage({ ...message, image: avatar });
       setChangeAvatar(!changeAvatar);
       setSelectedAvatar(avatar);
@@ -318,26 +320,26 @@ const Chat = ({
       inputRef.current.focus();
     }
   };
-  const contollChatRoom = async (room) => {
-    try {
-      const roomMessages = await axios.get(
-        `${process.env.BACKEND_SERVER}/chat`,
-        {
-          params: {
-            limit: 40,
-            room: room,
-            sort: { eventDate: 1 },
-          },
-        }
-      );
-      console.log("roomMessages", roomMessages?.data?.data);
-      setChatRoomSelection(room);
-      setMessages(roomMessages?.data?.data);
-      setMessage({ ...messageDefaultState, room: room });
-    } catch (err) {
-      console.log("error happed while loading message", err);
-    }
-  };
+  // const contollChatRoom = async (room) => {
+  //   try {
+  //     const roomMessages = await axios.get(
+  //       `${process.env.BACKEND_SERVER}/chat`,
+  //       {
+  //         params: {
+  //           limit: 40,
+  //           room: room,
+  //           sort: { eventDate: 1 },
+  //         },
+  //       }
+  //     );
+  //     console.log("roomMessages", roomMessages?.data?.data);
+  //     setChatRoomSelection(room);
+  //     setMessages(roomMessages?.data?.data);
+  //     setMessage({ ...messageDefaultState, room: room });
+  //   } catch (err) {
+  //     console.log("error happed while loading message", err);
+  //   }
+  // };
   const chooseGifOrEmojies = (choose) => {
     setEmojyOrGifs(choose);
   };
@@ -497,8 +499,8 @@ const Chat = ({
         />
       )}
       <ChatTop
-        chatRoomSelection={chatRoomSelection}
-        contollChatRoom={contollChatRoom}
+        // chatRoomSelection={chatRoomSelection}
+        // contollChatRoom={contollChatRoom}
         toggleChat={toggleChat}
       />
       <ChatBody

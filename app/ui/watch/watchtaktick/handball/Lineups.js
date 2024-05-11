@@ -6,7 +6,6 @@ import classes from "./lineups.module.css";
 import Staduim from "./Staduim";
 import UnderDevelopment from "@/app/ui/underDevelopment/component/underDevelopment";
 const Lineups = ({ data, firstTeamName, secondTeamName }) => {
-  console.log("data", data);
   const firstTeamSubstitutePlayers = data
     ? data?.home?.players?.slice(7)
     : null;

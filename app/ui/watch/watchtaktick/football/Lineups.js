@@ -10,7 +10,6 @@ const Lineups = ({ data, firstTeamName, secondTeamName }) => {
   const changeCategory = (option) => {
     setOption(option);
   };
-  console.log("lineupsDatalineupsData", data);
   const firstTeamSubstitutePlayers = data ? data[0]?.substitutes : null;
   const secondTeamSubstitutePlayers = data ? data[1]?.substitutes : null;
   return data !== null ? (

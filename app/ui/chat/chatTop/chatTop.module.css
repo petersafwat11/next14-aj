@@ -30,13 +30,13 @@
   background: #04627c;
 }
 
-.chat-top-text:hover > .chat-rooms {
+/* .chat-top-text:hover > .chat-rooms {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 2.4px;
 }
-
+ */
 .chat-top-text > img {
   transition: all 0.16s ease-out;
 }
@@ -45,7 +45,7 @@
   rotate: -180deg;
 }
 
-.chat-rooms {
+/* .chat-rooms {
   display: none;
   position: absolute;
   top: 100%;
@@ -93,7 +93,7 @@
 .chat-room:hover,
 .arabic:hover {
   background: #174351 !important;
-}
+} */
 
 .chat-top-extend,
 .chat-top-exit {

@@ -58,6 +58,9 @@ export const Match = ({ matchData, type, index, length }) => {
           {matchData?.firstTeamName && matchData?.secondTeamName ? (
             <>
               <div className={classes["first-team"]}>
+                <p className={classes["first-team-name"]}>
+                  {matchData?.firstTeamName}
+                </p>
                 <img
                   crossOrigin="anonymous"
                   className={classes["first-team-image"]}
@@ -70,15 +73,9 @@ export const Match = ({ matchData, type, index, length }) => {
                   alt="logo"
                   width={28}
                 />
-                <p className={classes["first-team-name"]}>
-                  {matchData?.firstTeamName}
-                </p>
               </div>
               <div className={classes["match-vs"]}>vs</div>
               <div className={classes["second-team"]}>
-                <p className={classes["second-team-name"]}>
-                  {matchData?.secondTeamName}
-                </p>
                 <img
                   crossOrigin="anonymous"
                   className={classes["second-team-image"]}
@@ -91,6 +88,10 @@ export const Match = ({ matchData, type, index, length }) => {
                   alt="logo"
                   width={28}
                 />
+
+                <p className={classes["second-team-name"]}>
+                  {matchData?.secondTeamName}
+                </p>
               </div>
             </>
           ) : (

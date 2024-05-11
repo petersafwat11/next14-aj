@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import classes from "./watchVideoBody.module.css";
 import BottomSocial from "../../bottomSocial/BottomSocial";
@@ -21,24 +21,51 @@ const WatchVideoBody = ({
   url,
   social,
 }) => {
+  const videoRef = useRef(null);
+  const extendVideoRef = useRef(null);
+
   const [extendMode, setExtendMode] = useState(false);
+  const [videoCurrentState, setVideoCurrentState] = useState(false);
+
   const activeExtendMode = () => {
     setExtendMode(!extendMode);
+    let currentState;
+    videoRef.current.paused ? (currentState = false) : (currentState = true);
+    videoRef.current.pause();
+    setVideoCurrentState(currentState);
+
+    // currentState
+    //   ? extendVideoRef.current.play()
+    //   : extendVideoRef.current.pause();
     document.body.style.overflow = "hidden";
   };
+  const exitExtenMode = () => {
+    setExtendMode(!extendMode);
+    let currentState;
+    extendVideoRef.current.paused
+      ? (currentState = false)
+      : (currentState = true);
+    extendVideoRef.current.pause();
+    currentState ? videoRef.current.play() : videoRef.current.pause();
+    extendVideoRef.current.pause();
+    document.body.style.overflow = "auto";
+  };
+
   return (
     <>
       <div className="watch-video">
-        <HlcPlayer url={url} />
+        <HlcPlayer videoRef={videoRef} url={url} />
       </div>
       <div className={classes["watch-video-options"]}>
         {extendMode && (
           <ExtendModeWrapper
+            videoCurrentState={videoCurrentState}
+            exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
             url={url}
-            setExtendMode={setExtendMode}
+            videoRef={extendVideoRef}
           />
         )}
 

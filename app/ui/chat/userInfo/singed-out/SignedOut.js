@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import classes from "./signedOut.module.css";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
-import axios from "axios";
-import Cookies from "js-cookie";
 
 const SignedOut = ({
   notValid,
@@ -37,17 +34,6 @@ const SignedOut = ({
     );
 
     newWindow?.focus();
-  };
-
-  const handleSignIn = (provider) => {
-    const popup = window.open("", "_blank", "width=600,height=600");
-    // Perform sign-in
-    signIn(provider, { redirect: false }).then((response) => {
-      // Handle the response (optional)
-      console.log(response);
-      // Close the popup window
-      //   popup.close();
-    });
   };
   return (
     <div className={classes["container"]}>
@@ -89,7 +75,8 @@ const SignedOut = ({
           ""
         )}
       </div>
-      {loodinguserNameAvailability && startTyping ? (
+      {(loodinguserNameAvailability && startTyping) ||
+      (!loodinguserNameAvailability && !startTyping) ? (
         ""
       ) : notValid && startTyping ? (
         <p className={classes["username-unavailable"]}>

@@ -1,7 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import classes from "./chatTop.module.css";
-const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
+const ChatTop = ({
+  toggleChat,
+  // contollChatRoom,  chatRoomSelection
+}) => {
   return (
     <div className={classes["chat-top"]}>
       <Image
@@ -19,7 +22,7 @@ const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
           width="12"
           height="8"
         />
-        <div className={classes["chat-rooms"]}>
+        {/* <div className={classes["chat-rooms"]}>
           {["English (Default)", "Espain", "العربية", "Français"].map(
             (i, index) => (
               <p
@@ -36,7 +39,7 @@ const ChatTop = ({ contollChatRoom, toggleChat, chatRoomSelection }) => {
               </p>
             )
           )}
-        </div>
+        </div> */}
       </div>
 
       <Image

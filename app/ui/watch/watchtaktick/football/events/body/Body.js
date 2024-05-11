@@ -45,7 +45,9 @@ const Body = ({ data, eventStadium, firstTeamName, secondTeamName }) => {
               key={index}
               detail={event.detail}
               type={event.type}
-              team={event.team == firstTeamName ? "first team" : "second team"}
+              team={
+                event.team.name == firstTeamName ? "first team" : "second team"
+              }
               time={event.time.elapsed}
               player={event.player.name}
               assist={event.assist.name}

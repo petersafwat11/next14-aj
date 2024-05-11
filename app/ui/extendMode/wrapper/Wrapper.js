@@ -4,31 +4,22 @@ import classes from "./wrapper.module.css";
 import Image from "next/image";
 import Chat from "../chat/Chat";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
+
 const ExtendModeWrapper = ({
+  exitExtenMode,
+  videoRef,
   url,
   chatMessages,
   chatRules,
   chatFilteredWords,
-  setExtendMode,
+  videoCurrentState,
 }) => {
   const [showServers, setShowServers] = useState(false);
   const [inputActive, setInputActive] = useState(false);
-  const [secondComponentHeight, setSecondComponentHeight] = useState("68.9%");
 
   useEffect(() => {
-    const handleResize = () => {
-      const windowHeight = window.innerHeight;
-      const keyboardHeight =
-        windowHeight - document.documentElement.clientHeight;
-      setSecondComponentHeight(`calc(68.9% - ${keyboardHeight}px)`);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    videoCurrentState ? videoRef.current.play() : videoRef.current.pause();
+  }, [videoCurrentState, videoRef]);
 
   return (
     <div className={classes["container"]}>
@@ -42,10 +33,7 @@ const ExtendModeWrapper = ({
         />
 
         <Image
-          onClick={() => {
-            setExtendMode(false);
-            document.body.style.overflow = "auto";
-          }}
+          onClick={exitExtenMode}
           className={classes["extend-exit"]}
           src="/svg/chat/extend-mode/close.svg"
           alt="exit"
@@ -99,13 +87,13 @@ const ExtendModeWrapper = ({
               )}
             </div>
           )}
-          <HlcPlayer notRounded={true} url={url} />
+          <HlcPlayer videoRef={videoRef} notRounded={true} url={url} />
         </div>
 
         <div className={inputActive ? classes["chat-active"] : classes["chat"]}>
           <Chat
             setInputActive={setInputActive}
-            setExtendMode={setExtendMode}
+            exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}

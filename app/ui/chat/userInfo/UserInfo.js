@@ -55,6 +55,7 @@ const UserInfo = ({
       console.log(loodinguserNameAvailability);
     } catch (err) {
       setNotValid(true);
+      setLoodinguserNameAvailability(false);
       console.log("err happend please try again later", err);
     }
   };
@@ -83,15 +84,20 @@ const UserInfo = ({
     if (notValid) {
       return;
     }
+    if (!usernameChoosen) {
+      toggleUserInf();
+      return;
+    }
     try {
       const confirmName = await axios.post(
         `${process.env.BACKEND_SERVER}/users/regulrUsers/tempMail`,
-        { name: usernameChoosen }
+        { name: usernameChoosen, image: selectedAvatar }
       );
 
       Cookies.set("user", JSON.stringify(confirmName.data.data.user), {
         expires: 1,
       });
+      console.log( 'new user',confirmName?.data?.data?.user)
       setColor(confirmName?.data?.data?.user?.color);
       console.log("user", confirmName.data.data.user);
       toggleUserInf();
@@ -161,10 +167,10 @@ const UserInfo = ({
       )}
       <div className={classes["user-info-actions"]}>
         <button onClick={confirmUserName} className={classes["confirm-button"]}>
-          Confirm{" "}
+          Confirm
         </button>
         <button onClick={toggleUserInf} className={classes["cancel-button"]}>
-          cancel{" "}
+          cancel
         </button>
       </div>
     </div>

@@ -3,7 +3,6 @@ import axios from "axios";
 import WatchDetailsSingleTeam from "@/app/ui/watch/watchDetailsSingleTeam/WatchDetailsSingleTeam";
 import WatchDetails from "@/app/ui/watch/watch-details/WatchDetailsFootball";
 import BottomSocial from "@/app/ui/bottomSocial/BottomSocial";
-import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
 import {
   convertDate,
   determineLive,
@@ -17,6 +16,7 @@ import ShowingChat from "@/app/ui/showingChat/ShowingChat";
 import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
 import VideoTop from "@/app/ui/watch/videoTop/VideoTop";
 import MatchData from "@/app/ui/watch/watchtaktick/MatchSummey/MatchData";
+import Casino from "@/app/ui/casino/Casino";
 
 const Page = async ({ params }) => {
   const query = getMatchQuery(params.name);
@@ -144,7 +144,8 @@ const Page = async ({ params }) => {
         </div>
         <div className={classes["bottom"]}>
           <div className={classes["vpn"]}>
-            <ProtonVpn />
+            {/* <ProtonVpn /> */}
+            <Casino />
           </div>
           <div className={classes["mobile-social"]}>
             <BottomSocial social={data?.social} />
@@ -160,9 +161,9 @@ const Page = async ({ params }) => {
               secondTeamName={matchData?.secondTeamName}
             />
           </div>
-          {/* <div className={classes["casino"]}>
-                <Casino />
-              </div> */}
+          <div className={classes["casino"]}>
+            <Casino />
+          </div>
           {matchData?.matchPoll?.enabled && (
             <div className={classes["who-will-win"]}>
               <WhoWillWin query={query} data={matchData?.matchPoll} />
