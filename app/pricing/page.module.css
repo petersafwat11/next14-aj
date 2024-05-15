@@ -1,4 +1,4 @@
-.pricing {
+.page {
   max-width: min(68%, 50.4rem);
   margin: 0 auto;
   padding-bottom: 2rem;
@@ -78,7 +78,7 @@
     width: 244px;
     height: 249px;
   }
-  .pricing {
+  .page {
     max-width: min(93%, 50rem);
   }
   .div-title {

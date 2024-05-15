@@ -24,7 +24,7 @@ const Page = async ({ searchParams }) => {
   const newsItems = response?.data?.data?.data;
   console.log("page", page);
   return (
-    <main className={classes["news"]}>
+    <main className={classes["page"]}>
       <PageTitle title={"NEWS"} />
 
       <div className={classes["wrapper"]}>

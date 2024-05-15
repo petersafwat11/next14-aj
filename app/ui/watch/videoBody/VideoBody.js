@@ -70,9 +70,6 @@ const VideoBody = ({
     videoRef.current.paused ? (currentState = false) : (currentState = true);
     videoRef.current.pause();
     setVideoCurrentState(currentState);
-    // currentState
-    //   ? extendVideoRef.current.play()
-    //   : extendVideoRef.current.pause();
     document.body.style.overflow = "hidden";
   };
   const exitExtenMode = () => {
@@ -102,22 +99,19 @@ const VideoBody = ({
           />
         )}
 
-        {
-          // endedEvent ? (
-          //   <EventEnded />
-          // ) :
-          playStreaming ? (
-            <HlcPlayer
-              videoRef={videoRef}
-              url={playingServer.server.streamLinkUrl}
-            />
-          ) : (
-            <EventCountDown
-              // eventDate={matchData?.eventDate}
-              remainingTime={remainingTime}
-            />
-          )
-        }
+        {endedEvent ? (
+          <EventEnded />
+        ) : playStreaming ? (
+          <HlcPlayer
+            videoRef={videoRef}
+            url={playingServer.server.streamLinkUrl}
+          />
+        ) : (
+          <EventCountDown
+            eventDate={matchData?.eventDate}
+            remainingTime={remainingTime}
+          />
+        )}
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>
         {playStreaming && !endedEvent && (
@@ -142,7 +136,6 @@ const VideoBody = ({
           </div>
         )}
       </div>
-
       <div className={classes["servers"]}>
         <ServersButtons
           notLive={!playStreaming || endedEvent}

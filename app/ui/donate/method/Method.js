@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./method.module.css";
 import Popup from "../../popupWrapper/Popup";
 import OtherPaymentMethod from "../otherPaymentMethod/OtherPaymentMethod";
-const Method = ({ name, width, height }) => {
+import axios from "axios";
+const Method = ({ name, width, height, data }) => {
   const [donationPopup, setDonationPopup] = useState({
     show: false,
     method: "",
@@ -20,8 +21,8 @@ const Method = ({ name, width, height }) => {
       show: !donationPopup.show,
       method: method,
     });
+    console.log("method", method);
   };
-
   return (
     <>
       {donationPopup.show && (
@@ -31,7 +32,7 @@ const Method = ({ name, width, height }) => {
             title={donationPopup.method}
             data={
               donationPopup.method === "bitcoin"
-                ? "0x5C7f5cA94419A446002b16aA4B335221300E86E3"
+                ? data?.bitcoinAddress
                 : "Comming Soon"
             }
             message={
@@ -44,7 +45,7 @@ const Method = ({ name, width, height }) => {
 
       <div
         onClick={() => {
-          name !== "share" ? userClickedMethod() : "";
+          name !== "share" ? userClickedMethod(name) : "";
         }}
         className={classes[name]}
       >

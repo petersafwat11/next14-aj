@@ -1,4 +1,4 @@
-.news {
+.page {
   max-width: min(68%, 36rem);
   margin: 0 auto;
   padding-bottom: 2rem;
@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 @media (max-width: 56.25rem) {
-  .news {
+  .page {
     max-width: min(87%, 35rem);
     padding-bottom: 3rem;
   }
@@ -27,7 +27,7 @@
   }
 }
 @media (max-width: 40.6rem) {
-  .news {
+  .page {
     max-width: min(97%, 28rem);
     margin: 0 auto;
     padding-bottom: 3.375rem;
@@ -39,7 +39,7 @@
   }
 }
 @media (max-width: 600px) {
-  .news {
+  .page {
     max-width: 100%;
     margin: 0 3px;
   }

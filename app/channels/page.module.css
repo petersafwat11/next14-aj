@@ -54,6 +54,7 @@
 
 .vpn {
   margin: auto;
+  width: max-content;
 }
 @media (max-width: 75rem) {
   .after-video {

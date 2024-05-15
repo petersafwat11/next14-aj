@@ -19,7 +19,8 @@ export const metadata = {
   description: "sports streaming website",
 };
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children , params}) {
+  
   const session = await getServerSession(authConfig);
   // const domains = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
   //   params: {

@@ -24,7 +24,7 @@ const Page = async ({ params }) => {
   return (
     <>
       {" "}
-      <div className={classes["news-article"]}>
+      <div className={classes["page"]}>
         <PageTitle title={"NEWS"} />
         <ArticleContent title={title} subNews={subNews} />
         <span className={classes["seperator"]}></span>

@@ -5,7 +5,7 @@ import FeedbackBtn from "./feefbackBtn/FeedbackBtn";
 import { FAQ } from "./data";
 const Page = () => {
   return (
-    <section className={classes["FAQ"]}>
+    <section className={classes["page"]}>
       <PageTitle title={"FAQ"} />
 
       <div className={classes["container"]}>

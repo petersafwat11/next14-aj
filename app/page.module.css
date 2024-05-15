@@ -1,4 +1,4 @@
-.container {
+.page {
   padding-bottom: 3.33rem;
 }
 .center {
@@ -72,7 +72,7 @@
   }
 }
 @media (max-width: 56.25rem) {
-  .container {
+  .page {
     padding-bottom: 2rem;
   }
   .hot-matches-icon {

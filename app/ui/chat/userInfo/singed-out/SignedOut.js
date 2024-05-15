@@ -49,7 +49,9 @@ const SignedOut = ({
                 ? "1.5px solid white"
                 : notValid && startTyping
                 ? "1.5px solid #D00"
-                : "1.5px solid ##12A533",
+                : !notValid && startTyping
+                ? "1.5px solid #12A533"
+                : "",
           }}
           className={classes["user-data-input"]}
           type="text"

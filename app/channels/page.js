@@ -111,7 +111,7 @@ const Page = async ({ searchParams }) => {
     null;
   const langs = data?.channels?.allLanguages;
   return (
-    <div className={classes["channels"]}>
+    <div className={classes["page"]}>
       <ShowingChat
         mode={data.modeData}
         chatMessages={data.messagesData}

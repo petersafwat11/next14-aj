@@ -10,8 +10,7 @@ const SignedIn = ({ session, toggleChangeUserName, AJUser, toggleUserInf }) => {
     <div className={classes["signedin-with-username"]}>
       <p className={classes["username-text"]}>{websiteLoginUser?.name}</p>
       <button
-        onClick={() => {
-      toggleChangeUserName}}
+        onClick={toggleChangeUserName}
         className={classes["change-username"]}
       >
         Change Username

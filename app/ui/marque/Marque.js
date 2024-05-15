@@ -34,7 +34,7 @@ const Marque = () => {
   // console.log("domains", domains);
 
   return (
-    <div className={classes["xx"]}>
+    <div className={classes["wrapper"]}>
       <div className={classes["marque-container"]}>
         <Marquee
           speed={20}

@@ -13,7 +13,11 @@ const Statistics = async () => {
     }
   );
 
-  return <Wrapper data={response?.data?.data} />;
+  return (
+    <div className={classes['page']}>
+      <Wrapper data={response?.data?.data} />
+    </div>
+  );
 };
 
 export default Statistics;

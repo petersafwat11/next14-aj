@@ -16,7 +16,7 @@ const OtherMatches = ({ data, searchValue, sportCategory }) => {
         {otherMatches.length > 0 ? (
           otherMatches?.map((matchData, index) => (
             <Match
-              type={"hot-matches"}
+              type={"other-matches"}
               matchData={matchData}
               key={matchData?._id}
               index={index}

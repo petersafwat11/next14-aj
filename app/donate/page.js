@@ -5,7 +5,15 @@ import PageTitle from "../ui/pageTitle/PageTitle";
 import Top from "../ui/donate/top/Top";
 import Input from "../ui/donate/input/Input";
 import Method from "../ui/donate/method/Method";
-const Donate = () => {
+import axios from "axios";
+const Donate = async () => {
+  const response = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
+    params: {
+      fields: "payment",
+    },
+  });
+  const data = response?.data?.data?.data[0]?.payment;
+
   return (
     <main className={classes["donate"]}>
       <div className={classes["container"]}>
@@ -24,7 +32,7 @@ const Donate = () => {
             <div className={classes["or"]}>OR</div>
 
             <Method name={"paypal"} width={23} height={26} />
-            <Method name={"bitcoin"} width={19} height={24} />
+            <Method data={data} name={"bitcoin"} width={19} height={24} />
             <Method name={"stripe"} width={85} height={24} />
             <Method name={"share"} width={16} height={28} />
           </div>

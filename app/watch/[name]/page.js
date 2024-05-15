@@ -82,7 +82,7 @@ const Page = async ({ params }) => {
   const live = determineLive(matchData?.eventDate);
 
   return (
-    <section className={classes["watch-football"]}>
+    <section className={classes["page"]}>
       <ShowingChat
         mode={data.modeData}
         chatMessages={data.messagesData}
@@ -159,6 +159,7 @@ const Page = async ({ params }) => {
               sportCategory={matchData?.sportCategory}
               firstTeamName={matchData?.firstTeamName}
               secondTeamName={matchData?.secondTeamName}
+              eventStadium={matchData?.eventStadium}
             />
           </div>
           <div className={classes["casino"]}>

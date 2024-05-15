@@ -13,6 +13,7 @@ const MatchData = ({
   sportCategory,
   firstTeamName,
   secondTeamName,
+  eventStadium
 }) => {
   return (
     <MatchSummery
@@ -22,6 +23,7 @@ const MatchData = ({
       sportCategory={sportCategory}
       firstTeamName={firstTeamName}
       secondTeamName={secondTeamName}
+      eventStadium={eventStadium}
     />
   );
 };

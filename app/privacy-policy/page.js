@@ -3,7 +3,7 @@ import classes from "./page.module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
 const Page = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <div  style={{ width: "100%" }}>
       <section className={classes["privacy-policy"]}>
         <PageTitle title={"Privacy Policy"} />
 

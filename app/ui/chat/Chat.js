@@ -165,8 +165,13 @@ const Chat = ({
     if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
       console.log("anon", avatar);
       setMessage({ ...message, image: avatar });
+
       setChangeAvatar(!changeAvatar);
       setSelectedAvatar(avatar);
+      Cookies.set("user", JSON.stringify({ ...message, image: avatar }), {
+        expires: 1,
+      });
+
       return;
     }
     try {

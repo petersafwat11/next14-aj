@@ -5,7 +5,7 @@ import ReachUs from "../ui/contactUS/reachUs/ReachUs";
 
 const Page = () => {
   return (
-    <section className={classes["contact"]}>
+    <section className={classes["page"]}>
       <h2 className={classes["heading"]}>Contact Us</h2>
       <ContactForm />
       <ReachUs />

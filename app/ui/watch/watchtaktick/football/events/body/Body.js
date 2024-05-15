@@ -53,20 +53,6 @@ const Body = ({ data, eventStadium, firstTeamName, secondTeamName }) => {
               assist={event.assist.name}
             />
           ))}
-          {/* <Event eventType={"goal"} team={"first team"} />
-          <Event eventType={"red card"} team={"first team"} />
-          <Event eventType={"yellow card"} team={"second team"} />
-          <Event eventType={"substitute"} team={"second team"} />
-          <Event eventType={"penalty"} team={"second team"} />
-          <Event eventType={"var"} team={"second team"} />
-          <Event eventType={"own goal"} team={"second team"} />
-          <Event eventType={"goal"} team={"first team"} />
-          <Event eventType={"red card"} team={"first team"} />
-          <Event eventType={"yellow card"} team={"second team"} />
-          <Event eventType={"substitute"} team={"second team"} />
-          <Event eventType={"penalty"} team={"second team"} />
-          <Event eventType={"var"} team={"second team"} />
-          <Event eventType={"own goal"} team={"second team"} /> */}
         </div>
         <Image
           className={classes["whistle-icon"]}

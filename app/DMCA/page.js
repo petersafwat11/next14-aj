@@ -4,7 +4,7 @@ import classes from "./page..module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
 const Page = () => {
   return (
-    <section className={classes["DMCA"]}>
+    <section className={classes["page"]}>
       <PageTitle title={"DMCA"} />
 
       <div className={classes["container"]}>

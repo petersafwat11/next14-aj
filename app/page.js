@@ -37,14 +37,15 @@ const Page = async ({ searchParams }) => {
 
   const session = await getServerSession(authConfig);
 
-  const hotMatches = currentEvents?.hotMatches;
+  const hotMatches = currentEvents?.data?.hotMatches;
+  console.log("hot matches", hotMatches);
+
   const otherMatches = {
     total: currentEvents?.data?.results,
     matches: currentEvents?.data?.data,
   };
-  console.log("otherMatches", currentEvents);
   return (
-    <div className={classes["container"]}>
+    <div className={classes["page"]}>
       <div className={classes["search-mobile"]}>
         <input
           className={classes["search-mobile-input"]}

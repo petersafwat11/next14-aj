@@ -17,6 +17,8 @@ const UserInfo = ({
   color,
   setColor,
 }) => {
+  // const AJUser = Cookies.get("user");
+  const [AJUser, setAJUser] = useState(Cookies.get("user"));
   const { data: session, status } = useSession();
   const [loodinguserNameAvailability, setLoodinguserNameAvailability] =
     useState(false);
@@ -24,18 +26,16 @@ const UserInfo = ({
   const [notValid, setNotValid] = useState(false);
   const [usernameChoosen, setUsernameChoosen] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
-  const [changeuserName, setChangeUsername] = useState(false);
   const toggleChangeUserName = async () => {
-    const AJUser = Cookies.get("user");
     const websiteLoginUser = AJUser ? JSON.parse(AJUser) : null;
     try {
       const confirmName = await axios.delete(
         `${process.env.BACKEND_SERVER}/users/regulrUsers/tempMail`,
         { name: websiteLoginUser.name }
       );
-
+      console.log("confirmName", confirmName);
       if (websiteLoginUser) {
-        toggleUserInf();
+        setAJUser(null);
         return Cookies.remove("user");
       }
       // toggleUserInf();
@@ -84,7 +84,7 @@ const UserInfo = ({
     if (notValid) {
       return;
     }
-    if (!usernameChoosen) {
+    if (!usernameChoosen || usernameChoosen.length < 1) {
       toggleUserInf();
       return;
     }
@@ -93,11 +93,13 @@ const UserInfo = ({
         `${process.env.BACKEND_SERVER}/users/regulrUsers/tempMail`,
         { name: usernameChoosen, image: selectedAvatar }
       );
-
+      if (AJUser) {
+        Cookies.remove("user");
+      }
       Cookies.set("user", JSON.stringify(confirmName.data.data.user), {
         expires: 1,
       });
-      console.log( 'new user',confirmName?.data?.data?.user)
+      console.log("new user", confirmName?.data?.data?.user);
       setColor(confirmName?.data?.data?.user?.color);
       console.log("user", confirmName.data.data.user);
       toggleUserInf();
@@ -147,11 +149,10 @@ const UserInfo = ({
       <div className={classes["user-info-body"]}>
         <p className={classes["user-info-para"]}>Your Display Name</p>
       </div>
-      {(session && checkSessionValidty(session?.expires)) ||
-      Cookies.get("user") ? (
+      {(session && checkSessionValidty(session?.expires)) || AJUser ? (
         <SignedIn
           toggleChangeUserName={toggleChangeUserName}
-          AJUser={Cookies.get("user") || null}
+          AJUser={AJUser || null}
           session={session}
           selectedAvatar={selectedAvatar}
           toggleUserInf={toggleUserInf}

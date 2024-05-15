@@ -1,4 +1,4 @@
-.news-article {
+.page {
   max-width: min(68%, 36rem);
   margin: 0 auto;
   padding-bottom: 5.6rem;
@@ -11,14 +11,14 @@
   margin: 2.1rem auto; 
 }
 @media (max-width: 56.25rem) {
-  .news-article {
+  .page {
     max-width: min(90%, 36rem);
     margin: 0 auto;
     padding-bottom: 3rem;
   }
 }
 @media (max-width: 600px) {
-  .news-article {
+  .page {
     max-width: 100%;
     margin: 0 3px;
   }
