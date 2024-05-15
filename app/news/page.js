@@ -36,7 +36,7 @@ const Page = async ({ searchParams }) => {
                 <NewsItem
                   key={index}
                   index={index}
-                  src={`${process.env.STATIC_SERVER}/img/news/${item?.coverImage}`}
+                  src={`${process.env.BACKEND_SERVER}/img/news/${item?.coverImage}`}
                   alt={"photo"}
                   heading={item.title}
                   para={item.description}

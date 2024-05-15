@@ -34,7 +34,7 @@ const ArticleContent = ({ title, subNews }) => {
             <Image
               crossOrigin="anonymous"
               className={classes["news-article-image"]}
-              src={`${process.env.STATIC_SERVER}/img/news/${item?.image}`}
+              src={`${process.env.BACKEND_SERVER}/img/news/${item?.image}`}
               alt="article-photo"
               width="400"
               height="270"

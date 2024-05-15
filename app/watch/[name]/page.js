@@ -96,8 +96,17 @@ const Page = async ({ params }) => {
           <WatchDetailsSingleTeam
             live={live}
             width={"100"}
-            leagueLogo={`${process.env.STATIC_SERVER}/img/matches/${matchData?.leagueLogo}`}
-            flagLogo={`${process.env.STATIC_SERVER}/img/matches/${matchData?.flagLogo}`}
+            leagueLogo={
+              matchData?.leagueLogo === null ||
+              matchData?.leagueLogo === undefined
+                ? "/svg/home/default-team-icon.svg"
+                : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.leagueLogo}`
+            }
+            flagLogo={
+              matchData?.flagLogo === null || matchData?.flagLogo === undefined
+                ? "/svg/home/default-team-icon.svg"
+                : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.flagLogo}`
+            }
             date={` ${getMatchDate(matchData?.eventDate, true)}- ${
               convertDate(matchData?.eventDate).time
             }`}
@@ -107,16 +116,24 @@ const Page = async ({ params }) => {
         ) : (
           <WatchDetails
             live={live}
-            lieageImage={`${process.env.STATIC_SERVER}/img/matches/${matchData?.leagueLogo}`}
+            lieageImage={
+              matchData?.leagueLogo === null || matchData?.leagueLogo === undefined
+                ? "/svg/home/default-team-icon.svg"
+                : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.leagueLogo}`
+            }
             firstTeamImage={
-              matchData?.firstTeamLogo !== null
-                ? `${process.env.STATIC_SERVER}/img/matches/${matchData?.firstTeamLogo}`
+              matchData?.firstTeamLogo === null || matchData?.firstTeamLogo === undefined
+                ? "/svg/home/default-team-icon.svg"
+                : matchData?.firstTeamLogo !== null
+                ? `${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`
                 : "/svg/home/default-team-icon.svg"
             }
             firstTeamName={matchData?.firstTeamName}
             seconteamImage={
-              matchData?.secondTeamLogo !== null
-                ? `${process.env.STATIC_SERVER}/img/matches/${matchData?.secondTeamLogo}`
+              matchData?.secondTeamLogo === null || matchData?.secondTeamLogo === undefined
+                ? "/svg/home/default-team-icon.svg"
+                : matchData?.secondTeamLogo !== null
+                ? `${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`
                 : "/svg/home/default-team-icon.svg"
             }
             seconteamName={matchData?.secondTeamName}

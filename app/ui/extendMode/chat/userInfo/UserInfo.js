@@ -96,7 +96,7 @@ const UserInfo = ({
           <Image
             src={
               selectedAvatar.startsWith("user")
-                ? `${process.env.STATIC_SERVER}/img/users/${selectedAvatar}`
+                ? `${process.env.BACKEND_SERVER}/img/users/${selectedAvatar}`
                 : selectedAvatar
             }
             alt="avatar"

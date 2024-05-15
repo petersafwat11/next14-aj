@@ -26,9 +26,9 @@
   border-top-left-radius: 3.6px;
 }
 
-.chat-top-text:hover {
+/* .chat-top-text:hover {
   background: #04627c;
-}
+} */
 
 /* .chat-top-text:hover > .chat-rooms {
   display: flex;
@@ -41,10 +41,10 @@
   transition: all 0.16s ease-out;
 }
 
-.chat-top-text:hover > img {
+/* .chat-top-text:hover > img {
   rotate: -180deg;
 }
-
+ */
 /* .chat-rooms {
   display: none;
   position: absolute;

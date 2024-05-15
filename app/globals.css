@@ -326,6 +326,10 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.5rem !important;
+  width: 100% !important;
+}
+.slick-track > div {
+  width: 5.7rem !important;
 }
 .slick-arrow.slick-prev,
 .slick-arrow.slick-next {

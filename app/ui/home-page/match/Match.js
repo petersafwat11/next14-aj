@@ -68,7 +68,7 @@ export const Match = ({ matchData, type, index, length }) => {
                     matchData?.firstTeamLogo === null ||
                     matchData?.firstTeamLogo === undefined
                       ? "/svg/home/default-team-icon.svg"
-                      : `${process.env.STATIC_SERVER}/img/matches/${matchData?.firstTeamLogo}`
+                      : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`
                   }
                   alt="logo"
                   width={28}
@@ -83,7 +83,7 @@ export const Match = ({ matchData, type, index, length }) => {
                     matchData?.secondTeamLogo === null ||
                     matchData?.secondTeamLogo === undefined
                       ? "/svg/home/default-team-icon.svg"
-                      : `${process.env.STATIC_SERVER}/img/matches/${matchData?.secondTeamLogo}`
+                      : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`
                   }
                   alt="logo"
                   width={28}

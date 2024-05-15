@@ -90,7 +90,7 @@ const Wrapper = ({ entries, eventData, allSocial }) => {
             >
               <Image
                 className={classes["give-away-center-image"]}
-                src={`${process.env.STATIC_SERVER}/img/giveaway/${eventData?.prizeImage}`}
+                src={`${process.env.BACKEND_SERVER}/img/giveaway/${eventData?.prizeImage}`}
                 crossOrigin="anonymous"
                 alt="playstation"
                 width={128}

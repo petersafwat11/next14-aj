@@ -40,7 +40,9 @@
   text-align: center;
   color: #ffffff;
 }
-
+.wrapper:hover * {
+  color: white;
+}
 .tooltip::after {
   content: "";
   position: absolute;
@@ -51,7 +53,12 @@
   border-style: solid;
   border-color: #2b3134 transparent transparent transparent;
 }
-
+.wrapper,
+.wrapper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .watch-video-share > * {
   font-size: 1rem;
   color: rgba(128, 128, 128, 0.534);
