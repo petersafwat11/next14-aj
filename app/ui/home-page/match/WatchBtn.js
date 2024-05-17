@@ -7,7 +7,7 @@ const WatchBtn = ({ name }) => {
     <div className={classes["action-button"]}>
       <Link
         href={`/watch/${name}`}
-        scroll={false}
+        // scroll={false}
         className={classes["watch-button"]}
       >
         WATCH

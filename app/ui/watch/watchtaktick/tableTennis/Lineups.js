@@ -11,13 +11,13 @@ const Lineups = ({ data, secondTeamName, firstTeamName }) => {
         <Temprature />
       </div>
 
-      <Details
+      {/* <Details
         matchDetails={[
           { left: "VENUE", right: "O2 Arena" },
           { left: "LOCATION", right: "New Delhi, India" },
           { left: "TEAM", right: "Pakistan" },
         ]}
-      />
+      /> */}
     </div>
   );
 };

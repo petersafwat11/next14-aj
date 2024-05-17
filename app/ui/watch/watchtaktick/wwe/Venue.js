@@ -24,14 +24,14 @@ const Venue = ({data}) => {
         selectedOption={option}
         changeOptions={changeCategory}
       />
-      <div className={classes["details"]}>
+      {/* <div className={classes["details"]}>
         <Details
           matchDetails={[
             { left: "VENUE", right: "O2 Arena" },
             { left: "LOCATION", right: "New Delhi, India" },
           ]}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

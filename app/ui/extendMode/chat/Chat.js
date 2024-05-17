@@ -1,21 +1,23 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 const Poll = dynamic(() => import("../../chat/poll/Poll"), {
   ssr: false,
 });
 const ChangeAvatar = dynamic(
-  () => import("../../chatchangeAvatars/changeAvatar"),
+  () => import("../../chat/changeAvatars/changeAvatar"),
   {
     ssr: false,
   }
 );
 const EmojiaAndGifs = dynamic(
-  () => import("../../chatemojiAndGifs/EmojiaAndGifs"),
+  () => import("../../chat/emojiAndGifs/EmojiaAndGifs"),
   {
     ssr: false,
   }
 );
-const UserInfo = dynamic(() => import("../../chatuserInfo/UserInfo"), {
+
+const UserInfo = dynamic(() => import("../../chat/userInfo/UserInfo"), {
   ssr: false,
 });
 const SelectColor = dynamic(

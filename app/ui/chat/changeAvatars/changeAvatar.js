@@ -220,7 +220,7 @@ const ChangeAvatar = ({
                   className={classes["sub-category"]}
                 >
                   <Image
-                    src="svg/chat/change-avatar/folder-icon.svg"
+                    src="/svg/chat/change-avatar/folder-icon.svg"
                     alt="folder-icon"
                     width="54"
                     height="44"

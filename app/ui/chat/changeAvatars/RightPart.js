@@ -11,7 +11,7 @@ const RightPart = ({
       <Image
         className={classes["exit"]}
         onClick={toggleChangeAvatar}
-        src="svg/chat/change-avatar/exit.svg"
+        src="/svg/exit.svg"
         alt="send"
         width="12"
         height="12"

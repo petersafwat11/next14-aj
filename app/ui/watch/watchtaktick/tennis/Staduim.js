@@ -77,7 +77,7 @@ const Staduim = ({ data }) => {
         </div>
       ) : (
         data.secondTeam.players.map((player, index) => (
-          <div key={index} className={classes[`palyer-${index + 3}`]}>
+          <div key={index} className={classes[`palyer-${index + 5}`]}>
             {player.gender === "Male" ? (
               <Image
                 className={classes["player-icon"]}

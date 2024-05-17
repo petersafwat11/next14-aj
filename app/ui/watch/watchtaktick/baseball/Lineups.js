@@ -22,7 +22,7 @@ const Lineups = ({ data }) => {
         selectedOption={option}
         changeOptions={changeCategory}
       />
-      <div className={classes["details"]}>
+      {/* <div className={classes["details"]}>
         <Details
           matchDetails={[
             { left: "VENUE", right: "O2 Arena" },
@@ -30,7 +30,7 @@ const Lineups = ({ data }) => {
             { left: "TEAM", right: "Pakistan" },
           ]}
         />
-      </div>
+      </div> */}
     </div>
   ) : (
     <UnderDevelopment

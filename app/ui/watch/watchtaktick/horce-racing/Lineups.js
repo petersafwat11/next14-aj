@@ -22,12 +22,12 @@ const Lineups = ({data}) => {
         <Temprature />
       </div>
 
-      <Details
+      {/* <Details
         matchDetails={[
           { left: "VENUE", right: "O2 Arena" },
           { left: "LOCATION", right: "New Delhi, India" },
         ]}
-      />
+      /> */}
     </div>
   );
 };

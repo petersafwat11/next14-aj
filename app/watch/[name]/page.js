@@ -94,7 +94,8 @@ const Page = async ({ params }) => {
       <div className={classes["container"]}>
         {!query.secondTeamName ? (
           <WatchDetailsSingleTeam
-            live={live}
+            playStream={matchData?.playStream}
+            eventEnds={matchData?.endedEvent}
             width={"100"}
             leagueLogo={
               matchData?.leagueLogo === null ||
@@ -115,14 +116,17 @@ const Page = async ({ params }) => {
           />
         ) : (
           <WatchDetails
-            live={live}
+            playStream={matchData?.playStream}
+            eventEnds={matchData?.endedEvent}
             lieageImage={
-              matchData?.leagueLogo === null || matchData?.leagueLogo === undefined
+              matchData?.leagueLogo === null ||
+              matchData?.leagueLogo === undefined
                 ? "/svg/home/default-team-icon.svg"
                 : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.leagueLogo}`
             }
             firstTeamImage={
-              matchData?.firstTeamLogo === null || matchData?.firstTeamLogo === undefined
+              matchData?.firstTeamLogo === null ||
+              matchData?.firstTeamLogo === undefined
                 ? "/svg/home/default-team-icon.svg"
                 : matchData?.firstTeamLogo !== null
                 ? `${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`
@@ -130,7 +134,8 @@ const Page = async ({ params }) => {
             }
             firstTeamName={matchData?.firstTeamName}
             seconteamImage={
-              matchData?.secondTeamLogo === null || matchData?.secondTeamLogo === undefined
+              matchData?.secondTeamLogo === null ||
+              matchData?.secondTeamLogo === undefined
                 ? "/svg/home/default-team-icon.svg"
                 : matchData?.secondTeamLogo !== null
                 ? `${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`
@@ -168,20 +173,24 @@ const Page = async ({ params }) => {
             <BottomSocial social={data?.social} />
           </div>
 
-          <div className={classes["takticks"]}>
-            <MatchData
-              customAPi={matchData?.customAPI?.customAPIData}
-              eventDate={matchData?.eventDate}
-              matchId={matchData?.matchId || null}
-              sportCategory={matchData?.sportCategory}
-              firstTeamName={matchData?.firstTeamName}
-              secondTeamName={matchData?.secondTeamName}
-              eventStadium={matchData?.eventStadium}
-            />
-          </div>
-          <div className={classes["casino"]}>
-            <Casino />
-          </div>
+          {matchData?.sportCategory !== "f1" && (
+            <div className={classes["takticks"]}>
+              <MatchData
+                customAPi={matchData?.customAPI?.customAPIData}
+                eventDate={matchData?.eventDate}
+                matchId={matchData?.matchId || null}
+                sportCategory={matchData?.sportCategory}
+                firstTeamName={matchData?.firstTeamName}
+                secondTeamName={matchData?.secondTeamName}
+                eventStadium={matchData?.eventStadium}
+              />
+            </div>
+          )}
+          {matchData?.sportCategory !== "f1" && (
+            <div className={classes["casino"]}>
+              <Casino />
+            </div>
+          )}
           {matchData?.matchPoll?.enabled && (
             <div className={classes["who-will-win"]}>
               <WhoWillWin query={query} data={matchData?.matchPoll} />

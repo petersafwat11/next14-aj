@@ -23,9 +23,9 @@ const Lineups = ({ data, firstTeamName, secondTeamName }) => {
         firstTeamSubstitutePlayers={firstTeamSubstitutePlayers}
         secondTeamSubstitutePlayers={secondTeamSubstitutePlayers}
       />
-      <div className={classes["details"]}>
+      {/* <div className={classes["details"]}>
         <Details matchDetails={[{ left: "VENUE", right: "O2 Arena" }]} />
-      </div>
+      </div> */}
       <AlternativePlayers
         option={option}
         firstTeamName={firstTeamName}

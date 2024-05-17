@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import classes from "./watchDetailsSingleTeam.module.css";
 import LiveBtn from "../../live-button/LiveButton";
+import { determineLive } from "@/app/lib/datesFunctions";
 const WatchDetailsSingleTeam = ({
   leagueLogo,
   flagLogo,
@@ -8,8 +10,20 @@ const WatchDetailsSingleTeam = ({
   date,
   place,
   teamName,
-  live,
+  playStream,
+  eventEnds,
 }) => {
+  const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
+  const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlayStreaming(determineLive(playStream));
+      setEndedEvent(determineLive(eventEnds));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [playStream, eventEnds]);
+
   return (
     <div className={classes["watch-details"]}>
       <div className={classes["watch-details-first"]}>
@@ -44,7 +58,7 @@ const WatchDetailsSingleTeam = ({
         {/* {true ? (
           <div className={classes["not-live"]}>LIVE</div>
         ) : ( */}
-        {live && <LiveBtn text={"LIVE"} />}
+        {playStreaming && !endedEvent && <LiveBtn text={"LIVE"} />}
         {/* )} */}
       </div>
     </div>

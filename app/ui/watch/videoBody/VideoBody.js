@@ -107,10 +107,7 @@ const VideoBody = ({
             url={playingServer.server.streamLinkUrl}
           />
         ) : (
-          <EventCountDown
-            eventDate={matchData?.eventDate}
-            remainingTime={remainingTime}
-          />
+          <EventCountDown eventDate={eventDate} remainingTime={remainingTime} />
         )}
       </div>
       <div className={classes["watch-video-wrapper-bottom"]}>

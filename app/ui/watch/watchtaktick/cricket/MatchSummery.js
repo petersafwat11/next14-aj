@@ -81,7 +81,7 @@ const MatchSummery = ({
       <GlobalHeader
         category={category}
         changeCategory={changeCategory}
-        categories={["LINEUPS", "STATISTICS"]}
+        categories={["LINEUPS"]}
       />
         <Lineups data={lineupsData} />
     </div>

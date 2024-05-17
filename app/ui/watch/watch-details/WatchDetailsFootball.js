@@ -1,6 +1,8 @@
-
+"use client";
 import classes from "./watchDetails.module.css";
 import LiveBtn from "../../live-button/LiveButton";
+import { useEffect, useState } from "react";
+import { determineLive } from "@/app/lib/datesFunctions";
 const WatchDetails = ({
   lieageImage,
   firstTeamImage,
@@ -9,9 +11,20 @@ const WatchDetails = ({
   seconteamName,
   date,
   place,
-  live,
+  playStream,
+  eventEnds,
   category,
 }) => {
+  const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
+  const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlayStreaming(determineLive(playStream));
+      setEndedEvent(determineLive(eventEnds));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [playStream, eventEnds]);
 
   return (
     <div className={classes["watch-details"]}>
@@ -72,7 +85,7 @@ const WatchDetails = ({
       </div>
       <div className={classes["watch-details-last"]}>
         {/* <p className={classes["half"]}>{half}</p> */}
-        {live && <LiveBtn text={"LIVE"} />}
+        {playStreaming && !endedEvent && <LiveBtn text={"LIVE"} />}
       </div>
     </div>
   );
