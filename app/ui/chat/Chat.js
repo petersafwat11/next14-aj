@@ -54,7 +54,7 @@ const Chat = ({
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
-  const socket = io(`${process.env.STATIC_SERVER}`);
+  const socket = io(`${process.env.BACKEND_SERVER}`);
 
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
@@ -325,6 +325,10 @@ const Chat = ({
       inputRef.current.focus();
     }
   };
+  const chooseGifOrEmojies = (choose) => {
+    setEmojyOrGifs(choose);
+  };
+
   // const contollChatRoom = async (room) => {
   //   try {
   //     const roomMessages = await axios.get(
@@ -345,9 +349,6 @@ const Chat = ({
   //     console.log("error happed while loading message", err);
   //   }
   // };
-  const chooseGifOrEmojies = (choose) => {
-    setEmojyOrGifs(choose);
-  };
   useEffect(() => {
     // Event listeners can be added here
     socket.on(`chat message English (Default)`, (msg) => {

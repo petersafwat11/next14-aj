@@ -12,9 +12,10 @@ const Statistics = async () => {
       },
     }
   );
+  console.log("datat", response?.data?.data);
 
   return (
-    <div className={classes['page']}>
+    <div>
       <Wrapper data={response?.data?.data} />
     </div>
   );

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 // import { groupEventsByDate } from "../../../utils/groupEventsByDate";
-import ShowMore from "../../showMore/ShowMore";
+import ShowMoreStats from "../../showMore/ShowMoreStats";
 import { leaguesData } from "../data";
 import Header from "../header/Header";
 import LeagueMenu from "../leage/League";
@@ -25,7 +25,7 @@ const Wrapper = ({ data }) => {
   const [standingsType, setStandingsType] = useState("Leagues");
   const [standingsData, setStandingsData] = useState([]);
   // const [fixturesData, setFixturesData] = useState(data);
-  const [fixturesData, setFixturesData] = useState([]);
+  const [fixturesData, setFixturesData] = useState(groupEventsByDate(data));
   const [resultsData, setResultsData] = useState([]);
   const [requiredWeekData, setRequiredWeekData] = useState(1);
   const getleagueData = async (leagueName, type, week) => {
@@ -108,7 +108,7 @@ const Wrapper = ({ data }) => {
 
       {statisticsType !== "standings" && (
         <div className="show-more-wrapper">
-          <ShowMore showMoreHandeler={showMoreHandeler} />
+          <ShowMoreStats showMoreHandeler={showMoreHandeler} />
         </div>
       )}
     </div>

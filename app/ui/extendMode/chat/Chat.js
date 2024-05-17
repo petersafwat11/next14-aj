@@ -56,9 +56,8 @@ const Chat = ({
   exitExtenMode,
   setInputActive,
 }) => {
-  console.log("chatMessages", chatMessages);
   const { data: session, status } = useSession();
-  console.log("session", session);
+
   const scrollToBottom = () => {
     const chatContainer = messagesRef.current;
     console.log(
@@ -68,11 +67,18 @@ const Chat = ({
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
-  const socket = io(`${process.env.STATIC_SERVER}`);
+  const socket = io(`${process.env.BACKEND_SERVER}`);
 
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
   const [emojyOrGifs, setEmojyOrGifs] = useState("emojy");
+
+  //chat mode
+  const [chatMode, setChatMode] = useState(mode);
+
+  //chat poll
+  const [polls, setPolls] = useState([]);
+  const [pollsRemainingTime, setPollsRemainingTime] = useState(false);
 
   // show username color
   const [showUsernameColor, setShowUsernameColor] = useState(false);
@@ -90,14 +96,14 @@ const Chat = ({
     ? JSON.parse(userFromCookies)?.name
     : "anonymous";
   const initialColor = userFromCookies
-    ? JSON.parse(userFromCookies)?.name
+    ? JSON.parse(userFromCookies)?.color
     : null;
 
   const [selectedAvatar, setSelectedAvatar] = useState(
     session?.user?.image || initialAvatar
   );
   const [changeAvatar, setChangeAvatar] = useState(false);
-  // tag users
+
   //chat room top selection
   const [chatRoomSelection, setChatRoomSelection] =
     useState("English (Default)");
@@ -120,6 +126,7 @@ const Chat = ({
   // username color
   const [color, setColor] = useState(session?.user?.color || initialColor);
 
+  const [slowModeRemainingSec, setSlowModeRemainingSec] = useState(false);
   //toggle functions
   const toggleChangeAvatar = () => {
     const { image } = message;
@@ -145,9 +152,21 @@ const Chat = ({
           },
         }
       );
-      console.log("response", response);
+      console.log("response1", response);
+
+      if (userFromCookies) {
+        const pasedData = JSON.parse(userFromCookies);
+        const newData = {
+          ...pasedData,
+          color: response?.data?.user?.color,
+        };
+        Cookies.remove("user");
+        Cookies.set("user", JSON.stringify(newData));
+      }
+      console.log("response2", response);
       setMessage({ ...message, color: response?.data?.user?.color });
       setShowUsernameColor(!showUsernameColor);
+      toggleUserInf();
     } catch (err) {
       console.log(
         "err happend while trying change your username color , please try again later"
@@ -156,12 +175,16 @@ const Chat = ({
   };
 
   const selectAvatar = async (avatar) => {
-    console.log("avatar", avatar);
-
-    if (!session?.user?.name || initialName === null) {
+    if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
+      console.log("anon", avatar);
       setMessage({ ...message, image: avatar });
+
       setChangeAvatar(!changeAvatar);
       setSelectedAvatar(avatar);
+      Cookies.set("user", JSON.stringify({ ...message, image: avatar }), {
+        expires: 1,
+      });
+
       return;
     }
     try {
@@ -174,8 +197,22 @@ const Chat = ({
           },
         }
       );
+      if (userFromCookies) {
+        console.log("userFromCookies", userFromCookies);
+        const parsedData = JSON.parse(userFromCookies);
+        const newData = {
+          ...parsedData,
+          image: avatar,
+        };
+        Cookies.remove("user");
+        console.log("newData", newData);
+
+        Cookies.set("user", JSON.stringify(newData));
+      }
+
       console.log("response", response);
       setMessage({ ...message, image: response?.data?.user?.image });
+      toggleUserInf();
       setChangeAvatar(!changeAvatar);
       setSelectedAvatar(avatar);
     } catch (err) {
@@ -186,45 +223,71 @@ const Chat = ({
   };
   // make sending effect
   const [isSending, setIsSending] = useState(false);
-  const handleClick = async () => {
+  const sendGif = async (gif) => {
+    if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
+      return;
+    }
     try {
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
-        message: message,
+        message: { ...message, message: gif },
       });
-      console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, message);
-
-      setMessages((prevState) => {
-        return [...prevState, message];
-      });
-      setMessage({
+      socket.emit(`chat message ${chatRoomSelection}`, {
         ...message,
-        message: "",
+        message: String(gif),
+      });
+      setMessages((prevState) => {
+        return [...prevState, { ...message, message: gif }];
       });
       scrollToBottom();
       setIsSending(true);
       setTimeout(() => {
         setIsSending(false);
       }, 500);
+      if (chatMode.slowMode.value === true) {
+        setSlowModeRemainingSec(true);
+        setTimeout(() => {
+          setSlowModeRemainingSec(false);
+        }, 10000 * chatMode.slowMode.time);
+      }
     } catch (err) {
       console.log("error", err);
     }
   };
-  const sendGif = async (gif) => {
+  const handleClick = async () => {
     try {
-      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
-        message: { ...message, message: gif },
-      });
-      console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, {
+      //  mode check
+      if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
+        console.log("still remaining time ");
+        return;
+      }
+      const messageDestructure = { ...message };
+      setMessage({
         ...message,
-        message: gif,
+        message: "",
       });
 
-      setMessages((prevState) => {
-        return [...prevState, { ...message, message: gif }];
+      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+        message: messageDestructure,
       });
-      scrollToBottom();
+      console.log(response);
+      socket.emit(`chat message ${chatRoomSelection}`, messageDestructure);
+
+      setMessages((prevState) => {
+        return [...prevState, messageDestructure];
+      });
+      setIsSending(true);
+      setTimeout(() => {
+        scrollToBottom();
+        setIsSending(false);
+      }, 500);
+
+      // slow mode update state
+      if (chatMode.slowMode.value === true) {
+        setSlowModeRemainingSec(true);
+        setTimeout(() => {
+          setSlowModeRemainingSec(false);
+        }, 1000 * chatMode.slowMode.time);
+      }
     } catch (err) {
       console.log("error", err);
     }
@@ -268,32 +331,11 @@ const Chat = ({
           console.log("modifiedString", modifiedString);
           return { ...prevState, message: modifiedString };
         }
-        return prevState;
       }
     });
 
     if (inputRef.current) {
       inputRef.current.focus();
-    }
-  };
-  const contollChatRoom = async (room) => {
-    try {
-      const roomMessages = await axios.get(
-        `${process.env.BACKEND_SERVER}/chat`,
-        {
-          params: {
-            limit: 40,
-            room: room,
-            sort: { eventDate: 1 },
-          },
-        }
-      );
-      console.log("roomMessages", roomMessages?.data?.data);
-      setChatRoomSelection(room);
-      setMessages(roomMessages?.data?.data);
-      setMessage({ ...messageDefaultState, room: room });
-    } catch (err) {
-      console.log("error happed while loading message", err);
     }
   };
   const chooseGifOrEmojies = (choose) => {
@@ -302,19 +344,34 @@ const Chat = ({
 
   useEffect(() => {
     // Event listeners can be added here
-    socket.on(`chat message ${chatRoomSelection}`, (msg) => {
+    socket.on(`chat message English (Default)`, (msg) => {
+      console.log("message recieved", msg);
       setMessages((prevState) => {
         return [...prevState, msg];
       });
       scrollToBottom();
-      console.log("message ", msg);
+    });
+    socket.on(`chat mode`, (data) => {
+      setChatMode(data);
+    });
+    socket.on(`chat poll`, (data) => {
+      // const newPools = [data, ...polls];
+      setPolls(data);
+
+      const remaining = getTimeRemainingInMinutes(
+        data[0]?.createdAt,
+        data[0]?.time
+      );
+      console.log("remaining", data);
+      setPollsRemainingTime(remaining);
+      console.log("chat poll updated", data);
     });
 
     // Clean up the socket connection when the component unmounts
     return () => {
       socket.disconnect();
     };
-  }, [socket, chatRoomSelection]);
+  }, [socket, chatRoomSelection, polls]);
 
   useEffect(() => {
     setMessage({
@@ -326,8 +383,67 @@ const Chat = ({
     });
   }, [session, chatRoomSelection, initialAvatar, initialName, initialColor]);
   useEffect(() => {
+    const fetchChatData = async () => {
+      try {
+        const chatPolls = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
+          {
+            params: {
+              sort: { createdAt: -1 },
+            },
+          }
+        );
+
+        const chatMode = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatMode`
+        );
+        console.log("chatPolls?.data?.data", chatPolls?.data?.data);
+        setChatMode(chatMode?.data?.data?.data[0]);
+        setPolls(chatPolls?.data?.data?.data || []);
+        // console.log("chat polls", chatPolls?.data?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const intervalId = setInterval(fetchChatData, 60000);
+
+    // Clean up the interval to prevent memory leaks
+    return () => clearInterval(intervalId);
+  }, []);
+  useEffect(() => {
+    const getFirstData = async () => {
+      try {
+        const chatPolls = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
+          {
+            params: { sort: { createdAt: -1 } },
+          }
+        );
+        setPolls(chatPolls?.data?.data);
+        const remaining = getTimeRemainingInMinutes(
+          chatPolls?.data?.data[0]?.createdAt,
+          chatPolls?.data?.data[0]?.time
+        );
+        setPollsRemainingTime(remaining);
+      } catch (err) {
+        console.log("Error :", err);
+      }
+    };
+    getFirstData();
     scrollToBottom();
   }, []);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const remaining = getTimeRemainingInMinutes(
+        polls[0]?.createdAt,
+        polls[0]?.time
+      );
+      setPollsRemainingTime(remaining);
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, [polls]);
+
   return (
     <div className={classes["chat"]}>
       {true && <Poll />}
