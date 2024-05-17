@@ -44,6 +44,7 @@ const VideoBody = ({
   chatRules,
   chatFilteredWords,
   eventEnds,
+  mode
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -88,6 +89,7 @@ const VideoBody = ({
       <div id="my-root-div" className="watch-video">
         {extendMode && (
           <ExtendModeWrapper
+          mode={mode}
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}
             videoRef={extendVideoRef}

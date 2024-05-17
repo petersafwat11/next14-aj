@@ -10,12 +10,9 @@ const ChangeAvatar = dynamic(
     ssr: false,
   }
 );
-const EmojiaAndGifs = dynamic(
-  () => import("../../chat/emojiAndGifs/EmojiaAndGifs"),
-  {
-    ssr: false,
-  }
-);
+const EmojiaAndGifs = dynamic(() => import("./emojiAndGifs/EmojiaAndGifs"), {
+  ssr: false,
+});
 
 const UserInfo = dynamic(() => import("../../chat/userInfo/UserInfo"), {
   ssr: false,
@@ -46,6 +43,7 @@ import Cookies from "js-cookie";
 import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
+import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
 // import Popup from "../../popupWrapper/Popup";
 // import TagUsers from "./tagUsers/TagUsers";
 
@@ -55,6 +53,7 @@ const Chat = ({
   chatMessages,
   exitExtenMode,
   setInputActive,
+  mode,
 }) => {
   const { data: session, status } = useSession();
 
@@ -67,7 +66,7 @@ const Chat = ({
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
-  const socket = io(`${process.env.BACKEND_SERVER}`);
+  const socket = io(`${process.env.STATIC_SERVER}`);
 
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
@@ -260,20 +259,20 @@ const Chat = ({
         console.log("still remaining time ");
         return;
       }
-      const messageDestructure = { ...message };
+      // const messageDestructure = { ...message };
+      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+        message: message,
+      });
+      console.log(response);
+      socket.emit(`chat message ${chatRoomSelection}`, message);
+      console.log("emited");
       setMessage({
         ...message,
         message: "",
       });
 
-      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
-        message: messageDestructure,
-      });
-      console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, messageDestructure);
-
       setMessages((prevState) => {
-        return [...prevState, messageDestructure];
+        return [...prevState, message];
       });
       setIsSending(true);
       setTimeout(() => {
@@ -446,7 +445,7 @@ const Chat = ({
 
   return (
     <div className={classes["chat"]}>
-      {true && <Poll />}
+      {pollsRemainingTime && <Poll polls={polls} />}
       {showRules && (
         <ChatRules data={chatRules} rulesVisability={rulesVisability} />
       )}
@@ -502,7 +501,7 @@ const Chat = ({
       )} */}
       <ChatTop
         chatRoomSelection={chatRoomSelection}
-        contollChatRoom={contollChatRoom}
+        // contollChatRoom={contollChatRoom}
         exitExtenMode={exitExtenMode}
       />
       <ChatBody

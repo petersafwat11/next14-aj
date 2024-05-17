@@ -28,7 +28,7 @@ const Page = async ({ params }) => {
       params: {
         limit: 10,
         room: "English (Default)",
-        sort: { _id: 1 },
+        sort: { _id: -1 },
         mode: "normal",
       },
     }),
@@ -56,7 +56,7 @@ const Page = async ({ params }) => {
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const messagesData = chatMessages.data?.data?.data;
+      const messagesData = chatMessages.data?.data?.data?.reverse();
       const event = eventData.data;
       const social = links.data?.data?.data[0].social;
 
@@ -84,10 +84,10 @@ const Page = async ({ params }) => {
   return (
     <section className={classes["page"]}>
       <ShowingChat
-        mode={data.modeData}
-        chatMessages={data.messagesData}
-        chatRules={data.rulesData}
-        chatFilteredWords={data.filteredWordsData}
+        mode={data?.modeData}
+        chatMessages={data?.messagesData}
+        chatRules={data?.rulesData}
+        chatFilteredWords={data?.filteredWordsData}
       />
 
       {/* <WatchNavigation page={"Watch"} /> */}
@@ -160,6 +160,7 @@ const Page = async ({ params }) => {
             eventDate={matchData?.eventDate}
             playStream={matchData?.playStream}
             eventEnds={matchData?.endedEvent}
+            mode={data?.modeData}
             activeServer={playingServer}
             servers={servers}
           />

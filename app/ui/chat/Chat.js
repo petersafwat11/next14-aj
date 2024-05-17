@@ -54,7 +54,7 @@ const Chat = ({
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
-  const socket = io(`${process.env.BACKEND_SERVER}`);
+  const socket = io(`${process.env.STATIC_SERVER}`);
 
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
@@ -247,21 +247,26 @@ const Chat = ({
         console.log("still remaining time ");
         return;
       }
-      const messageDestructure = { ...message };
+      // const messageDestructure = { ...message };
+      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+        message: message,
+      });
+      console.log(response);
+      socket.emit(
+        "chat message English (Default)",
+        message,
+        (ack) => {
+          console.log("Acknowledgement from server:", ack);
+        }
+      );
+      setMessages((prevState) => {
+        return [...prevState, message];
+      });
       setMessage({
         ...message,
         message: "",
       });
 
-      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
-        message: messageDestructure,
-      });
-      console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, messageDestructure);
-
-      setMessages((prevState) => {
-        return [...prevState, messageDestructure];
-      });
       setIsSending(true);
       setTimeout(() => {
         scrollToBottom();
@@ -351,12 +356,16 @@ const Chat = ({
   // };
   useEffect(() => {
     // Event listeners can be added here
+
     socket.on(`chat message English (Default)`, (msg) => {
       console.log("message recieved", msg);
       setMessages((prevState) => {
         return [...prevState, msg];
       });
       scrollToBottom();
+    });
+    socket.on(`test`, (msg) => {
+      console.log("message recieved", msg);
     });
     socket.on(`chat mode`, (data) => {
       setChatMode(data);

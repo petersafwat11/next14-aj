@@ -42,7 +42,7 @@ const Page = async ({ searchParams }) => {
       params: {
         limit: 10,
         room: "English (Default)",
-        sort: { _id: 1 },
+        sort: { _id: -1 },
         mode: "normal",
       },
     }),
@@ -77,7 +77,7 @@ const Page = async ({ searchParams }) => {
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const messagesData = chatMessages.data?.data?.data;
+      const messagesData = chatMessages.data?.data?.data.reverse();
       const channels = channelsData.data;
       const social = links.data?.data?.data[0].social;
 
@@ -94,7 +94,7 @@ const Page = async ({ searchParams }) => {
       // Handle any errors that occurred during any of the requests
       console.error("Error in fetching chat resources:", error);
     });
-  console.log(data?.channels?.data?.data[0]?.streamLink?.URL);
+  console.log("data?.messagesData", data?.messagesData);
   const channelsServers = {
     channels: data?.channels?.data?.data,
     totalResults: data?.channels?.results,
@@ -104,7 +104,6 @@ const Page = async ({ searchParams }) => {
     queryChannel?.data?.data?.streamLink?.URL ||
     data?.channels?.data?.data[0]?.streamLink?.URL ||
     null;
-  console.log("playing server", playingServer);
   const playingServerName =
     queryChannel?.data?.data?.channelName ||
     data?.channels?.data?.data[0]?.channelName ||
@@ -113,10 +112,10 @@ const Page = async ({ searchParams }) => {
   return (
     <div className={classes["page"]}>
       <ShowingChat
-        mode={data.modeData}
-        chatMessages={data.messagesData}
-        chatRules={data.rulesData}
-        chatFilteredWords={data.filteredWordsData}
+        mode={data?.modeData}
+        chatMessages={data?.messagesData}
+        chatRules={data?.rulesData}
+        chatFilteredWords={data?.filteredWordsData}
       />
       <div className={classes["container"]}>
         <div className={classes["top-heading"]}>

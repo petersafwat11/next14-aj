@@ -20,6 +20,7 @@ const WatchVideoBody = ({
   chatFilteredWords,
   url,
   social,
+  mode
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -30,7 +31,7 @@ const WatchVideoBody = ({
   const activeExtendMode = () => {
     setExtendMode(!extendMode);
     let currentState;
-    videoRef.current.paused ? (currentState = false) : (currentState = true);
+    videoRef?.current?.paused ? (currentState = false) : (currentState = true);
     videoRef.current.pause();
     setVideoCurrentState(currentState);
 
@@ -59,6 +60,8 @@ const WatchVideoBody = ({
       <div className={classes["watch-video-options"]}>
         {extendMode && (
           <ExtendModeWrapper
+          mode={mode}
+
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}

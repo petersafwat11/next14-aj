@@ -42,6 +42,9 @@
 .chat-top-text > img {
   transition: all 0.25s ease-out;
 }
+.chat-rooms {
+  display: none;
+}
 /* .chat-top-text:hover > img {
   rotate: -180deg;
 }

@@ -13,6 +13,7 @@ const ExtendModeWrapper = ({
   chatRules,
   chatFilteredWords,
   videoCurrentState,
+  mode
 }) => {
   const [showServers, setShowServers] = useState(false);
   const [inputActive, setInputActive] = useState(false);
@@ -92,6 +93,7 @@ const ExtendModeWrapper = ({
 
         <div className={inputActive ? classes["chat-active"] : classes["chat"]}>
           <Chat
+          mode={mode}
             setInputActive={setInputActive}
             exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}
