@@ -109,7 +109,8 @@
   padding: 1rem 0;
 }
 
-.menu-mobile-page-link {
+.menu-mobile-page-link,
+.menu-mobile-page-link-active {
   font-weight: 500;
   font-family: RobotoRegular;
   font-size: 15px;
@@ -122,6 +123,9 @@
   width: 89%;
 }
 .menu-mobile-page-link:hover {
+  background: #131b20;
+}
+.menu-mobile-page-link-active {
   background: #131b20;
 }
 .devider {

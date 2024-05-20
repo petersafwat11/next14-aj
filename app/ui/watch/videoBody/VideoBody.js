@@ -20,6 +20,7 @@ import EventCountDown from "../eventCoutdown/EventCountDown";
 import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
 import EventEnded from "../eventEnded/EventEnded";
+import { ShowingChatMobile } from "../../showingChat/ShowingChat";
 const ServersButtonsMobile = dynamic(
   () => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"),
   {
@@ -44,7 +45,8 @@ const VideoBody = ({
   chatRules,
   chatFilteredWords,
   eventEnds,
-  mode
+  mode,
+  query, lang
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -89,7 +91,7 @@ const VideoBody = ({
       <div id="my-root-div" className="watch-video">
         {extendMode && (
           <ExtendModeWrapper
-          mode={mode}
+            mode={mode}
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}
             videoRef={extendVideoRef}
@@ -131,7 +133,14 @@ const VideoBody = ({
         {playStreaming && !endedEvent && (
           <div className={classes["modes-icons"]}>
             <ExtendButton activeExtendMode={activeExtendMode} />
-            <ReportBtn />
+            <ReportBtn
+              reportData={{
+                event: query?.secondTeamName
+                  ? `${query?.firstTeamName} vs ${query?.secondTeamName}`
+                  : query?.teamsTitle,
+                server: lang,
+              }}
+            />
           </div>
         )}
       </div>
@@ -144,6 +153,10 @@ const VideoBody = ({
           eventDate={eventDate}
         />
       </div>
+      <ShowingChatMobile
+        extendMode={extendMode}
+        activeExtendMode={activeExtendMode}
+      />
     </>
   );
 };

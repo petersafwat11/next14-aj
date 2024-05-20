@@ -137,6 +137,8 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <WatchVideoBody
+                        reportData={{ event: playingServerName, server: "Server 1" }}
+
             social={data?.social}
             mode={data?.modeData}
             chatMessages={data?.messagesData}

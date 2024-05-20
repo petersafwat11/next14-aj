@@ -1,3 +1,7 @@
+.container-mobile {
+  display: none;
+}
+
 .chat-icon {
   position: fixed;
   bottom: 5vh;
@@ -12,6 +16,12 @@
   z-index: 100;
 }
 @media (max-width: 56.25rem) {
+  .container {
+    display: none;
+  }
+  .container-mobile {
+    display: block;
+  }
   .chat-icon {
     bottom: 3vh;
     right: 8%;

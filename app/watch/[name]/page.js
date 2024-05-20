@@ -163,6 +163,8 @@ const Page = async ({ params }) => {
             mode={data?.modeData}
             activeServer={playingServer}
             servers={servers}
+            query={query}
+            lang={playingServer.lang}
           />
         </div>
         <div className={classes["bottom"]}>

@@ -452,6 +452,7 @@ const Chat = ({
       {showUserInfo && (
         <div className={classes["chat-info"]}>
           <UserInfo
+            setColor={setColor}
             color={color}
             toggleUsernameColor={toggleUsernameColor}
             toggleUserInf={toggleUserInf}

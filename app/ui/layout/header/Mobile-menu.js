@@ -76,7 +76,11 @@ export const MenuMobile = () => {
                   router.push("/");
                   setShowMenu(!showMenu);
                 }}
-                className={classes["menu-mobile-page-link"]}
+                className={
+                  pathname === "/" || pathname.startsWith("/watch")
+                    ? classes["menu-mobile-page-link-active"]
+                    : classes["menu-mobile-page-link"]
+                }
               >
                 SPORTS{" "}
               </p>
@@ -89,7 +93,11 @@ export const MenuMobile = () => {
                   router.push("/channels");
                   setShowMenu(!showMenu);
                 }}
-                className={classes["menu-mobile-page-link"]}
+                className={
+                  pathname.includes("channels")
+                    ? classes["menu-mobile-page-link-active"]
+                    : classes["menu-mobile-page-link"]
+                }
               >
                 CHANNELS
               </p>
@@ -101,7 +109,11 @@ export const MenuMobile = () => {
                   router.push("/statistics");
                   setShowMenu(!showMenu);
                 }}
-                className={classes["menu-mobile-page-link"]}
+                className={
+                  pathname === "/statistics"
+                    ? classes["menu-mobile-page-link-active"]
+                    : classes["menu-mobile-page-link"]
+                }
               >
                 STATISTICS
               </p>
@@ -113,7 +125,11 @@ export const MenuMobile = () => {
                   router.push("/news");
                   setShowMenu(!showMenu);
                 }}
-                className={classes["menu-mobile-page-link"]}
+                className={
+                  pathname === "/news" || pathname.includes("newsArticle")
+                    ? classes["menu-mobile-page-link-active"]
+                    : classes["menu-mobile-page-link"]
+                }
               >
                 NEWS
               </p>
@@ -126,7 +142,11 @@ export const MenuMobile = () => {
                   router.push("/contact");
                   setShowMenu(!showMenu);
                 }}
-                className={classes["menu-mobile-page-link"]}
+                className={
+                  pathname === "/contact"
+                    ? classes["menu-mobile-page-link-active"]
+                    : classes["menu-mobile-page-link"]
+                }
               >
                 CONTACT
               </p>

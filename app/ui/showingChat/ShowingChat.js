@@ -40,3 +40,19 @@ const ShowingChat = ({ mode, chatMessages, chatRules, chatFilteredWords }) => {
 };
 
 export default ShowingChat;
+
+export const ShowingChatMobile = ({ activeExtendMode, extendMode }) => {
+  return (
+    <div className={classes["container-mobile"]} onClick={activeExtendMode}>
+      {!extendMode && (
+        <Image
+          className={classes["chat-icon"]}
+          src="/svg/chat-floating.svg"
+          alt="chat"
+          width="73"
+          height="73"
+        />
+      )}
+    </div>
+  );
+};

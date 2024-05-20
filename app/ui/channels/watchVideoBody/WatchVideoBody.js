@@ -8,6 +8,7 @@ const HlcPlayer = dynamic(() => import("../../hlcPlayer/HlcPlayer"), {
 });
 import ExtendButton from "../extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
+import { ShowingChatMobile } from "../../showingChat/ShowingChat";
 const ExtendModeWrapper = dynamic(
   () => import("../../extendMode/wrapper/Wrapper"),
   {
@@ -20,7 +21,8 @@ const WatchVideoBody = ({
   chatFilteredWords,
   url,
   social,
-  mode
+  mode,
+  reportData
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -60,8 +62,7 @@ const WatchVideoBody = ({
       <div className={classes["watch-video-options"]}>
         {extendMode && (
           <ExtendModeWrapper
-          mode={mode}
-
+            mode={mode}
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}
@@ -81,8 +82,12 @@ const WatchVideoBody = ({
 
         <div className={classes["modes-icons"]}>
           <ExtendButton activeExtendMode={activeExtendMode} />
-          <ReportBtn />
+          <ReportBtn reportData={reportData} />
         </div>
+        <ShowingChatMobile
+          extendMode={extendMode}
+          activeExtendMode={activeExtendMode}
+        />
       </div>
     </>
   );
