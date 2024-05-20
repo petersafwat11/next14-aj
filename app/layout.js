@@ -10,7 +10,6 @@ import { SendMessageButton } from "@/app/ui/layout/sendMessage/SendMessage";
 import NewsLetter from "@/app/ui/layout/newsletter/NewsLetter";
 import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
-import axios from "axios";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +18,9 @@ export const metadata = {
   description: "sports streaming website",
 };
 
-export default async function RootLayout({ children , params}) {
+export default async function RootLayout({ children }) {
   
   const session = await getServerSession(authConfig);
-  // const domains = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
-  //   params: {
-  //     fields: "domains",
-  //   },
-  // });
-
   return (
     <html lang="en">
       <body

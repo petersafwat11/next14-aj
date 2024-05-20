@@ -8,6 +8,10 @@ const nextConfig = {
     BACKEND_SERVER: "http://localhost:8000/api",
     STATIC_SERVER: "http://localhost:8000",
   },
+  generateBuildId: async () => {
+    return "f134160";
+  },
+
   images: {
     domains: [
       "localhost",

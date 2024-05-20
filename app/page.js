@@ -2,9 +2,7 @@ import React from "react";
 import { getServerSession } from "next-auth/next";
 import { authConfig } from "./api/auth/[...nextauth]/route";
 import Image from "next/image";
-import Matches from "./ui/home-page/HotMatches/HotMatches";
 import Search from "./ui/home-page/search/Search";
-import ShowMore from "./ui/showMore/ShowMore";
 import Sports from "./ui/home-page/sports/Sports";
 import axios from "axios";
 import classes from "./page.module.css";
@@ -96,7 +94,6 @@ const Page = async ({ searchParams }) => {
             searchValue={searchValue}
             sportCategory={sportCategory}
           />
-          {/* <Matches /> */}
         </section>
       </div>
     </div>

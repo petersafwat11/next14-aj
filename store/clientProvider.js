@@ -24,7 +24,7 @@ export default function Provider({ children, session }) {
   };
 
   return (
-    <>
+    <SessionProvider session={session}>
       {showScrollTopIcon && (
         <Image
           onClick={scrollToTopPage}
@@ -35,8 +35,7 @@ export default function Provider({ children, session }) {
           height="24"
         />
       )}
-      <SessionProvider session={session}>{children}</SessionProvider>
-      {/* <SessionLayout session={session}>{children}</SessionLayout> */}
-    </>
+      {children}
+    </SessionProvider>
   );
 }

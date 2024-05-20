@@ -17,14 +17,18 @@ export const Match = ({ matchData, type, index, length }) => {
   const [endedEvent, setEndedEvent] = useState(
     determineLive(matchData?.endedEvent)
   );
-
+  const [dateAndTime, setDateAndTime] = useState("");
   useEffect(() => {
+    setDateAndTime(
+      `${getMatchDate(matchData?.eventDate, true)}- ${
+        convertDate(matchData?.eventDate).time
+      }`
+    );
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(matchData?.eventDate));
       setLive(determineLive(matchData?.playStream));
       setEndedEvent(determineLive(matchData?.endedEvent));
     }, 1000);
-
     return () => clearInterval(interval);
   }, [matchData?.eventDate, matchData?.playStream, matchData?.endedEvent]);
   return (
@@ -35,23 +39,14 @@ export const Match = ({ matchData, type, index, length }) => {
         }
       >
         <div className={classes["match-first"]}>
-          <p className={classes["date"]}>
-            {" "}
-            {` ${getMatchDate(matchData?.eventDate, true)}- ${
-              convertDate(matchData?.eventDate).time
-            }`}
-          </p>
+          <p className={classes["date"]}> {dateAndTime}</p>
           <RemainingTimeMobile timer={remainingTime} live={live} />
 
           <p className={classes["leage"]}>{matchData?.eventLeague}</p>
         </div>
         <div className={classes["match-second"]}>
           <div className={classes["match-details"]}>
-            <p className={classes["date"]}>
-              {` ${getMatchDate(matchData?.eventDate, true)}- ${
-                convertDate(matchData?.eventDate).time
-              }`}
-            </p>
+            <p className={classes["date"]}>{dateAndTime}</p>
             <p className={classes["leage"]}>{matchData?.eventLeague}</p>
           </div>
           <LiveBtn live={live && !endedEvent} />
