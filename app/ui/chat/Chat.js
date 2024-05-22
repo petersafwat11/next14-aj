@@ -8,9 +8,11 @@ const Poll = dynamic(() => import("./poll/Poll"), {
 const ChangeAvatar = dynamic(() => import("./changeAvatars/changeAvatar"), {
   ssr: false,
 });
-const EmojiaAndGifs = dynamic(() => import("./emojiAndGifs/EmojiaAndGifs"), {
-  ssr: false,
-});
+import EmojiaAndGifs from "./emojiAndGifs/EmojiaAndGifs";
+
+// const EmojiaAndGifs = dynamic(() => import("./emojiAndGifs/EmojiaAndGifs"), {
+//   ssr: false,
+// });
 const UserInfo = dynamic(() => import("./userInfo/UserInfo"), {
   ssr: false,
 });
@@ -49,7 +51,7 @@ const Chat = ({
     const chatContainer = lastMessageRef.current;
     console.log(
       "chatContainer chatContainer chatContainerchatContainer",
-      chatContainer
+      chatContainer.scrollHeight
     );
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
@@ -217,21 +219,22 @@ const Chat = ({
       return;
     }
     try {
-      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+      socket.emit("chat message English (Default)", {
+        ...message,
+        message: String(gif),
+      });
+      await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: { ...message, message: gif },
       });
-      socket.emit(`chat message ${chatRoomSelection}`, {
-        ...message,
-        message: gif,
-      });
+
       setMessages((prevState) => {
         return [...prevState, { ...message, message: gif }];
       });
-      scrollToBottom();
       setIsSending(true);
       setTimeout(() => {
         setIsSending(false);
       }, 500);
+      scrollToBottom();
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(true);
         setTimeout(() => {
@@ -362,9 +365,6 @@ const Chat = ({
       });
       scrollToBottom();
     });
-    socket.on(`test`, (msg) => {
-      console.log("message recieved", msg);
-    });
     socket.on(`chat mode`, (data) => {
       setChatMode(data);
     });
@@ -441,6 +441,10 @@ const Chat = ({
             mode: "normal",
           },
         });
+        console.log(
+          "response?.data?.data?.data.reverse()",
+          response?.data?.data?.data.reverse()
+        );
         setMessages(response?.data?.data?.data.reverse());
 
         setPolls(chatPolls?.data?.data);
@@ -467,52 +471,57 @@ const Chat = ({
 
     return () => clearInterval(intervalId);
   }, [polls]);
+  // useEffect(() => {
+  //   const current = firstMessageRef.current;
+  //   const getPrevMessages = async () => {
+  //     const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+  //       params: {
+  //         limit: 10,
+  //         skip: messages.length,
+  //         room: "English (Default)",
+  //         sort: { _id: -1 },
+  //         mode: "normal",
+  //       },
+  //     });
+  //     setMessages([...response?.data?.data?.data.reverse(), ...messages]);
+  //     setLoadingPrevMessagesBreak(true);
+  //     setTimeout(() => {
+  //       scrollToBottom();
+  //       setLoadingPrevMessagesBreak(false);
+  //     }, 2000);
+  //   };
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       // If the element is visible in the viewport
+  //       if (entry.isIntersecting) {
+  //         // Call your API function here
+  //         console.log("Element is visible, make API call");
+  //         loadingPrevMessagesBreak ? "" : getPrevMessages();
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: "0px",
+  //       threshold: 1.0,
+  //     }
+  //   );
+
+  //   if (current) {
+  //     observer.observe(current);
+  //   }
+
+  //   // Clean up
+  //   return () => {
+  //     if (current) {
+  //       observer.unobserve(current);
+  //     }
+  //   };
+  // }, [messages, loadingPrevMessagesBreak]);
+  // Empty array ensures that effect is only run on mount and unmount
   useEffect(() => {
-    const current = firstMessageRef.current;
-    const getPrevMessages = async () => {
-      const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
-        params: {
-          limit: 10,
-          skip: messages.length,
-          room: "English (Default)",
-          sort: { _id: -1 },
-          mode: "normal",
-        },
-      });
-      setMessages([...response?.data?.data?.data.reverse(), ...messages]);
-      setLoadingPrevMessagesBreak(true);
-      setTimeout(() => {
-        scrollToBottom();
-        setLoadingPrevMessagesBreak(false);
-      }, 2000);
-    };
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // If the element is visible in the viewport
-        if (entry.isIntersecting) {
-          // Call your API function here
-          console.log("Element is visible, make API call");
-          loadingPrevMessagesBreak ? "" : getPrevMessages();
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 1.0,
-      }
-    );
+    scrollToBottom();
+  }, [messages]);
 
-    if (current) {
-      observer.observe(current);
-    }
-
-    // Clean up
-    return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
-    };
-  }, [messages, loadingPrevMessagesBreak]); // Empty array ensures that effect is only run on mount and unmount
   return (
     <div className={classes["chat"]}>
       {pollsRemainingTime && <Poll polls={polls} />}

@@ -47,7 +47,7 @@ const Sports = () => {
           changeCategory("basketball");
         }}
         className={
-          searchParams.get("basketball") === "nfl"
+          searchParams.get("category") === "basketball"
             ? classes["selected"]
             : classes["basketball"]
         }
@@ -71,7 +71,8 @@ const Sports = () => {
           changeCategory("football");
         }}
         className={
-          searchParams.get("football") === "nfl"
+          searchParams.get("category") === "football" ||
+          searchParams.get("category") === null
             ? classes["selected"]
             : classes["football"]
         }
@@ -96,7 +97,7 @@ const Sports = () => {
           changeCategory("fights");
         }}
         className={
-          searchParams.get("fights") === "nfl"
+          searchParams.get("category") === "fights"
             ? classes["selected"]
             : classes["boxing"]
         }

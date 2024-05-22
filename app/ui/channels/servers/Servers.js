@@ -4,6 +4,7 @@ import classes from "./servers.module.css";
 import Image from "next/image";
 import ShowMore from "../../showMore/ShowMore";
 import { useRouter } from "next/navigation";
+import action from "@/app/lib/action";
 const Servers = ({
   channelsServers,
   channalActive,

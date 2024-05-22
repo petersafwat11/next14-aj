@@ -111,7 +111,7 @@
   .sports > div:hover {
     border-bottom: 2.5px solid #03a1cd;
   }
-  .sports .sports {
+  .sports .selected {
     border-bottom: 2.5px solid #03a1cd;
   }
   .sports p {

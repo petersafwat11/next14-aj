@@ -12,9 +12,7 @@ const ChangeAvatar = dynamic(
     ssr: false,
   }
 );
-const EmojiaAndGifs = dynamic(() => import("./emojiAndGifs/EmojiaAndGifs"), {
-  ssr: false,
-});
+import EmojiaAndGifs from "./emojiAndGifs/EmojiaAndGifs";
 
 const UserInfo = dynamic(() => import("../../chat/userInfo/UserInfo"), {
   ssr: false,
