@@ -452,6 +452,9 @@ const Chat = ({
 
     return () => clearInterval(intervalId);
   }, [polls]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className={classes["chat"]}>
