@@ -6,15 +6,15 @@ const ChatBody = ({
   messages,
   setMentionSomeone,
   username,
-  messagesRef,
-  lastMessage,
+  lastMessageRef,
+  firstMessageRef,
 }) => {
   const censorWords = (text) => {
     // Create a regular expression pattern for all words in the word list
     const pattern = new RegExp(`\\b(${chatFilteredWords.join("|")})\\b`, "gi");
 
     // Replace each matched word with asterisks
-    const censoredText = text.replace(pattern, (match) =>
+    const censoredText = text?.replace(pattern, (match) =>
       "*".repeat(match.length)
     );
 
@@ -23,7 +23,8 @@ const ChatBody = ({
 
   return (
     <div className={classes["chat-body"]}>
-      <div ref={messagesRef} className={classes["messages"]}>
+      <div ref={lastMessageRef} className={classes["messages"]}>
+        <div ref={firstMessageRef}></div>
         {messages.map((message, index) => (
           <div
             style={{
@@ -35,7 +36,6 @@ const ChatBody = ({
                   ? "#1C2730"
                   : "",
             }}
-            ref={lastMessage}
             key={index}
             className={classes["message"]}
           >
@@ -43,12 +43,12 @@ const ChatBody = ({
               <Image
                 className={classes["user-icon"]}
                 style={{
-                  borderRadius: message.image.startsWith("user") ? "50%" : "",
+                  borderRadius: message?.image?.startsWith("user") ? "50%" : "",
                 }}
                 src={
-                  message.image.startsWith("user")
-                    ? `${process.env.BACKEND_SERVER}/img/users/${message.image}`
-                    : message.image
+                  message?.image?.startsWith("user")
+                    ? `${process.env.BACKEND_SERVER}/img/users/${message?.image}`
+                    : message?.image
                 }
                 alt="avatar"
                 width="18"
@@ -77,7 +77,7 @@ const ChatBody = ({
                 </span>
               )}
 
-              {message.message.startsWith("@") && (
+              {message?.message?.startsWith("@") && (
                 <div className={classes["mentioned"]}>
                   {message.message.match(/@[^\s]+/g).map((tag, index) => (
                     <span style={{ color: message.color }} key={index}>
@@ -86,7 +86,7 @@ const ChatBody = ({
                   ))}
                 </div>
               )}
-              {message.message.includes("media.tenor.com") && (
+              {message?.message?.includes("media.tenor.com") && (
                 <Image
                   unoptimized
                   src={message.message}
@@ -96,10 +96,10 @@ const ChatBody = ({
                 />
               )}
 
-              {message.message.includes("media.tenor.com")
+              {message?.message?.includes("media.tenor.com")
                 ? ""
-                : message.message.startsWith("@")
-                ? message.message
+                : message?.message?.startsWith("@")
+                ? message?.message
                     .slice(
                       message.message.match(/@[^ ]+/).index +
                         message.message.match(/@[^ ]+/)[0].length

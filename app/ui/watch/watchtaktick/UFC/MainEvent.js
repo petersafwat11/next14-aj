@@ -11,7 +11,7 @@ const MainEvent = ({ data }) => {
         width="95"
         height="39"
       />
-      <p className={classes["title"]}>UFC 229</p>
+      {/* <p className={classes["title"]}>UFC 229</p> */}
       <div className={classes["main-event-header"]}>
         <p className={classes["player-name"]}>{data.players[0].name}</p>
         <p className={classes["player-name"]}>{data.players[1].name}</p>

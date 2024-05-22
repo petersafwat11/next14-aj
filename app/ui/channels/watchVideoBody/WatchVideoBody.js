@@ -22,7 +22,7 @@ const WatchVideoBody = ({
   url,
   social,
   mode,
-  reportData
+  reportData,
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -34,23 +34,19 @@ const WatchVideoBody = ({
     setExtendMode(!extendMode);
     let currentState;
     videoRef?.current?.paused ? (currentState = false) : (currentState = true);
-    videoRef.current.pause();
+    videoRef?.current?.pause();
     setVideoCurrentState(currentState);
-
-    // currentState
-    //   ? extendVideoRef.current.play()
-    //   : extendVideoRef.current.pause();
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden !important";
   };
   const exitExtenMode = () => {
     setExtendMode(!extendMode);
     let currentState;
-    extendVideoRef.current.paused
+    extendVideoRef?.current?.paused
       ? (currentState = false)
       : (currentState = true);
-    extendVideoRef.current.pause();
-    currentState ? videoRef.current.play() : videoRef.current.pause();
-    extendVideoRef.current.pause();
+    extendVideoRef?.current?.pause();
+    currentState ? videoRef?.current?.play() : videoRef?.current?.pause();
+    extendVideoRef?.current?.pause();
     document.body.style.overflow = "auto";
   };
 

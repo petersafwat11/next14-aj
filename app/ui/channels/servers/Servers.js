@@ -24,7 +24,8 @@ const Servers = ({
           servers.map((channelobj, index) => (
             <button
               onClick={() => {
-                router.push(
+                action("channels");
+                router.replace(
                   `/channels?channel=${channelobj?.channelName?.replace(
                     / /g,
                     "-"

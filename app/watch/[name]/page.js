@@ -35,11 +35,7 @@ const Page = async ({ params }) => {
     await axios.get(`${process.env.BACKEND_SERVER}/sports/teamNames`, {
       params: query,
     }),
-    await axios.get(`${process.env.BACKEND_SERVER}/links`, {
-      params: {
-        fields: "social",
-      },
-    }),
+    await axios.get(`${process.env.BACKEND_SERVER}/links`),
   ])
     .then((responses) => {
       // responses is an array of axios responses
@@ -59,7 +55,7 @@ const Page = async ({ params }) => {
       const messagesData = chatMessages.data?.data?.data?.reverse();
       const event = eventData.data;
       const social = links.data?.data?.data[0].social;
-
+      const banners = links.data?.data?.data[0].banners;
       return {
         rulesData,
         modeData,
@@ -67,18 +63,19 @@ const Page = async ({ params }) => {
         messagesData,
         event,
         social,
+        banners,
       };
     })
     .catch((error) => {
       console.error("Error in fetching chat resources:", error);
     });
+
   const matchData = data?.event?.data?.data;
   const servers = changeServersFormat(matchData?.servers);
   const playingServer = {
     server: servers[0][Object.keys(servers[0])][0],
     lang: Object.keys(servers[0])[0],
   };
-  console.log("matchData", matchData);
   const live = determineLive(matchData?.eventDate);
 
   return (
@@ -108,9 +105,7 @@ const Page = async ({ params }) => {
                 ? "/svg/home/default-team-icon.svg"
                 : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.flagLogo}`
             }
-            date={` ${getMatchDate(matchData?.eventDate, true)}- ${
-              convertDate(matchData?.eventDate).time
-            }`}
+            date={matchData?.eventDate}
             place={matchData?.eventStadium}
             teamName={matchData?.teamsTitle}
           />
@@ -142,9 +137,7 @@ const Page = async ({ params }) => {
                 : "/svg/home/default-team-icon.svg"
             }
             seconteamName={matchData?.secondTeamName}
-            date={` ${getMatchDate(matchData?.eventDate, true)}- ${
-              convertDate(matchData?.eventDate).time
-            }`}
+            date={matchData?.eventDate}
             place={matchData?.eventStadium}
             // half={"2nd Half: 47’"}
           />
@@ -170,7 +163,7 @@ const Page = async ({ params }) => {
         <div className={classes["bottom"]}>
           <div className={classes["vpn"]}>
             {/* <ProtonVpn /> */}
-            <Casino />
+            <Casino url={data?.banners?.casino} />
           </div>
           <div className={classes["mobile-social"]}>
             <BottomSocial social={data?.social} />
@@ -191,7 +184,7 @@ const Page = async ({ params }) => {
           )}
           {matchData?.sportCategory !== "f1" && (
             <div className={classes["casino"]}>
-              <Casino />
+              <Casino url={data?.banners?.casino} />
             </div>
           )}
           {matchData?.matchPoll?.enabled && (

@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import avatars from "../../chat/avatarsIterator";
+
 const Poll = dynamic(() => import("../../chat/poll/Poll"), {
   ssr: false,
 });
@@ -117,7 +119,7 @@ const Chat = ({
   };
   const [message, setMessage] = useState(messageDefaultState);
   const inputRef = useRef(null);
-  const [messages, setMessages] = useState(chatMessages);
+  const [messages, setMessages] = useState([]);
   const messagesRef = useRef(null);
   // show chat ruls
   const [showRules, setShowRules] = useState(true);
@@ -232,7 +234,7 @@ const Chat = ({
       });
       socket.emit(`chat message ${chatRoomSelection}`, {
         ...message,
-        message: String(gif),
+        message: gif,
       });
       setMessages((prevState) => {
         return [...prevState, { ...message, message: gif }];
@@ -307,7 +309,7 @@ const Chat = ({
   const setMentionSomeone = (mention) => {
     // setMentions((prevState)=>[...prevState, mention]);
     console.log("mention", mention);
-    if (message.message.includes(`@${mention}`)) {
+    if (message?.message?.includes(`@${mention}`)) {
       return;
     }
     setMessage((prevState) => {
@@ -418,6 +420,16 @@ const Chat = ({
             params: { sort: { createdAt: -1 } },
           }
         );
+        const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+          params: {
+            limit: 10,
+            room: "English (Default)",
+            sort: { _id: -1 },
+            mode: "normal",
+          },
+        });
+        setMessages(response?.data?.data?.data.reverse());
+
         setPolls(chatPolls?.data?.data);
         const remaining = getTimeRemainingInMinutes(
           chatPolls?.data?.data[0]?.createdAt,

@@ -2,7 +2,11 @@
 import React, { useEffect, useState } from "react";
 import classes from "./watchDetailsSingleTeam.module.css";
 import LiveBtn from "../../live-button/LiveButton";
-import { determineLive } from "@/app/lib/datesFunctions";
+import {
+  convertDate,
+  determineLive,
+  getMatchDate,
+} from "@/app/lib/datesFunctions";
 const WatchDetailsSingleTeam = ({
   leagueLogo,
   flagLogo,
@@ -15,14 +19,18 @@ const WatchDetailsSingleTeam = ({
 }) => {
   const [playStreaming, setPlayStreaming] = useState(determineLive(playStream));
   const [endedEvent, setEndedEvent] = useState(determineLive(eventEnds));
+  const [dateAndTime, setDateAndTime] = useState("");
+
   useEffect(() => {
+    setDateAndTime(`${getMatchDate(date, true)}- ${convertDate(date).time}`);
+
     const interval = setInterval(() => {
       setPlayStreaming(determineLive(playStream));
       setEndedEvent(determineLive(eventEnds));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [playStream, eventEnds]);
+  }, [playStream, eventEnds, date]);
 
   return (
     <div className={classes["watch-details"]}>
@@ -36,7 +44,7 @@ const WatchDetailsSingleTeam = ({
           // height={imagesDimentions.lieageImageHeigth}
         />
         <div className={classes["date-and-place"]}>
-          <p className={classes["date"]}>{date}</p>
+          <p className={classes["date"]}>{dateAndTime}</p>
           <p className={classes["place"]}>
             {place}
             {/* UAE, Abu Dhabi International Circuit */}

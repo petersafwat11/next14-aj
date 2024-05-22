@@ -22,7 +22,11 @@ const Sports = () => {
         onClick={() => {
           changeCategory("nfl");
         }}
-        className={classes["nfl"]}
+        className={
+          searchParams.get("category") === "nfl"
+            ? classes["selected"]
+            : classes["nfl"]
+        }
       >
         <Image
           className={classes["sport-image"]}
@@ -42,7 +46,11 @@ const Sports = () => {
         onClick={() => {
           changeCategory("basketball");
         }}
-        className={classes["basketball"]}
+        className={
+          searchParams.get("basketball") === "nfl"
+            ? classes["selected"]
+            : classes["basketball"]
+        }
       >
         <Image
           className={classes["sport-image"]}
@@ -62,7 +70,11 @@ const Sports = () => {
         onClick={() => {
           changeCategory("football");
         }}
-        className={classes["football"]}
+        className={
+          searchParams.get("football") === "nfl"
+            ? classes["selected"]
+            : classes["football"]
+        }
       >
         <Image
           className={classes["sport-image"]}
@@ -83,7 +95,11 @@ const Sports = () => {
         onClick={() => {
           changeCategory("fights");
         }}
-        className={classes["boxing"]}
+        className={
+          searchParams.get("fights") === "nfl"
+            ? classes["selected"]
+            : classes["boxing"]
+        }
       >
         <Image
           className={classes["sport-image"]}
@@ -103,7 +119,15 @@ const Sports = () => {
         onClick={() => {
           changeCategory("others");
         }}
-        className={classes["other"]}
+        className={
+          searchParams.get("category") !== "football" &&
+          searchParams.get("category") !== "basketball" &&
+          searchParams.get("category") !== "nfl" &&
+          searchParams.get("category") !== "fights" &&
+          searchParams.get("category") !== null
+            ? classes["selected"]
+            : classes["other"]
+        }
       >
         <Image
           className={classes["sport-image"]}

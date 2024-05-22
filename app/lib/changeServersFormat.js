@@ -9,10 +9,6 @@ export const changeServersFormat = (servers) => {
     Object.keys(mainLanguages).forEach((language) => {
       if (mainLanguages[language].checked && mainLanguages[language].num > 0) {
         const obj = {};
-        console.log(
-          "mainLanguages[language].channels",
-          mainLanguages[language].channels
-        );
         obj[language.toLowerCase()] = mainLanguages[language].channels.map(
           (channel) => ({
             streamLinkName: channel?.serverValue?.name,

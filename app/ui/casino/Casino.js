@@ -1,7 +1,7 @@
 import React from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import classes from "./casino.module.css";
-const Casino = () => {
+const Casino = ({ url }) => {
   return (
     <div className={classes["casino"]}>
       <img
@@ -44,9 +44,9 @@ const Casino = () => {
       />
       <p className={classes["para"]}>The best casino & sports betting </p>
       <h2 className={classes["title"]}>WELCOME BONUS UP TO 5 BTC</h2>
-      <button className={classes["button"]}>
-        Play now <BiRightArrowAlt className={classes["right-arrow"]} />{" "}
-      </button>
+      <a className={classes["button"]} href={url} target="_blank">
+        Play now <BiRightArrowAlt className={classes["right-arrow"]} />
+      </a>
     </div>
   );
 };

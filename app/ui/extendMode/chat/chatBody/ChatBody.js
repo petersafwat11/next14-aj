@@ -1,18 +1,24 @@
 import Image from "next/image";
 import React from "react";
 import classes from "./chatBody.module.css";
-const ChatBody = ({
-  messages,
-  setMentionSomeone,
-  username,
-  messagesRef,
-  lastMessage,
-}) => {
+const ChatBody = ({ messages, setMentionSomeone, username, messagesRef }) => {
   return (
     <div className={classes["chat-body"]}>
       <div ref={messagesRef} className={classes["messages"]}>
         {messages.map((message, index) => (
-          <div ref={lastMessage} key={index} className={classes["message"]}>
+          <div
+            style={{
+              background:
+                message.username === "AJ Sports Moderator"
+                  ? "#e98c00"
+                  : message.username === username &&
+                    message.username !== "anonymous"
+                  ? "#1C2730"
+                  : "",
+            }}
+            key={message?.message + Math.round(Math.random() * 10)}
+            className={classes["message"]}
+          >
             <div className={classes["user-image"]}>
               <Image
                 // onClick={() => {
@@ -20,9 +26,9 @@ const ChatBody = ({
                 // }}
                 className={classes["user-icon"]}
                 src={
-                  message.image.startsWith("user")
-                    ? `${process.env.BACKEND_SERVER}/img/users/${message.image}`
-                    : message.image
+                  message?.image?.startsWith("user")
+                    ? `${process.env.BACKEND_SERVER}/img/users/${message?.image}`
+                    : message?.image
                 }
                 alt="avatar"
                 width="26"
@@ -44,16 +50,16 @@ const ChatBody = ({
                 </span>
               )}
 
-              {message.message.startsWith("@") && (
+              {message?.message?.startsWith("@") && (
                 <div className={classes["mentioned"]}>
-                  {message.message.match(/@[^\s]+/g).map((tag, index) => (
+                  {message?.message?.match(/@[^\s]+/g).map((tag, index) => (
                     <span style={{ color: message.color }} key={index}>
                       {tag}
                     </span>
                   ))}
                 </div>
               )}
-              {message.message.includes("media.tenor.com") && (
+              {message?.message?.includes("media.tenor.com") && (
                 <Image
                   unoptimized
                   src={message.message}
@@ -63,13 +69,13 @@ const ChatBody = ({
                 />
               )}
 
-              {message.message.includes("media.tenor.com")
+              {message?.message?.includes("media.tenor.com")
                 ? ""
-                : message.message.startsWith("@")
-                ? message.message
+                : message?.message?.startsWith("@")
+                ? message?.message
                     .slice(
-                      message.message.match(/@[^ ]+/).index +
-                        message.message.match(/@[^ ]+/)[0].length
+                      message?.message?.match(/@[^ ]+/).index +
+                        message?.message?.match(/@[^ ]+/)[0].length
                     )
                     .trim()
                 : message.message}

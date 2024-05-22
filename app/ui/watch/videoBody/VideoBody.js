@@ -46,7 +46,8 @@ const VideoBody = ({
   chatFilteredWords,
   eventEnds,
   mode,
-  query, lang
+  query,
+  lang,
 }) => {
   const videoRef = useRef(null);
   const extendVideoRef = useRef(null);
@@ -70,21 +71,21 @@ const VideoBody = ({
   const activeExtendMode = () => {
     setExtendMode(!extendMode);
     let currentState;
-    videoRef.current.paused ? (currentState = false) : (currentState = true);
-    videoRef.current.pause();
+    videoRef?.current?.paused ? (currentState = false) : (currentState = true);
+    videoRef?.current?.pause();
     setVideoCurrentState(currentState);
     document.body.style.overflow = "hidden";
   };
   const exitExtenMode = () => {
     setExtendMode(!extendMode);
     let currentState;
-    extendVideoRef.current.paused
+    extendVideoRef?.current?.paused
       ? (currentState = false)
       : (currentState = true);
-    extendVideoRef.current.pause();
-    currentState ? videoRef.current.play() : videoRef.current.pause();
-    extendVideoRef.current.pause();
-    document.body.style.overflow = "";
+    extendVideoRef?.current?.pause();
+    currentState ? videoRef?.current?.play() : videoRef?.current?.pause();
+    extendVideoRef?.current?.pause();
+    document.body.style.overflow = "auto";
   };
   return (
     <>
@@ -153,10 +154,12 @@ const VideoBody = ({
           eventDate={eventDate}
         />
       </div>
-      <ShowingChatMobile
-        extendMode={extendMode}
-        activeExtendMode={activeExtendMode}
-      />
+      {playStreaming && !endedEvent && (
+        <ShowingChatMobile
+          extendMode={extendMode}
+          activeExtendMode={activeExtendMode}
+        />
+      )}
     </>
   );
 };

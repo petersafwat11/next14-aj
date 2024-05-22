@@ -46,10 +46,10 @@ const Chat = ({
   const { data: session, status } = useSession();
 
   const scrollToBottom = () => {
-    const chatContainer = messagesRef.current;
+    const chatContainer = lastMessageRef.current;
     console.log(
       "chatContainer chatContainer chatContainerchatContainer",
-      chatContainer.scrollHeight
+      chatContainer
     );
     chatContainer.scrollTop = chatContainer.scrollHeight;
   };
@@ -59,7 +59,8 @@ const Chat = ({
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
   const [emojyOrGifs, setEmojyOrGifs] = useState("emojy");
-
+  const [loadingPrevMessagesBreak, setLoadingPrevMessagesBreak] =
+    useState(false);
   //chat mode
   const [chatMode, setChatMode] = useState(mode);
 
@@ -105,8 +106,9 @@ const Chat = ({
   };
   const [message, setMessage] = useState(messageDefaultState);
   const inputRef = useRef(null);
-  const [messages, setMessages] = useState(chatMessages);
-  const messagesRef = useRef(null);
+  const [messages, setMessages] = useState([]);
+  const lastMessageRef = useRef(null);
+  const firstMessageRef = useRef(null);
   // show chat ruls
   const [showRules, setShowRules] = useState(true);
 
@@ -220,7 +222,7 @@ const Chat = ({
       });
       socket.emit(`chat message ${chatRoomSelection}`, {
         ...message,
-        message: String(gif),
+        message: gif,
       });
       setMessages((prevState) => {
         return [...prevState, { ...message, message: gif }];
@@ -252,13 +254,9 @@ const Chat = ({
         message: message,
       });
       console.log(response);
-      socket.emit(
-        "chat message English (Default)",
-        message,
-        (ack) => {
-          console.log("Acknowledgement from server:", ack);
-        }
-      );
+      socket.emit("chat message English (Default)", message, (ack) => {
+        console.log("Acknowledgement from server:", ack);
+      });
       setMessages((prevState) => {
         return [...prevState, message];
       });
@@ -300,7 +298,7 @@ const Chat = ({
   const setMentionSomeone = (mention) => {
     // setMentions((prevState)=>[...prevState, mention]);
     console.log("mention", mention);
-    if (message.message.includes(`@${mention}`)) {
+    if (message?.message?.includes(`@${mention}`)) {
       return;
     }
     setMessage((prevState) => {
@@ -435,6 +433,16 @@ const Chat = ({
             params: { sort: { createdAt: -1 } },
           }
         );
+        const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+          params: {
+            limit: 10,
+            room: "English (Default)",
+            sort: { _id: -1 },
+            mode: "normal",
+          },
+        });
+        setMessages(response?.data?.data?.data.reverse());
+
         setPolls(chatPolls?.data?.data);
         const remaining = getTimeRemainingInMinutes(
           chatPolls?.data?.data[0]?.createdAt,
@@ -459,7 +467,52 @@ const Chat = ({
 
     return () => clearInterval(intervalId);
   }, [polls]);
+  useEffect(() => {
+    const current = firstMessageRef.current;
+    const getPrevMessages = async () => {
+      const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+        params: {
+          limit: 10,
+          skip: messages.length,
+          room: "English (Default)",
+          sort: { _id: -1 },
+          mode: "normal",
+        },
+      });
+      setMessages([...response?.data?.data?.data.reverse(), ...messages]);
+      setLoadingPrevMessagesBreak(true);
+      setTimeout(() => {
+        scrollToBottom();
+        setLoadingPrevMessagesBreak(false);
+      }, 2000);
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If the element is visible in the viewport
+        if (entry.isIntersecting) {
+          // Call your API function here
+          console.log("Element is visible, make API call");
+          loadingPrevMessagesBreak ? "" : getPrevMessages();
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+      }
+    );
 
+    if (current) {
+      observer.observe(current);
+    }
+
+    // Clean up
+    return () => {
+      if (current) {
+        observer.unobserve(current);
+      }
+    };
+  }, [messages, loadingPrevMessagesBreak]); // Empty array ensures that effect is only run on mount and unmount
   return (
     <div className={classes["chat"]}>
       {pollsRemainingTime && <Poll polls={polls} />}
@@ -520,7 +573,8 @@ const Chat = ({
       />
       <ChatBody
         chatFilteredWords={chatFilteredWords}
-        messagesRef={messagesRef}
+        lastMessageRef={lastMessageRef}
+        firstMessageRef={firstMessageRef}
         username={session?.user?.name || initialName}
         messages={messages}
         setMentionSomeone={setMentionSomeone}

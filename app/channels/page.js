@@ -21,7 +21,7 @@ const Page = async ({ searchParams }) => {
 
   const filterValue = searchParams?.filter;
   const channalActive = searchParams?.channel?.replace(/-/g, " ");
-  let queryChannel;
+  let queryChannel = null;
   if (channalActive) {
     queryChannel = await axios.get(
       `${process.env.BACKEND_SERVER}/channels/channelName`,
@@ -56,11 +56,7 @@ const Page = async ({ searchParams }) => {
         or: ["channelName"],
       },
     }),
-    axios.get(`${process.env.BACKEND_SERVER}/links`, {
-      params: {
-        fields: "social",
-      },
-    }),
+    axios.get(`${process.env.BACKEND_SERVER}/links`),
   ])
     .then((responses) => {
       // responses is an array of axios responses
@@ -80,7 +76,7 @@ const Page = async ({ searchParams }) => {
       const messagesData = chatMessages.data?.data?.data.reverse();
       const channels = channelsData.data;
       const social = links.data?.data?.data[0].social;
-
+      const banners = links.data?.data?.data[0].banners;
       return {
         rulesData,
         modeData,
@@ -88,13 +84,13 @@ const Page = async ({ searchParams }) => {
         messagesData,
         channels,
         social,
+        banners,
       };
     })
     .catch((error) => {
       // Handle any errors that occurred during any of the requests
       console.error("Error in fetching chat resources:", error);
     });
-  console.log("data?.messagesData", data?.messagesData);
   const channelsServers = {
     channels: data?.channels?.data?.data,
     totalResults: data?.channels?.results,
@@ -104,6 +100,7 @@ const Page = async ({ searchParams }) => {
     queryChannel?.data?.data?.streamLink?.URL ||
     data?.channels?.data?.data[0]?.streamLink?.URL ||
     null;
+
   const playingServerName =
     queryChannel?.data?.data?.channelName ||
     data?.channels?.data?.data[0]?.channelName ||
@@ -137,8 +134,7 @@ const Page = async ({ searchParams }) => {
             />
           </div>
           <WatchVideoBody
-                        reportData={{ event: playingServerName, server: "Server 1" }}
-
+            reportData={{ event: playingServerName, server: "Server 1" }}
             social={data?.social}
             mode={data?.modeData}
             chatMessages={data?.messagesData}
@@ -149,7 +145,7 @@ const Page = async ({ searchParams }) => {
         </div>
         <div className={classes["after-video"]}>
           <div className={classes["vpn"]}>
-            <Casino />
+            <Casino url={data?.banners?.casino} />
           </div>
           <div className={classes["sort-search-wrapper"]}>
             <Search />
