@@ -1,6 +1,5 @@
-// export default HlcPlayer;
 import Hls from "hls.js";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import P2pEngineHls from "swarmcloud-hls";
 import classes from "./hlcPlayer.module.css";
 
@@ -25,6 +24,32 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
     setPlaying(!playing);
   };
 
+  const onError = useCallback(
+    function (event, data) {
+      if (data?.fatal) {
+        switch (data?.type) {
+          case Hls?.ErrorTypes?.NETWORK_ERROR:
+            console.log("fatal network error encountered, try to recover");
+            hls?.startLoad();
+            break;
+          case Hls?.ErrorTypes?.MEDIA_ERROR:
+            console.log("fatal media error encountered, try to recover");
+            hls?.recoverMediaError();
+            break;
+          default:
+            console.log(
+              "fatal error encountered, destroy instance and create a new one"
+            );
+            hls?.off(Hls?.Events?.ERROR, onError);
+            hls?.destroy();
+            setHls(null);
+            break;
+        }
+      }
+    },
+    [hls]
+  );
+
   useEffect(() => {
     const p2pConfig = {
       // Other p2pConfig options if applicable
@@ -39,39 +64,14 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
           liveSyncDurationCount: 10,
         });
 
-      const onError = function (event, data) {
-        if (data?.fatal) {
-          switch (data?.type) {
-            case Hls?.ErrorTypes?.NETWORK_ERROR:
-              console.log("fatal network error encountered, try to recover");
-              hlsInstance.startLoad();
-              break;
-            case Hls?.ErrorTypes?.MEDIA_ERROR:
-              console.log("fatal media error encountered, try to recover");
-              hlsInstance?.recoverMediaError();
-              break;
-            default:
-              console.log(
-                "fatal error encountered, destroy instance and create a new one"
-              );
-              hlsInstance.off(Hls?.Events?.ERROR, onError);
-              hlsInstance?.destroy();
-              setHls(null);
-              break;
-          }
-        }
-      };
-
       hlsInstance?.on(Hls?.Events?.ERROR, onError);
 
       p2pConfig.hlsjsInstance = hlsInstance;
       new P2pEngineHls(p2pConfig);
-      hlsInstance?.loadSource(url);
-      hlsInstance?.attachMedia(videoRef?.current);
+      hlsInstance.loadSource(url);
+      hlsInstance.attachMedia(videoRef.current);
       setHls(hlsInstance);
-    } else if (
-      videoRef?.current?.canPlayType("application/vnd.apple.mpegurl")
-    ) {
+    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
       videoRef.current.src = url;
     }
 
@@ -79,11 +79,11 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
 
     return () => {
       if (hls) {
-        hls?.off(Hls.Events.ERROR, onError);
-        hls?.destroy();
+        hls.off(Hls.Events.ERROR, onError);
+        hls.destroy();
       }
     };
-  }, [url, videoRef, hls]);
+  }, [url, videoRef, hls, onError]);
 
   return (
     <div className={classes["video-container"]}>
@@ -107,6 +107,7 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
       {!playing && (
         <div
           onClick={() => {
+            console.log("clicked");
             playVideo();
           }}
           ref={videoIConRef}
