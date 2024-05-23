@@ -36,7 +36,8 @@ const WatchVideoBody = ({
     videoRef?.current?.paused ? (currentState = false) : (currentState = true);
     videoRef?.current?.pause();
     setVideoCurrentState(currentState);
-    document.body.style.overflow = "hidden !important";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
   };
   const exitExtenMode = () => {
     setExtendMode(!extendMode);
@@ -48,6 +49,7 @@ const WatchVideoBody = ({
     currentState ? videoRef?.current?.play() : videoRef?.current?.pause();
     extendVideoRef?.current?.pause();
     document.body.style.overflow = "auto";
+    document.body.style.position = "";
   };
 
   return (

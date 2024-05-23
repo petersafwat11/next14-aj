@@ -1,9 +1,17 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./sports.module.css";
 import { useSearchParams, useRouter } from "next/navigation";
 const Sports = () => {
+  const SportsContainerRef = useRef(null);
+
+  useEffect(() => {
+    // This will run whenever the component re-renders
+    if (SportsContainerRef.current) {
+      SportsContainerRef.current.scrollLeft = 0;
+    }
+  });
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const changeCategory = (val) => {
@@ -17,7 +25,7 @@ const Sports = () => {
   };
   console.log('searchParams.get("category")', searchParams.get("category"));
   return (
-    <section className={classes["sports"]}>
+    <section ref={SportsContainerRef} className={classes["sports"]}>
       <div
         onClick={() => {
           changeCategory("nfl");

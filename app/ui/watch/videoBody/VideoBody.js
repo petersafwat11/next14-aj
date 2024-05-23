@@ -75,6 +75,7 @@ const VideoBody = ({
     videoRef?.current?.pause();
     setVideoCurrentState(currentState);
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
   };
   const exitExtenMode = () => {
     setExtendMode(!extendMode);
@@ -86,6 +87,7 @@ const VideoBody = ({
     currentState ? videoRef?.current?.play() : videoRef?.current?.pause();
     extendVideoRef?.current?.pause();
     document.body.style.overflow = "auto";
+    document.body.style.position = "";
   };
   return (
     <>

@@ -227,13 +227,14 @@ const Chat = ({
       return;
     }
     try {
-      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+      socket.emit("chat message English (Default)", {
+        ...message,
+        message: String(gif),
+      });
+      await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: { ...message, message: gif },
       });
-      socket.emit(`chat message ${chatRoomSelection}`, {
-        ...message,
-        message: gif,
-      });
+
       setMessages((prevState) => {
         return [...prevState, { ...message, message: gif }];
       });
@@ -265,7 +266,6 @@ const Chat = ({
       });
       console.log(response);
       socket.emit(`chat message ${chatRoomSelection}`, message);
-      console.log("emited");
       setMessage({
         ...message,
         message: "",

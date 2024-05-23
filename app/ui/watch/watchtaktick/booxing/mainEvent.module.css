@@ -49,3 +49,53 @@
   color: white;
   font-weight: 700;
 }
+@media (max-width: 56.25rem) {
+  .main-event {
+    width: min(85vw, 22rem);
+  }
+  .main-event-header {
+    margin-bottom: 1.75rem;
+    gap: 7.375rem;
+  }
+  .player-name {
+    font-size: 0.8125rem;
+  }
+  .main-event-stats {
+    gap: 0.2rem;
+    width: 90%;
+    margin: auto;
+  }
+  .stat-item {
+    height: 2.625rem;
+    border-radius: 6px;
+    padding: 0 0.75rem;
+  }
+  .stat-item p {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 25rem) {
+  .main-event-header {
+    margin-bottom: 1.55rem;
+    gap: 7rem;
+  }
+  .player-name {
+    font-size: 0.718rem;
+  }
+  .main-event-stats {
+    gap: 0.17rem;
+  }
+  .stat-item {
+    height: 2.56rem;
+    padding: 0 0.7rem;
+  }
+  .stat-item p {
+    font-size: 11.5px;
+  }
+}
+@media (max-width: 23.125rem) {
+  .main-event-header {
+    margin-bottom: 1.5rem;
+    gap: 6.875rem;
+  }
+}
