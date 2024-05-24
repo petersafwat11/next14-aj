@@ -44,6 +44,7 @@ import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
+import { scrollToBottom } from "../../chat/chatFunctions";
 // import Popup from "../../popupWrapper/Popup";
 // import TagUsers from "./tagUsers/TagUsers";
 
@@ -56,15 +57,6 @@ const Chat = ({
   mode,
 }) => {
   const { data: session, status } = useSession();
-
-  const scrollToBottom = () => {
-    const chatContainer = messagesRef.current;
-    console.log(
-      "chatContainer chatContainer chatContainerchatContainer",
-      chatContainer.scrollHeight
-    );
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-  };
 
   const socket = io(`${process.env.STATIC_SERVER}`);
 
@@ -238,7 +230,7 @@ const Chat = ({
       setMessages((prevState) => {
         return [...prevState, { ...message, message: gif }];
       });
-      scrollToBottom();
+      scrollToBottom(messagesRef);
       setIsSending(true);
       setTimeout(() => {
         setIsSending(false);
@@ -276,7 +268,7 @@ const Chat = ({
       });
       setIsSending(true);
       setTimeout(() => {
-        scrollToBottom();
+        scrollToBottom(messagesRef);
         setIsSending(false);
       }, 500);
 
@@ -348,7 +340,7 @@ const Chat = ({
       setMessages((prevState) => {
         return [...prevState, msg];
       });
-      scrollToBottom();
+      scrollToBottom(messagesRef);
     });
     socket.on(`chat mode`, (data) => {
       setChatMode(data);
@@ -439,7 +431,7 @@ const Chat = ({
       }
     };
     getFirstData();
-    scrollToBottom();
+    scrollToBottom(messagesRef);
   }, []);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -453,7 +445,7 @@ const Chat = ({
     return () => clearInterval(intervalId);
   }, [polls]);
   useEffect(() => {
-    scrollToBottom();
+    scrollToBottom(messagesRef);
   }, [messages]);
 
   return (

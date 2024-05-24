@@ -36,6 +36,7 @@ import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
+import { scrollToBottom } from "./chatFunctions";
 // import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 
 const Chat = ({
@@ -46,15 +47,6 @@ const Chat = ({
   mode,
 }) => {
   const { data: session, status } = useSession();
-
-  const scrollToBottom = () => {
-    const chatContainer = lastMessageRef.current;
-    console.log(
-      "chatContainer chatContainer chatContainerchatContainer",
-      chatContainer.scrollHeight
-    );
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-  };
 
   const socket = io(`${process.env.STATIC_SERVER}`);
 
@@ -234,7 +226,7 @@ const Chat = ({
       setTimeout(() => {
         setIsSending(false);
       }, 500);
-      scrollToBottom();
+      scrollToBottom(lastMessageRef);
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(true);
         setTimeout(() => {
@@ -270,7 +262,7 @@ const Chat = ({
 
       setIsSending(true);
       setTimeout(() => {
-        scrollToBottom();
+        scrollToBottom(lastMessageRef);
         setIsSending(false);
       }, 500);
 
@@ -363,7 +355,7 @@ const Chat = ({
       setMessages((prevState) => {
         return [...prevState, msg];
       });
-      scrollToBottom();
+      scrollToBottom(lastMessageRef);
     });
     socket.on(`chat mode`, (data) => {
       setChatMode(data);
@@ -458,7 +450,7 @@ const Chat = ({
       }
     };
     getFirstData();
-    scrollToBottom();
+    scrollToBottom(lastMessageRef);
   }, []);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -486,7 +478,7 @@ const Chat = ({
   //     setMessages([...response?.data?.data?.data.reverse(), ...messages]);
   //     setLoadingPrevMessagesBreak(true);
   //     setTimeout(() => {
-  //       scrollToBottom();
+  //       scrollToBottom(lastMessageRef);;
   //       setLoadingPrevMessagesBreak(false);
   //     }, 2000);
   //   };
@@ -519,7 +511,7 @@ const Chat = ({
   // }, [messages, loadingPrevMessagesBreak]);
   // Empty array ensures that effect is only run on mount and unmount
   useEffect(() => {
-    scrollToBottom();
+    scrollToBottom(lastMessageRef);
   }, [messages]);
 
   return (

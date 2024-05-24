@@ -68,10 +68,10 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
 
       p2pConfig.hlsjsInstance = hlsInstance;
       new P2pEngineHls(p2pConfig);
-      hlsInstance.loadSource(url);
-      hlsInstance.attachMedia(videoRef.current);
+      hlsInstance?.loadSource(url);
+      hlsInstance?.attachMedia(videoRef?.current);
       setHls(hlsInstance);
-    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
+    } else if (videoRef?.current?.canPlayType("application/vnd.apple.mpegurl")) {
       videoRef.current.src = url;
     }
 
@@ -79,7 +79,7 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
 
     return () => {
       if (hls) {
-        hls.off(Hls.Events.ERROR, onError);
+        hls.off(Hls?.Events?.ERROR, onError);
         hls.destroy();
       }
     };
