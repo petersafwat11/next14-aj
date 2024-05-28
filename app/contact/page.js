@@ -2,6 +2,9 @@ import React from "react";
 import classes from "./page.module.css";
 import ContactForm from "../ui/contactUS/contactForm/ContactForm";
 import ReachUs from "../ui/contactUS/reachUs/ReachUs";
+export const metadata = {
+  title: "Contact | AJ Sports",
+};
 
 const Page = () => {
   return (

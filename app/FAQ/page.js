@@ -3,6 +3,11 @@ import classes from "./page.module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
 import FeedbackBtn from "./feefbackBtn/FeedbackBtn";
 import { FAQ } from "./data";
+
+export const metadata = {
+  title: "FAQ | AJ Sports",
+};
+
 const Page = () => {
   return (
     <section className={classes["page"]}>

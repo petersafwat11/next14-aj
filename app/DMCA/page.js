@@ -2,7 +2,12 @@ import Image from "next/image";
 import React from "react";
 import classes from "./page..module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
+export const metadata = {
+  title: "DMCA | AJ Sports",
+};
+
 const Page = () => {
+
   return (
     <section className={classes["page"]}>
       <PageTitle title={"DMCA"} />

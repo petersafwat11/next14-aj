@@ -22,8 +22,8 @@
   justify-content: center;
   background: linear-gradient(#2aabee, #229ed9);
   position: fixed;
-  top: 35%;
-  right: 5%;
+  top: 35vh;
+  right: 5vw;
   cursor: pointer;
   z-index: 10;
 }

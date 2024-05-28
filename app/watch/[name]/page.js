@@ -18,6 +18,10 @@ import VideoTop from "@/app/ui/watch/videoTop/VideoTop";
 import MatchData from "@/app/ui/watch/watchtaktick/MatchSummey/MatchData";
 import Casino from "@/app/ui/casino/Casino";
 
+export const metadata = {
+  title: "Watch | AJ Sports",
+};
+
 const Page = async ({ params }) => {
   const query = getMatchQuery(params.name);
   const data = await Promise.all([

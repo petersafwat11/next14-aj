@@ -1,6 +1,11 @@
 import React from "react";
 import classes from "./page.module.css";
 import PageTitle from "../ui/pageTitle/PageTitle";
+
+export const metadata = {
+  title: "Privacy policy | AJ Sports",
+};
+
 const Page = () => {
   return (
     <div  style={{ width: "100%" }}>

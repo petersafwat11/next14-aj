@@ -5,12 +5,18 @@ import axios from "axios";
 import NewsItem from "../ui/news/item/NewsItem";
 import dynamic from "next/dynamic";
 
+
 const Paginations = dynamic(
   () => import("../ui/news/paginations/Paginations"),
   {
     ssr: false,
   }
 );
+
+export const metadata = {
+  title: "News | AJ Sports",
+};
+
 
 const Page = async ({ searchParams }) => {
   const page = Number(searchParams?.page) || 1;

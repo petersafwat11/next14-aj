@@ -1,6 +1,12 @@
 import React from "react";
 import classes from './page.module.css'
 import UnderDevelopment from "../ui/underDevelopment/page/UnderDevelopment";
+
+export const metadata = {
+  title: "GiveAway | AJ Sports",
+};
+
+
 const GiveAway = async () => {
   // const eventData = await axios.get(
   //   `${process.env.BACKEND_SERVER}/giveaway/event`

@@ -13,7 +13,9 @@ import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
 import Casino from "../ui/casino/Casino";
-
+export const metadata = {
+  title: "Channels | AJ Sports",
+};
 const Page = async ({ searchParams }) => {
   noStore();
   const session = await getServerSession(authConfig);

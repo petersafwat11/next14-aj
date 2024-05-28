@@ -5,6 +5,12 @@ import InputGroup from "../ui/pricing/inputGroup/InputGroup";
 import Social from "../ui/pricing/social/Social";
 import Plans from "../ui/pricing/plans/Plans";
 // import RemainingTime from "../ui/pricing/remainingTime/RemainingTime";
+
+export const metadata = {
+  title: "Pricing | AJ Sports",
+};
+
+
 const page = () => {
   return (
     <main className={classes["pricing"]}>

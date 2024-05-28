@@ -7,6 +7,11 @@ import Comments from "@/app/ui/news/comments/Comments";
 import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
 import Share from "@/app/ui/news/share/Share";
 
+export const metadata = {
+  title: "News | AJ Sports",
+};
+
+
 const Page = async ({ params }) => {
   console.log("params", params.name);
   const newsURL = params.name;

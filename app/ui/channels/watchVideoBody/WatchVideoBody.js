@@ -15,6 +15,8 @@ const ExtendModeWrapper = dynamic(
     ssr: false,
   }
 );
+import Script from "next/script";
+
 const WatchVideoBody = ({
   chatMessages,
   chatRules,
@@ -87,6 +89,35 @@ const WatchVideoBody = ({
           activeExtendMode={activeExtendMode}
         />
       </div>
+      {/* adds scripts */}
+      {!extendMode && (
+        <>
+          <Script
+            type="text/javascript"
+            src="//cdn.tapioni.com/asg_embed.js"
+            data-spots="451173"
+            data-tag="asg"
+            data-subid1="%subid1%"
+            data-subid2="%subid2%"
+          ></Script>
+
+          <Script
+            type="text/javascript"
+            src="//cdn.tapioni.com/asg_embed.js"
+            data-spots="451172"
+            data-tag="asg"
+            data-subid1="%subid1%"
+            data-subid2="%subid2%"
+          ></Script>
+
+          <Script
+            type="text/javascript"
+            src="//cdn.tapioni.com/ip-push.js"
+            data-spot="451174"
+            data-subid1="%subid1%"
+          ></Script>
+        </>
+      )}
     </>
   );
 };

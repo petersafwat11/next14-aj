@@ -6,6 +6,11 @@ import Top from "../ui/donate/top/Top";
 import Input from "../ui/donate/input/Input";
 import Method from "../ui/donate/method/Method";
 import axios from "axios";
+
+export const metadata = {
+  title: "Donate | AJ Sports",
+};
+
 const Donate = async () => {
   const response = await axios.get(`${process.env.BACKEND_SERVER}/links`, {
     params: {

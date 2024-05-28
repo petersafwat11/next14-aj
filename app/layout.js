@@ -10,16 +10,18 @@ import { SendMessageButton } from "@/app/ui/layout/sendMessage/SendMessage";
 import NewsLetter from "@/app/ui/layout/newsletter/NewsLetter";
 import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
-
+import Head from "next/head";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AJ sport",
-  description: "sports streaming website",
+  title: "AJ Sports | Free Sports Live Streaming",
+  description:
+    "Home of free live sports streaming. Ajsports offers coverage across all leagues in Full HD. Watch matches & events for soccer, cricket NBA, MLB, NFL, F1 and UFC for free.",
+  creator: "Peter Safwat",
+  publisher: "Peter Safwat",
 };
 
 export default async function RootLayout({ children }) {
-  
   const session = await getServerSession(authConfig);
   return (
     <html lang="en">
