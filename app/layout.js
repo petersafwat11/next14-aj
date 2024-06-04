@@ -6,18 +6,11 @@ import Image from "next/image";
 import "./globals.css";
 import Header from "@/app/ui/layout/header/Header";
 import Footer from "@/app/ui/layout/footer/Footer";
-import { SendMessageButton } from "@/app/ui/layout/sendMessage/SendMessage";
 import NewsLetter from "@/app/ui/layout/newsletter/NewsLetter";
 import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
 import GoogleAnalytics from "./lib/googleAnalytics";
 import dynamic from "next/dynamic";
-const DiscordIcon = dynamic(
-  () => import("./ui/layout/discordIcon/DiscordIcon"),
-  {
-    ssr: false,
-  }
-);
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -38,8 +31,6 @@ export default async function RootLayout({ children }) {
       //  className={inter.className}
       >
         <section>
-          <SendMessageButton />
-          <DiscordIcon />
         </section>
 
         <div className={styles["wrapper"]}>

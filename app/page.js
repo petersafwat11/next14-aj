@@ -11,6 +11,7 @@ import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
 import Script from "next/script";
 import MobileSearch from "./ui/home-page/search/MobileSearch";
+import Icons from "./ui/layout/icons/Icons";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -50,7 +51,8 @@ const Page = async ({ searchParams }) => {
   };
   return (
     <div className={classes["page"]}>
-      <MobileSearch/>
+      <Icons />
+      <MobileSearch />
       <div className={classes["top-screen"]}>
         <div className={classes["top-screen-live-icon"]}>
           <Image src="/svg/live.svg" alt="live" width="31" height="34" />

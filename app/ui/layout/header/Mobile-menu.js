@@ -6,6 +6,17 @@ import classes from "./mobile-menu.module.css";
 import Beta from "../beta/Beta";
 export const MenuMobile = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = (type) => {
+    setShowMenu(!showMenu);
+
+    if (type == "show") {
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "";
+    }
+  };
   const router = useRouter();
   const pathname = usePathname();
   return (
@@ -14,7 +25,7 @@ export const MenuMobile = () => {
         {!showMenu ? (
           <Image
             onClick={() => {
-              setShowMenu(!showMenu);
+              toggleMenu("show");
             }}
             className={classes["menu-mobile-icon"]}
             src="/svg/layout/header/menu-icon.svg"
@@ -25,7 +36,7 @@ export const MenuMobile = () => {
         ) : (
           <Image
             onClick={() => {
-              setShowMenu(!showMenu);
+              toggleMenu("hide");
             }}
             className={classes["exit"]}
             src="/svg/layout/mobile-menu/exit.svg"
