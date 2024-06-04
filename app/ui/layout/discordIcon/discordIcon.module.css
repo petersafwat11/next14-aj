@@ -23,7 +23,8 @@
   .telegram-link {
     width: 3rem;
     height: 3rem;
-    top: 22%;
+    top: auto;
+    bottom: 74vh;
     right: 4%;
   }
 }

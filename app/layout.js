@@ -11,6 +11,7 @@ import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
 import GoogleAnalytics from "./lib/googleAnalytics";
 import dynamic from "next/dynamic";
+import Icons from "./ui/layout/icons/Icons";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -30,12 +31,13 @@ export default async function RootLayout({ children }) {
       <body
       //  className={inter.className}
       >
-        <section>
-        </section>
+        <section></section>
 
         <div className={styles["wrapper"]}>
           <Header />
           <Marque />
+          <Icons />
+
           <Provider session={session}> {children}</Provider>
         </div>
         <NewsLetter />

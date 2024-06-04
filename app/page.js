@@ -11,7 +11,6 @@ import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
 import Script from "next/script";
 import MobileSearch from "./ui/home-page/search/MobileSearch";
-import Icons from "./ui/layout/icons/Icons";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -51,7 +50,7 @@ const Page = async ({ searchParams }) => {
   };
   return (
     <div className={classes["page"]}>
-      <Icons />
+      {" "}
       <MobileSearch />
       <div className={classes["top-screen"]}>
         <div className={classes["top-screen-live-icon"]}>
@@ -101,7 +100,6 @@ const Page = async ({ searchParams }) => {
         data-subid1="%subid1%"
         data-subid2="%subid2%"
       ></Script>
-
       <Script
         type="text/javascript"
         src="//cdn.tapioni.com/asg_embed.js"
@@ -110,7 +108,6 @@ const Page = async ({ searchParams }) => {
         data-subid1="%subid1%"
         data-subid2="%subid2%"
       ></Script>
-
       <Script
         type="text/javascript"
         src="//cdn.tapioni.com/ip-push.js"

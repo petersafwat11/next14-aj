@@ -146,8 +146,9 @@
     border-radius: 0.3rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    top: 45%;
     left: 0;
+    top: auto;
+    bottom: 43vh;
   }
   .send-message-button p {
     font-size: 0.625rem;
