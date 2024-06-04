@@ -19,7 +19,7 @@ const ExtendModeWrapper = ({
   const [inputActive, setInputActive] = useState(false);
 
   useEffect(() => {
-    videoCurrentState ? videoRef.current.play() : videoRef.current.pause();
+    videoCurrentState ? videoRef?.current?.play() : videoRef?.current?.pause();
   }, [videoCurrentState, videoRef]);
 
   return (

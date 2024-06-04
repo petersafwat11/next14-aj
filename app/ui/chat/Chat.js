@@ -211,16 +211,13 @@ const Chat = ({
       return;
     }
     try {
-      socket.emit("chat message English (Default)", {
-        ...message,
-        message: String(gif),
-      });
-      await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: { ...message, message: gif },
       });
+      socket.emit("chat message English (Default)", response?.data.message);
 
       setMessages((prevState) => {
-        return [...prevState, { ...message, message: gif }];
+        return [...prevState, response?.data.message];
       });
       setIsSending(true);
       setTimeout(() => {
@@ -248,12 +245,15 @@ const Chat = ({
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: message,
       });
-      console.log(response);
-      socket.emit("chat message English (Default)", message, (ack) => {
-        console.log("Acknowledgement from server:", ack);
-      });
+      socket.emit(
+        "chat message English (Default)",
+        response?.data.message,
+        (ack) => {
+          console.log("Acknowledgement from server:", ack);
+        }
+      );
       setMessages((prevState) => {
-        return [...prevState, message];
+        return [...prevState, response?.data.message];
       });
       setMessage({
         ...message,

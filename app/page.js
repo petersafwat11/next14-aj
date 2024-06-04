@@ -9,6 +9,8 @@ import classes from "./page.module.css";
 import OtherMatches from "./ui/home-page/otherMatches/OtherMatches";
 import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
+import Script from "next/script";
+import MobileSearch from "./ui/home-page/search/MobileSearch";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -48,14 +50,7 @@ const Page = async ({ searchParams }) => {
   };
   return (
     <div className={classes["page"]}>
-      <div className={classes["search-mobile"]}>
-        <input
-          className={classes["search-mobile-input"]}
-          type="text"
-          placeholder="Enter keyword..."
-        />
-        <button className={classes["search-mobile-button"]}>SEARCH</button>
-      </div>
+      <MobileSearch/>
       <div className={classes["top-screen"]}>
         <div className={classes["top-screen-live-icon"]}>
           <Image src="/svg/live.svg" alt="live" width="31" height="34" />
@@ -96,6 +91,30 @@ const Page = async ({ searchParams }) => {
           />
         </section>
       </div>
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/asg_embed.js"
+        data-spots="451173"
+        data-tag="asg"
+        data-subid1="%subid1%"
+        data-subid2="%subid2%"
+      ></Script>
+
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/asg_embed.js"
+        data-spots="451172"
+        data-tag="asg"
+        data-subid1="%subid1%"
+        data-subid2="%subid2%"
+      ></Script>
+
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/ip-push.js"
+        data-spot="451174"
+        data-subid1="%subid1%"
+      ></Script>
     </div>
   );
 };

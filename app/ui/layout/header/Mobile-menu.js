@@ -46,7 +46,7 @@ export const MenuMobile = () => {
       </div>
       {showMenu && (
         <div className={classes["side-menu"]}>
-          <div className={classes["user-details"]}>
+          {/* <div className={classes["user-details"]}>
             <Image
               className={classes["user-icon"]}
               src="/svg/default-user-icon.svg"
@@ -63,7 +63,7 @@ export const MenuMobile = () => {
                 height="21"
               />
             </div>
-          </div>
+          </div> */}
           {/* <div className={classes["menu-mobile-lang"]}>
             <p className={classes["arabic"]}>العربية</p>
             <p className={classes["menu-mobile-lang-english"]}>English </p>

@@ -177,7 +177,7 @@
     flex-grow: 1;
     width: 100%;
     position: relative;
-    min-height: 31.1%;
+    min-height: 35%;
     max-height: 45%;
   }
   .chat,

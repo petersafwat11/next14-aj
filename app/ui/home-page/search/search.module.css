@@ -20,3 +20,8 @@
   font-size: 0.672rem;
   color: rgba(200, 200, 200, 0.6);
 }
+@media (max-width: 56.25rem) {
+  .search-div {
+    display: none;
+  }
+}

@@ -10,7 +10,15 @@ import { SendMessageButton } from "@/app/ui/layout/sendMessage/SendMessage";
 import NewsLetter from "@/app/ui/layout/newsletter/NewsLetter";
 import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
-import Head from "next/head";
+import GoogleAnalytics from "./lib/googleAnalytics";
+import dynamic from "next/dynamic";
+const DiscordIcon = dynamic(
+  () => import("./ui/layout/discordIcon/DiscordIcon"),
+  {
+    ssr: false,
+  }
+);
+
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -25,25 +33,13 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession(authConfig);
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body
       //  className={inter.className}
       >
         <section>
           <SendMessageButton />
-          <a
-            href="https://t.me/ajsportstv"
-            target={"_blank"}
-            className={styles["telegram-link"]}
-            rel="noreferrer"
-          >
-            <Image
-              className={styles["telegram-icon"]}
-              src="/svg/layout/telegram-floating.svg"
-              alt="telegram-channel"
-              width="30"
-              height="30"
-            />
-          </a>
+          <DiscordIcon />
         </section>
 
         <div className={styles["wrapper"]}>

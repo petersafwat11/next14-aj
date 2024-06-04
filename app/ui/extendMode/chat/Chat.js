@@ -219,22 +219,19 @@ const Chat = ({
       return;
     }
     try {
-      socket.emit("chat message English (Default)", {
-        ...message,
-        message: String(gif),
-      });
-      await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
+      const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: { ...message, message: gif },
       });
+      socket.emit("chat message English (Default)", response?.data.message);
 
       setMessages((prevState) => {
-        return [...prevState, { ...message, message: gif }];
+        return [...prevState, response?.data.message];
       });
-      scrollToBottom(messagesRef);
       setIsSending(true);
       setTimeout(() => {
         setIsSending(false);
       }, 500);
+      scrollToBottom(messagesRef);
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(true);
         setTimeout(() => {
@@ -256,16 +253,21 @@ const Chat = ({
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: message,
       });
-      console.log(response);
-      socket.emit(`chat message ${chatRoomSelection}`, message);
+      socket.emit(
+        "chat message English (Default)",
+        response?.data.message,
+        (ack) => {
+          console.log("Acknowledgement from server:", ack);
+        }
+      );
+      setMessages((prevState) => {
+        return [...prevState, response?.data.message];
+      });
       setMessage({
         ...message,
         message: "",
       });
 
-      setMessages((prevState) => {
-        return [...prevState, message];
-      });
       setIsSending(true);
       setTimeout(() => {
         scrollToBottom(messagesRef);
@@ -515,6 +517,7 @@ const Chat = ({
         username={session?.user?.name || initialName}
         messages={messages}
         setMentionSomeone={setMentionSomeone}
+        chatFilteredWords={chatFilteredWords}
       />
       <ChatBottom
         toggleUserInf={toggleUserInf}

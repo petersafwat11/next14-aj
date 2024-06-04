@@ -1,0 +1,101 @@
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 10px;
+  background: #ccc;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+.range-input::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1);
+}
+/* .range-input:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+.range-input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+} */
+
+.range-input::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1);
+}
+/* .range-input:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+.range-input:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+} */
+
+/*=============
+  Aesthetics 
+  =========================*/
+.volume-container {
+  position: relative;
+}
+.volume-container:hover .volume-wrapper {
+  scale: 1;
+}
+.volume-wrapper {
+  background-color: rgba(0, 0, 0, 0.4);
+
+  position: absolute;
+  top: -105px;
+  left: -32px;
+  max-width: 125px;
+  width: 125px;
+  height: 40px;
+  max-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  rotate: 270deg;
+  border-radius: 20px;
+  transform-origin: bottom center;
+  scale: 0;
+
+  transition: all 0.5s;
+}
+
+.content {
+  opacity: 1;
+  width: 125px;
+  max-width: 300px;
+  height: 105px;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+}
+.value2 {
+  rotate: 90deg;
+}

@@ -129,8 +129,7 @@ import Hls from "hls.js";
 import React, { useEffect, useRef, useState } from "react";
 import P2pEngineHls from "swarmcloud-hls";
 import classes from "./hlcPlayer.module.css";
-const HlcPlayer = ({ url, notRounded }) => {
-  const videoRef = useRef(null);
+const HlcPlayer = ({ url, notRounded, videoRef }) => {
   const videoIConRef = useRef(null);
   const [palying, setPlaying] = useState(false);
   // Add a click event listener to the play button
@@ -171,12 +170,17 @@ const HlcPlayer = ({ url, notRounded }) => {
     } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
       videoRef.current.src = url;
     }
+    videoRef.current.setAttribute("playsinline", "");
+    videoRef.current.setAttribute("webkit-playsinline", "");
+
     setPlaying(false);
-  }, [url]);
+  }, [url, videoRef]);
 
   return (
     <div className={classes["video-container"]}>
       <video
+        webkit-playsinline
+        playsinline
         // poster="/wallpaper/main.jpg"
         controlsList="noplaybackrate"
         className={

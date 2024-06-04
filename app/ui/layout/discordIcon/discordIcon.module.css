@@ -1,0 +1,29 @@
+.telegram-link {
+  width: 3.37rem;
+  height: 3.37rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#2aabee, #229ed9);
+  position: fixed;
+  top: 35vh;
+  right: 5vw;
+  cursor: pointer;
+  z-index: 9;
+}
+.telegram-link:hover {
+  background: linear-gradient(#259dde, #1b8abd);
+}
+@media (max-width: 56.25rem) {
+  .telegram-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .telegram-link {
+    width: 3rem;
+    height: 3rem;
+    top: 22%;
+    right: 4%;
+  }
+}
