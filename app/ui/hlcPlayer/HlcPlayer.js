@@ -1,6 +1,6 @@
 "use client";
 import Hls from "hls.js";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import P2pEngineHls from "swarmcloud-hls";
 import classes from "./hlcPlayer.module.css";
 import Contrrols from "./Contrrols";
@@ -8,9 +8,7 @@ import ChannelSettings from "./playerComponents/channel-settings/ChannelSettings
 import AboutLive from "./playerComponents/about/AboutLive";
 import Shortcuts from "./playerComponents/shortcuts/Shortcuts";
 import Qualites from "./playerComponents/qualities/Qualites";
-const HlcPlayer = ({ url, notRounded }) => {
-  const videoRef = useRef(null);
-
+const HlcPlayer = ({ url, notRounded, videoRef }) => {
   const [contextMenu, setContextMenu] = useState({
     visible: false,
     x: 0,
@@ -51,7 +49,7 @@ const HlcPlayer = ({ url, notRounded }) => {
     if (Hls.isSupported() && url) {
       const hls = new Hls({
         maxBufferSize: 0, // Highly recommended setting in live mode
-        maxBufferLength: 10, // Highly recommended setting in live mode
+        maxBufferLength: 25, // Highly recommended setting in live mode
         liveSyncDurationCount: 10, // Highly recommended setting in live mode
       });
       p2pConfig.hlsjsInstance = hls;
@@ -61,8 +59,11 @@ const HlcPlayer = ({ url, notRounded }) => {
     } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
       videoRef.current.src = url;
     }
+    videoRef.current.setAttribute("playsinline", "");
+    videoRef.current.setAttribute("webkit-playsinline", "");
+
     setIsPlaying(false);
-  }, [url]);
+  }, [url, videoRef]);
 
   useEffect(() => {
     document.addEventListener("click", hideContextMenu);
@@ -72,15 +73,18 @@ const HlcPlayer = ({ url, notRounded }) => {
     };
   }, []);
 
-  const playVideo = function () {
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
+  const playVideo = useCallback(
+    function () {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    },
+    [videoRef]
+  );
   useEffect(() => {
     function handleClickOnVideo(event) {
       if (videoRef.current && videoRef.current.contains(event.target)) {
@@ -92,7 +96,7 @@ const HlcPlayer = ({ url, notRounded }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOnVideo);
     };
-  }, [videoRef]);
+  }, [videoRef, playVideo]);
   const toggleFull = function () {
     if (containerRef.current.requestFullscreen) {
       containerRef.current.requestFullscreen();
@@ -103,16 +107,19 @@ const HlcPlayer = ({ url, notRounded }) => {
     }
   };
 
-  const toggleSound = function () {
-    setMute(videoRef.current.muted);
-    if (videoRef.current.muted == true) {
-      videoRef.current.muted = false;
-      setMute(false);
-    } else if (videoRef.current.muted == false) {
-      videoRef.current.muted = true;
-      setMute(true);
-    }
-  };
+  const toggleSound = useCallback(
+    function () {
+      setMute(videoRef.current.muted);
+      if (videoRef.current.muted == true) {
+        videoRef.current.muted = false;
+        setMute(false);
+      } else if (videoRef.current.muted == false) {
+        videoRef.current.muted = true;
+        setMute(true);
+      }
+    },
+    [videoRef]
+  );
   const togglePictureInPicture = async function () {
     if (document.pictureInPictureElement) {
       await document.exitPictureInPicture();
@@ -122,20 +129,20 @@ const HlcPlayer = ({ url, notRounded }) => {
       }
     }
   };
-  function increaseVolume() {
+  const increaseVolume = useCallback(() => {
     if (videoRef.current.volume < 1) {
       videoRef.current.volume += 0.1;
       console.log(videoRef.current.volume);
     }
-  }
+  }, [videoRef]);
 
-  function decreaseVolume() {
+  const decreaseVolume = useCallback(() => {
     if (videoRef.current.volume > 0) {
       videoRef.current.volume -= 0.1;
       console.log(videoRef.current.volume);
     }
-  }
-  function seekingForward() {
+  }, [videoRef]);
+  const seekingForward = useCallback(() => {
     if (videoRef.current.currentTime + 10 <= videoRef.current.duration) {
       videoRef.current.currentTime += 10;
       console.log(videoRef.current.currentTime);
@@ -143,8 +150,8 @@ const HlcPlayer = ({ url, notRounded }) => {
       videoRef.current.currentTime = videoRef.current.duration;
       console.log("too late");
     }
-  }
-  function seekingBackward() {
+  }, [videoRef]);
+  const seekingBackward = useCallback(() => {
     if (videoRef.current.currentTime - 10 >= 0) {
       videoRef.current.currentTime -= 10;
       console.log(videoRef.current.currentTime);
@@ -152,7 +159,7 @@ const HlcPlayer = ({ url, notRounded }) => {
       videoRef.current.currentTime = videoRef.current.duration;
       console.log("too late");
     }
-  }
+  }, [videoRef]);
 
   const handleShortcutsChange = (event) => {
     setWorkShortcuts(event.target.checked);
@@ -221,7 +228,16 @@ const HlcPlayer = ({ url, notRounded }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [workShortcuts]);
+  }, [
+    workShortcuts,
+    decreaseVolume,
+    increaseVolume,
+    playVideo,
+    seekingBackward,
+    seekingForward,
+    toggleSound,
+    videoRef,
+  ]);
 
   return (
     <div ref={containerRef} className={classes["container"]}>
