@@ -1,13 +1,13 @@
-"use client";
-import Hls from "hls.js";
-import React, { useEffect, useRef, useState } from "react";
-import P2pEngineHls from "swarmcloud-hls";
-import classes from "./hlcPlayer.module.css";
-import Contrrols from "./Contrrols";
-import ChannelSettings from "./playerComponents/channel-settings/ChannelSettings";
-import AboutLive from "./playerComponents/about/AboutLive";
-import Shortcuts from "./playerComponents/shortcuts/Shortcuts";
-import Qualites from "./playerComponents/qualities/Qualites";
+'use client';
+import Hls from 'hls.js';
+import React, { useEffect, useRef, useState } from 'react';
+import P2pEngineHls from 'swarmcloud-hls';
+import classes from './hlcPlayer.module.css';
+import Contrrols from './Contrrols';
+import ChannelSettings from './playerComponents/channel-settings/ChannelSettings';
+import AboutLive from './playerComponents/about/AboutLive';
+import Shortcuts from './playerComponents/shortcuts/Shortcuts';
+import Qualites from './playerComponents/qualities/Qualites';
 const HlcPlayer = ({ url, notRounded }) => {
   const videoRef = useRef(null);
 
@@ -28,10 +28,10 @@ const HlcPlayer = ({ url, notRounded }) => {
 
   const showContextMenu = (event) => {
     event.preventDefault();
-    const aboutMenu = document.getElementById("context");
+    const aboutMenu = document.getElementById('context');
     console.log(event.clientX);
-    aboutMenu.style.left = event.clientX + "px";
-    aboutMenu.style.top = event.clientY + "px";
+    aboutMenu.style.left = event.clientX + 'px';
+    aboutMenu.style.top = event.clientY + 'px';
     setContextMenu({
       visible: true,
       x: event.clientX,
@@ -43,32 +43,32 @@ const HlcPlayer = ({ url, notRounded }) => {
     setContextMenu({ visible: false, x: 0, y: 0 });
   };
 
-  useEffect(() => {
-    console.log(url);
-    const p2pConfig = {
-      // Other p2pConfig options if applicable
-    };
-    if (Hls.isSupported() && url) {
-      const hls = new Hls({
-        maxBufferSize: 0, // Highly recommended setting in live mode
-        maxBufferLength: 10, // Highly recommended setting in live mode
-        liveSyncDurationCount: 10, // Highly recommended setting in live mode
-      });
-      p2pConfig.hlsjsInstance = hls;
-      new P2pEngineHls(p2pConfig);
-      hls.loadSource(url);
-      hls.attachMedia(videoRef.current);
-    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-      videoRef.current.src = url;
-    }
-    setIsPlaying(false);
-  }, [url]);
+  // useEffect(() => {
+  //   console.log(url);
+  //   const p2pConfig = {
+  //     // Other p2pConfig options if applicable
+  //   };
+  //   if (Hls.isSupported() && url) {
+  //     const hls = new Hls({
+  //       maxBufferSize: 0, // Highly recommended setting in live mode
+  //       maxBufferLength: 10, // Highly recommended setting in live mode
+  //       liveSyncDurationCount: 10, // Highly recommended setting in live mode
+  //     });
+  //     p2pConfig.hlsjsInstance = hls;
+  //     new P2pEngineHls(p2pConfig);
+  //     hls.loadSource(url);
+  //     hls.attachMedia(videoRef.current);
+  //   } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+  //     videoRef.current.src = url;
+  //   }
+  //   setPlaying(false);
+  // }, [url]);
 
   useEffect(() => {
-    document.addEventListener("click", hideContextMenu);
+    document.addEventListener('click', hideContextMenu);
 
     return () => {
-      document.removeEventListener("click", hideContextMenu);
+      document.removeEventListener('click', hideContextMenu);
     };
   }, []);
 
@@ -88,9 +88,9 @@ const HlcPlayer = ({ url, notRounded }) => {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOnVideo);
+    document.addEventListener('mousedown', handleClickOnVideo);
     return () => {
-      document.removeEventListener("mousedown", handleClickOnVideo);
+      document.removeEventListener('mousedown', handleClickOnVideo);
     };
   }, [videoRef]);
   const toggleFull = function () {
@@ -141,7 +141,7 @@ const HlcPlayer = ({ url, notRounded }) => {
       console.log(videoRef.current.currentTime);
     } else {
       videoRef.current.currentTime = videoRef.current.duration;
-      console.log("too late");
+      console.log('too late');
     }
   }
   function seekingBackward() {
@@ -150,13 +150,13 @@ const HlcPlayer = ({ url, notRounded }) => {
       console.log(videoRef.current.currentTime);
     } else {
       videoRef.current.currentTime = videoRef.current.duration;
-      console.log("too late");
+      console.log('too late');
     }
   }
 
   const handleShortcutsChange = (event) => {
     setWorkShortcuts(event.target.checked);
-    console.log("done");
+    console.log('done');
   };
 
   useEffect(() => {
@@ -165,46 +165,46 @@ const HlcPlayer = ({ url, notRounded }) => {
         const videoElement = videoRef.current;
         if (!videoElement) return;
 
-        if (event.code.includes("Digit")) {
+        if (event.code.includes('Digit')) {
           for (let i = 1; i <= 9; i++) {
             if (event.code == `Digit${i}`) {
               videoRef.current.currentTime =
                 videoRef.current.duration * (i / 10);
               console.log(videoRef.current.duration * (i * 10));
-              console.log("true");
+              console.log('true');
             }
           }
         } else {
           switch (event.code) {
-            case "Space":
+            case 'Space':
               playVideo();
-            case "ArrowUp":
+            case 'ArrowUp':
               event.preventDefault();
               increaseVolume();
               break;
             // console.log('Key pressed:', event.code);
-            case "ArrowDown":
+            case 'ArrowDown':
               event.preventDefault();
               decreaseVolume();
               break;
 
-            case "ArrowRight":
+            case 'ArrowRight':
               event.preventDefault();
               seekingForward();
               break;
-            case "ArrowLeft":
+            case 'ArrowLeft':
               event.preventDefault();
               seekingBackward();
               break;
-            case "KeyC":
+            case 'KeyC':
               event.preventDefault();
               // seekingBackward();
               break;
-            case "KeyF":
+            case 'KeyF':
               event.preventDefault();
               toggleFull();
               break;
-            case "KeyM":
+            case 'KeyM':
               event.preventDefault();
               toggleSound();
               break;
@@ -215,16 +215,16 @@ const HlcPlayer = ({ url, notRounded }) => {
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    console.log("reached-11");
+    document.addEventListener('keydown', handleKeyDown);
+    console.log('reached-11');
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [workShortcuts]);
 
   return (
-    <div ref={containerRef} className={classes["container"]}>
+    <div ref={containerRef} className={classes['container']}>
       <ChannelSettings
         togglePictureInPicture={togglePictureInPicture}
         setAboutMenu={setAboutMenu}
@@ -241,32 +241,33 @@ const HlcPlayer = ({ url, notRounded }) => {
       )}
       {qualities && <Qualites setQualities={setQualities} />}
       <video
-        webkit-playsinline
-        playsinline
         id="video"
+        poster="/wallpaper/main.jpg"
         // controlsList="noplaybackrate"
         onContextMenu={showContextMenu}
         onClick={hideContextMenu}
-        className={classes["video-play"]}
+        className={classes['video-play']}
         ref={videoRef}
-        width={"100%"}
-        height={"100%"}
+        width={'100%'}
+        height={'100%'}
         controls={false}
         autoPlay={false}
-      ></video>
+      >
+        <source type="video/mp4" src="/video-background/1.mp4" />
+      </video>
       <button
         onClick={playVideo}
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "transparent",
-          cursor: "pointer",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: 'transparent',
+          cursor: 'pointer',
         }}
       >
         {isPlaying ? (
-          ""
+          ''
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -10,7 +10,7 @@ import { SendMessageButton } from "@/app/ui/layout/sendMessage/SendMessage";
 import NewsLetter from "@/app/ui/layout/newsletter/NewsLetter";
 import styles from "./layout.module.css";
 import Marque from "./ui/marque/Marque";
-import Head from "next/head";
+import GoogleAnalytics from "./lib/googleAnalytics";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -25,6 +25,7 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession(authConfig);
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body
       //  className={inter.className}
       >

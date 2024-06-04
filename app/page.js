@@ -9,6 +9,7 @@ import classes from "./page.module.css";
 import OtherMatches from "./ui/home-page/otherMatches/OtherMatches";
 import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
+import Script from "next/script";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -96,6 +97,30 @@ const Page = async ({ searchParams }) => {
           />
         </section>
       </div>
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/asg_embed.js"
+        data-spots="451173"
+        data-tag="asg"
+        data-subid1="%subid1%"
+        data-subid2="%subid2%"
+      ></Script>
+
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/asg_embed.js"
+        data-spots="451172"
+        data-tag="asg"
+        data-subid1="%subid1%"
+        data-subid2="%subid2%"
+      ></Script>
+
+      <Script
+        type="text/javascript"
+        src="//cdn.tapioni.com/ip-push.js"
+        data-spot="451174"
+        data-subid1="%subid1%"
+      ></Script>
     </div>
   );
 };

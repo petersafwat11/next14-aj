@@ -1,0 +1,90 @@
+.channels-wrapper {
+  padding: 6px; 
+  width: 205.5px; 
+  height: 193.5px;
+  border-radius: 9px;
+  opacity: 0.98;
+  background: #0c1115;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  box-shadow: 0px 1.5px 4.5px 1.5px rgba(0, 0, 0, 0.15),
+     0px 0.75px 1.5px 0px rgba(0, 0, 0, 0.3); 
+  z-index: 100;
+}
+
+.channels-wrapper-none {
+  padding: 6px; 
+  width: 205.5px;
+  height: 193.5px;
+  border-radius: 9px;
+  opacity: 0.98;
+  background: #0c1115;
+  flex-direction: column;
+  position: fixed;
+  box-shadow: 0px 1.5px 4.5px 1.5px rgba(0, 0, 0, 0.15),
+ 0px 0.75px 1.5px 0px rgba(0, 0, 0, 0.3); 
+  visibility: hidden;
+}
+
+.close-svg {
+  cursor: pointer;
+  fill-opacity: 0.5;
+}
+
+.close-svg:hover {
+  fill-opacity: 1;
+}
+
+.channel-item {
+  display: flex;
+  transition: all 0.3s;
+  width: 188.25px; 
+  height: 39px;
+  align-items: center;
+  gap: 14.262px; 
+  flex-shrink: 0;
+  z-index: 1000 !important;
+}
+
+.channel-item:hover {
+  border-radius: 6px;
+  background: #192127;
+}
+
+.channel-item-content {
+  color: #e6e0e9;
+  font-family: "Roboto";
+  font-size: 11.25px; 
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; 
+  letter-spacing: 0.5px;
+  width: 100%;
+  padding-right: 9.75px; 
+  padding-left: 9.75px; 
+}
+
+.channel-item-content:hover {
+  border-radius: 6px;
+  background: #192127;
+}
+
+.logo-content {
+  width: 100%;
+  height: 61.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-content .logo-name {
+  color: var(--M3-sys-dark-on-surface, #e6e0e9);
+  font-family: "Roboto";
+  font-size: 9.75px; 
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+}

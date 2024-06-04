@@ -7,6 +7,7 @@ const nextConfig = {
     // FRONTEND_SERVER: "https://ajsportstv.ch",
     // BACKEND_SERVER: "https://ajsportstv.ch/api",
     // STATIC_SERVER: "https://ajsportstv.ch",
+    NEXT_PUBLIC_MEASUREMENT_ID: "G-Y22CVP987D",
   },
   generateBuildId: async () => {
     return "f134160";
