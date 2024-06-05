@@ -85,7 +85,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={
                   pathname === "/" || pathname.startsWith("/watch")
@@ -102,7 +102,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/channels");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={
                   pathname.includes("channels")
@@ -118,7 +118,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/statistics");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={
                   pathname === "/statistics"
@@ -134,7 +134,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/news");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={
                   pathname === "/news" || pathname.includes("newsArticle")
@@ -151,7 +151,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/contact");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={
                   pathname === "/contact"
@@ -167,7 +167,7 @@ export const MenuMobile = () => {
               <p
                 onClick={() => {
                   router.push("/pricing");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={classes["menu-mobile-page-link"]}
               >
@@ -180,7 +180,7 @@ export const MenuMobile = () => {
               <button
                 onClick={() => {
                   router.push("/donate");
-                  setShowMenu(!showMenu);
+                  toggleMenu("hide");
                 }}
                 className={classes["donate-button"]}
               >

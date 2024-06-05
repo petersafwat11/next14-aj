@@ -17,7 +17,7 @@ const Message = memo(function Message({
             ? "#1C2730"
             : "",
       }}
-      key={index}
+      key={message?._id}
       className={classes["message"]}
     >
       <div className={classes["user-image"]}>

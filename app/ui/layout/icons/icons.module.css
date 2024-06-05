@@ -1,6 +1,6 @@
 .scroll-top {
   position: fixed;
-  bottom: 29%;
+  bottom: 29vh;
   right: 8%;
   z-index: 8;
   cursor: pointer;
@@ -9,6 +9,6 @@
   .scroll-top {
     width: 23px;
     height: 23px;
-    bottom: 18%;
+    bottom: 18vh;
   }
 }

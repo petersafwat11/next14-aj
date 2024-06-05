@@ -36,7 +36,7 @@
   overflow: hidden;
 }
 .team-image {
-  width: 68px;
+  height:  70px;
 }
 .first-team {
   justify-content: flex-start;
@@ -100,7 +100,7 @@
   }
 
   .team-image {
-    width: 75px;
+    height: 69px;
   }
   .watch-details-first {
     gap: 1rem;
@@ -188,7 +188,7 @@
     flex-direction: column-reverse;
   }
   .team-image {
-    width: 54px;
+    height: 75px;
   }
 
   .first-team-name,

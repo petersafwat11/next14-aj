@@ -24,8 +24,8 @@ const DiscordIcon = () => {
         className={styles["telegram-icon"]}
         src="/svg/discord-floating.svg"
         alt="telegram-channel"
-        width="30"
-        height="30"
+        width="54"
+        height="54"
       />
     </a>
   );

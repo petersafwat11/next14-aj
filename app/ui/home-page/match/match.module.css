@@ -69,6 +69,10 @@
   text-overflow: ellipsis;
   text-align: center;
 }
+.first-team-image,
+.second-team-image {
+  max-height: 35px;
+}
 .match-vs {
   font-family: RobotoBold;
   font-size: 0.8rem;

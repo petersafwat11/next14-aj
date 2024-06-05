@@ -66,7 +66,7 @@ export const Match = ({ matchData, type, index, length }) => {
                       : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`
                   }
                   alt="logo"
-                  width={28}
+                  // width={28}
                 />
               </div>
               <div className={classes["match-vs"]}>vs</div>
@@ -81,7 +81,7 @@ export const Match = ({ matchData, type, index, length }) => {
                       : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`
                   }
                   alt="logo"
-                  width={28}
+                  // width={28}
                 />
 
                 <p className={classes["second-team-name"]}>

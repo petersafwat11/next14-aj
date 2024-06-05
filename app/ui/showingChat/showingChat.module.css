@@ -13,7 +13,7 @@
   position: fixed;
   bottom: 10vh;
   right: 1vw;
-  z-index: 9;
+  z-index: 8;
 }
 @media (max-width: 56.25rem) {
   .container {
