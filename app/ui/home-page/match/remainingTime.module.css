@@ -31,7 +31,7 @@
   .remaining-time-mobile {
     font-weight: 600;
     font-family: RobotoSemiBold;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     line-height: 0.82rem;
     color: #a1a1a1;
   }
@@ -39,22 +39,12 @@
 @media (max-width: 25rem) {
   .status-mobile,
   .remaining-time-mobile {
-    font-size: 11.5px;
-    line-height: 13.48px;
+    font-size: 0.8rem;
     font-weight: 400;
     font-family: "Roboto Condensed";
   }
 }
 
-@media (max-width: 390px) {
-  .status-mobile,
-  .remaining-time-mobile {
-    font-size: 11.5px;
-    line-height: 13.48px;
-    font-weight: 400;
-    font-family: "Roboto Condensed";
-  }
-}
 @media (max-width: 370px) {
   .status-mobile,
   .remaining-time-mobile {

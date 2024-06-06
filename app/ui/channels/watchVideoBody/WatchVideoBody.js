@@ -62,6 +62,7 @@ const WatchVideoBody = ({
       <div className={classes["watch-video-options"]}>
         {extendMode && (
           <ExtendModeWrapper
+            dots={false}
             mode={mode}
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}

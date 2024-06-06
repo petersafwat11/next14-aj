@@ -34,13 +34,13 @@
 }
 @media (max-width: 56.25rem) {
   .logo {
-    width: 62px;
-    height: 43px;
+    width: 86px;
+    height: 55px;
   }
   .container {
     max-width: 15.8rem;
     border-radius: 0.5rem;
-    padding: 1.065rem 2.125rem;
+    padding: 3.065rem 1.125rem;
     margin: 3rem auto;
     gap: .5rem;
   }
@@ -49,6 +49,6 @@
   }
   .text,
   .text span {
-    font-size: 0.77rem;
+    font-size: 1.1rem;
   }
 }

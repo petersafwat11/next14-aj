@@ -16,12 +16,12 @@ const ChatTop = ({
       />
       <div className={classes["chat-top-text"]}>
         Chat
-        <Image
+        {/* <Image
           src="/svg/chat/down-arrow.svg"
           alt="extend"
           width="12"
           height="8"
-        />
+        /> */}
         {/* <div className={classes["chat-rooms"]}>
           {["English (Default)", "Espain", "العربية", "Français"].map(
             (i, index) => (

@@ -165,9 +165,10 @@
 .social {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: max(50%, 21.25rem);
+  justify-content: center;
+  width: min-content;
   margin: auto;
+  gap: 1.5rem;
 }
 .social-element {
   background-color: rgba(28, 36, 41, 0.99);

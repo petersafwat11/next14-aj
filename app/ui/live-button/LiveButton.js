@@ -4,7 +4,7 @@ import classes from "./live-button.module.css";
 const LiveBtn = ({ text }) => {
   return (
     <>
-      <Link href='/' className={classes["live-btn"]}>
+      <Link href="/" className={classes["live-btn"]}>
         <div className={classes["live-btn-rounded"]}></div>
         {text}
       </Link>

@@ -1,5 +1,5 @@
 .container {
-  width: 32.2rem;
+  width: 100%;
   padding-top: 1.03rem;
   /* height: 44rem; */
   border-radius: 0.47rem;
@@ -126,6 +126,15 @@
     border-radius: 0.45rem;
     background: rgba(21, 30, 35, 0.95);
   }
+  .left img {
+    width: 19.5px;
+    height: 27px;
+  }
+  .left img {
+    height: 19.5px;
+    width: 26px;
+  }
+
   .left p,
   .right p {
     color: #727272;
@@ -200,5 +209,19 @@
     flex-grow: 1;
     gap: 1.875rem;
     margin-top: 6rem;
+  }
+}
+@media (max-width: 410px) {
+  .left p,
+  .right p {
+    font-size: 0.78rem;
+  }
+  .left img {
+    width: 18px;
+    height: 25px;
+  }
+  .left img {
+    height: 18px;
+    width: 24px;
   }
 }

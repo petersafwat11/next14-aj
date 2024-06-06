@@ -10,6 +10,15 @@
   background-position: top;
   overscroll-behavior: none;
 }
+.watch-video-wrapper {
+  margin: 2.3rem auto 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  /* min-height: 40.6rem; */
+  max-width: min(58.4vw, 50.64vw);
+}
+
 .bottom {
   display: flex;
   align-items: center;
@@ -29,15 +38,28 @@
 .casino {
   margin-bottom: 2.656rem;
 }
+@media (max-width: 75rem) {
+  .watch-video-wrapper {
+    max-width: 51rem;
+  }
+}
+
 @media (max-width: 56.25rem) {
   .social-links-desktop {
     display: none;
   }
 
+
   .page {
     margin: 0 auto;
     padding-bottom: 3rem;
     max-width: min(38rem, 98%);
+  }
+  .watch-video-wrapper {
+    margin: 0;
+    min-height: auto;
+    border-radius: 11px;
+    background: #27333c;
   }
 
   .bottom {

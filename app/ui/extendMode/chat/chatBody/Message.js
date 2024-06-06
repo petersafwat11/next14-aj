@@ -32,8 +32,8 @@ const Message = memo(function Message({
               : message?.image
           }
           alt="avatar"
-          width="26"
-          height="26"
+          width="24"
+          height="24"
         />
         {message.username === username && message.username !== "anonymous" && (
           <p className={classes["you-text"]}>You</p>

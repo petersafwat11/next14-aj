@@ -7,18 +7,18 @@ import Beta from "../beta/Beta";
 const TopHeader = ({ toggleSettings }) => {
   return (
     <div className={classes["top-header"]}>
-      <div className={classes["logo-wrapper"]}>
-        <Image
-          className={classes["logo"]}
-          src="/svg/layout/header/logo.svg"
-          alt="logo"
-          width="61"
-          height="43"
-        />
-        <div className={classes["beta"]}>
-          <Beta />
-        </div>
+      {/* <div className={classes["logo-wrapper"]}> */}
+      <Image
+        className={classes["logo"]}
+        src="/svg/layout/header/logo.svg"
+        alt="logo"
+        width="61"
+        height="43"
+      />
+      <div className={classes["beta"]}>
+        <Beta />
       </div>
+      {/* </div> */}
       <div className={classes["right"]}>
         <div className={classes["top-header-items"]}>
           <Link href="/donate" className={classes["top-header-item"]}>

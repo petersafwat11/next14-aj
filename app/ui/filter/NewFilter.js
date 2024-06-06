@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./newFilter.module.css";
 import Image from "next/image";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
@@ -23,8 +23,27 @@ const NewFilter = ({ options, channels, filterValue }) => {
   };
 
   const [showOptions, setShowOptions] = useState(false);
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) {
+        setShowOptions(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+
+    // Cleanup this component
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
+
   return (
-    <div className={classes["container"]}>
+    <div
+      onClick={() => {
+        setShowOptions(!showOptions);
+      }}
+      className={classes["container"]}
+    >
       {showOptions && (
         <Popup>
           <div className={classes["options-container"]}>
@@ -58,12 +77,7 @@ const NewFilter = ({ options, channels, filterValue }) => {
           </div>
         </Popup>
       )}
-      <div
-        onClick={() => {
-          setShowOptions(!showOptions);
-        }}
-        className={classes["selected"]}
-      >
+      <div className={classes["selected"]}>
         <p className={classes["selected-sport"]}>{filterValue}</p>
         <Image
           className={classes["langs-icon"]}

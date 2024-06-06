@@ -50,7 +50,7 @@ export const MenuMobile = () => {
           className={classes["menu-mobile-logo"]}
           src="/svg/layout/header/logo-mobile.svg"
           alt="logo"
-          width="76"
+          width="72"
           height="59"
         />
         <Beta className={classes["beta"]} />
@@ -224,14 +224,14 @@ export const MenuMobile = () => {
                 height="16"
               />
             </div>
-            <div className={classes["social-element"]}>
+            {/* <div className={classes["social-element"]}>
               <Image
                 src="/svg/layout/social-icons/facebook.svg"
                 alt="facebook-icon"
                 width="19"
                 height="19"
               />
-            </div>
+            </div> */}
             <div className={classes["social-element"]}>
               <Image
                 src="/svg/layout/social-icons/social.svg"
@@ -240,22 +240,22 @@ export const MenuMobile = () => {
                 height="19"
               />
             </div>
-            <div className={classes["social-element"]}>
+            {/* <div className={classes["social-element"]}>
               <Image
                 src="/svg/layout/social-icons/insta.svg"
                 alt="insta-icon"
                 width="20"
                 height="19"
               />
-            </div>
-            <div className={classes["social-element"]}>
+            </div> */}
+            {/* <div className={classes["social-element"]}>
               <Image
                 src="/svg/layout/social-icons/ticktok.svg"
                 alt="tiktok-icon"
                 width="20"
                 height="20"
               />
-            </div>
+            </div> */}
             <div className={classes["social-element"]}>
               <Image
                 src="/svg/layout/social-icons/telegram.svg"

@@ -146,7 +146,7 @@ const Page = async ({ params }) => {
             // half={"2nd Half: 47’"}
           />
         )}
-        <div className="watch-video-wrapper">
+        <div className={classes["watch-video-wrapper"]}>
           <VideoTop query={query} lang={playingServer.lang} />
           <VideoBody
             chatMessages={data?.messagesData}

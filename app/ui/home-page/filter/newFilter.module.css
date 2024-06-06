@@ -47,7 +47,7 @@
 }
 .options-container {
   width: 12.23rem;
-  height: 10.45rem;
+  /* height: 10.45rem; */
   border-radius: 0.3rem;
   background: #232b30;
   position: relative;
@@ -59,8 +59,8 @@
 } */
 .options {
   width: 100%;
-  padding: 0 0.79rem;
-  height: 8.95rem;
+  padding: 10px 0.79rem;
+  max-height: 8.95rem;
   display: flex;
   align-items: center;
   flex-direction: column;

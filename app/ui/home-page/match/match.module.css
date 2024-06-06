@@ -36,9 +36,11 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 0.2rem;
-  font-size: 0.6rem;
-  line-height: 0.72rem;
   width: 61.2px;
+}
+.match-details * {
+  font-size: 0.7rem;
+  line-height: 0.72rem;
 }
 .leage {
   font-family: RobotoRegular;
@@ -59,7 +61,7 @@
 .first-team-name,
 .second-team-name,
 .teams-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1rem;
   font-family: RobotoSemiBold;
   margin-top: 1.6px;
@@ -143,9 +145,12 @@
   }
   .leage {
     font-weight: 400;
-    font-size: 0.75rem;
     line-height: 0.82rem;
     color: rgba(210, 210, 210, 0.7);
+  }
+  .date,
+  .leage {
+    font-size: 0.8rem;
   }
 
   .match-second {
@@ -226,7 +231,6 @@
     font-weight: 300;
     font-family: "Roboto Condensed";
   }
-
   .match-second {
     padding-top: 5px;
   }
@@ -259,12 +263,6 @@
     font-size: 12.5px;
     line-height: 14.65px;
   }
-  .leage {
-    font-size: 11.5px;
-    line-height: 13.5px;
-    font-weight: 300;
-    font-family: "Roboto Condensed";
-  }
 
   .first-team,
   .second-team {
@@ -294,10 +292,6 @@
   .match-first .date {
     font-size: 12px;
     line-height: 14px;
-  }
-  .leage {
-    font-size: 11px;
-    line-height: 13px;
   }
 
   .first-team,

@@ -19,13 +19,14 @@
 }
 .date,
 .place {
-  font-size: 0.744rem;
+  font-size: 0.944rem;
   line-height: 1.232rem;
 }
 .watch-details-second {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 11px;
 }
 .first-team,
 .second-team {
@@ -36,7 +37,7 @@
   overflow: hidden;
 }
 .team-image {
-  height:  70px;
+  height: 70px;
 }
 .first-team {
   justify-content: flex-start;
@@ -155,7 +156,7 @@
 
 @media (max-width: 35rem) {
   .watch-details {
-    margin: 0.7rem auto 1rem;
+    margin: 0.7rem auto 3rem;
     max-width: min(27rem, 90vw);
   }
 
@@ -171,12 +172,12 @@
   }
   .date,
   .place {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     line-height: 0.96rem;
   }
   .watch-details-second {
     margin-top: -1.5rem;
-    align-items: flex-end;
+    align-items: center;
   }
   .first-team,
   .second-team {
@@ -201,6 +202,7 @@
     font-family: RobotoSemiBold;
     font-size: 0.85rem;
     line-height: 0.65rem;
+    /* margin-bottom: 46px; */
   }
   .watch-details-last {
     margin-top: 1.25rem;

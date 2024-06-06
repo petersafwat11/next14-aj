@@ -6,6 +6,7 @@ import Chat from "../chat/Chat";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
 
 const ExtendModeWrapper = ({
+  dots,
   exitExtenMode,
   videoRef,
   url,
@@ -13,7 +14,7 @@ const ExtendModeWrapper = ({
   chatRules,
   chatFilteredWords,
   videoCurrentState,
-  mode
+  mode,
 }) => {
   const [showServers, setShowServers] = useState(false);
   const [inputActive, setInputActive] = useState(false);
@@ -33,14 +34,42 @@ const ExtendModeWrapper = ({
           height="34"
         />
 
-        <Image
+        {/* <Image
           onClick={exitExtenMode}
           className={classes["extend-exit"]}
           src="/svg/chat/extend-mode/close.svg"
           alt="exit"
           width="15"
           height="15"
-        />
+        /> */}
+        <svg
+          onClick={exitExtenMode}
+          className={classes["extend-exit"]}
+          width="15"
+          height="15"
+          viewBox="0 0 15 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="close" clip-path="url(#clip0_2_41798)">
+            <path
+              id="Vector"
+              d="M15 2.14659L13.4893 0.700439L7.5 6.43377L1.51071 0.700439L0 2.14659L5.98929 7.87993L0 13.6133L1.51071 15.0594L7.5 9.32608L13.4893 15.0594L15 13.6133L9.01071 7.87993L15 2.14659Z"
+              fill="#DDDDDD"
+              fill-opacity="0.5"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_2_41798">
+              <rect
+                width="15"
+                height="15"
+                fill="white"
+                transform="translate(0 0.1875)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
       </div>
       <div className={classes["body"]}>
         <div
@@ -48,7 +77,9 @@ const ExtendModeWrapper = ({
             inputActive ? classes["video-chat-active"] : classes["video"]
           }
         >
-          {showServers ? (
+          {dots === false ? (
+            ""
+          ) : showServers ? (
             <Image
               onClick={() => {
                 setShowServers(!showServers);
@@ -93,7 +124,7 @@ const ExtendModeWrapper = ({
 
         <div className={inputActive ? classes["chat-active"] : classes["chat"]}>
           <Chat
-          mode={mode}
+            mode={mode}
             setInputActive={setInputActive}
             exitExtenMode={exitExtenMode}
             chatMessages={chatMessages}

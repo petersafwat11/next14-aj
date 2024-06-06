@@ -98,6 +98,13 @@
 .chat-top-exit {
   cursor: pointer;
 }
+.chat-top-exit:hover,
+.chat-top-exit:hover * {
+  color: #fff;
+  fill: white;
+  fill-opacity: 1;
+}
+
 .chat-top-exit {
   position: absolute;
   right: 0.65rem;

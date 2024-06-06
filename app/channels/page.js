@@ -76,6 +76,8 @@ const Page = async ({ searchParams }) => {
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
       const messagesData = chatMessages.data?.data?.data.reverse();
+      console.log("messagesData", messagesData);
+
       const channels = channelsData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
@@ -154,7 +156,7 @@ const Page = async ({ searchParams }) => {
             <NewFilter
               channels={true}
               options={["All Languages", ...langs]}
-              filterValue={filterValue}
+              filterValue={filterValue ? filterValue : "All Languages"}
             />
           </div>
           <Servers

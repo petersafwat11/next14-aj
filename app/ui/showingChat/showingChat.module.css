@@ -6,14 +6,14 @@
   position: fixed;
   bottom: 5vh;
   right: 10vw;
-  z-index: 10;
+  z-index: 8;
   cursor: pointer;
 }
 .chat {
   position: fixed;
   bottom: 10vh;
   right: 1vw;
-  z-index: 8;
+  z-index: 7;
 }
 @media (max-width: 56.25rem) {
   .container {
@@ -32,6 +32,6 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    z-index: 8;
+    z-index: 7;
   }
 }
