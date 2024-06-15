@@ -331,10 +331,10 @@ button {
 .slick-track > div {
   width: 5.7rem !important;
 }
-.slick-arrow.slick-prev,
+/* .slick-arrow.slick-prev,
 .slick-arrow.slick-next {
   display: none !important;
-}
+} */
 
 /* cutomize hls.js */
 .hls-progress-bar {

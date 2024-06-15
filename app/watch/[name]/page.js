@@ -17,6 +17,7 @@ import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
 import VideoTop from "@/app/ui/watch/videoTop/VideoTop";
 import MatchData from "@/app/ui/watch/watchtaktick/MatchSummey/MatchData";
 import Casino from "@/app/ui/casino/Casino";
+import Advert from "@/app/ui/advert/Advert";
 
 export const metadata = {
   title: "Watch | AJ Sports",
@@ -32,7 +33,7 @@ const Page = async ({ params }) => {
       params: {
         limit: 10,
         room: "English (Default)",
-        sort: { _id: -1 },
+        sort: { createdAt: -1 },
         mode: "normal",
       },
     }),
@@ -56,7 +57,7 @@ const Page = async ({ params }) => {
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const messagesData = chatMessages.data?.data?.data?.reverse();
+      const messagesData = chatMessages.data?.data?.data;
       const event = eventData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
@@ -166,8 +167,7 @@ const Page = async ({ params }) => {
         </div>
         <div className={classes["bottom"]}>
           <div className={classes["vpn"]}>
-            {/* <ProtonVpn /> */}
-            <Casino url={data?.banners?.casino} />
+            <Advert />
           </div>
           <div className={classes["mobile-social"]}>
             <BottomSocial social={data?.social} />
@@ -188,7 +188,7 @@ const Page = async ({ params }) => {
           )}
           {matchData?.sportCategory !== "f1" && (
             <div className={classes["casino"]}>
-              <Casino url={data?.banners?.casino} />
+              <Advert />
             </div>
           )}
           {matchData?.matchPoll?.enabled && (

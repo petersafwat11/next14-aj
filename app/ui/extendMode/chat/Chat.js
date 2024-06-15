@@ -58,7 +58,7 @@ const Chat = ({
 }) => {
   const { data: session, status } = useSession();
 
-  const socket = io(`${process.env.STATIC_SERVER}`);
+  const socket = useRef(null);
 
   //show emojy and gifs pickers
   const [showEmojiesAndGifs, setShowEmojiesAndGifs] = useState(false);
@@ -214,15 +214,41 @@ const Chat = ({
   };
   // make sending effect
   const [isSending, setIsSending] = useState(false);
-  const sendGif = async (gif) => {
+  const ensureConnected = async () => {
+    return new Promise((resolve, reject) => {
+      if (socket.current.connected) {
+        resolve();
+      } else {
+        socket.current.connect();
+        socket.current.once("connect", resolve);
+        socket.current.once("connect_error", reject);
+      }
+    });
+  };
+
+  const sendGif = useDebouncedCallback(async (gif) => {
     if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
       return;
     }
     try {
+      // socket.emit("chat message English (Default)", {
+      //   ...message,
+      //   message: gif,
+      // });
+      await ensureConnected();
+
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: { ...message, message: gif },
       });
-      socket.emit("chat message English (Default)", response?.data.message);
+      socket.current.emit(
+        "chat message English (Default)",
+        response?.data.message,
+        (ack) => {
+          console.log("Acknowledgement from server:", ack);
+        }
+      );
+
+      console.log("response?.data.message", response?.data?.message);
 
       setMessages((prevState) => {
         return [...prevState, response?.data.message];
@@ -231,7 +257,7 @@ const Chat = ({
       setTimeout(() => {
         setIsSending(false);
       }, 500);
-      scrollToBottom(messagesRef);
+      scrollToBottom(lastMessageRef);
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(true);
         setTimeout(() => {
@@ -241,9 +267,11 @@ const Chat = ({
     } catch (err) {
       console.log("error", err);
     }
-  };
-  const handleClick = async () => {
+  },700);
+  const handleClick = useDebouncedCallback(async () => {
     try {
+      await ensureConnected();
+
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
         console.log("still remaining time ");
@@ -253,7 +281,7 @@ const Chat = ({
       const response = await axios.post(`${process.env.BACKEND_SERVER}/chat`, {
         message: message,
       });
-      socket.emit(
+      socket.current.emit(
         "chat message English (Default)",
         response?.data.message,
         (ack) => {
@@ -270,7 +298,7 @@ const Chat = ({
 
       setIsSending(true);
       setTimeout(() => {
-        scrollToBottom(messagesRef);
+        scrollToBottom(lastMessageRef);
         setIsSending(false);
       }, 500);
 
@@ -284,7 +312,7 @@ const Chat = ({
     } catch (err) {
       console.log("error", err);
     }
-  };
+  },700);
   const rulesVisability = () => {
     setShowRules(false);
   };
@@ -336,35 +364,50 @@ const Chat = ({
   };
 
   useEffect(() => {
-    // Event listeners can be added here
-    socket.on(`chat message English (Default)`, (msg) => {
-      console.log("message recieved", msg);
-      setMessages((prevState) => {
-        return [...prevState, msg];
+    if (!socket.current) {
+      socket.current = io(`${process.env.STATIC_SERVER}`, {
+        autoConnect: false,
+        reconnection: true,
+        reconnectionAttempts: Infinity,
+        reconnectionDelay: 1000,
+        reconnectionDelayMax: 5000,
       });
-      scrollToBottom(messagesRef);
-    });
-    socket.on(`chat mode`, (data) => {
-      setChatMode(data);
-    });
-    socket.on(`chat poll`, (data) => {
-      // const newPools = [data, ...polls];
-      setPolls(data);
 
-      const remaining = getTimeRemainingInMinutes(
-        data[0]?.createdAt,
-        data[0]?.time
-      );
-      console.log("remaining", data);
-      setPollsRemainingTime(remaining);
-      console.log("chat poll updated", data);
-    });
+      socket.current.connect();
+
+      socket.current.on("connect", () => {
+        console.log("Connected to socket server");
+      });
+
+      socket.current.on("disconnect", () => {
+        console.log("Disconnected from socket server");
+      });
+
+      socket.current.on("chat message English (Default)", (msg) => {
+        console.log("Message received", msg);
+        setMessages((prevState) => [...prevState, msg]);
+        scrollToBottom(lastMessageRef);
+      });
+
+      socket.current.on("chat mode", (data) => {
+        setChatMode(data);
+      });
+
+      socket.current.on("chat poll", (data) => {
+        setPolls(data);
+        const remaining = getTimeRemainingInMinutes(data[0]?.createdAt, data[0]?.time);
+        setPollsRemainingTime(remaining);
+        console.log("Chat poll updated", data);
+      });
+    }
 
     // Clean up the socket connection when the component unmounts
     return () => {
-      socket.disconnect();
+      if (socket.current) {
+        socket.current.disconnect();
+      }
     };
-  }, [socket, chatRoomSelection, polls]);
+  }, []);
 
   useEffect(() => {
     setMessage({

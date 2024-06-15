@@ -13,6 +13,7 @@ import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
 import Casino from "../ui/casino/Casino";
+import Advert from "../ui/advert/Advert";
 export const metadata = {
   title: "Channels | AJ Sports",
 };
@@ -44,8 +45,8 @@ const Page = async ({ searchParams }) => {
       params: {
         limit: 10,
         room: "English (Default)",
-        sort: { _id: -1 },
         mode: "normal",
+        sort: { createdAt: -1 },
       },
     }),
     axios.get(`${process.env.BACKEND_SERVER}/channels`, {
@@ -75,9 +76,7 @@ const Page = async ({ searchParams }) => {
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const messagesData = chatMessages.data?.data?.data.reverse();
-      console.log("messagesData", messagesData);
-
+      const messagesData = chatMessages.data?.data?.data;
       const channels = channelsData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
@@ -149,7 +148,8 @@ const Page = async ({ searchParams }) => {
         </div>
         <div className={classes["after-video"]}>
           <div className={classes["vpn"]}>
-            <Casino url={data?.banners?.casino} />
+            {/* <Casino url={data?.banners?.casino} /> */}
+            <Advert />
           </div>
           <div className={classes["sort-search-wrapper"]}>
             <Search />

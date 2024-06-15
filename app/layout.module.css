@@ -2,11 +2,10 @@
   padding: 0;
   margin: 0;
   background-image: linear-gradient(
-      to right bottom,
-      rgb(14 19 22 / 97%),
-      rgba(21, 26, 31, 0.98)
-    ),
-    url("../public/wallpaper/main.jpg");
+    to right bottom,
+    rgb(16 22 26),
+    rgb(24 34 40)
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
