@@ -18,7 +18,6 @@ const ExtendModeWrapper = dynamic(
 import Script from "next/script";
 
 const WatchVideoBody = ({
-  chatMessages,
   chatRules,
   chatFilteredWords,
   url,
@@ -66,7 +65,6 @@ const WatchVideoBody = ({
             mode={mode}
             videoCurrentState={videoCurrentState}
             exitExtenMode={exitExtenMode}
-            chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
             url={url}

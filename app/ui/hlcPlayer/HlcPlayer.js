@@ -177,7 +177,10 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
   }, [url, videoRef]);
 
   return (
-    <div className={classes["video-container"]}>
+    <div
+      style={{ background: "#0d1317" }}
+      className={classes["video-container"]}
+    >
       <video
         webkit-playsinline
         playsinline

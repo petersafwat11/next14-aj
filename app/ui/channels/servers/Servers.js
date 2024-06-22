@@ -11,7 +11,7 @@ const Servers = ({
   filterValue,
   searchValue,
 }) => {
-  console.log("channalActive", channalActive);
+  // console.log("channalActive", channalActive);
   const router = useRouter();
   const [servers, setServers] = useState(channelsServers?.channels);
   useEffect(() => {

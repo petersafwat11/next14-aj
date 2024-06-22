@@ -38,12 +38,19 @@ const ServersButtons = ({
     console.log("val", val, lang);
     setPlayingServer({ server: val, lang });
   };
+  // const settings = {
+  //   dots: false,
+  //   infinite: false,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  // };
 
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: servers?.length > 3 ? 4 : servers?.length,
+    slidesToShow: 3,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     // servers?.length - 3 > 0 && currentSlide > 0 ? <NextArrow /> : null,

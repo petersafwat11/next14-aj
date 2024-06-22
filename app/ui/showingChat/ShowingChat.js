@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const Chat = dynamic(() => import("../chat/Chat"), {
   ssr: false,
 });
-const ShowingChat = ({ mode, chatMessages, chatRules, chatFilteredWords }) => {
+const ShowingChat = ({ mode, chatRules, chatFilteredWords }) => {
   const [showChat, setShowChat] = useState(false);
 
   const toggleChat = () => {
@@ -28,7 +28,6 @@ const ShowingChat = ({ mode, chatMessages, chatRules, chatFilteredWords }) => {
         <div className={classes["chat"]}>
           <Chat
             mode={mode}
-            chatMessages={chatMessages}
             chatRules={chatRules}
             chatFilteredWords={chatFilteredWords}
             toggleChat={toggleChat}

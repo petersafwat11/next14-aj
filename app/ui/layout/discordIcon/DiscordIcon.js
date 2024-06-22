@@ -8,7 +8,9 @@ const DiscordIcon = () => {
   useEffect(() => {
     const getLink = async () => {
       const links = await axios.get(`${process.env.BACKEND_SERVER}/links`);
-      const discordLink = links?.data?.data?.data[0].social?.discord;
+      const discordLink = links?.data?.data?.data
+        ? links?.data?.data?.data[0]?.social?.discord
+        : "/";
       setDiscordLink(discordLink);
     };
     getLink();

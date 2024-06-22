@@ -45,6 +45,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
 import { scrollToBottom } from "../../chat/chatFunctions";
+import { useDebouncedCallback } from "use-debounce";
 // import Popup from "../../popupWrapper/Popup";
 // import TagUsers from "./tagUsers/TagUsers";
 
@@ -257,7 +258,7 @@ const Chat = ({
       setTimeout(() => {
         setIsSending(false);
       }, 500);
-      scrollToBottom(lastMessageRef);
+      scrollToBottom(messagesRef);
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(true);
         setTimeout(() => {
@@ -267,7 +268,7 @@ const Chat = ({
     } catch (err) {
       console.log("error", err);
     }
-  },700);
+  }, 700);
   const handleClick = useDebouncedCallback(async () => {
     try {
       await ensureConnected();
@@ -298,7 +299,7 @@ const Chat = ({
 
       setIsSending(true);
       setTimeout(() => {
-        scrollToBottom(lastMessageRef);
+        scrollToBottom(messagesRef);
         setIsSending(false);
       }, 500);
 
@@ -312,7 +313,7 @@ const Chat = ({
     } catch (err) {
       console.log("error", err);
     }
-  },700);
+  }, 700);
   const rulesVisability = () => {
     setShowRules(false);
   };
@@ -364,7 +365,7 @@ const Chat = ({
   };
 
   useEffect(() => {
-    if (!socket.current) {
+    if (!socket.current || !socket?.current?.connected) {
       socket.current = io(`${process.env.STATIC_SERVER}`, {
         autoConnect: false,
         reconnection: true,
@@ -374,32 +375,34 @@ const Chat = ({
       });
 
       socket.current.connect();
-
-      socket.current.on("connect", () => {
-        console.log("Connected to socket server");
-      });
-
-      socket.current.on("disconnect", () => {
-        console.log("Disconnected from socket server");
-      });
-
-      socket.current.on("chat message English (Default)", (msg) => {
-        console.log("Message received", msg);
-        setMessages((prevState) => [...prevState, msg]);
-        scrollToBottom(lastMessageRef);
-      });
-
-      socket.current.on("chat mode", (data) => {
-        setChatMode(data);
-      });
-
-      socket.current.on("chat poll", (data) => {
-        setPolls(data);
-        const remaining = getTimeRemainingInMinutes(data[0]?.createdAt, data[0]?.time);
-        setPollsRemainingTime(remaining);
-        console.log("Chat poll updated", data);
-      });
     }
+    socket.current.on("connect", () => {
+      console.log("Connected to socket server");
+    });
+
+    socket.current.on("disconnect", () => {
+      console.log("Disconnected from socket server");
+    });
+
+    socket.current.on("chat message English (Default)", (msg) => {
+      console.log("Message received", msg);
+      setMessages((prevState) => [...prevState, msg]);
+      scrollToBottom(messagesRef);
+    });
+
+    socket.current.on("chat mode", (data) => {
+      setChatMode(data);
+    });
+
+    socket.current.on("chat poll", (data) => {
+      setPolls(data);
+      const remaining = getTimeRemainingInMinutes(
+        data[0]?.createdAt,
+        data[0]?.time
+      );
+      setPollsRemainingTime(remaining);
+      console.log("Chat poll updated", data);
+    });
 
     // Clean up the socket connection when the component unmounts
     return () => {
@@ -407,7 +410,7 @@ const Chat = ({
         socket.current.disconnect();
       }
     };
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     setMessage({
@@ -459,11 +462,11 @@ const Chat = ({
           params: {
             limit: 10,
             room: "English (Default)",
-            sort: { _id: -1 },
+            sort: { createdAt: -1 },
             mode: "normal",
           },
         });
-        setMessages(response?.data?.data?.data.reverse());
+        setMessages(response?.data?.data?.data?.reverse());
 
         setPolls(chatPolls?.data?.data);
         const remaining = getTimeRemainingInMinutes(

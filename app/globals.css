@@ -320,7 +320,9 @@ button {
 
 .slick-slider {
   width: 100% !important;
+  display: flex !important;
 }
+
 .slick-track {
   display: flex !important;
   align-items: center;

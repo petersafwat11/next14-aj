@@ -41,14 +41,6 @@ const Page = async ({ searchParams }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatRules`),
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatMode`),
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
-    axios.get(`${process.env.BACKEND_SERVER}/chat`, {
-      params: {
-        limit: 10,
-        room: "English (Default)",
-        mode: "normal",
-        sort: { createdAt: -1 },
-      },
-    }),
     axios.get(`${process.env.BACKEND_SERVER}/channels`, {
       params: {
         page: 1,
@@ -63,20 +55,13 @@ const Page = async ({ searchParams }) => {
   ])
     .then((responses) => {
       // responses is an array of axios responses
-      const [
-        chatRules,
-        chatMode,
-        chatFilteredWords,
-        chatMessages,
-        channelsData,
-        links,
-      ] = responses;
+      const [chatRules, chatMode, chatFilteredWords, channelsData, links] =
+        responses;
 
       // Access the data from each response
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const messagesData = chatMessages.data?.data?.data;
       const channels = channelsData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
@@ -84,7 +69,6 @@ const Page = async ({ searchParams }) => {
         rulesData,
         modeData,
         filteredWordsData,
-        messagesData,
         channels,
         social,
         banners,
@@ -113,7 +97,6 @@ const Page = async ({ searchParams }) => {
     <div className={classes["page"]}>
       <ShowingChat
         mode={data?.modeData}
-        chatMessages={data?.messagesData}
         chatRules={data?.rulesData}
         chatFilteredWords={data?.filteredWordsData}
       />
@@ -140,7 +123,6 @@ const Page = async ({ searchParams }) => {
             reportData={{ event: playingServerName, server: "Server 1" }}
             social={data?.social}
             mode={data?.modeData}
-            chatMessages={data?.messagesData}
             chatRules={data?.rulesData}
             chatFilteredWords={data?.filteredWordsData}
             url={playingServer}
