@@ -22,9 +22,6 @@ const Message = memo(function Message({
     >
       <div className={classes["user-image"]}>
         <Image
-          // onClick={() => {
-          //   console.log("usernames", message?.username, username);
-          // }}
           className={classes["user-icon"]}
           src={
             message?.image?.startsWith("user")

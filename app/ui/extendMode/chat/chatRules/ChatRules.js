@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./chatRules.module.css";
 const ChatRules = ({ data, rulesVisability }) => {
-  console.log("chat-rules", data);
   return (
     <div className={classes["wrapper"]}>
       <div className={classes["container"]}>

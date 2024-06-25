@@ -9,14 +9,11 @@ const MatchSummery = ({ customAPi }) => {
   const changeCategory = (category) => {
     setCategory(category);
   };
-  console.log("customAPi", customAPi);
   let headerItems = [];
   if (customAPi.mainEvent.checked === true) {
     headerItems.push("MAIN EVENT");
-    console.log("main");
   }
   if (customAPi.booxingfighters.checked === true) {
-    console.log("fighter");
     headerItems.push("FIGHTERS");
   }
 

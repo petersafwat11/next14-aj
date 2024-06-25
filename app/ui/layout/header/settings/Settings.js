@@ -50,7 +50,7 @@ const Settings = ({ toggleSettings }) => {
     }
 
     function error() {
-      console.log("Unable to retrieve your location");
+      // console.log("Unable to retrieve your location");
     }
 
     function handleLocationClick() {
@@ -60,23 +60,17 @@ const Settings = ({ toggleSettings }) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             // setLocation({ latitude, longitude });
-            console.log(
-              `Latitude: ${latitude}, Longitude: ${longitude}, ${position}`
-            );
-            console.dir(position);
           },
           () => {
             console.log("Unable to retrieve your location");
           }
         );
-        console.log("call is made");
       } else {
         console.log("Geolocation not supported");
       }
     }
 
     handleLocationClick();
-    console.log("ddaata", location, weather);
   }, [location, weather]);
   return (
     <div className={classes["container"]}>
@@ -134,7 +128,6 @@ export const SettingOption = ({
   activeSelection,
   onClick,
 }) => {
-  console.log("options", options);
   return (
     <div className={classes["setting-option"]}>
       <p className={classes["label"]}>{type}</p>

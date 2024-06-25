@@ -3,7 +3,6 @@ import React from "react";
 import classes from "./matches.module.css";
 
 const Matches = ({ type, groupData }) => {
-  console.log("matches data", groupData);
   return (
     <div className={classes["matches"]}>
       {groupData.map((itemData, index) => {

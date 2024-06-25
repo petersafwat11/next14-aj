@@ -76,7 +76,6 @@ const ContactForm = () => {
       dispatchData({ type: "RESET" });
       toggleThanksMessage();
 
-      console.log("response", response);
     } catch (error) {
       //notify
       console.log("error-here", error);

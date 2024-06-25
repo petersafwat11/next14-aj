@@ -68,7 +68,6 @@ const Staduim = ({ data }) => {
       secondTeam: option,
     });
   };
-  console.log("data", data);
   return (
     <div className={classes["container"]}>
       <div className={classes["right"]}>

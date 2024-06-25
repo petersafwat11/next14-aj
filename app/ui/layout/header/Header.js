@@ -9,7 +9,6 @@ import Popup from "../../popupWrapper/Popup";
 const Header = () => {
   const [showSettings, setShowSettings] = useState();
   const toggleSettings = () => {
-    console.log("clicked");
     setShowSettings(!showSettings);
   };
 

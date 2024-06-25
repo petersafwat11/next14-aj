@@ -17,8 +17,6 @@ const Statistics = async () => {
       },
     }
   );
-  console.log("datat", response?.data?.data);
-
   return (
     <div>
       <Wrapper data={response?.data?.data} />

@@ -50,7 +50,6 @@ const Wrapper = ({ data }) => {
       `${process.env.BACKEND_SERVER}/statistics/${type}`,
       { params: query }
     );
-    console.log("response ", response.data);
     if (type === "standings") {
       setStandingsData(response?.data?.data);
     } else {
@@ -77,7 +76,6 @@ const Wrapper = ({ data }) => {
   };
   const showMoreHandeler = async () => {
     await getleagueData(leagueActive, statisticsType, requiredWeekData + 1);
-    console.log("show more clicked");
     setRequiredWeekData(requiredWeekData + 1);
   };
   return (

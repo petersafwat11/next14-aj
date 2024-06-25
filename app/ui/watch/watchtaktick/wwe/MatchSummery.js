@@ -13,7 +13,6 @@ const MatchSummery = ({
   firstTeamName,
   customAPi,
 }) => {
-  console.log("customAPi", customAPi);
   //wweFighters: {…}, featuredFighters
   const [category, setCategory] = useState("VENUE");
   const changeCategory = (category) => {

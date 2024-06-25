@@ -26,14 +26,12 @@ const WhoWillWin = ({ data, query }) => {
         poll: response?.data?.poll,
         totalVotes: response?.data?.poll?.totalVotes,
       });
-      console.log("response", response);
       // Set the cookie with the calculated expiration date
       const cookieData = { voteValue: voteValue, ...response.data };
       Cookies.set(cookieName, JSON.stringify(cookieData), {
         expires: 10,
       });
 
-      console.log("made vote", response.data);
     } catch (error) {
       console.log("error: ", error);
     }
@@ -44,8 +42,6 @@ const WhoWillWin = ({ data, query }) => {
     if (!stringfyCookie) {
       return;
     }
-    console.log("cookieName", cookieName);
-    console.log("stringfyCookie", stringfyCookie);
     setSelectedValue(stringfyCookie?.voteValue);
     setPollsData({
       poll: stringfyCookie?.poll,

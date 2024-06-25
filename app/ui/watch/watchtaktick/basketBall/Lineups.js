@@ -8,7 +8,6 @@ const Lineups = ({ data }) => {
   const changeCategory = (option) => {
     setOption(option);
   };
-  console.log("data", data);
   const awaySubstitutePlayers =
     data?.away?.players?.filter((player) => player.substitute === true) || [];
   const homeSubstitutePlayers =

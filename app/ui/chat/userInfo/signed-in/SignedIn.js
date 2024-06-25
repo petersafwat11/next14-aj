@@ -53,7 +53,6 @@ const SignedIn = ({ session, toggleChangeUserName, AJUser, toggleUserInf }) => {
         </p>
         <button
           onClick={() => {
-            console.log("signout");
             if (websiteLoginUser) {
               toggleUserInf();
               return Cookies.remove("user");

@@ -18,7 +18,6 @@ const StepsWrapper = ({ followUs, dispatchAction, allSocial }) => {
   const [id, setId] = useState(null);
   const handNext = (val) => {
     const { email, fullName } = followUs.userInfo;
-    console.log(email, fullName);
 
     if (!email || !fullName) {
       return setErrMessage("please enter the required data");
@@ -28,7 +27,6 @@ const StepsWrapper = ({ followUs, dispatchAction, allSocial }) => {
         "please enter a vaild email and fullname more than 6 charactars"
       );
     }
-    console.log(val);
     setCurrentStep(val);
   };
   const handleStepChange = async (val) => {
@@ -51,7 +49,6 @@ const StepsWrapper = ({ followUs, dispatchAction, allSocial }) => {
         `${process.env.BACKEND_SERVER}/giveaway/folllower`,
         data
       );
-      console.log("response", response);
       setId(response?.data?.data?.data?.id);
       setCurrentStep(val);
     } catch (error) {

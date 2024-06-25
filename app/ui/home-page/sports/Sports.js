@@ -23,7 +23,6 @@ const Sports = () => {
     }
     replace(`/?${params.toString()}`);
   };
-  console.log('searchParams.get("category")', searchParams.get("category"));
   return (
     <section ref={SportsContainerRef} className={classes["sports"]}>
       <div

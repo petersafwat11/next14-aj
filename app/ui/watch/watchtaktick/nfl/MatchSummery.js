@@ -195,7 +195,6 @@ const MatchSummery = ({
             },
           ];
 
-          console.log("useableData", useableData);
           setStatsData(useableData);
         } catch (err) {
           console.log("error", err);

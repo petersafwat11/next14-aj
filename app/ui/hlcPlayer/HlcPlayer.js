@@ -153,7 +153,6 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
   };
 
   useEffect(() => {
-    console.log(url);
     const p2pConfig = {
       // Other p2pConfig options if applicable
     };
@@ -204,7 +203,6 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
       {!palying && (
         <div
           onClick={() => {
-            console.log("clicked");
             playVideo();
           }}
           ref={videoIConRef}

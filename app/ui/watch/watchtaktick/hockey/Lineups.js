@@ -15,7 +15,6 @@ const Lineups = ({ data, firstTeamName, secondTeamName }) => {
   const secondTeamAlternativePlayers = data
     ? data?.away?.players?.slice(6)
     : null;
-  // console.log("lineups", data);
   return data !== null ? (
     <div className={classes["container"]}>
       <Staduim data={data} />

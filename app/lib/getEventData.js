@@ -17,6 +17,5 @@ export async function fetchEventData(
       },
     }
   );
-  console.log(dataFetched);
   return dataFetched;
 }

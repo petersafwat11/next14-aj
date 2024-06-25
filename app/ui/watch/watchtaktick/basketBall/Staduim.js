@@ -25,8 +25,6 @@ const Staduim = ({ data, awaySubstitutePlayers, homeSubstitutePlayers }) => {
     "nine",
     "ten",
   ];
-  console.log("away", homePlayingPlayers);
-  console.log("home", awayPlayingPlayers);
   const changeFirstTeamOptions = (option) => {
     setAlternativePlayers({
       firstTeam: option,

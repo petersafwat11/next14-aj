@@ -8,9 +8,6 @@ const SelectColor = ({
   color,
   setColor,
 }) => {
-  useEffect(() => {
-    console.log(color, "color");
-  }, [color]);
   return (
     <div className={classes["container"]}>
       <p className={classes["username text"]}>Username colour </p>
@@ -31,7 +28,6 @@ const SelectColor = ({
             key={index}
             onClick={() => {
               setColor(colorItem);
-              console.log("color-selected", colorItem);
             }}
             style={{ backgroundColor: colorItem }}
             className={classes["color-selector"]}

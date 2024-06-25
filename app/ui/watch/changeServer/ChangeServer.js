@@ -9,7 +9,6 @@ const ChangeServer = ({
   handleChangeServers,
   toggleServers,
 }) => {
-  console.log("langOtherServersAvailable", langOtherServersAvailable);
   return (
     <div className={classes["container"]}>
       <div className={classes["servers"]}>

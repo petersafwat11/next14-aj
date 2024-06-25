@@ -13,7 +13,6 @@ const Staduim = ({ data }) => {
     "seven",
     "eight",
   ];
-  console.log("data stad", data);
   return (
     <div className={classes["stadium"]}>
       {data.firstTeam.players.map((player, index) => (

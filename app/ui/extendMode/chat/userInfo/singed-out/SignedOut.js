@@ -44,7 +44,6 @@ const SignedOut = ({
     // Perform sign-in
     signIn(provider, { redirect: false }).then((response) => {
       // Handle the response (optional)
-      console.log(response);
       // Close the popup window
       //   popup.close();
     });

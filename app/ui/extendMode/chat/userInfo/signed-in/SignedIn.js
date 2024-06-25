@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 import Cookies from "js-cookie";
 
 const SignedIn = ({ session, selectedAvatar, AJUser, toggleUserInf }) => {
-  console.log("user", JSON.parse(AJUser));
   const websiteLoginUser = AJUser ? JSON.parse(AJUser) : null;
   return (
     <div className={classes["container"]}>
@@ -46,7 +45,6 @@ const SignedIn = ({ session, selectedAvatar, AJUser, toggleUserInf }) => {
         </p>
         <button
           onClick={() => {
-            console.log("signout");
             if (websiteLoginUser) {
               toggleUserInf();
               return Cookies.remove("user");

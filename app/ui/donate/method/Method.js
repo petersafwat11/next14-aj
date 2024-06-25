@@ -21,7 +21,6 @@ const Method = ({ name, width, height, data }) => {
       show: !donationPopup.show,
       method: method,
     });
-    console.log("method", method);
   };
   return (
     <>

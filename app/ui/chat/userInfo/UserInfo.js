@@ -33,7 +33,6 @@ const UserInfo = ({
         `${process.env.BACKEND_SERVER}/users/regulrUsers/tempMail`,
         { name: websiteLoginUser.name }
       );
-      console.log("confirmName", confirmName);
       if (websiteLoginUser) {
         setAJUser(null);
         return Cookies.remove("user");
@@ -49,10 +48,8 @@ const UserInfo = ({
         `${process.env.BACKEND_SERVER}/users/regulerUsers/tempMail/checkAvailability`,
         { name: val }
       );
-      console.log(response);
       setLoodinguserNameAvailability(false);
       setNotValid(false);
-      console.log(loodinguserNameAvailability);
     } catch (err) {
       setNotValid(true);
       setLoodinguserNameAvailability(false);
@@ -67,7 +64,6 @@ const UserInfo = ({
       setStartTyping(false);
     }
     setLoodinguserNameAvailability(true);
-    console.log(loodinguserNameAvailability);
     if (typingTimeout) {
       clearTimeout(typingTimeout);
     }
@@ -99,15 +95,12 @@ const UserInfo = ({
       Cookies.set("user", JSON.stringify(confirmName.data.data.user), {
         expires: 1,
       });
-      console.log("new user", confirmName?.data?.data?.user);
       setColor(confirmName?.data?.data?.user?.color);
-      console.log("user", confirmName.data.data.user);
       toggleUserInf();
     } catch (err) {
       console.log("err happend please try again later", err);
     }
   };
-  // console.log("selectedAvatar", selectedAvatar);
 
   return (
     <div className={classes["user-info"]}>

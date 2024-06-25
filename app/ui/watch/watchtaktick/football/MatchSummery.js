@@ -73,7 +73,6 @@ const MatchSummery = ({
           setStatsData(useableData);
           setLineupsData(lineups?.data?.data);
           setEventsData(events?.data?.data);
-          console.log("events", events?.data?.data);
         } catch (err) {
           console.log("error", err);
         }

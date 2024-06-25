@@ -8,7 +8,6 @@ const StreamNotAvailable = ({ eventDate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime(calcRemainingTime(eventDate));
-      console.log("eventDate", eventDate, remainingTime);
     }, 1000);
 
     return () => clearInterval(interval);

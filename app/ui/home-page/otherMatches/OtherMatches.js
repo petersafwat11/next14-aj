@@ -6,7 +6,6 @@ import classes from "./otherMatches.module.css";
 import NoMatches from "../noMatches/NoMatches";
 const OtherMatches = ({ data, searchValue, sportCategory }) => {
   const [otherMatches, setOtherMatches] = useState(data?.matches?.data);
-  console.log("data", data?.total, otherMatches.length);
   useEffect(() => {
     setOtherMatches(data?.matches?.data);
   }, [data]);

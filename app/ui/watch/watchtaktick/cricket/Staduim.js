@@ -48,11 +48,6 @@ const Staduim = ({ data, option }) => {
       return true; // Include other players
     });
 
-  console.log(
-    "firstTeamOtherPlayer",
-    firstTeamfilteredArray,
-    secondTeamfilteredArray
-  );
   return (
     <div className={classes["stadium"]}>
       {option === 1 ? (

@@ -18,7 +18,6 @@ const UserInfo = ({
   color,
 }) => {
   const { data: session, status } = useSession();
-  console.log("session", session);
   const [loodinguserNameAvailability, setLoodinguserNameAvailability] =
     useState(false);
   const [startTyping, setStartTyping] = useState(false);
@@ -32,10 +31,8 @@ const UserInfo = ({
         `${process.env.BACKEND_SERVER}/users/regulerUsers/tempMail/checkAvailability`,
         { name: val }
       );
-      console.log(response);
       setLoodinguserNameAvailability(false);
       setNotValid(false);
-      console.log(loodinguserNameAvailability);
     } catch (err) {
       setNotValid(true);
       console.log("err happend please try again later", err);
@@ -49,7 +46,6 @@ const UserInfo = ({
       setStartTyping(false);
     }
     setLoodinguserNameAvailability(true);
-    console.log(loodinguserNameAvailability);
     if (typingTimeout) {
       clearTimeout(typingTimeout);
     }
@@ -74,13 +70,11 @@ const UserInfo = ({
       Cookies.set("user", JSON.stringify(confirmName.data.data.user), {
         expires: 1,
       });
-      console.log("user", confirmName.data.data.user);
       toggleUserInf();
     } catch (err) {
       console.log("err happend please try again later", err);
     }
   };
-  console.log("selectedAvatar", selectedAvatar);
 
   return (
     <div className={classes["user-info"]}>

@@ -25,7 +25,6 @@ const Poll = ({ polls }) => {
         poll: response?.data?.poll,
         totalVotes: response?.data?.poll?.totalVotes,
       });
-      console.log("response", response);
       const expirationDate = new Date(
         new Date().getTime() + remainingTime * 60000
       ); // Convert minutes to milliseconds
@@ -36,7 +35,6 @@ const Poll = ({ polls }) => {
         expires: expirationDate,
       });
 
-      console.log("made vote", response.data);
     } catch (error) {
       console.log("error: ", error);
     }

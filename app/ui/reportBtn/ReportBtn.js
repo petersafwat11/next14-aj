@@ -22,7 +22,6 @@ const ReportBtn = ({ reportData }) => {
 
   const toggleReport = () => {
     setShowReport(!showReport);
-    // console.log("pathname", pathname);
   };
   const toggleThanksMessage = () => {
     setShowThanksMessage(!showThanksMessage);

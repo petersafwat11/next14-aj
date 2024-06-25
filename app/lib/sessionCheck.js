@@ -6,8 +6,6 @@ export const checkSessionValidty = (sessionDate) => {
   // Check session expiration
   const isSessionExpired = new Date() > new Date(sessionDate);
   if (isSessionExpired) {
-    console.log("expired session");
-
     return false;
   }
   return true;

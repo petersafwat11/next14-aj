@@ -78,8 +78,8 @@ const Page = async ({ params }) => {
   const matchData = data?.event?.data?.data;
   const servers = changeServersFormat(matchData?.servers);
   const playingServer = {
-    server: servers[0][Object.keys(servers[0])][0],
-    lang: Object.keys(servers[0])[0],
+    server: servers ? servers[0][Object.keys(servers[0])][0] : null,
+    lang: servers ? Object.keys(servers[0])[0] : null,
   };
   const live = determineLive(matchData?.eventDate);
 

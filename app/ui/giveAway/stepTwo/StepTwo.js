@@ -9,7 +9,6 @@ const StepTwo = ({ joinWebsiteGroup, allSocial, sendUserData }) => {
     joinWebsiteGroup.text === "Telegram"
       ? allSocial?.telegram
       : allSocial?.twitter;
-  console.log("related link", relatedLink, joinWebsiteGroup.text, allSocial);
   const pathname = usePathname();
   const shareUrl = `${process.env.FRONTEND_SERVER}${pathname}`;
   const quote = "Check out this awesome content!";

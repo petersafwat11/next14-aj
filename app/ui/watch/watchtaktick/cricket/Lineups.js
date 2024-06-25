@@ -11,7 +11,6 @@ const Lineups = ({ data }) => {
     setOption(option);
   };
   useEffect(() => {
-    console.log("option", option);
   }, [option]);
   return data !== null ? (
     <div className={classes["container"]}>

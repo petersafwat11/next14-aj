@@ -135,7 +135,6 @@ const Chat = ({
           },
         }
       );
-      console.log("response1", response);
 
       if (userFromCookies) {
         const pasedData = JSON.parse(userFromCookies);
@@ -146,7 +145,6 @@ const Chat = ({
         Cookies.remove("user");
         Cookies.set("user", JSON.stringify(newData));
       }
-      console.log("response2", response);
       setMessage({ ...message, color: response?.data?.user?.color });
       setShowUsernameColor(!showUsernameColor);
       toggleUserInf();
@@ -159,7 +157,6 @@ const Chat = ({
 
   const selectAvatar = async (avatar) => {
     if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
-      console.log("anon", avatar);
       setMessage({ ...message, image: avatar });
 
       setChangeAvatar(!changeAvatar);
@@ -181,19 +178,16 @@ const Chat = ({
         }
       );
       if (userFromCookies) {
-        console.log("userFromCookies", userFromCookies);
         const parsedData = JSON.parse(userFromCookies);
         const newData = {
           ...parsedData,
           image: avatar,
         };
         Cookies.remove("user");
-        console.log("newData", newData);
 
         Cookies.set("user", JSON.stringify(newData));
       }
 
-      console.log("response", response);
       setMessage({ ...message, image: response?.data?.user?.image });
       toggleUserInf();
       setChangeAvatar(!changeAvatar);
@@ -234,13 +228,9 @@ const Chat = ({
       });
       socket.current.emit(
         "chat message English (Default)",
-        response?.data.message,
-        (ack) => {
-          console.log("Acknowledgement from server:", ack);
-        }
+        response?.data.message
       );
 
-      console.log("response?.data.message", response?.data?.message);
 
       setMessages((prevState) => {
         return [...prevState, response?.data.message];
@@ -266,7 +256,6 @@ const Chat = ({
 
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
-        console.log("still remaining time ");
         return;
       }
       // const messageDestructure = { ...message };
@@ -275,10 +264,7 @@ const Chat = ({
       });
       socket.current.emit(
         "chat message English (Default)",
-        response?.data.message,
-        (ack) => {
-          console.log("Acknowledgement from server:", ack);
-        }
+        response?.data.message
       );
       setMessages((prevState) => {
         return [...prevState, response?.data.message];
@@ -320,7 +306,6 @@ const Chat = ({
   };
   const setMentionSomeone = (mention) => {
     // setMentions((prevState)=>[...prevState, mention]);
-    console.log("mention", mention);
     if (message?.message?.includes(`@${mention}`)) {
       return;
     }
@@ -332,7 +317,6 @@ const Chat = ({
 
         const taggedName = match[0];
         const indexOfLastSpace = taggedName.lastIndexOf(" ");
-        console.log("indexOfLastSpace", indexOfLastSpace);
         if (indexOfLastSpace === -1) {
           return { ...prevState, message: `${prevState.message} @${mention} ` };
         } else {
@@ -341,7 +325,6 @@ const Chat = ({
             prevState.message.slice(0, indexOfLastSpace + 1) +
             `@${mention} ` +
             prevState.message.slice(indexOfLastSpace + 1);
-          console.log("modifiedString", modifiedString);
           return { ...prevState, message: modifiedString };
         }
       }
@@ -396,7 +379,6 @@ const Chat = ({
     });
 
     socket.current.on("chat message English (Default)", (msg) => {
-      console.log("Message received", msg);
       setMessages((prevState) => [...prevState, msg]);
       scrollToBottom(lastMessageRef);
     });
@@ -412,7 +394,6 @@ const Chat = ({
         data[0]?.time
       );
       setPollsRemainingTime(remaining);
-      console.log("Chat poll updated", data);
     });
 
     // Clean up the socket connection when the component unmounts
@@ -447,10 +428,8 @@ const Chat = ({
         const chatMode = await axios.get(
           `${process.env.BACKEND_SERVER}/chat/chatMode`
         );
-        console.log("chatPolls?.data?.data", chatPolls?.data?.data);
         setChatMode(chatMode?.data?.data?.data[0]);
         setPolls(chatPolls?.data?.data?.data || []);
-        // console.log("chat polls", chatPolls?.data?.data);
       } catch (error) {
         console.log(error);
       }

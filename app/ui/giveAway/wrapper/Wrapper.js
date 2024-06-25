@@ -15,7 +15,6 @@ const Popup = dynamic(() => import("../../popupWrapper/Popup"), {
 import PageTitle from "../../pageTitle/PageTitle";
 
 const followUsReducer = (state, action) => {
-  console.log("state", state);
   if (action.type === "INTIATOR") {
     return {
       ...state,
@@ -36,7 +35,6 @@ const followUsReducer = (state, action) => {
 };
 
 const Wrapper = ({ entries, eventData, allSocial }) => {
-  console.log(entries);
   const [followUs, dispatchAction] = useReducer(followUsReducer, {
     display: false,
     indicatorsNum: null,

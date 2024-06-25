@@ -28,7 +28,6 @@ const CropImage = ({
 
   const cropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
-    console.log("croppedAreaPixels", croppedAreaPixels);
   };
 
   const cropImage = async () => {
@@ -55,14 +54,12 @@ const CropImage = ({
         }
       );
       if (userFromCookies) {
-        console.log("userFromCookies", userFromCookies);
         const parsedData = JSON.parse(userFromCookies);
         const newData = {
           ...parsedData,
           image: response?.data?.user?.image,
         };
         Cookies.remove("user");
-        console.log("newData", newData);
         Cookies.set("user", JSON.stringify(newData));
       }
 

@@ -17,7 +17,6 @@ const TagUsers = ({ setMentionSomeone, toggleTagUsers, activeUsers }) => {
     const filteredusers = searchUsers.filter((user) => {
       return user.includes(name);
     });
-    console.log(filteredusers);
     // setSearchUsers(users);
   };
 

@@ -42,7 +42,6 @@ const Page = async ({ searchParams }) => {
   const session = await getServerSession(authConfig);
 
   const hotMatches = currentEvents?.data?.hotMatches;
-  console.log("hot matches", hotMatches);
 
   const otherMatches = {
     total: currentEvents?.data?.results,

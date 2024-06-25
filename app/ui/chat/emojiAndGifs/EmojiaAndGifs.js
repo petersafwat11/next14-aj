@@ -30,7 +30,6 @@ const EmojiaAndGifs = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const onSelectEmojie = (emoji) => {
-    console.log("emoji", emoji);
     setInputMessage(message + emoji);
   };
   // const customPickerStyles = {

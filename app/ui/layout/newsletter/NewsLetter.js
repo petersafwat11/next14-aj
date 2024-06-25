@@ -14,7 +14,6 @@ const NewsLetter = () => {
           },
         }
       );
-      console.log("form data", formData.get("email"));
     } catch (error) {
       console.log("error", error);
       // notify

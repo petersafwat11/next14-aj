@@ -7,7 +7,6 @@ const ShowMore = ({ query, page, updateState, oldData }) => {
   const [paginationNum, setPaginationNum] = useState(1);
 
   const showMoreHandeler = async () => {
-    console.log("show-more");
     const num = paginationNum;
     setPaginationNum(paginationNum + 1);
     const updatedQuery = {
@@ -20,7 +19,6 @@ const ShowMore = ({ query, page, updateState, oldData }) => {
         `${process.env.BACKEND_SERVER}/${page}`,
         { params: updatedQuery }
       );
-      console.log("response", response.data);
       updateState([...oldData, ...response.data.data.data]);
     } catch (err) {
       console.log("Error: ", err);

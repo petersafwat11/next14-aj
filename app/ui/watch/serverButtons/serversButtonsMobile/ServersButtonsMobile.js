@@ -20,18 +20,15 @@ const ServersButtonsMobile = ({
     setShowChangeServer(!showChangeServer);
   };
   const handleServerClicks = (val, lang) => {
-    console.log(val);
     if (notLive) {
       setStreamNotAvailable(!streamNotAvailable);
       return;
     }
     toggleServers();
     setlangOtherServersAvailable({ servers: val[Object.keys(val)[0]], lang });
-    console.log(val[Object.keys(val)[0]]);
   };
   const handleChangeServers = (val, lang) => {
     toggleServers();
-    console.log("val", val, lang);
     setPlayingServer({ server: val, lang });
   };
   useEffect(() => {

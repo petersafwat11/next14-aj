@@ -13,7 +13,6 @@ export const metadata = {
 
 
 const Page = async ({ params }) => {
-  console.log("params", params.name);
   const newsURL = params.name;
   const newsTitle = newsURL.replace(/%20|-/g, " ");
   const response = await axios.get(

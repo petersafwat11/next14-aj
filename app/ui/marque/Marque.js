@@ -30,8 +30,6 @@ const Marque = () => {
     "soon.",
     "",
   ];
-  //  domainsResponse?.data?.data?.data[0]?.domains?.split(" ");
-  // console.log("domains", domains);
 
   return (
     <div className={classes["wrapper"]}>
