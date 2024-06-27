@@ -156,33 +156,50 @@ const HlcPlayer = ({ url, notRounded, videoRef }) => {
     const p2pConfig = {
       // Other p2pConfig options if applicable
     };
-    if (Hls.isSupported() && url) {
-      const hls = new Hls({
-        maxBufferSize: 0, // Highly recommended setting in live mode
-        maxBufferLength: 25, // Highly recommended setting in live mode
-        liveSyncDurationCount: 10, // Highly recommended setting in live mode
-      });
-      p2pConfig.hlsjsInstance = hls;
-      new P2pEngineHls(p2pConfig);
-      hls.loadSource(url);
-      hls.attachMedia(videoRef.current);
-    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-      videoRef.current.src = url;
+
+    const handleError = (error) => {
+      console.error("Error occurred:", error);
+    };
+
+    try {
+      if (Hls.isSupported() && url) {
+        const hls = new Hls({
+          maxBufferSize: 0, // Highly recommended setting in live mode
+          maxBufferLength: 25, // Highly recommended setting in live mode
+          liveSyncDurationCount: 10, // Highly recommended setting in live mode
+        });
+
+        p2pConfig.hlsjsInstance = hls;
+        new P2pEngineHls(p2pConfig);
+
+        hls.loadSource(url);
+        hls.attachMedia(videoRef.current);
+
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          handleError(data);
+        });
+      } else if (
+        videoRef.current.canPlayType("application/vnd.apple.mpegurl")
+      ) {
+        videoRef.current.src = url;
+      }
+
+      videoRef.current.setAttribute("playsinline", "");
+      videoRef.current.setAttribute("webkit-playsinline", "true");
+
+      setPlaying(false);
+    } catch (error) {
+      handleError(error);
     }
-    videoRef.current.setAttribute("playsinline", "");
-    videoRef.current.setAttribute("webkit-playsinline", "");
-
-    setPlaying(false);
-  }, [url, videoRef]);
-
+  }, [url, videoRef, setPlaying]);
   return (
     <div
       style={{ background: "#0d1317" }}
       className={classes["video-container"]}
     >
       <video
-        webkit-playsinline
-        playsinline
+        // webkit-playsinline
+        playsInline
         // poster="/wallpaper/main.jpg"
         controlsList="noplaybackrate"
         className={
