@@ -25,9 +25,10 @@ const Page = async ({ searchParams }) => {
   const filterValue = searchParams?.filter;
   const channalActive = searchParams?.channel?.replace(/-/g, " ");
   let queryChannel = null;
+  let queryStreamLink = null;
   if (channalActive) {
-    queryChannel = await axios.get(
-      `${process.env.BACKEND_SERVER}/channels/channelName`,
+    queryStreamLink = await axios.get(
+      `${process.env.BACKEND_SERVER}/streamlink/StreamLinkName`,
       {
         params: {
           mode: "Visible",
@@ -51,25 +52,44 @@ const Page = async ({ searchParams }) => {
         or: ["channelName"],
       },
     }),
+    axios.get(`${process.env.BACKEND_SERVER}/streamlink`, {
+      params: {
+        page: 1,
+        limit: 8,
+        mode: "Visible",
+        language: filterValue,
+        searchValue: searchValue,
+        or: ["channelName"],
+      },
+    }),
     axios.get(`${process.env.BACKEND_SERVER}/links`),
   ])
     .then((responses) => {
       // responses is an array of axios responses
-      const [chatRules, chatMode, chatFilteredWords, channelsData, links] =
-        responses;
+      const [
+        chatRules,
+        chatMode,
+        chatFilteredWords,
+        channelsData,
+        streamLinksData,
+        links,
+      ] = responses;
 
       // Access the data from each response
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
       const channels = channelsData.data;
+      const streamLinks = streamLinksData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
+
       return {
         rulesData,
         modeData,
         filteredWordsData,
         channels,
+        streamLinks,
         social,
         banners,
       };
@@ -78,21 +98,36 @@ const Page = async ({ searchParams }) => {
       // Handle any errors that occurred during any of the requests
       console.error("Error in fetching chat resources:", error);
     });
+  // const streamLinks = await axios.get(
+  //   `${process.env.BACKEND_SERVER}/streamlink`,
+  //   {
+  //     params: {
+  //       page: 1,
+  //       limit: 8,
+  //       mode: "Visible",
+  //       language: filterValue,
+  //       searchValue: searchValue,
+  //       or: ["channelName"],
+  //     },
+  //   }
+  // );
+  console.log("queryStreamLink", queryStreamLink?.data);
+
   const channelsServers = {
-    channels: data?.channels?.data?.data,
-    totalResults: data?.channels?.results,
+    channels: data?.streamLinks?.data?.data,
+    totalResults: data?.streamLinks?.results,
   };
+  // console.log("streamLinks", data?.streamLinks);
   // const channelsServers = channelsServer;
   const playingServer =
-    queryChannel?.data?.data?.streamLink?.URL ||
-    data?.channels?.data?.data[0]?.streamLink?.URL ||
+    queryStreamLink?.data?.data?.URL ||
+    data?.streamLinks?.data?.data[0]?.URL ||
     null;
-
   const playingServerName =
-    queryChannel?.data?.data?.channelName ||
-    data?.channels?.data?.data[0]?.channelName ||
+    queryStreamLink?.data?.data?.channelName ||
+    data?.streamLinks?.data?.data[0]?.channelName ||
     null;
-  const langs = data?.channels?.allLanguages;
+  const langs = data?.streamLinks?.allLanguages;
   return (
     <div className={classes["page"]}>
       <ShowingChat

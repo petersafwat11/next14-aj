@@ -27,18 +27,11 @@ const Popup = dynamic(() => import("../../popupWrapper/Popup"), {
   ssr: false,
 });
 
-// import avatars from "./avatarsIterator";
-// import ChangeAvatar from "./changeAvatars/changeAvatar";
 import classes from "./chat.module.css";
 import ChatBody from "./chatBody/ChatBody";
 import ChatBottom from "./chatBottom/ChatBottom";
 import ChatRules from "./chatRules/ChatRules";
 import ChatTop from "./chatTop/ChatTop";
-// import EmojiaAndGifs from "./emojiAndGifs/EmojiaAndGifs";
-// import Poll from "./poll/Poll";
-// import UserInfo from "./userInfo/UserInfo";
-// import { getData } from "@/utils/dashboardTablePagesFunctions";
-// import SelectColor from "./userInfo/selectColor/SelectColor";
 import Cookies from "js-cookie";
 import { useSession } from "next-auth/react";
 import io from "socket.io-client";

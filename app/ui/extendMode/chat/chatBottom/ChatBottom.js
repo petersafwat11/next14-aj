@@ -15,19 +15,19 @@ const ChatBottom = ({
   inputRef,
   setInputActive
 }) => {
-  const [showTagUsers, setShowTagUsers] = useState(false);
+  // const [showTagUsers, setShowTagUsers] = useState(false);
 
-  const toggleTagUsers = () => {
-    setShowTagUsers(!showTagUsers);
-  };
+  // const toggleTagUsers = () => {
+  //   setShowTagUsers(!showTagUsers);
+  // };
   return (
     <div id="chat-bottom" className={classes["chat-bottom"]}>
-      {showTagUsers && (
+      {/* {showTagUsers && (
         <TagUsers
           setMentionSomeone={setMentionSomeone}
           toggleTagUsers={toggleTagUsers}
         />
-      )}
+      )} */}
       <div className={classes["icons"]}>
         <div className={classes["user-dev"]}>
           <FaUser onClick={toggleUserInf} className={classes["user-icon"]} />
@@ -45,15 +45,15 @@ const ChatBottom = ({
       onBlur={()=>{setInputActive(false)}}
       
         value={message}
-        onKeyUp={(e) => {
-          if (e.key === "@") {
-            toggleTagUsers();
-          }
-        }}
+        // onKeyUp={(e) => {
+        //   if (e.key === "@") {
+        //     toggleTagUsers();
+        //   }
+        // }}
         onChange={(e) => {
-          if (e.key === "@") {
-            return;
-          }
+          // if (e.key === "@") {
+          //   return;
+          // }
 
           setInputMessage(e.target.value);
         }}

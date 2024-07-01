@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import classes from "./footer.module.css";
+import Social from "./social/Social";
 const Footer = () => {
   const router = useRouter();
   return (
@@ -10,7 +11,12 @@ const Footer = () => {
       <div className={classes["container"]}>
         <div className={classes["footer-container"]}>
           <div className={classes["footer-container-image"]}>
-            <Image src="/svg/layout/footer/logo.svg" alt="logo" width={170} height={126}/>
+            <Image
+              src="/svg/layout/footer/logo.svg"
+              alt="logo"
+              width={170}
+              height={126}
+            />
             <div className={classes["footer-social"]}>
               <div className={classes["footer-social-element"]}>
                 <Image
@@ -228,7 +234,7 @@ const Footer = () => {
                 F.A.Q
               </p>
             </div>
-            <div className={classes["copy-write-social"]}>
+            {/* <div className={classes["copy-write-social"]}>
               <Image
                 src="/svg/layout/footer/facebook.svg"
                 alt="facebook"
@@ -253,7 +259,8 @@ const Footer = () => {
                 width="18"
                 height="18"
               />
-            </div>
+            </div> */}
+            <Social />
           </div>
         </div>
       </div>

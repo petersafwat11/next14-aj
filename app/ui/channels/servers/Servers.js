@@ -73,7 +73,7 @@ const Servers = ({
               searchValue: searchValue,
               or: ["channelName"],
             }}
-            page={"channels"}
+            page={"streamlink"}
             updateState={setServers}
             oldData={servers}
           />

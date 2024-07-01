@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import classes from "./mobile-menu.module.css";
 import Beta from "../beta/Beta";
+import MobileSocial from "./mobileSocial/MobileSocial";
 export const MenuMobile = () => {
   const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = (type) => {
@@ -215,56 +216,7 @@ export const MenuMobile = () => {
               </button>
             </div>
           </div>
-          <div className={classes["social"]}>
-            <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/twitter.svg"
-                alt="twitter-icon"
-                width="19"
-                height="16"
-              />
-            </div>
-            {/* <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/facebook.svg"
-                alt="facebook-icon"
-                width="19"
-                height="19"
-              />
-            </div> */}
-            <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/social.svg"
-                alt="social-icon"
-                width="19"
-                height="19"
-              />
-            </div>
-            {/* <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/insta.svg"
-                alt="insta-icon"
-                width="20"
-                height="19"
-              />
-            </div> */}
-            {/* <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/ticktok.svg"
-                alt="tiktok-icon"
-                width="20"
-                height="20"
-              />
-            </div> */}
-            <div className={classes["social-element"]}>
-              <Image
-                src="/svg/layout/social-icons/telegram.svg"
-                alt="telegram-icon"
-                width="19"
-                height="19"
-              />
-            </div>
-          </div>
+          <MobileSocial />
           <div className={classes["different-leagues"]}>
             <div className={classes["league"]}>
               <Image
