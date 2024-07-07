@@ -7,13 +7,13 @@
 }
 
 .container {
-  overflow: hidden;
+  /* overflow: hidden; */
   min-width: 7.5rem;
   max-width: 25.12rem;
   height: 2.48rem;
   border-radius: 1.84rem;
   background: rgba(13, 19, 23, 0.99);
-  /* position: relative; */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

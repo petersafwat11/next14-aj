@@ -1,0 +1,23 @@
+.footer-social {
+  display: none;
+}
+@media (max-width: 56.25rem) {
+  .footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+  }
+  .footer-social-element {
+    background-color: rgba(78, 78, 78, 0.43);
+    padding: 0.58rem;
+    border-radius: 0.5rem;
+    display: flex;
+  }
+}
+
+@media (max-width: 40.6rem) {
+  .footer-social {
+    width: 100%;
+  }
+}

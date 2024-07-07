@@ -42,21 +42,12 @@ const Page = async ({ searchParams }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatRules`),
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatMode`),
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
-    axios.get(`${process.env.BACKEND_SERVER}/channels`, {
-      params: {
-        page: 1,
-        limit: 8,
-        mode: "Visible",
-        language: filterValue,
-        searchValue: searchValue,
-        or: ["channelName"],
-      },
-    }),
     axios.get(`${process.env.BACKEND_SERVER}/streamlink`, {
       params: {
         page: 1,
         limit: 8,
         mode: "Visible",
+        sort: { channelName: 1 },
         language: filterValue,
         searchValue: searchValue,
         or: ["channelName"],
@@ -66,20 +57,13 @@ const Page = async ({ searchParams }) => {
   ])
     .then((responses) => {
       // responses is an array of axios responses
-      const [
-        chatRules,
-        chatMode,
-        chatFilteredWords,
-        channelsData,
-        streamLinksData,
-        links,
-      ] = responses;
+      const [chatRules, chatMode, chatFilteredWords, streamLinksData, links] =
+        responses;
 
       // Access the data from each response
       const rulesData = chatRules?.data?.data?.data[0].rules;
       const modeData = chatMode?.data?.data?.data[0];
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
-      const channels = channelsData.data;
       const streamLinks = streamLinksData.data;
       const social = links.data?.data?.data[0].social;
       const banners = links.data?.data?.data[0].banners;
@@ -88,7 +72,6 @@ const Page = async ({ searchParams }) => {
         rulesData,
         modeData,
         filteredWordsData,
-        channels,
         streamLinks,
         social,
         banners,

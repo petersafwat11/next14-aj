@@ -9,7 +9,7 @@
 .user-info-top {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   padding-right: 0.6rem;
   gap: 1.5rem;
 }
@@ -112,7 +112,7 @@
   .user-info {
     max-width: min(90%, 24rem);
     border-radius: 1.5rem;
-    padding: 2.43rem 16.3vw 1.68rem;
+    /* padding: 2.43rem 16.3vw 1.68rem; */
   }
   .user-info-top {
     gap: 1.25rem;
@@ -179,7 +179,7 @@
 }
 
 @media (max-width: 390px) {
-  .user-info {
-    padding: 1.82rem 12vw 1.26rem;
+  .user-info-top {
+    gap: 0.5rem;
   }
 }

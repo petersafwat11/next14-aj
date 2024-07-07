@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import classes from "./footer.module.css";
 import Social from "./social/Social";
+import SocailDesktop from "./socialDesktop/SocailDesktop";
 const Footer = () => {
   const router = useRouter();
   return (
@@ -17,7 +18,7 @@ const Footer = () => {
               width={170}
               height={126}
             />
-            <div className={classes["footer-social"]}>
+            {/* <div className={classes["footer-social"]}>
               <div className={classes["footer-social-element"]}>
                 <Image
                   src="/svg/layout/social-icons/twitter.svg"
@@ -66,7 +67,8 @@ const Footer = () => {
                   height="24"
                 />
               </div>
-            </div>
+            </div> */}
+            <SocailDesktop />
           </div>
           <div className={classes["footer-container-disclaimer"]}>
             <h3>Disclaimer</h3>

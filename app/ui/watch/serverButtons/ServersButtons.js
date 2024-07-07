@@ -47,11 +47,10 @@ const ServersButtons = ({
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: servers?.length > 3 ? 4 : servers?.length,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    // servers?.length - 3 > 0 && currentSlide > 0 ? <NextArrow /> : null,
-    prevArrow: <PrevArrow />,
+    nextArrow: servers?.length - 3 > 0 ? <NextArrow /> : null,
+    prevArrow: currentSlide > 0 ? <PrevArrow /> : null,
     afterChange: (current) => {
       setCurrentSlide(current);
     },

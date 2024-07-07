@@ -37,7 +37,7 @@ import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
-import { scrollToBottom } from "../../chat/chatFunctions";
+import { autoLogin, scrollToBottom } from "../../chat/chatFunctions";
 import { useDebouncedCallback } from "use-debounce";
 // import Popup from "../../popupWrapper/Popup";
 // import TagUsers from "./tagUsers/TagUsers";
@@ -233,7 +233,6 @@ const Chat = ({
         response?.data.message
       );
 
-
       setMessages((prevState) => {
         return [...prevState, response?.data.message];
       });
@@ -387,14 +386,24 @@ const Chat = ({
   }, [socket]);
 
   useEffect(() => {
-    setMessage({
-      message: "",
-      image: session?.user?.image || initialAvatar,
-      room: chatRoomSelection,
-      username: session?.user?.name || initialName,
-      color: session?.user?.color || initialColor,
-    });
-  }, [session, chatRoomSelection, initialAvatar, initialName, initialColor]);
+    const ensureLogin = async () => {
+      if (initialName === "anonymous") {
+        const randomUser = await autoLogin();
+
+        const user = randomUser?.data?.data?.user;
+        const { color, name, image } = user;
+        setColor(color);
+        setMessage({
+          message: "",
+          image: image,
+          room: chatRoomSelection,
+          username: name,
+          color: color,
+        });
+      }
+    };
+    ensureLogin();
+  }, [chatRoomSelection, initialName]);
   useEffect(() => {
     const fetchChatData = async () => {
       try {

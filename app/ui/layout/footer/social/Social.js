@@ -23,32 +23,6 @@ const Social = () => {
   }, []);
 
   return (
-    // <div className={classes["copy-write-social"]}>
-    //   <Image
-    //     src="/svg/layout/footer/facebook.svg"
-    //     alt="facebook"
-    //     width="18"
-    //     height="18"
-    //   />
-    //   <Image
-    //     src="/svg/layout/footer/twitter.svg"
-    //     alt="facebook"
-    //     width="18"
-    //     height="18"
-    //   />
-    //   <Image
-    //     src="/svg/layout/footer/insta.svg"
-    //     alt="insta"
-    //     width="18"
-    //     height="18"
-    //   />
-    //   <Image
-    //     src="/svg/layout/footer/telegram.svg"
-    //     alt="telegram"
-    //     width="18"
-    //     height="18"
-    //   />
-    // </div>
     <div className={classes["icons"]}>
       <a
         rel="noreferrer"

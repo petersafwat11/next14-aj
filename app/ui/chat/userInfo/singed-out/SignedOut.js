@@ -87,8 +87,8 @@ const SignedOut = ({
       ) : (
         <p className={classes["username-available"]}>Username available</p>
       )}
-      <p className={classes["continue-text"]}>Or continue with</p>
-      <div className={classes["signin-options"]}>
+      {/* <p className={classes["continue-text"]}>Or continue with</p> */}
+      {/* <div className={classes["signin-options"]}>
         <Image
           onClick={() => {
             popupCenter("/signInFacebbok", "Sample Sign In");
@@ -123,7 +123,7 @@ const SignedOut = ({
           height="36"
           width="36"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

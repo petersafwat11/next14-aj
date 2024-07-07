@@ -321,6 +321,8 @@ button {
 .slick-slider {
   width: 100% !important;
   display: flex !important;
+  justify-content: start;
+  overflow: hidden;
 }
 
 .slick-track {
@@ -333,10 +335,10 @@ button {
 .slick-track > div {
   width: 5.7rem !important;
 }
-/* .slick-arrow.slick-prev,
+.slick-arrow.slick-prev,
 .slick-arrow.slick-next {
   display: none !important;
-} */
+}
 
 /* cutomize hls.js */
 .hls-progress-bar {

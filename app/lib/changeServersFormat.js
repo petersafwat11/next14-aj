@@ -1,7 +1,8 @@
 export const changeServersFormat = (servers) => {
-  if (!servers) {
+  if (!servers || servers.length === 0) {
     return null;
   }
+
   // console.log("server-func", servers);
   const mainservers = [];
   const otherServers = [];
