@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    // FRONTEND_SERVER: "http://localhost:3000",
-    // BACKEND_SERVER: "http://localhost:5000/api",
-    // STATIC_SERVER: "http://localhost:5000",
-    FRONTEND_SERVER: "https://ajsportstv.ch",
-    BACKEND_SERVER: "https://ajsportstv.ch/api",
-    STATIC_SERVER: "https://ajsportstv.ch",
+    FRONTEND_SERVER: "http://localhost:3000",
+    BACKEND_SERVER: "http://localhost:5000/api",
+    STATIC_SERVER: "http://localhost:5000",
+    // FRONTEND_SERVER: "https://ajsportstv.ch",
+    // BACKEND_SERVER: "https://ajsportstv.ch/api",
+    // STATIC_SERVER: "https://ajsportstv.ch",
     NEXT_PUBLIC_MEASUREMENT_ID: "G-Y22CVP987D",
   },
   generateBuildId: async () => {

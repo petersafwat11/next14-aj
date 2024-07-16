@@ -61,7 +61,7 @@ const Servers = ({
           <p>{`there isn't channels avaialbe now`}</p>
         )}
       </div>
-      {channelsServers?.totalResults > servers?.length && (
+      {/* {channelsServers?.totalResults > servers?.length && (
         <div className="show-more-wrapper">
           <ShowMore
             query={{
@@ -78,7 +78,7 @@ const Servers = ({
             oldData={servers}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };

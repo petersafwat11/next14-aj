@@ -44,8 +44,10 @@ const Page = async ({ searchParams }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
     axios.get(`${process.env.BACKEND_SERVER}/streamlink`, {
       params: {
+        // page: 1,
+        // limit: 8,
         page: 1,
-        limit: 8,
+        limit: 0,
         mode: "Visible",
         sort: { channelName: 1 },
         language: filterValue,

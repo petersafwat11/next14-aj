@@ -91,6 +91,17 @@ const WatchVideoBody = ({
       {/* adds scripts */}
       {!extendMode && (
         <>
+          {/* <Script
+            id="aclib"
+            type="text/javascript"
+            src="//acscdn.com/script/aclib.js"
+          ></Script>
+          <Script strategy="lazyOnload" id="script" type="text/javascript">
+            {`  aclib.runAutoTag({
+        zoneId: '55dxca2nau',
+    });`}
+          </Script>
+ */}
           <Script
             type="text/javascript"
             src="//cdn.tapioni.com/asg_embed.js"

@@ -1,11 +1,12 @@
 .wrapper {
   padding: 0;
   margin: 0;
-  background-image: linear-gradient(
+  background-image: linear-gradient(to right bottom, #161f25, #182228);
+  /* linear-gradient(
     to right bottom,
     rgb(16 22 26),
     rgb(24 34 40)
-  );
+  ); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

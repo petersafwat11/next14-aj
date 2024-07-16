@@ -60,7 +60,6 @@
   /* margin-bottom: 0.7rem; */
 }
 
-
 @media (max-width: 80rem) {
   .matches-container {
     width: 90%;
@@ -87,7 +86,7 @@
     margin: 1.3rem auto 0;
     padding-right: 0.65rem;
     max-width: 94%;
-    height: 4.18rem;
+    height: 72px;
     background-color: rgba(12, 18, 21);
     border-radius: 0.55rem;
   }
@@ -147,6 +146,12 @@
     }
   
   } */
+@media (max-width: 420px) {
+  .top-screen-live-icon {
+    min-width: 72px;
+    height: 67px;
+  }
+}
 @media (max-width: 390px) {
   .top-screen {
     gap: 1.18rem;
@@ -156,7 +161,6 @@
     background-color: rgba(13, 19, 24);
   }
   .top-screen-live-icon {
-    min-width: 5.45rem;
     background-color: #00c4fb;
     border-radius: 9px;
   }
@@ -191,7 +195,6 @@
     background-color: rgba(13, 19, 24);
   }
   .top-screen-live-icon {
-    min-width: 5.34rem;
     border-radius: 7px;
   }
   .time-zone {
@@ -223,8 +226,8 @@
     height: 4rem;
   }
   .top-screen-live-icon {
-    height: 4rem;
-    min-width: 5rem;
+    /* height: 4rem;
+    min-width: 5rem; */
     border-radius: 8px;
   }
   .time-zone {

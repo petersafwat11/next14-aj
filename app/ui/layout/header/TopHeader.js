@@ -19,7 +19,7 @@ const TopHeader = ({ toggleSettings }) => {
         <Beta />
       </div>
       {/* </div> */}
-      <div className={classes["right"]}>
+      {/* <div className={classes["right"]}>
         <div className={classes["top-header-items"]}>
           <Link href="/donate" className={classes["top-header-item"]}>
             DONATE
@@ -40,8 +40,8 @@ const TopHeader = ({ toggleSettings }) => {
           />
         </div>
         <RegionalSettings toggleSettings={toggleSettings} />
-        {/* <LanguesDropdown /> */}
-      </div>
+        <LanguesDropdown />
+      </div> */}
     </div>
   );
 };
