@@ -21,8 +21,8 @@ const nextConfig = {
       "al-backend-tle9.onrender.com",
       "media.tenor.com",
       "media.api-sports.io",
-      "ajsportstv.ch",
-      "www.ajsportstv.ch",
+      "ajsports.ch",
+      "www.ajsports.ch",
     ],
     // remotePatterns: [
     //   {
