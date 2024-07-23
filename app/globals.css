@@ -321,7 +321,7 @@ button {
 .slick-slider {
   width: 100% !important;
   display: flex !important;
-  justify-content: start;
+  justify-content: flex-start;
   overflow: hidden;
 }
 

@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.cache = false;
+    }
+    return config;
+  },
+
   env: {
     // FRONTEND_SERVER: "http://localhost:3000",
     // BACKEND_SERVER: "http://localhost:5000/api",
