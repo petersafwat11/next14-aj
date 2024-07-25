@@ -5,9 +5,9 @@ const nextConfig = {
     // BACKEND_SERVER: "http://localhost:8000/api",
     // STATIC_SERVER: "http://localhost:8000",
     // STATIC_SERVER: "http://localhost:8000",
-    FRONTEND_SERVER: "https://ajsportstv.ch",
-    BACKEND_SERVER: "https://ajsportstv.ch/api",
-    STATIC_SERVER: "https://ajsportstv.ch",
+    FRONTEND_SERVER: "https://ajsports.ch",
+    BACKEND_SERVER: "https://ajsports.ch/api",
+    STATIC_SERVER: "https://ajsports.ch",
     NEXT_PUBLIC_MEASUREMENT_ID: "G-Y22CVP987D",
   },
   generateBuildId: async () => {
