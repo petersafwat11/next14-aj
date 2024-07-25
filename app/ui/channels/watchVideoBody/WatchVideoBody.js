@@ -16,6 +16,7 @@ const ExtendModeWrapper = dynamic(
   }
 );
 import Script from "next/script";
+import AdsPage from "../../ads/AdsComponent";
 
 const WatchVideoBody = ({
   chatRules,
@@ -91,18 +92,8 @@ const WatchVideoBody = ({
       {/* adds scripts */}
       {!extendMode && (
         <>
+          <AdsPage />
           {/* <Script
-            id="aclib"
-            type="text/javascript"
-            src="//acscdn.com/script/aclib.js"
-          ></Script>
-          <Script strategy="lazyOnload" id="script" type="text/javascript">
-            {`  aclib.runAutoTag({
-        zoneId: '55dxca2nau',
-    });`}
-          </Script>
- */}
-          <Script
             type="text/javascript"
             src="//cdn.tapioni.com/asg_embed.js"
             data-spots="451173"
@@ -125,7 +116,7 @@ const WatchVideoBody = ({
             src="//cdn.tapioni.com/ip-push.js"
             data-spot="451174"
             data-subid1="%subid1%"
-          ></Script>
+          ></Script> */}
         </>
       )}
     </>

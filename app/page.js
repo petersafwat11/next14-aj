@@ -11,6 +11,7 @@ import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
 import Script from "next/script";
 import MobileSearch from "./ui/home-page/search/MobileSearch";
+import AdsPage from "./ui/ads/AdsComponent";
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
@@ -91,17 +92,9 @@ const Page = async ({ searchParams }) => {
           />
         </section>
       </div>
+      <AdsPage />
       {/* <Script
-        id="aclib"
-        type="text/javascript"
-        src="//acscdn.com/script/aclib.js"
-      ></Script>
-      <Script id="script" type="text/javascript">
-        {`  aclib.runAutoTag({
-        zoneId: '55dxca2nau',
-    });`}
-      </Script> */}
-      <Script
+        strategy="beforeInteractive"
         type="text/javascript"
         src="//cdn.tapioni.com/asg_embed.js"
         data-spots="451173"
@@ -110,6 +103,7 @@ const Page = async ({ searchParams }) => {
         data-subid2="%subid2%"
       ></Script>
       <Script
+        strategy="beforeInteractive"
         type="text/javascript"
         src="//cdn.tapioni.com/asg_embed.js"
         data-spots="451172"
@@ -118,11 +112,12 @@ const Page = async ({ searchParams }) => {
         data-subid2="%subid2%"
       ></Script>
       <Script
+        strategy="beforeInteractive"
         type="text/javascript"
         src="//cdn.tapioni.com/ip-push.js"
         data-spot="451174"
         data-subid1="%subid1%"
-      ></Script>
+      ></Script> */}
     </div>
   );
 };
