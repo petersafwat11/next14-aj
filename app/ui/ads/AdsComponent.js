@@ -9,8 +9,8 @@ export default function Home() {
         type="text/javascript"
         src="//acscdn.com/script/aclib.js"
         onLoad={() => {
-          if (window.aclib) {
-            window.aclib.runAutoTag({
+          if (window?.aclib) {
+            window?.aclib?.runAutoTag({
               zoneId: "uat9x0wobi",
             });
           }

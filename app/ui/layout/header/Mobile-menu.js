@@ -176,7 +176,7 @@ export const MenuMobile = () => {
               </p>
             </div>
           </div>
-          <div className={classes["contact-us"]}>
+          {/* <div className={classes["contact-us"]}>
             <div className={classes["buttons"]}>
               <button
                 onClick={() => {
@@ -215,7 +215,7 @@ export const MenuMobile = () => {
                 )}
               </button>
             </div>
-          </div>
+          </div> */}
           <MobileSocial />
           <div className={classes["different-leagues"]}>
             <div className={classes["league"]}>

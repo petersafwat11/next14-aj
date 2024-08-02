@@ -17,6 +17,7 @@ const ExtendModeWrapper = dynamic(
 );
 import Script from "next/script";
 import AdsPage from "../../ads/AdsComponent";
+import ChannelsSocail from "../social/Socail";
 
 const WatchVideoBody = ({
   chatRules,
@@ -81,6 +82,7 @@ const WatchVideoBody = ({
         </div>
 
         <div className={classes["modes-icons"]}>
+          <ChannelsSocail />
           <ExtendButton activeExtendMode={activeExtendMode} />
           <ReportBtn reportData={reportData} />
         </div>

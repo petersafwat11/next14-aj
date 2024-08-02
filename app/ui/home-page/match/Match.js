@@ -56,33 +56,29 @@ export const Match = ({ matchData, type, index, length }) => {
                 <p className={classes["first-team-name"]}>
                   {matchData?.firstTeamName}
                 </p>
-                <img
-                  crossOrigin="anonymous"
-                  className={classes["first-team-image"]}
-                  src={
-                    matchData?.firstTeamLogo === null ||
-                    matchData?.firstTeamLogo === undefined
-                      ? "/svg/home/default-team-icon.svg"
-                      : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`
-                  }
-                  alt="logo"
-                  // width={28}
-                />
+                {matchData?.firstTeamLogo === null ||
+                matchData?.firstTeamLogo === undefined ? null : (
+                  <img
+                    crossOrigin="anonymous"
+                    className={classes["first-team-image"]}
+                    src={`${process.env.BACKEND_SERVER}/img/matches/${matchData?.firstTeamLogo}`}
+                    alt="logo"
+                    // width={28}
+                  />
+                )}
               </div>
               <div className={classes["match-vs"]}>vs</div>
               <div className={classes["second-team"]}>
-                <img
-                  crossOrigin="anonymous"
-                  className={classes["second-team-image"]}
-                  src={
-                    matchData?.secondTeamLogo === null ||
-                    matchData?.secondTeamLogo === undefined
-                      ? "/svg/home/default-team-icon.svg"
-                      : `${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`
-                  }
-                  alt="logo"
-                  // width={28}
-                />
+                {matchData?.secondTeamLogo === null ||
+                matchData?.secondTeamLogo === undefined ? null : (
+                  <img
+                    crossOrigin="anonymous"
+                    className={classes["second-team-image"]}
+                    src={`${process.env.BACKEND_SERVER}/img/matches/${matchData?.secondTeamLogo}`}
+                    alt="logo"
+                    // width={28}
+                  />
+                )}
 
                 <p className={classes["second-team-name"]}>
                   {matchData?.secondTeamName}
