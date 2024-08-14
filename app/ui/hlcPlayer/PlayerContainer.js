@@ -6,9 +6,10 @@ const PlayerContainer = ({ videoRef, url }) => {
   const playerRef = React.useRef(null);
 
   const videoJsOptions = {
-    autoplay: true,
+    autoplay: false,
     controls: true,
     responsive: true,
+    preload: "none",
     fluid: true,
     sources: [
       {

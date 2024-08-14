@@ -15,10 +15,16 @@ export const VideoJS = ({ options, onReady, playerRef }) => {
       const videoElement = document.createElement("video-js");
 
       videoElement.classList.add("vjs-big-play-centered");
+
+      videoElement.setAttribute("playsinline", "");
+      videoElement.setAttribute("webkit-playsinline", "true");
       divRef.current.appendChild(videoElement);
 
       const player = (playerRef.current = videojs(videoElement, options, () => {
         videojs.log("player is ready");
+        player.setAttribute("playsinline", "");
+        player.setAttribute("webkit-playsinline", "true");
+
         onReady && onReady(player);
       }));
 
