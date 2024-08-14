@@ -20,6 +20,8 @@ const PlayerContainer = ({ videoRef, url }) => {
 
   const handlePlayerReady = (player) => {
     playerRef.current = player;
+    player.setAttribute("playsinline", "");
+    player.setAttribute("webkit-playsinline", "true");
 
     // You can handle player events here, for example:
     player.on("waiting", () => {
