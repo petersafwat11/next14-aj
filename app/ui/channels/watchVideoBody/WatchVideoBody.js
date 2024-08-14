@@ -17,7 +17,7 @@ const ExtendModeWrapper = dynamic(
 );
 import Script from "next/script";
 import AdsPage from "../../ads/AdsComponent";
-import ChannelsSocail from "../social/Socail";
+import PlayerContainer from "../../hlcPlayer/PlayerContainer";
 
 const WatchVideoBody = ({
   chatRules,
@@ -58,7 +58,12 @@ const WatchVideoBody = ({
   return (
     <>
       <div className="watch-video">
-        <HlcPlayer videoRef={videoRef} url={url} />
+        {!extendMode && (
+          <div className={classes["videojs"]}>
+            <PlayerContainer videoRef={videoRef} url={url} />{" "}
+          </div>
+        )}
+        {/* <HlcPlayer videoRef={videoRef} url={url} /> */}
       </div>
       <div className={classes["watch-video-options"]}>
         {extendMode && (
@@ -82,7 +87,6 @@ const WatchVideoBody = ({
         </div>
 
         <div className={classes["modes-icons"]}>
-          <ChannelsSocail />
           <ExtendButton activeExtendMode={activeExtendMode} />
           <ReportBtn reportData={reportData} />
         </div>
@@ -126,3 +130,15 @@ const WatchVideoBody = ({
 };
 
 export default WatchVideoBody;
+// import React from "react";
+// import PlayerContainer from "../../hlcPlayer/PlayerContainer";
+// import classes from './watchVideoBody.module.css'
+// const WatchVideoBody = () => {
+//   return (
+//     <div className={classes['videojs']}>
+//       <PlayerContainer />
+//     </div>
+//   );
+// };
+
+// export default WatchVideoBody;

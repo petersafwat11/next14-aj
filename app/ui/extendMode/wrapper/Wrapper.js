@@ -4,6 +4,7 @@ import classes from "./wrapper.module.css";
 import Image from "next/image";
 import Chat from "../chat/Chat";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
+import PlayerContainer from "../../hlcPlayer/PlayerContainer";
 
 const ExtendModeWrapper = ({
   dots,
@@ -119,7 +120,10 @@ const ExtendModeWrapper = ({
               )}
             </div>
           )}
-          <HlcPlayer videoRef={videoRef} notRounded={true} url={url} />
+          <div className={classes["videojs"]}>
+            <PlayerContainer videoRef={videoRef} url={url} />{" "}
+          </div>
+          {/* <HlcPlayer videoRef={videoRef} notRounded={true} url={url} /> */}
         </div>
 
         <div className={inputActive ? classes["chat-active"] : classes["chat"]}>

@@ -39,6 +39,7 @@ import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
 import { autoLogin, scrollToBottom } from "../../chat/chatFunctions";
 import { useDebouncedCallback } from "use-debounce";
+import ArrowDown from "../../chat/arrowDown/ArrowDown";
 // import Popup from "../../popupWrapper/Popup";
 // import TagUsers from "./tagUsers/TagUsers";
 
@@ -104,7 +105,9 @@ const Chat = ({
   const [message, setMessage] = useState(messageDefaultState);
   const inputRef = useRef(null);
   const [messages, setMessages] = useState([]);
+  const oldScrollHeightRef = useRef(0);
   const messagesRef = useRef(null);
+  const [showArrowDown, setShowArrowDown] = useState(false);
   // show chat ruls
   const [showRules, setShowRules] = useState(true);
 
@@ -351,8 +354,25 @@ const Chat = ({
 
       socket.current.connect();
     }
+
     socket.current.on("connect", () => {
+      socket.current.emit("register user", {
+        type: "connect",
+        name: message.username,
+      });
       console.log("Connected to socket server");
+    });
+    socket.current.on("banned", (message) => {
+      console.log("message", message);
+      alert(
+        message.message === "IP banned"
+          ? "You have been banned."
+          : "You are Muted to the end of the day"
+      );
+      setDisableChat({
+        value: true,
+        reason: "You are Muted to the end of the day",
+      });
     });
 
     socket.current.on("disconnect", () => {
@@ -383,7 +403,7 @@ const Chat = ({
         socket.current.disconnect();
       }
     };
-  }, [socket]);
+  }, [socket, message.username]);
 
   useEffect(() => {
     const ensureLogin = async () => {
@@ -442,7 +462,7 @@ const Chat = ({
         );
         const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
           params: {
-            limit: 10,
+            limit: 20,
             room: "English (Default)",
             sort: { createdAt: -1 },
             mode: "normal",
@@ -475,11 +495,78 @@ const Chat = ({
     return () => clearInterval(intervalId);
   }, [polls]);
   useEffect(() => {
-    scrollToBottom(messagesRef);
+    const ref = messagesRef.current;
+    const getPrevMessages = async () => {
+      const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+        params: {
+          limit: 20,
+          skip: messages.length,
+          room: "English (Default)",
+          sort: { _id: -1 },
+          mode: "normal",
+        },
+      });
+      console.log("response?.data?.data?.data.reverse", response?.data?.data);
+      setMessages((prev) => {
+        return [...response?.data?.data?.data.reverse(), ...prev];
+      });
+    };
+
+    const handleScroll = async () => {
+      if (
+        messagesRef.current.scrollHeight - messagesRef.current.scrollTop >
+        700
+      ) {
+        setShowArrowDown(true);
+      } else {
+        setShowArrowDown(false);
+      }
+      if (messagesRef.current.scrollTop === 0) {
+        oldScrollHeightRef.current = messagesRef.current.scrollHeight;
+        await getPrevMessages();
+      }
+    };
+
+    if (ref) {
+      ref.scrollTop = ref.scrollHeight;
+      // Attach the scroll event handler
+      ref.addEventListener("scroll", handleScroll);
+    }
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      if (ref) {
+        ref.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, [messages]);
+  useEffect(() => {
+    // Adjust the scroll position after messages are updated
+    if (messagesRef.current) {
+      const newScrollHeight = messagesRef.current.scrollHeight;
+      if (
+        newScrollHeight - oldScrollHeightRef.current < 200 &&
+        messagesRef.current.scrollHeight - messagesRef.current.scrollTop < 500
+      ) {
+        {
+          scrollToBottom(messagesRef);
+        }
+      } else {
+        messagesRef.current.style.scrollBehavior = "auto";
+        messagesRef.current.scrollTop =
+          newScrollHeight - oldScrollHeightRef.current;
+        messagesRef.current.style.scrollBehavior = "smooth";
+      }
+    }
+  }, [messages]);
+  const arrowScroll = () => {
+    scrollToBottom(messagesRef);
+  };
 
   return (
     <div className={classes["chat"]}>
+      {showArrowDown && <ArrowDown scrollDown={arrowScroll} />}
+
       {pollsRemainingTime && <Poll polls={polls} />}
       {showRules && (
         <ChatRules data={chatRules} rulesVisability={rulesVisability} />

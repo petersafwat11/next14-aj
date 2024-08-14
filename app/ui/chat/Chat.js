@@ -38,16 +38,11 @@ import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
 import { autoLogin, scrollToBottom } from "./chatFunctions";
 import { useDebouncedCallback } from "use-debounce";
+import ArrowDown from "./arrowDown/ArrowDown";
 
 // import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 
-const Chat = ({
-  toggleChat,
-  chatRules,
-  chatFilteredWords,
-  chatMessages,
-  mode,
-}) => {
+const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
   const { data: session, status } = useSession();
 
   // const socket = io(`${process.env.STATIC_SERVER}`);
@@ -102,7 +97,10 @@ const Chat = ({
   const inputRef = useRef(null);
   const [messages, setMessages] = useState([]);
   const lastMessageRef = useRef(null);
-  const firstMessageRef = useRef(null);
+  const oldScrollHeightRef = useRef(0);
+  const messagesRef = useRef(null);
+  const [showArrowDown, setShowArrowDown] = useState(false);
+  const [disableChat, setDisableChat] = useState({ value: false, reason: "" });
   // show chat ruls
   const [showRules, setShowRules] = useState(true);
 
@@ -235,15 +233,13 @@ const Chat = ({
         return [...prevState, response?.data.message];
       });
       setIsSending(true);
+
       setTimeout(() => {
         setIsSending(false);
       }, 500);
-      scrollToBottom(lastMessageRef);
+      scrollToBottom(messagesRef);
       if (chatMode.slowMode.value === true) {
-        setSlowModeRemainingSec(true);
-        setTimeout(() => {
-          setSlowModeRemainingSec(false);
-        }, 10000 * chatMode.slowMode.time);
+        setSlowModeRemainingSec(chatMode.slowMode.time);
       }
     } catch (err) {
       console.log("error", err);
@@ -252,7 +248,12 @@ const Chat = ({
   const handleClick = useDebouncedCallback(async () => {
     try {
       await ensureConnected();
-
+      console.log(
+        "setSlowModeRemainingSec",
+        slowModeRemainingSec,
+        chatMode.mode,
+        message
+      );
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
         return;
@@ -275,21 +276,48 @@ const Chat = ({
 
       setIsSending(true);
       setTimeout(() => {
-        scrollToBottom(lastMessageRef);
+        scrollToBottom(messagesRef);
         setIsSending(false);
       }, 500);
 
       // slow mode update state
       if (chatMode.slowMode.value === true) {
-        setSlowModeRemainingSec(true);
-        setTimeout(() => {
-          setSlowModeRemainingSec(false);
-        }, 1000 * chatMode.slowMode.time);
+        setSlowModeRemainingSec(chatMode.slowMode.time);
       }
     } catch (err) {
       console.log("error", err);
     }
   }, 700);
+  // count down if the slow mode is on
+  useEffect(() => {
+    let intervalId;
+
+    if (chatMode.slowMode.value === true && slowModeRemainingSec !== false) {
+      let remainingTime = slowModeRemainingSec; // Time in seconds
+      setSlowModeRemainingSec(remainingTime);
+
+      intervalId = setInterval(() => {
+        remainingTime -= 1;
+        setSlowModeRemainingSec(remainingTime);
+
+        if (remainingTime <= 0) {
+          clearInterval(intervalId);
+          setSlowModeRemainingSec(false);
+          setTimeout(() => {
+            setMessage("");
+          }, [500]);
+
+          // Could also set it to 0 if desired
+        }
+      }, 1000); // Decrement every second
+    }
+
+    // Clean up the interval when component unmounts or chatMode changes
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [chatMode.slowMode.value, chatMode.slowMode.time, slowModeRemainingSec]);
+
   const rulesVisability = () => {
     setShowRules(false);
   };
@@ -337,26 +365,26 @@ const Chat = ({
     setEmojyOrGifs(choose);
   };
 
-  // const contollChatRoom = async (room) => {
-  //   try {
-  //     const roomMessages = await axios.get(
-  //       `${process.env.BACKEND_SERVER}/chat`,
-  //       {
-  //         params: {
-  //           limit: 40,
-  //           room: room,
-  //           sort: { eventDate: 1 },
-  //         },
-  //       }
-  //     );
-  //     console.log("roomMessages", roomMessages?.data?.data);
-  //     setChatRoomSelection(room);
-  //     setMessages(roomMessages?.data?.data);
-  //     setMessage({ ...messageDefaultState, room: room });
-  //   } catch (err) {
-  //     console.log("error happed while loading message", err);
-  //   }
-  // };
+  useEffect(() => {
+    const ensureLogin = async () => {
+      if (initialName === "anonymous") {
+        const randomUser = await autoLogin();
+
+        const user = randomUser?.data?.data?.user;
+        const { color, name, image } = user;
+        setColor(color);
+        setMessage({
+          message: "",
+          image: image,
+          room: chatRoomSelection,
+          username: name,
+          color: color,
+        });
+      }
+    };
+    ensureLogin();
+  }, [chatRoomSelection, initialName]);
+
   useEffect(() => {
     if (!socket.current || !socket?.current?.connected) {
       socket.current = io(`${process.env.STATIC_SERVER}`, {
@@ -369,8 +397,25 @@ const Chat = ({
 
       socket.current.connect();
     }
+
     socket.current.on("connect", () => {
+      socket.current.emit("register user", {
+        type: "connect",
+        name: message.username,
+      });
       console.log("Connected to socket server");
+    });
+    socket.current.on("banned", (message) => {
+      console.log("message", message);
+      alert(
+        message.message === "IP banned"
+          ? "You have been banned."
+          : "You are Muted to the end of the day"
+      );
+      setDisableChat({
+        value: true,
+        reason: "You are Muted to the end of the day",
+      });
     });
 
     socket.current.on("disconnect", () => {
@@ -379,7 +424,7 @@ const Chat = ({
 
     socket.current.on("chat message English (Default)", (msg) => {
       setMessages((prevState) => [...prevState, msg]);
-      scrollToBottom(lastMessageRef);
+      scrollToBottom(messagesRef);
     });
 
     socket.current.on("chat mode", (data) => {
@@ -401,27 +446,8 @@ const Chat = ({
         socket.current.disconnect();
       }
     };
-  }, [socket]);
+  }, [socket, message.username]);
 
-  useEffect(() => {
-    const ensureLogin = async () => {
-      if (initialName === "anonymous") {
-        const randomUser = await autoLogin();
-
-        const user = randomUser?.data?.data?.user;
-        const { color, name, image } = user;
-        setColor(color);
-        setMessage({
-          message: "",
-          image: image,
-          room: chatRoomSelection,
-          username: name,
-          color: color,
-        });
-      }
-    };
-    ensureLogin();
-  }, [chatRoomSelection, initialName]);
   useEffect(() => {
     const fetchChatData = async () => {
       try {
@@ -459,7 +485,7 @@ const Chat = ({
         );
         const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
           params: {
-            limit: 10,
+            limit: 20,
             room: "English (Default)",
             sort: { createdAt: -1 },
             mode: "normal",
@@ -478,7 +504,7 @@ const Chat = ({
       }
     };
     getFirstData();
-    scrollToBottom(lastMessageRef);
+    scrollToBottom(messagesRef);
   }, []);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -491,59 +517,78 @@ const Chat = ({
 
     return () => clearInterval(intervalId);
   }, [polls]);
-  // useEffect(() => {
-  //   const current = firstMessageRef.current;
-  //   const getPrevMessages = async () => {
-  //     const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
-  //       params: {
-  //         limit: 10,
-  //         skip: messages.length,
-  //         room: "English (Default)",
-  //         sort: { _id: -1 },
-  //         mode: "normal",
-  //       },
-  //     });
-  //     setMessages([...response?.data?.data?.data.reverse(), ...messages]);
-  //     setLoadingPrevMessagesBreak(true);
-  //     setTimeout(() => {
-  //       scrollToBottom(lastMessageRef);;
-  //       setLoadingPrevMessagesBreak(false);
-  //     }, 2000);
-  //   };
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       // If the element is visible in the viewport
-  //       if (entry.isIntersecting) {
-  //         // Call your API function here
-  //         console.log("Element is visible, make API call");
-  //         loadingPrevMessagesBreak ? "" : getPrevMessages();
-  //       }
-  //     },
-  //     {
-  //       root: null,
-  //       rootMargin: "0px",
-  //       threshold: 1.0,
-  //     }
-  //   );
-
-  //   if (current) {
-  //     observer.observe(current);
-  //   }
-
-  //   // Clean up
-  //   return () => {
-  //     if (current) {
-  //       observer.unobserve(current);
-  //     }
-  //   };
-  // }, [messages, loadingPrevMessagesBreak]);
-  // Empty array ensures that effect is only run on mount and unmount
   useEffect(() => {
-    scrollToBottom(lastMessageRef);
-  }, [messages]);
+    const ref = messagesRef.current;
+    const getPrevMessages = async () => {
+      const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+        params: {
+          limit: 20,
+          skip: messages.length,
+          room: "English (Default)",
+          sort: { _id: -1 },
+          mode: "normal",
+        },
+      });
+      console.log("response?.data?.data?.data.reverse", response?.data?.data);
+      setMessages((prev) => {
+        return [...response?.data?.data?.data.reverse(), ...prev];
+      });
+    };
 
+    const handleScroll = async () => {
+      if (
+        messagesRef.current.scrollHeight - messagesRef.current.scrollTop >
+        700
+      ) {
+        setShowArrowDown(true);
+      } else {
+        setShowArrowDown(false);
+      }
+      if (messagesRef.current.scrollTop === 0) {
+        oldScrollHeightRef.current = messagesRef.current.scrollHeight;
+        await getPrevMessages();
+      }
+    };
+
+    if (ref) {
+      ref.scrollTop = ref.scrollHeight;
+      // Attach the scroll event handler
+      ref.addEventListener("scroll", handleScroll);
+    }
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      if (ref) {
+        ref.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [messages]);
+  useEffect(() => {
+    // Adjust the scroll position after messages are updated
+    if (messagesRef.current) {
+      const newScrollHeight = messagesRef.current.scrollHeight;
+      if (
+        newScrollHeight - oldScrollHeightRef.current < 200 &&
+        messagesRef.current.scrollHeight - messagesRef.current.scrollTop < 500
+      ) {
+        {
+          scrollToBottom(messagesRef);
+        }
+      } else {
+        messagesRef.current.style.scrollBehavior = "auto";
+        messagesRef.current.scrollTop =
+          newScrollHeight - oldScrollHeightRef.current;
+        messagesRef.current.style.scrollBehavior = "smooth";
+      }
+    }
+  }, [messages]);
+  const arrowScroll = () => {
+    scrollToBottom(messagesRef);
+  };
   return (
     <div className={classes["chat"]}>
+      {showArrowDown && <ArrowDown scrollDown={arrowScroll} />}
+
       {pollsRemainingTime && <Poll polls={polls} />}
       {showRules && (
         <ChatRules data={chatRules} rulesVisability={rulesVisability} />
@@ -603,12 +648,14 @@ const Chat = ({
       <ChatBody
         chatFilteredWords={chatFilteredWords}
         lastMessageRef={lastMessageRef}
-        firstMessageRef={firstMessageRef}
+        messagesRef={messagesRef}
         username={session?.user?.name || initialName}
         messages={messages}
         setMentionSomeone={setMentionSomeone}
       />
       <ChatBottom
+        disableChat={disableChat}
+        slowModeRemainingSec={slowModeRemainingSec}
         chatMode={chatMode}
         toggleUserInf={toggleUserInf}
         displayEmojisAndGifs={displayEmojisAndGifs}

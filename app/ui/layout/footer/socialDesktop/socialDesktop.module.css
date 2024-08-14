@@ -5,8 +5,8 @@
   .footer-social {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 80%;
+    justify-content: center;
+    gap: 1.5rem;
   }
   .footer-social-element {
     background-color: rgba(78, 78, 78, 0.43);
@@ -16,8 +16,3 @@
   }
 }
 
-@media (max-width: 40.6rem) {
-  .footer-social {
-    width: 100%;
-  }
-}

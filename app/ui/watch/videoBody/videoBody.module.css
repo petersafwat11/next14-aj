@@ -1,3 +1,8 @@
+.videojs {
+  height: 100%;
+  width: 100%;
+}
+
 .watch-video-wrapper-bottom {
   display: flex;
   align-items: center;

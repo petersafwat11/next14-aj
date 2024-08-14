@@ -8,7 +8,7 @@ const ChatBody = ({
   setMentionSomeone,
   username,
   lastMessageRef,
-  firstMessageRef,
+  messagesRef,
 }) => {
   const censorWords = (text) => {
     // Create a regular expression pattern for all words in the word list
@@ -24,8 +24,8 @@ const ChatBody = ({
 
   return (
     <div className={classes["chat-body"]}>
-      <div ref={lastMessageRef} className={classes["messages"]}>
-        <div ref={firstMessageRef}></div>
+      <div ref={messagesRef} className={classes["messages"]}>
+        <div ref={lastMessageRef}></div>
         {messages.map((message, index) => (
           <Message
             censorWords={censorWords}

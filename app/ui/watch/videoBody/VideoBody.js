@@ -21,8 +21,8 @@ import ExtendButton from "../../channels/extendButton/ExtendButton";
 import ReportBtn from "../../reportBtn/ReportBtn";
 import EventEnded from "../eventEnded/EventEnded";
 import { ShowingChatMobile } from "../../showingChat/ShowingChat";
-import Script from "next/script";
 import AdsPage from "../../ads/AdsComponent";
+import PlayerContainer from "../../hlcPlayer/PlayerContainer";
 const ServersButtonsMobile = dynamic(
   () => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"),
   {
@@ -110,12 +110,18 @@ const VideoBody = ({
 
         {endedEvent ? (
           <EventEnded />
-        ) : playStreaming ? (
-          <HlcPlayer
-            videoRef={videoRef}
-            url={playingServer.server.streamLinkUrl}
-          />
+        ) : playStreaming & !extendMode ? (
+          <div className={classes["videojs"]}>
+            <PlayerContainer
+              videoRef={videoRef}
+              url={playingServer.server.streamLinkUrl}
+            />
+          </div>
         ) : (
+          // <HlcPlayer
+          //   videoRef={videoRef}
+          //   url={playingServer.server.streamLinkUrl}
+          // />
           <EventCountDown eventDate={eventDate} remainingTime={remainingTime} />
         )}
       </div>
@@ -168,31 +174,6 @@ const VideoBody = ({
       {!extendMode && playStreaming && !endedEvent && (
         <>
           <AdsPage />
-
-          {/* <Script
-            type="text/javascript"
-            src="//cdn.tapioni.com/asg_embed.js"
-            data-spots="451173"
-            data-tag="asg"
-            data-subid1="%subid1%"
-            data-subid2="%subid2%"
-          ></Script>
-
-          <Script
-            type="text/javascript"
-            src="//cdn.tapioni.com/asg_embed.js"
-            data-spots="451172"
-            data-tag="asg"
-            data-subid1="%subid1%"
-            data-subid2="%subid2%"
-          ></Script>
-
-          <Script
-            type="text/javascript"
-            src="//cdn.tapioni.com/ip-push.js"
-            data-spot="451174"
-            data-subid1="%subid1%"
-          ></Script> */}
         </>
       )}
     </>

@@ -13,7 +13,7 @@
 
 .username-text {
   color: #fff;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 0.824rem;
   font-weight: 600;
   line-height: normal;
@@ -76,6 +76,9 @@
   color: #666464;
 }
 @media (max-width: 56.25rem) {
+  .container {
+    height: 33rem;
+  }
   .user-info-actions {
     gap: 1.375rem;
     margin-top: 1.42rem;

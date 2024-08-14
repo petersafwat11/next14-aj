@@ -125,109 +125,145 @@
 
 // export default HlcPlayer;
 
-import Hls from "hls.js";
-import React, { useEffect, useRef, useState } from "react";
-import P2pEngineHls from "swarmcloud-hls";
-import classes from "./hlcPlayer.module.css";
-const HlcPlayer = ({ url, notRounded, videoRef }) => {
-  const videoIConRef = useRef(null);
-  const [palying, setPlaying] = useState(false);
-  // Add a click event listener to the play button
-  const playVideo = function () {
-    // Toggle the video state
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
+// import Hls from "hls.js";
+// import React, { useEffect, useRef, useState } from "react";
+// import P2pEngineHls from "swarmcloud-hls";
+// import classes from "./hlcPlayer.module.css";
+// const HlcPlayer = ({ url, notRounded, videoRef }) => {
+//   const videoIConRef = useRef(null);
+//   const [palying, setPlaying] = useState(false);
+//   // Add a click event listener to the play button
+//   const playVideo = function () {
+//     // Toggle the video state
+//     if (videoRef.current.paused) {
+//       videoRef.current.play();
+//     } else {
+//       videoRef.current.pause();
+//     }
+//   };
+
+//   // Add a play event listener to the video
+//   const handlePlaying = function () {
+//     setPlaying(!palying);
+//   };
+
+//   // Add a pause event listener to the video
+//   const handlePausing = function () {
+//     setPlaying(!palying);
+//   };
+
+//   useEffect(() => {
+//     const p2pConfig = {
+//       // Other p2pConfig options if applicable
+//     };
+
+//     const handleError = (error) => {
+//       console.error("Error occurred:", error);
+//     };
+
+//     try {
+//       if (Hls.isSupported() && url) {
+//         const hls = new Hls({
+//           maxBufferSize: 0, // Highly recommended setting in live mode
+//           maxBufferLength: 25, // Highly recommended setting in live mode
+//           liveSyncDurationCount: 10, // Highly recommended setting in live mode
+//         });
+
+//         p2pConfig.hlsjsInstance = hls;
+//         new P2pEngineHls(p2pConfig);
+
+//         hls.loadSource(url);
+//         hls.attachMedia(videoRef.current);
+
+//         hls.on(Hls.Events.ERROR, (event, data) => {
+//           handleError(data);
+//         });
+//       } else if (
+//         videoRef.current.canPlayType("application/vnd.apple.mpegurl")
+//       ) {
+//         videoRef.current.src = url;
+//       }
+
+//       videoRef.current.setAttribute("playsinline", "");
+//       videoRef.current.setAttribute("webkit-playsinline", "true");
+
+//       setPlaying(false);
+//     } catch (error) {
+//       handleError(error);
+//     }
+//   }, [url, videoRef, setPlaying]);
+//   return (
+//     <div
+//       style={{ background: "#0d1317" }}
+//       className={classes["video-container"]}
+//     >
+//       <video
+//         // webkit-playsinline
+//         playsInline
+//         // poster="/wallpaper/main.jpg"
+//         controlsList="noplaybackrate"
+//         className={
+//           notRounded
+//             ? classes["video-play"]
+//             : palying
+//             ? classes["video-play"]
+//             : classes["video-pause"]
+//         }
+//         ref={videoRef}
+//         width={"100%"}
+//         height={"100%"}
+//         controls={true}
+//         autoPlay={false}
+//         onPlay={handlePlaying}
+//         onPause={handlePausing}
+//       ></video>
+//       {!palying && (
+//         <div
+//           onClick={() => {
+//             playVideo();
+//           }}
+//           ref={videoIConRef}
+//           className={classes["play-icon"]}
+//         ></div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default HlcPlayer;
+import React from "react";
+import VideoJS from "./Player";
+
+const HlcPlayer = ({ url }) => {
+  const playerRef = React.useRef(null);
+
+  const videoJsOptions = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [
+      {
+        src: "https://content.jwplatform.com/manifests/yp34SRmf.m3u8",
+        // url,
+        type: "application/x-mpegURL",
+      },
+    ],
   };
 
-  // Add a play event listener to the video
-  const handlePlaying = function () {
-    setPlaying(!palying);
+  const handlePlayerReady = (player) => {
+    playerRef.current = player;
+
+    player.on("waiting", () => {
+      console.log("player is waiting");
+    });
+
+    player.on("dispose", () => {
+      console.log("player will dispose");
+    });
   };
 
-  // Add a pause event listener to the video
-  const handlePausing = function () {
-    setPlaying(!palying);
-  };
-
-  useEffect(() => {
-    const p2pConfig = {
-      // Other p2pConfig options if applicable
-    };
-
-    const handleError = (error) => {
-      console.error("Error occurred:", error);
-    };
-
-    try {
-      if (Hls.isSupported() && url) {
-        const hls = new Hls({
-          maxBufferSize: 0, // Highly recommended setting in live mode
-          maxBufferLength: 25, // Highly recommended setting in live mode
-          liveSyncDurationCount: 10, // Highly recommended setting in live mode
-        });
-
-        p2pConfig.hlsjsInstance = hls;
-        new P2pEngineHls(p2pConfig);
-
-        hls.loadSource(url);
-        hls.attachMedia(videoRef.current);
-
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          handleError(data);
-        });
-      } else if (
-        videoRef.current.canPlayType("application/vnd.apple.mpegurl")
-      ) {
-        videoRef.current.src = url;
-      }
-
-      videoRef.current.setAttribute("playsinline", "");
-      videoRef.current.setAttribute("webkit-playsinline", "true");
-
-      setPlaying(false);
-    } catch (error) {
-      handleError(error);
-    }
-  }, [url, videoRef, setPlaying]);
-  return (
-    <div
-      style={{ background: "#0d1317" }}
-      className={classes["video-container"]}
-    >
-      <video
-        // webkit-playsinline
-        playsInline
-        // poster="/wallpaper/main.jpg"
-        controlsList="noplaybackrate"
-        className={
-          notRounded
-            ? classes["video-play"]
-            : palying
-            ? classes["video-play"]
-            : classes["video-pause"]
-        }
-        ref={videoRef}
-        width={"100%"}
-        height={"100%"}
-        controls={true}
-        autoPlay={false}
-        onPlay={handlePlaying}
-        onPause={handlePausing}
-      ></video>
-      {!palying && (
-        <div
-          onClick={() => {
-            playVideo();
-          }}
-          ref={videoIConRef}
-          className={classes["play-icon"]}
-        ></div>
-      )}
-    </div>
-  );
+  return <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />;
 };
 
 export default HlcPlayer;

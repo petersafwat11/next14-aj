@@ -3,6 +3,7 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 0.144rem;
+  margin-bottom: 1.5rem;
 }
 
 .title {

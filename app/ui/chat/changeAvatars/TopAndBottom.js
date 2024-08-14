@@ -10,7 +10,7 @@ export const TopPart = ({ toggleChangeAvatar, toggleImageUpload }) => {
           Choose an avatar to be displayed on your profile picture.
         </p>
       </div>
-      <div className={classes["file-pload-wrapper"]}>
+      {/* <div className={classes["file-pload-wrapper"]}>
         <Image
           className={classes["upload-icon"]}
           onClick={toggleChangeAvatar}
@@ -23,7 +23,7 @@ export const TopPart = ({ toggleChangeAvatar, toggleImageUpload }) => {
           Drag and drop file or
           <span onClick={toggleImageUpload}>browse computer</span>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

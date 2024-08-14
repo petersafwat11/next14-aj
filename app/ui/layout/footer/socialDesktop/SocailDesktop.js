@@ -42,7 +42,7 @@ const SocailDesktop = () => {
           />
         </a>
       </div>
-      <div className={classes["footer-social-element"]}>
+      {/* <div className={classes["footer-social-element"]}>
         <a
           rel="noreferrer"
           target="_blank"
@@ -56,7 +56,7 @@ const SocailDesktop = () => {
             height="24"
           />
         </a>
-      </div>
+      </div> */}
       <div className={classes["footer-social-element"]}>
         <a
           rel="noreferrer"
@@ -87,7 +87,7 @@ const SocailDesktop = () => {
           />
         </a>
       </div> */}
-      <div className={classes["footer-social-element"]}>
+      {/* <div className={classes["footer-social-element"]}>
         <a
           rel="noreferrer"
           target="_blank"
@@ -101,7 +101,7 @@ const SocailDesktop = () => {
             height="24"
           />
         </a>
-      </div>
+      </div> */}
       <div className={classes["footer-social-element"]}>
         <a
           rel="noreferrer"

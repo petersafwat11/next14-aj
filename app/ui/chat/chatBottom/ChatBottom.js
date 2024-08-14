@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdEmojiEmotions } from "react-icons/md";
@@ -14,6 +14,8 @@ const ChatBottom = ({
   isSending,
   inputRef,
   chatMode,
+  slowModeRemainingSec,
+  disableChat,
 }) => {
   const [displayTagUSer, setDisplayTagUSer] = useState(false);
   const controlShowingUsers = () => {
@@ -23,7 +25,7 @@ const ChatBottom = ({
   const searchedUsers = (users) => {
     setSearchUsers(users);
   };
-  
+
   return (
     <div id="chat-bottom" className={classes["chat-bottom"]}>
       {displayTagUSer && (
@@ -51,20 +53,51 @@ const ChatBottom = ({
         //     setDisplayTagUSer(true);
         //   }
         // }}
-        disabled={chatMode.mode === "Anyone Can Send" ? false : true}
+        disabled={
+          chatMode.mode !== "Anyone Can Send" ||
+          disableChat.value === true ||
+          slowModeRemainingSec
+            ? true
+            : false
+        }
         onChange={(e) => {
+          if (e.target.value.startsWith("you can send message after ")) {
+            setInputMessage("");
+          }
           setInputMessage(e.target.value);
         }}
         ref={inputRef}
         className={classes["chat-input"]}
+        style={{
+          border:
+            disableChat.value === true || slowModeRemainingSec
+              ? "1px solid #677077"
+              : "",
+          color:
+            disableChat.value === true || slowModeRemainingSec ? "#677077" : "",
+        }}
         type="text"
-        placeholder="Type a message here"
+        placeholder={
+          disableChat.value === true
+            ? disableChat.reason
+            : slowModeRemainingSec
+            ? "Slow mode is on please wait"
+            : "Type a message here"
+        }
       />
-      <div onClick={handleClick} className={classes["chat-bottom-send"]}>
-        <AiOutlineArrowUp
-          className={isSending ? classes["sending"] : classes[""]}
-          style={{ fontSize: ".95rem", color: "white" }}
-        />
+      <div
+        style={{ background: slowModeRemainingSec ? "#939393" : "" }}
+        onClick={handleClick}
+        className={classes["chat-bottom-send"]}
+      >
+        {slowModeRemainingSec ? (
+          <p className={classes["countdown"]}>{slowModeRemainingSec}</p>
+        ) : (
+          <AiOutlineArrowUp
+            className={isSending ? classes["sending"] : classes[""]}
+            style={{ fontSize: ".95rem", color: "white" }}
+          />
+        )}
       </div>
     </div>
   );
