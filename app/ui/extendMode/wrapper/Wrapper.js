@@ -4,7 +4,12 @@ import classes from "./wrapper.module.css";
 import Image from "next/image";
 import Chat from "../chat/Chat";
 import HlcPlayer from "../../hlcPlayer/HlcPlayer";
-import PlayerContainer from "../../hlcPlayer/PlayerContainer";
+const PlayerContainer = dynamic(
+  () => import("../../hlcPlayer/PlayerContainer"),
+  {
+    ssr: false,
+  }
+);
 
 const ExtendModeWrapper = ({
   dots,

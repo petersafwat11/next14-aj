@@ -22,7 +22,13 @@ import ReportBtn from "../../reportBtn/ReportBtn";
 import EventEnded from "../eventEnded/EventEnded";
 import { ShowingChatMobile } from "../../showingChat/ShowingChat";
 import AdsPage from "../../ads/AdsComponent";
-import PlayerContainer from "../../hlcPlayer/PlayerContainer";
+const PlayerContainer = dynamic(
+  () => import("../../hlcPlayer/PlayerContainer"),
+  {
+    ssr: false,
+  }
+);
+
 const ServersButtonsMobile = dynamic(
   () => import("../serverButtons/serversButtonsMobile/ServersButtonsMobile"),
   {

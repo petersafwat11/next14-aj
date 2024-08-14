@@ -17,7 +17,12 @@ const ExtendModeWrapper = dynamic(
 );
 import Script from "next/script";
 import AdsPage from "../../ads/AdsComponent";
-import PlayerContainer from "../../hlcPlayer/PlayerContainer";
+const PlayerContainer = dynamic(
+  () => import("../../hlcPlayer/PlayerContainer"),
+  {
+    ssr: false,
+  }
+);
 
 const WatchVideoBody = ({
   chatRules,
