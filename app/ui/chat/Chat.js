@@ -414,7 +414,10 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
       );
       setDisableChat({
         value: true,
-        reason: "You are Muted to the end of the day",
+        reason:
+          message.message === "IP banned"
+            ? "You have been banned."
+            : "You are Muted to the end of the day",
       });
     });
 
