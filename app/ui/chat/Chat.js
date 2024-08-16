@@ -39,6 +39,7 @@ import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
 import { autoLogin, scrollToBottom } from "./chatFunctions";
 import { useDebouncedCallback } from "use-debounce";
 import ArrowDown from "./arrowDown/ArrowDown";
+import { SiProtools } from "react-icons/si";
 
 // import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 
@@ -452,40 +453,8 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
   }, [socket, message.username]);
 
   useEffect(() => {
-    const fetchChatData = async () => {
-      try {
-        const chatPolls = await axios.get(
-          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
-          {
-            params: {
-              sort: { createdAt: -1 },
-            },
-          }
-        );
-
-        const chatMode = await axios.get(
-          `${process.env.BACKEND_SERVER}/chat/chatMode`
-        );
-        setChatMode(chatMode?.data?.data?.data[0]);
-        setPolls(chatPolls?.data?.data?.data || []);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const intervalId = setInterval(fetchChatData, 60000);
-
-    // Clean up the interval to prevent memory leaks
-    return () => clearInterval(intervalId);
-  }, []);
-  useEffect(() => {
     const getFirstData = async () => {
       try {
-        const chatPolls = await axios.get(
-          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
-          {
-            params: { sort: { createdAt: -1 } },
-          }
-        );
         const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
           params: {
             limit: 20,
@@ -495,31 +464,63 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
           },
         });
         setMessages(response?.data?.data?.data?.reverse());
-
-        setPolls(chatPolls?.data?.data);
-        const remaining = getTimeRemainingInMinutes(
-          chatPolls?.data?.data[0]?.createdAt,
-          chatPolls?.data?.data[0]?.time
-        );
-        setPollsRemainingTime(remaining);
       } catch (err) {
         console.log("Error :", err);
       }
     };
+    const fetchChatData = async () => {
+      try {
+        // const chatPolls = await axios.get(
+        //   `${process.env.BACKEND_SERVER}/chat/chatPoll`,
+        //   {
+        //     params: {
+        //       sort: { createdAt: -1 },
+        //     },
+        //   }
+        // );
+
+        const chatMode = await axios.get(
+          `${process.env.BACKEND_SERVER}/chat/chatMode`
+        );
+        setChatMode(chatMode?.data?.data?.data[0]);
+        // setPolls(chatPolls?.data?.data?.data || []);
+        // const remaining = getTimeRemainingInMinutes(
+        //   chatPolls?.data?.data[0]?.createdAt,
+        //   chatPolls?.data?.data[0]?.time
+        // );
+        // setPollsRemainingTime(remaining);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getFirstData();
     scrollToBottom(messagesRef);
-  }, []);
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const remaining = getTimeRemainingInMinutes(
-        polls[0]?.createdAt,
-        polls[0]?.time
-      );
-      setPollsRemainingTime(remaining);
-    }, 60000);
+    fetchChatData();
+    const intervalId = setInterval(fetchChatData, 60000);
 
+    // Clean up the interval to prevent memory leaks
     return () => clearInterval(intervalId);
-  }, [polls]);
+  }, []);
+  // useEffect(() => {
+  //   if (polls && polls.length > 0) {
+  //     const updateRemainingTime = () => {
+  //       const remaining = getTimeRemainingInMinutes(
+  //         polls[0].createdAt,
+  //         polls[0].time
+  //       );
+  //       console.log("remaining", remaining);
+  //       setPollsRemainingTime(remaining);
+  //     };
+
+  //     // Initial call
+  //     updateRemainingTime();
+
+  //     const intervalId = setInterval(updateRemainingTime, 60000);
+
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [polls]);
   useEffect(() => {
     const ref = messagesRef.current;
     const getPrevMessages = async () => {
@@ -592,7 +593,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
     <div className={classes["chat"]}>
       {showArrowDown && <ArrowDown scrollDown={arrowScroll} />}
 
-      {pollsRemainingTime && <Poll polls={polls} />}
+      {/* {pollsRemainingTime && <Poll polls={polls} />} */}
       {showRules && (
         <ChatRules data={chatRules} rulesVisability={rulesVisability} />
       )}

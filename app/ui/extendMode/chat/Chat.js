@@ -459,7 +459,24 @@ const Chat = ({
     };
     ensureLogin();
   }, [chatRoomSelection, initialName]);
+
   useEffect(() => {
+    const getFirstData = async () => {
+      try {
+        const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
+          params: {
+            limit: 20,
+            room: "English (Default)",
+            sort: { createdAt: -1 },
+            mode: "normal",
+          },
+        });
+
+        setMessages(response?.data?.data?.data?.reverse());
+      } catch (err) {
+        console.log("Error :", err);
+      }
+    };
     const fetchChatData = async () => {
       try {
         const chatPolls = await axios.get(
@@ -476,58 +493,41 @@ const Chat = ({
         );
         setChatMode(chatMode?.data?.data?.data[0]);
         setPolls(chatPolls?.data?.data?.data || []);
-        // console.log("chat polls", chatPolls?.data?.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const intervalId = setInterval(fetchChatData, 60000);
-
-    // Clean up the interval to prevent memory leaks
-    return () => clearInterval(intervalId);
-  }, []);
-  useEffect(() => {
-    const getFirstData = async () => {
-      try {
-        const chatPolls = await axios.get(
-          `${process.env.BACKEND_SERVER}/chat/chatPoll`,
-          {
-            params: { sort: { createdAt: -1 } },
-          }
-        );
-        const response = await axios.get(`${process.env.BACKEND_SERVER}/chat`, {
-          params: {
-            limit: 20,
-            room: "English (Default)",
-            sort: { createdAt: -1 },
-            mode: "normal",
-          },
-        });
-        setMessages(response?.data?.data?.data?.reverse());
-
-        setPolls(chatPolls?.data?.data);
         const remaining = getTimeRemainingInMinutes(
           chatPolls?.data?.data[0]?.createdAt,
           chatPolls?.data?.data[0]?.time
         );
         setPollsRemainingTime(remaining);
-      } catch (err) {
-        console.log("Error :", err);
+      } catch (error) {
+        console.log(error);
       }
     };
+
     getFirstData();
     scrollToBottom(messagesRef);
+    fetchChatData();
+    // const intervalId = setInterval(fetchChatData, 60000);
+
+    // // Clean up the interval to prevent memory leaks
+    // return () => clearInterval(intervalId);
   }, []);
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const remaining = getTimeRemainingInMinutes(
-        polls[0]?.createdAt,
-        polls[0]?.time
-      );
-      setPollsRemainingTime(remaining);
-    }, 60000);
+    if (polls && polls.length > 0) {
+      const updateRemainingTime = () => {
+        const remaining = getTimeRemainingInMinutes(
+          polls[0].createdAt,
+          polls[0].time
+        );
+        setPollsRemainingTime(remaining);
+      };
 
-    return () => clearInterval(intervalId);
+      // Initial call
+      updateRemainingTime();
+
+      const intervalId = setInterval(updateRemainingTime, 60000);
+
+      return () => clearInterval(intervalId);
+    }
   }, [polls]);
   useEffect(() => {
     const ref = messagesRef.current;
