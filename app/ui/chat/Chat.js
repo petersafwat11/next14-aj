@@ -235,9 +235,9 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
       setIsSending(true);
 
       setTimeout(() => {
+        scrollToBottom(messagesRef);
         setIsSending(false);
       }, 500);
-      scrollToBottom(messagesRef);
       if (chatMode.slowMode.value === true) {
         setSlowModeRemainingSec(chatMode.slowMode.time);
       }
@@ -248,12 +248,6 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
   const handleClick = useDebouncedCallback(async () => {
     try {
       await ensureConnected();
-      console.log(
-        "setSlowModeRemainingSec",
-        slowModeRemainingSec,
-        chatMode.mode,
-        message
-      );
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
         return;
@@ -384,8 +378,22 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
     };
     ensureLogin();
   }, [chatRoomSelection, initialName]);
-
   useEffect(() => {
+    const disableChatMember = (banMessage) => {
+      alert(
+        banMessage === "IP banned"
+          ? "You have been banned."
+          : "You are Muted to the end of the day"
+      );
+      setDisableChat({
+        value: true,
+        reason:
+          banMessage === "IP banned"
+            ? "You have been banned."
+            : "You are Muted to the end of the day",
+      });
+    };
+
     if (!socket.current || !socket?.current?.connected) {
       socket.current = io(`${process.env.STATIC_SERVER}`, {
         autoConnect: false,
@@ -405,20 +413,12 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
       });
       console.log("Connected to socket server");
     });
-    socket.current.on("banned", (message) => {
-      console.log("message", message);
-      alert(
-        message.message === "IP banned"
-          ? "You have been banned."
-          : "You are Muted to the end of the day"
-      );
-      setDisableChat({
-        value: true,
-        reason:
-          message.message === "IP banned"
-            ? "You have been banned."
-            : "You are Muted to the end of the day",
-      });
+    socket.current.on("banned", (socket) => {
+      if (socket.state === "connection") {
+        disableChatMember(socket.message);
+      } else {
+        message.username === socket.name && disableChatMember(socket.message);
+      }
     });
 
     socket.current.on("disconnect", () => {

@@ -59,13 +59,15 @@ const WatchVideoBody = ({
     document.body.style.overflow = "auto";
     document.body.style.position = "";
   };
+const setVideoHeight=()=>{
 
+}
   return (
     <>
       <div className="watch-video">
         {!extendMode && (
-          <div className={classes["videojs"]}>
-            <PlayerContainer videoRef={videoRef} url={url} />{" "}
+          <div  className={classes["videojs"]}>
+            <PlayerContainer  videoRef={videoRef} url={url} />{" "}
           </div>
         )}
         {/* <HlcPlayer videoRef={videoRef} url={url} /> */}

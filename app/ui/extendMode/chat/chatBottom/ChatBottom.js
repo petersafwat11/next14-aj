@@ -13,7 +13,10 @@ const ChatBottom = ({
   handleClick,
   isSending,
   inputRef,
-  setInputActive
+  setInputActive,
+  chatMode,
+  slowModeRemainingSec,
+  disableChat,
 }) => {
   // const [showTagUsers, setShowTagUsers] = useState(false);
 
@@ -41,9 +44,34 @@ const ChatBottom = ({
       </div>
 
       <textarea
-      onFocus={()=>{setInputActive(true)}}
-      onBlur={()=>{setInputActive(false)}}
-      
+        onFocus={() => {
+          setInputActive(true);
+        }}
+        onBlur={() => {
+          setInputActive(false);
+        }}
+        disabled={
+          chatMode.mode !== "Anyone Can Send" ||
+          disableChat.value === true ||
+          slowModeRemainingSec
+            ? true
+            : false
+        }
+        style={{
+          border:
+            disableChat.value === true || slowModeRemainingSec
+              ? "1px solid #677077"
+              : "",
+          color:
+            disableChat.value === true || slowModeRemainingSec ? "#677077" : "",
+        }}
+        placeholder={
+          disableChat.value === true
+            ? disableChat.reason
+            : slowModeRemainingSec
+            ? "Slow mode is on please wait"
+            : "Type a message here"
+        }
         value={message}
         // onKeyUp={(e) => {
         //   if (e.key === "@") {
@@ -57,17 +85,29 @@ const ChatBottom = ({
 
           setInputMessage(e.target.value);
         }}
-
         ref={inputRef}
         className={classes["chat-input"]}
         type="text"
-        placeholder="Type a message here"
       />
-      <div onClick={handleClick} className={classes["chat-bottom-send"]}>
+      {/* <div onClick={handleClick} className={classes["chat-bottom-send"]}>
         <AiOutlineArrowUp
           className={isSending ? classes["arrow-sending"] : classes["arrow"]}
           style={{ fontSize: ".95rem", color: "white" }}
         />
+      </div> */}
+      <div
+        style={{ background: slowModeRemainingSec ? "#939393" : "" }}
+        onClick={handleClick}
+        className={classes["chat-bottom-send"]}
+      >
+        {slowModeRemainingSec ? (
+          <p className={classes["countdown"]}>{slowModeRemainingSec}</p>
+        ) : (
+          <AiOutlineArrowUp
+            className={isSending ? classes["arrow-sending"] : classes[""]}
+            style={{ fontSize: ".95rem", color: "white" }}
+          />
+        )}
       </div>
     </div>
   );

@@ -18,7 +18,6 @@ const ChatBody = ({
     const censoredText = text?.replace(pattern, (match) =>
       "*".repeat(match.length)
     );
-
     return censoredText;
   };
 

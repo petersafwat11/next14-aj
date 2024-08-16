@@ -226,7 +226,9 @@ button {
   justify-content: center;
   margin-top: 0.4rem;
   width: 100%;
-  height: 27.345rem;
+  /* height: 27.345rem; */
+  height: auto;
+  aspect-ratio: 16/9;
   border-radius: 1.25rem;
   background: #0d1316;
   overflow: hidden;

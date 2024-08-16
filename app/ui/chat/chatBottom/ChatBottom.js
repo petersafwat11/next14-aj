@@ -17,23 +17,23 @@ const ChatBottom = ({
   slowModeRemainingSec,
   disableChat,
 }) => {
-  const [displayTagUSer, setDisplayTagUSer] = useState(false);
-  const controlShowingUsers = () => {
-    setDisplayTagUSer(!TagUsers);
-  };
-  const [searchUsers, setSearchUsers] = useState("");
-  const searchedUsers = (users) => {
-    setSearchUsers(users);
-  };
+  // const [displayTagUSer, setDisplayTagUSer] = useState(false);
+  // const controlShowingUsers = () => {
+  //   setDisplayTagUSer(!TagUsers);
+  // };
+  // const [searchUsers, setSearchUsers] = useState("");
+  // const searchedUsers = (users) => {
+  //   setSearchUsers(users);
+  // };
 
   return (
     <div id="chat-bottom" className={classes["chat-bottom"]}>
-      {displayTagUSer && (
+      {/* {displayTagUSer && (
         <TagUsers
           setMentionSomeone={setMentionSomeone}
           controlShowingUsers={controlShowingUsers}
         />
-      )}
+      )} */}
       <div className={classes["icons"]}>
         <div className={classes["user-dev"]}>
           <FaUser onClick={toggleUserInf} className={classes["user-icon"]} />
@@ -60,14 +60,6 @@ const ChatBottom = ({
             ? true
             : false
         }
-        onChange={(e) => {
-          if (e.target.value.startsWith("you can send message after ")) {
-            setInputMessage("");
-          }
-          setInputMessage(e.target.value);
-        }}
-        ref={inputRef}
-        className={classes["chat-input"]}
         style={{
           border:
             disableChat.value === true || slowModeRemainingSec
@@ -76,7 +68,6 @@ const ChatBottom = ({
           color:
             disableChat.value === true || slowModeRemainingSec ? "#677077" : "",
         }}
-        type="text"
         placeholder={
           disableChat.value === true
             ? disableChat.reason
@@ -84,6 +75,12 @@ const ChatBottom = ({
             ? "Slow mode is on please wait"
             : "Type a message here"
         }
+        onChange={(e) => {
+          setInputMessage(e.target.value);
+        }}
+        ref={inputRef}
+        className={classes["chat-input"]}
+        type="text"
       />
       <div
         style={{ background: slowModeRemainingSec ? "#939393" : "" }}

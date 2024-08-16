@@ -108,6 +108,8 @@ const Chat = ({
   const oldScrollHeightRef = useRef(0);
   const messagesRef = useRef(null);
   const [showArrowDown, setShowArrowDown] = useState(false);
+  const [disableChat, setDisableChat] = useState({ value: false, reason: "" });
+
   // show chat ruls
   const [showRules, setShowRules] = useState(true);
 
@@ -240,15 +242,13 @@ const Chat = ({
         return [...prevState, response?.data.message];
       });
       setIsSending(true);
+
       setTimeout(() => {
+        scrollToBottom(messagesRef);
         setIsSending(false);
       }, 500);
-      scrollToBottom(messagesRef);
       if (chatMode.slowMode.value === true) {
-        setSlowModeRemainingSec(true);
-        setTimeout(() => {
-          setSlowModeRemainingSec(false);
-        }, 10000 * chatMode.slowMode.time);
+        setSlowModeRemainingSec(chatMode.slowMode.time);
       }
     } catch (err) {
       console.log("error", err);
@@ -257,7 +257,6 @@ const Chat = ({
   const handleClick = useDebouncedCallback(async () => {
     try {
       await ensureConnected();
-
       //  mode check
       if (chatMode?.mode !== "Anyone Can Send" || slowModeRemainingSec) {
         return;
@@ -286,15 +285,41 @@ const Chat = ({
 
       // slow mode update state
       if (chatMode.slowMode.value === true) {
-        setSlowModeRemainingSec(true);
-        setTimeout(() => {
-          setSlowModeRemainingSec(false);
-        }, 1000 * chatMode.slowMode.time);
+        setSlowModeRemainingSec(chatMode.slowMode.time);
       }
     } catch (err) {
       console.log("error", err);
     }
   }, 700);
+  useEffect(() => {
+    let intervalId;
+
+    if (chatMode.slowMode.value === true && slowModeRemainingSec !== false) {
+      let remainingTime = slowModeRemainingSec; // Time in seconds
+      setSlowModeRemainingSec(remainingTime);
+
+      intervalId = setInterval(() => {
+        remainingTime -= 1;
+        setSlowModeRemainingSec(remainingTime);
+
+        if (remainingTime <= 0) {
+          clearInterval(intervalId);
+          setSlowModeRemainingSec(false);
+          setTimeout(() => {
+            setMessage("");
+          }, [500]);
+
+          // Could also set it to 0 if desired
+        }
+      }, 1000); // Decrement every second
+    }
+
+    // Clean up the interval when component unmounts or chatMode changes
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [chatMode.slowMode.value, chatMode.slowMode.time, slowModeRemainingSec]);
+
   const rulesVisability = () => {
     setShowRules(false);
   };
@@ -343,6 +368,21 @@ const Chat = ({
   };
 
   useEffect(() => {
+    const disableChatMember = (banMessage) => {
+      alert(
+        banMessage === "IP banned"
+          ? "You have been banned."
+          : "You are Muted to the end of the day"
+      );
+      setDisableChat({
+        value: true,
+        reason:
+          banMessage === "IP banned"
+            ? "You have been banned."
+            : "You are Muted to the end of the day",
+      });
+    };
+
     if (!socket.current || !socket?.current?.connected) {
       socket.current = io(`${process.env.STATIC_SERVER}`, {
         autoConnect: false,
@@ -362,17 +402,12 @@ const Chat = ({
       });
       console.log("Connected to socket server");
     });
-    socket.current.on("banned", (message) => {
-      console.log("message", message);
-      alert(
-        message.message === "IP banned"
-          ? "You have been banned."
-          : "You are Muted to the end of the day"
-      );
-      setDisableChat({
-        value: true,
-        reason: "You are Muted to the end of the day",
-      });
+    socket.current.on("banned", (socket) => {
+      if (socket.state === "connection") {
+        disableChatMember(socket.message);
+      } else {
+        message.username === socket.name && disableChatMember(socket.message);
+      }
     });
 
     socket.current.on("disconnect", () => {
@@ -635,6 +670,9 @@ const Chat = ({
         chatFilteredWords={chatFilteredWords}
       />
       <ChatBottom
+        disableChat={disableChat}
+        slowModeRemainingSec={slowModeRemainingSec}
+        chatMode={chatMode}
         toggleUserInf={toggleUserInf}
         displayEmojisAndGifs={displayEmojisAndGifs}
         message={message.message}
