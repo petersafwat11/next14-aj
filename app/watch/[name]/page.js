@@ -59,7 +59,9 @@ const Page = async ({ params }) => {
       const filteredWordsData = chatFilteredWords.data?.data?.data[0].words;
       const messagesData = chatMessages.data?.data?.data;
       const event = eventData.data;
-      const social = links.data?.data?.data[0].social;
+      const social = links.data?.data?.data
+        ? links.data?.data?.data[0]?.social
+        : [];
       const banners = links.data?.data?.data[0].banners;
       return {
         rulesData,

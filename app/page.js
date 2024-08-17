@@ -1,6 +1,4 @@
 import React from "react";
-import { getServerSession } from "next-auth/next";
-import { authConfig } from "./api/auth/[...nextauth]/route";
 import Image from "next/image";
 import Search from "./ui/home-page/search/Search";
 import Sports from "./ui/home-page/sports/Sports";
@@ -40,7 +38,6 @@ const Page = async ({ searchParams }) => {
     }
   );
 
-  const session = await getServerSession(authConfig);
 
   const hotMatches = currentEvents?.data?.hotMatches;
 

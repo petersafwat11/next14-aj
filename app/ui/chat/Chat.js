@@ -32,7 +32,6 @@ import ChatBottom from "./chatBottom/ChatBottom";
 import ChatRules from "./chatRules/ChatRules";
 import ChatTop from "./chatTop/ChatTop";
 import Cookies from "js-cookie";
-import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
@@ -44,7 +43,6 @@ import { SiProtools } from "react-icons/si";
 // import { getTimeRemainingInMinutes } from "@/utils/convertDateFormat";
 
 const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
-  const { data: session, status } = useSession();
 
   // const socket = io(`${process.env.STATIC_SERVER}`);
   const socket = useRef(null);
@@ -77,9 +75,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
     ? JSON.parse(userFromCookies)?.color
     : null;
 
-  const [selectedAvatar, setSelectedAvatar] = useState(
-    session?.user?.image || initialAvatar
-  );
+  const [selectedAvatar, setSelectedAvatar] = useState(initialAvatar);
   const [changeAvatar, setChangeAvatar] = useState(false);
 
   //chat room top selection
@@ -88,11 +84,11 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
 
   // message state
   const messageDefaultState = {
-    username: session?.user?.name || initialName,
+    username: initialName,
     message: "",
-    image: session?.user?.image || initialAvatar,
+    image: initialAvatar,
     room: chatRoomSelection,
-    color: session?.user?.color || initialColor,
+    color: initialColor,
   };
   const [message, setMessage] = useState(messageDefaultState);
   const inputRef = useRef(null);
@@ -106,7 +102,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
   const [showRules, setShowRules] = useState(true);
 
   // username color
-  const [color, setColor] = useState(session?.user?.color || initialColor);
+  const [color, setColor] = useState(initialColor);
 
   const [slowModeRemainingSec, setSlowModeRemainingSec] = useState(false);
   //toggle functions
@@ -129,7 +125,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
         `${process.env.BACKEND_SERVER}/users/regulerUsers/looks`,
         {
           user: {
-            name: session?.user?.name || initialName,
+            name: initialName,
             color: color,
           },
         }
@@ -155,7 +151,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
   };
 
   const selectAvatar = async (avatar) => {
-    if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
+    if (!initialName || initialName === "anonymous") {
       setMessage({ ...message, image: avatar });
 
       setChangeAvatar(!changeAvatar);
@@ -171,7 +167,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
         `${process.env.BACKEND_SERVER}/users/regulerUsers/looks`,
         {
           user: {
-            name: session?.user?.name || initialName,
+            name: initialName,
             image: avatar,
           },
         }
@@ -653,7 +649,7 @@ const Chat = ({ toggleChat, chatRules, chatFilteredWords, mode }) => {
         chatFilteredWords={chatFilteredWords}
         lastMessageRef={lastMessageRef}
         messagesRef={messagesRef}
-        username={session?.user?.name || initialName}
+        username={initialName}
         messages={messages}
         setMentionSomeone={setMentionSomeone}
       />

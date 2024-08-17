@@ -33,7 +33,6 @@ import ChatBottom from "./chatBottom/ChatBottom";
 import ChatRules from "./chatRules/ChatRules";
 import ChatTop from "./chatTop/ChatTop";
 import Cookies from "js-cookie";
-import { useSession } from "next-auth/react";
 import io from "socket.io-client";
 import axios from "axios";
 import { getTimeRemainingInMinutes } from "@/app/lib/datesFunctions";
@@ -51,8 +50,6 @@ const Chat = ({
   setInputActive,
   mode,
 }) => {
-  const { data: session, status } = useSession();
-
   const socket = useRef(null);
 
   //show emojy and gifs pickers
@@ -85,9 +82,7 @@ const Chat = ({
     ? JSON.parse(userFromCookies)?.color
     : null;
 
-  const [selectedAvatar, setSelectedAvatar] = useState(
-    session?.user?.image || initialAvatar
-  );
+  const [selectedAvatar, setSelectedAvatar] = useState(initialAvatar);
   const [changeAvatar, setChangeAvatar] = useState(false);
 
   //chat room top selection
@@ -96,11 +91,11 @@ const Chat = ({
 
   // message state
   const messageDefaultState = {
-    username: session?.user?.name || initialName,
+    username: initialName,
     message: "",
-    image: session?.user?.image || initialAvatar,
+    image: initialAvatar,
     room: chatRoomSelection,
-    color: session?.user?.color || initialColor,
+    color: initialColor,
   };
   const [message, setMessage] = useState(messageDefaultState);
   const inputRef = useRef(null);
@@ -114,7 +109,7 @@ const Chat = ({
   const [showRules, setShowRules] = useState(true);
 
   // username color
-  const [color, setColor] = useState(session?.user?.color || initialColor);
+  const [color, setColor] = useState(initialColor);
 
   const [slowModeRemainingSec, setSlowModeRemainingSec] = useState(false);
   //toggle functions
@@ -137,7 +132,7 @@ const Chat = ({
         `${process.env.BACKEND_SERVER}/users/regulerUsers/looks`,
         {
           user: {
-            name: session?.user?.name || initialName,
+            name: initialName,
             color: color,
           },
         }
@@ -163,7 +158,7 @@ const Chat = ({
   };
 
   const selectAvatar = async (avatar) => {
-    if ((!session?.user?.name && !initialName) || initialName === "anonymous") {
+    if (!initialName || initialName === "anonymous") {
       setMessage({ ...message, image: avatar });
 
       setChangeAvatar(!changeAvatar);
@@ -179,7 +174,7 @@ const Chat = ({
         `${process.env.BACKEND_SERVER}/users/regulerUsers/looks`,
         {
           user: {
-            name: session?.user?.name || initialName,
+            name: initialName,
             image: avatar,
           },
         }
@@ -664,7 +659,7 @@ const Chat = ({
       />
       <ChatBody
         messagesRef={messagesRef}
-        username={session?.user?.name || initialName}
+        username={initialName}
         messages={messages}
         setMentionSomeone={setMentionSomeone}
         chatFilteredWords={chatFilteredWords}

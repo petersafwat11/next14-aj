@@ -1,6 +1,4 @@
 import React from "react";
-import { getServerSession } from "next-auth/next";
-import { authConfig } from "@/app/api/auth/[...nextauth]/route";
 import axios from "axios";
 import ShowingChat from "../ui/showingChat/ShowingChat";
 import LiveBtn from "../ui/live-button/LiveButton";
@@ -19,7 +17,6 @@ export const metadata = {
 };
 const Page = async ({ searchParams }) => {
   noStore();
-  const session = await getServerSession(authConfig);
   const searchValue = searchParams?.search;
 
   const filterValue = searchParams?.filter;

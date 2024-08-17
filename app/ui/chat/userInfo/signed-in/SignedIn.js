@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./signedIn.module.css";
 import Image from "next/image";
-import { signOut } from "next-auth/react";
 import Cookies from "js-cookie";
 
 const SignedIn = ({ session, toggleChangeUserName, AJUser, toggleUserInf }) => {
@@ -57,8 +56,6 @@ const SignedIn = ({ session, toggleChangeUserName, AJUser, toggleUserInf }) => {
               toggleUserInf();
               return Cookies.remove("user");
             }
-            signOut({ redirect: false });
-            toggleUserInf();
           }}
           className={classes["sign-out"]}
         >

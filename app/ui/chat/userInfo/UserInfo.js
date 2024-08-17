@@ -1,14 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
 import Cookies from "js-cookie";
 
 import classes from "./userInfo.module.css";
 import SignedIn from "./signed-in/SignedIn";
 import SignedOut from "./singed-out/SignedOut";
 import axios from "axios";
-import { checkSessionValidty } from "@/app/lib/sessionCheck";
 const UserInfo = ({
   toggleChangeAvatar,
   selectedAvatar,
@@ -19,7 +17,6 @@ const UserInfo = ({
 }) => {
   // const AJUser = Cookies.get("user");
   const [AJUser, setAJUser] = useState(Cookies.get("user"));
-  const { data: session, status } = useSession();
   const [loodinguserNameAvailability, setLoodinguserNameAvailability] =
     useState(false);
   const [startTyping, setStartTyping] = useState(false);
@@ -142,11 +139,10 @@ const UserInfo = ({
       <div className={classes["user-info-body"]}>
         <p className={classes["user-info-para"]}>Your Display Name</p>
       </div>
-      {(session && checkSessionValidty(session?.expires)) || AJUser ? (
+      {AJUser ? (
         <SignedIn
           toggleChangeUserName={toggleChangeUserName}
           AJUser={AJUser || null}
-          session={session}
           selectedAvatar={selectedAvatar}
           toggleUserInf={toggleUserInf}
         />
