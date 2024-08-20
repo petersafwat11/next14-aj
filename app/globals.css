@@ -408,7 +408,7 @@ button {
 .emoji-extendmode > div {
   display: flex;
   justify-content: center;
-  align-self: start;
+  align-self: flex-start;
 }
 
 /* crop image */

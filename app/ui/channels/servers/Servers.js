@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import classes from "./servers.module.css";
 import Image from "next/image";
-import ShowMore from "../../showMore/ShowMore";
+// import ShowMore from "../../showMore/ShowMore";
 import { useRouter } from "next/navigation";
 import action from "@/app/lib/action";
 const Servers = ({
   channelsServers,
   channalActive,
-  filterValue,
-  searchValue,
+  // filterValue,
+  // searchValue,
 }) => {
   // console.log("channalActive", channalActive);
   const router = useRouter();
@@ -19,7 +19,6 @@ const Servers = ({
   }, [channelsServers]);
   return (
     <>
-      {" "}
       <div className={classes["watch-video-servers"]}>
         {servers?.length > 0 ? (
           servers.map((channelobj, index) => (

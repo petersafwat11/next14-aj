@@ -7,7 +7,6 @@ import classes from "./page.module.css";
 import OtherMatches from "./ui/home-page/otherMatches/OtherMatches";
 import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
-import Script from "next/script";
 import MobileSearch from "./ui/home-page/search/MobileSearch";
 import AdsPage from "./ui/ads/AdsComponent";
 const Page = async ({ searchParams }) => {
@@ -47,7 +46,6 @@ const Page = async ({ searchParams }) => {
   };
   return (
     <div className={classes["page"]}>
-      {" "}
       <MobileSearch />
       <div className={classes["top-screen"]}>
         <div className={classes["top-screen-live-icon"]}>
@@ -90,31 +88,6 @@ const Page = async ({ searchParams }) => {
         </section>
       </div>
       <AdsPage />
-      {/* <Script
-        strategy="beforeInteractive"
-        type="text/javascript"
-        src="//cdn.tapioni.com/asg_embed.js"
-        data-spots="451173"
-        data-tag="asg"
-        data-subid1="%subid1%"
-        data-subid2="%subid2%"
-      ></Script>
-      <Script
-        strategy="beforeInteractive"
-        type="text/javascript"
-        src="//cdn.tapioni.com/asg_embed.js"
-        data-spots="451172"
-        data-tag="asg"
-        data-subid1="%subid1%"
-        data-subid2="%subid2%"
-      ></Script>
-      <Script
-        strategy="beforeInteractive"
-        type="text/javascript"
-        src="//cdn.tapioni.com/ip-push.js"
-        data-spot="451174"
-        data-subid1="%subid1%"
-      ></Script> */}
     </div>
   );
 };

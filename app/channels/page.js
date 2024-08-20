@@ -10,7 +10,6 @@ import NewFilter from "../ui/filter/NewFilter";
 import classes from "./page.module.css";
 import Servers from "../ui/channels/servers/Servers";
 import { unstable_noStore as noStore } from "next/cache";
-import Casino from "../ui/casino/Casino";
 import Advert from "../ui/advert/Advert";
 export const metadata = {
   title: "Channels | AJ Sports",
@@ -21,7 +20,6 @@ const Page = async ({ searchParams }) => {
 
   const filterValue = searchParams?.filter;
   const channalActive = searchParams?.channel?.replace(/-/g, " ");
-  let queryChannel = null;
   let queryStreamLink = null;
   if (channalActive) {
     queryStreamLink = await axios.get(
@@ -41,8 +39,6 @@ const Page = async ({ searchParams }) => {
     axios.get(`${process.env.BACKEND_SERVER}/chat/chatFilteredWords`),
     axios.get(`${process.env.BACKEND_SERVER}/streamlink`, {
       params: {
-        // page: 1,
-        // limit: 8,
         page: 1,
         limit: 0,
         mode: "Visible",
@@ -80,19 +76,6 @@ const Page = async ({ searchParams }) => {
       // Handle any errors that occurred during any of the requests
       console.error("Error in fetching chat resources:", error);
     });
-  // const streamLinks = await axios.get(
-  //   `${process.env.BACKEND_SERVER}/streamlink`,
-  //   {
-  //     params: {
-  //       page: 1,
-  //       limit: 8,
-  //       mode: "Visible",
-  //       language: filterValue,
-  //       searchValue: searchValue,
-  //       or: ["channelName"],
-  //     },
-  //   }
-  // );
   console.log("queryStreamLink", queryStreamLink?.data);
 
   const channelsServers = {

@@ -55,7 +55,7 @@
 }
 
 .standings-header-first .standings-header-para:nth-child(2) {
-  justify-self: start;
+  align-self: flex-start;
 }
 
 .first-team {

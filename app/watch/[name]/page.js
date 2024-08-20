@@ -16,7 +16,6 @@ import ShowingChat from "@/app/ui/showingChat/ShowingChat";
 import VideoBody from "@/app/ui/watch/videoBody/VideoBody";
 import VideoTop from "@/app/ui/watch/videoTop/VideoTop";
 import MatchData from "@/app/ui/watch/watchtaktick/MatchSummey/MatchData";
-import Casino from "@/app/ui/casino/Casino";
 import Advert from "@/app/ui/advert/Advert";
 
 export const metadata = {

@@ -60,14 +60,16 @@ const SignedOut = ({
         {loodinguserNameAvailability && startTyping ? (
           <div className={classes["spinner"]}></div>
         ) : notValid && startTyping ? (
-          <img
+          <Image
+            alt="not valid"
             className={classes["validity-icon"]}
             src="/svg/chat/not-available-username.svg"
             width="17"
             height="17"
           />
         ) : !notValid && startTyping ? (
-          <img
+          <Image
+            alt=" valid"
             className={classes["validity-icon"]}
             src="/svg/chat/available-username.svg"
             width="17"

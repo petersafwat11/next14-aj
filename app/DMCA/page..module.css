@@ -57,7 +57,7 @@
 }
 .netflix-icon,
 .google-icon {
-  justify-self: start;
+  align-self: flex-start;
 }
 .dailymotion-icon,
 .youtube-icon {

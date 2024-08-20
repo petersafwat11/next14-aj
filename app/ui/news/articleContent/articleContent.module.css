@@ -13,14 +13,14 @@
   padding: 1.12rem 1.12rem 0;
 }
 .article-top-icon {
-  align-self: start;
+  align-self: flex-start;
   cursor: pointer;
 }
 .arrow-back {
   font-size: 1.04rem;
   color: rgba(128, 128, 128, 0.5);
   cursor: pointer;
-  align-self: start;
+  align-self: flex-start;
   transition: all 0.3s ease-out;
 }
 .arrow-back:hover {

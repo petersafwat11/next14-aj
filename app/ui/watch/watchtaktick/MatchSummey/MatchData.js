@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
 import MatchSummeryFallback from "./MatchSummeryFallback";
 import dynamic from "next/dynamic";
 
 const MatchSummery = dynamic(() => import("./MatchSummery"), {
+  ssr: false,
+
   loading: () => <MatchSummeryFallback />,
 });
 
@@ -13,7 +16,7 @@ const MatchData = ({
   sportCategory,
   firstTeamName,
   secondTeamName,
-  eventStadium
+  eventStadium,
 }) => {
   return (
     <MatchSummery

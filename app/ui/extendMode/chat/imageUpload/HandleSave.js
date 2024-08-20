@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import AvatarEditor from 'react-avatar-editor';
+import Image from "next/image";
+import React, { useRef, useState } from "react";
+import AvatarEditor from "react-avatar-editor";
 
 function ImageCropper({ image }) {
   const editorRef = useRef();
@@ -25,7 +26,9 @@ function ImageCropper({ image }) {
         scale={1}
       />
       <button onClick={handleSave}>Save Image</button>
-      {preview && <img src={preview} alt="cropped" />}
+      {preview && (
+        <Image width={250} height={250}  src={preview} alt="cropped" />
+      )}
     </div>
   );
 }

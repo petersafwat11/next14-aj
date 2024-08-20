@@ -1,4 +1,4 @@
-.video-container {
+/* .video-container {
   position: relative;
   display: flex;
   align-items: center;
@@ -7,7 +7,6 @@
   height: 100%;
 }
 
-/* audio::-webkit-media-controls-timeline, */
 .video-play::-webkit-media-controls-timeline,
 .video-pause::-webkit-media-controls-timeline {
   display: none;
@@ -37,12 +36,11 @@
   justify-content: center;
 }
 
-/* Style the play icon */
 .play-icon:before {
   content: "";
   width: 100%;
   height: 100%;
-  background-image: url("/svg/watch/play-video.svg"); /* Change this to your custom image */
+  background-image: url("/svg/watch/play-video.svg"); 
   background-size: cover;
 }
 .playing {
@@ -54,7 +52,4 @@
   .video-pause {
     border-radius: 0;
   }
-  /* .video-pause {
-    border-radius: 0.625rem;
-  } */
-}
+} */

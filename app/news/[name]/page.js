@@ -4,7 +4,7 @@ import PageTitle from "@/app/ui/pageTitle/PageTitle";
 import ArticleContent from "@/app/ui/news/articleContent/ArticleContent";
 import SocialShare from "@/app/ui/news/share/socialShare/SocialShare";
 import Comments from "@/app/ui/news/comments/Comments";
-import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
+// import ProtonVpn from "@/app/ui/protonVpn/ProtonVpn";
 import Share from "@/app/ui/news/share/Share";
 
 export const metadata = {
@@ -33,7 +33,7 @@ const Page = async ({ params }) => {
         <ArticleContent title={title} subNews={subNews} />
         <span className={classes["seperator"]}></span>
         <Share shareUrl={shareUrl} quote={quote}/>
-        <ProtonVpn />
+        {/* <ProtonVpn /> */}
         <Comments />
       </div>
     </>
