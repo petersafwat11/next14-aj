@@ -5,8 +5,6 @@ import "video.js/dist/video-js.css";
 import classes from "./playerContainer.module.css";
 export const VideoJS = ({ options, onReady, playerRef }) => {
   const divRef = React.useRef(null);
-  // const playerRef = React.useRef(null);
-  // const { options, onReady,playerRef } = props;
   React.useEffect(() => {
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
@@ -27,8 +25,6 @@ export const VideoJS = ({ options, onReady, playerRef }) => {
         onReady && onReady(player);
       }));
 
-      // You could update an existing player in the `else` block here
-      // on prop change, for example:
     } else {
       const player = playerRef.current;
 
