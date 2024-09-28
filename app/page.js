@@ -9,12 +9,15 @@ import HotMatches from "./ui/home-page/HotMatches/HotMatches";
 import NoMatches from "./ui/home-page/noMatches/NoMatches";
 import MobileSearch from "./ui/home-page/search/MobileSearch";
 import AdsPage from "./ui/ads/AdsComponent";
+
 const Page = async ({ searchParams }) => {
   const sportCategory = searchParams?.category || "football";
   const searchValue = searchParams?.search || "";
-  const currentEvents = await axios.get(
-    `${process.env.BACKEND_SERVER}/sports`,
-    {
+
+  let currentEvents;
+
+  try {
+    currentEvents = await axios.get(`${process.env.BACKEND_SERVER}/sports`, {
       params: {
         page: 1,
         limit: 20,
@@ -32,11 +35,17 @@ const Page = async ({ searchParams }) => {
           "eventLeague",
           "eventStadium",
         ],
-        sort: { eventDate: 1 },
+        // sort: { eventDate: 1 },
       },
-    }
-  );
-
+    });
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return (
+      <div>
+        <p>Error loading data. Please try again later. {error.message}</p>
+      </div>
+    );
+  }
 
   const hotMatches = currentEvents?.data?.hotMatches;
 
@@ -44,6 +53,7 @@ const Page = async ({ searchParams }) => {
     total: currentEvents?.data?.results,
     matches: currentEvents?.data?.data,
   };
+
   return (
     <div className={classes["page"]}>
       <MobileSearch />
@@ -55,7 +65,7 @@ const Page = async ({ searchParams }) => {
       </div>
       <div className={classes["matches-container"]}>
         <section className={classes["hot-matches"]}>
-          <div className={classes["hot-mathes-top"]}>
+          <div className={classes["hot-matches-top"]}>
             <h2 className={classes["title"]}>HOT MATCHES</h2>
             <Image
               className={classes["hot-matches-icon"]}
