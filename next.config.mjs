@@ -8,13 +8,13 @@ const nextConfig = {
   // },
 
   env: {
-    // FRONTEND_SERVER: "http://localhost:3000",
-    // BACKEND_SERVER: "http://localhost:5000/api",
-    // STATIC_SERVER: "http://localhost:5000",
-    FRONTEND_SERVER: "https://ajsports.ch",
-    BACKEND_SERVER: "https://ajsports.ch/api",
-    STATIC_SERVER: "https://ajsports.ch",
-    NEXT_PUBLIC_MEASUREMENT_ID: "G-Y22CVP987D",
+    FRONTEND_SERVER: "http://localhost:3000",
+    BACKEND_SERVER: "http://localhost:5000/api",
+    STATIC_SERVER: "http://localhost:5000",
+    // FRONTEND_SERVER: "https://ajsports.ch",
+    // BACKEND_SERVER: "https://ajsports.ch/api",
+    // STATIC_SERVER: "https://ajsports.ch",
+    NEXT_PUBLIC_MEASUREMENT_ID: "fgaG-Y22CVP987D",
   },
   generateBuildId: async () => {
     return "f134160";
