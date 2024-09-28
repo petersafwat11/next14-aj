@@ -34,6 +34,7 @@ const nextConfig = {
       "media.api-sports.io",
       "ajsports.ch",
       "www.ajsports.ch",
+      "vercel-backend-steel-two.vercel.app",
     ],
     // remotePatterns: [
     //   {
