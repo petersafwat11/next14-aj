@@ -65,7 +65,7 @@ const Page = async ({ searchParams }) => {
       </div>
       <div className={classes["matches-container"]}>
         <section className={classes["hot-matches"]}>
-          <div className={classes["hot-matches-top"]}>
+          <div className={classes["hot-mathes-top"]}>
             <h2 className={classes["title"]}>HOT MATCHES</h2>
             <Image
               className={classes["hot-matches-icon"]}
