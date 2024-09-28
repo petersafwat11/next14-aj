@@ -42,7 +42,7 @@ const Page = async ({ searchParams }) => {
         page: 1,
         limit: 0,
         mode: "Visible",
-        // sort: { channelName: 1 },
+        sort: { channelName: 1 },
         language: filterValue,
         searchValue: searchValue,
         or: ["channelName"],

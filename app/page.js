@@ -35,7 +35,7 @@ const Page = async ({ searchParams }) => {
           "eventLeague",
           "eventStadium",
         ],
-        // sort: { eventDate: 1 },
+        sort: { eventDate: 1 },
       },
     });
   } catch (error) {
