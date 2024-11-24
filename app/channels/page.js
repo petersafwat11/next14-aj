@@ -92,7 +92,7 @@ const Page = async ({ searchParams }) => {
     queryStreamLink?.data?.data?.channelName ||
     data?.streamLinks?.data?.data[0]?.channelName ||
     null;
-  const langs = data?.streamLinks?.allLanguages;
+  const langs = data?.streamLinks?.allLanguages || [];
   return (
     <div className={classes["page"]}>
       <ShowingChat
